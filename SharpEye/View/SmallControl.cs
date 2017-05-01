@@ -13,7 +13,7 @@ namespace View
 {
     public partial class SmallControl : UserControl, ISmallView
     {
-        public Panel VideoPanel { get => _videoPanel;}
+        public Panel VideoPanel { get { return _videoPanel; } }
         public event Action FullScreen;
 
         public SmallControl()

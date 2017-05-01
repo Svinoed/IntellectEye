@@ -21,7 +21,7 @@ namespace View
         public event Action<string> CamEditClick;
         public event Action GropsEditClick;
 
-        public bool ViewVisible { get => this.Visible; set =>  this.Visible = value; }
+        public bool ViewVisible { get { return this.Visible; } set { this.Visible = value; } }
         
         public MainControl()
         {
