@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using View.Utils;
 
 namespace View.Interfaces
 {
@@ -11,11 +12,17 @@ namespace View.Interfaces
         // Временно
         string Camera { set; get; }
         event Action CameraSelected;
-
-        void AddVideoControl(IVideoView view);
         void SetCameraList(string[] cameras);
 
-        void AddList(List<ISmallView> list);
+        bool ViewVisible { get; set; }
+        void AddVideoControl(IVideoView view);
+        void AddListControl(List<ISmallView> list);
 
+        event Action<string> CamEditClick;
+        event Action GropsEditClick;
+
+        Group EditGroup(Group group, Dictionary<dynamic, string> cameras);
+        List<Group> EditGroups(List<Group> groups, Dictionary<dynamic, string> cameras);
+       
     }
 }

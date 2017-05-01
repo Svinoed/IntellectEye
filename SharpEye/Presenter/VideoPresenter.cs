@@ -26,14 +26,14 @@ namespace Presenter
             }
         }
 
-        public VideoPresenter(IVideoView view, IVideoModel videoModel, IAudioModel audioModel)
+        public VideoPresenter(IVideoView view, Action backHandler)
         {
-            if(view != null && videoModel != null && audioModel != null)
+            if(view != null)
             {
                 _view = view;
-                _videoModel = videoModel;
-                _audioModel = audioModel;
+                _view.Back += backHandler;
             }
+           
         }
 
         public IVideoView GetView()

@@ -8,16 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using View.Interfaces;
+using View.Utils;
 
 namespace View
 {
     public partial class MainControl : UserControl, IMainView, ILogView
     {
         private string _camera;
+
         public string Camera { get { return this._camera; } set { this._camera = value; } }
         public event Action CameraSelected;
+        public event Action<string> CamEditClick;
+        public event Action GropsEditClick;
 
-
+        public bool ViewVisible { get { return this.Visible; } set { this.Visible = value; } }
+        
         public MainControl()
         {
             InitializeComponent();
@@ -27,7 +32,11 @@ namespace View
             panel1.Location = new Point(tabControl1.Width-panel1.Width, tabControl1.Location.Y);
         }
 
-        
+        // Это Диме
+        public void AddListControl(List<ISmallView> list)
+        {
+            throw new NotImplementedException();
+        }
 
 
         #region DrawGroupBox
@@ -111,6 +120,16 @@ namespace View
         {
             //SequenceScreenplayEditor sequenceScreenplayEditorWindow = new SequenceScreenplayEditor();
             //sequenceScreenplayEditorWindow.Show();
+        }
+
+        public Group EditGroup(Group group, Dictionary<dynamic, string> cameras)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Group> EditGroups(List<Group> groups, Dictionary<dynamic, string> camerass)
+        {
+            throw new NotImplementedException();
         }
     }
 }
