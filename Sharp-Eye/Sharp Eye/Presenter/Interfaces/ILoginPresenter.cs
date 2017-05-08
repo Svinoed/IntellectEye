@@ -1,0 +1,18 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using View.Interfaces;
+
+namespace Presenter.Interfaces
+{   /// <summary>
+    ///  
+    /// </summary>
+    interface ILoginPresenter
+    {
+        event Action Connected;
+        ILoginView GetView();
+        void Connect();
+    }
+}
