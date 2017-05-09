@@ -10,7 +10,7 @@ namespace Model
 {
     class Camera : ICameraModel
     {
-        private Object _id;
+        private dynamic _id;
         private string _name;
         public object Id { get { return this._id; } set { this._id = value; } }
         public string Name { get { return this._name; } set { this._name = value; } }

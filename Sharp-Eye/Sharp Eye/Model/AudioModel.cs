@@ -24,7 +24,7 @@ namespace Model
         public void SetAudioStreamInPanelDefault(ICameraModel camera, Panel panel)
         { 
             _relatedMicrophone = null;
-            Item CameraItem = new Item((FQID)camera.Id, camera.Name);
+            Item CameraItem = new Item(camera.Id, camera.Name);
             List<Item> related = CameraItem.GetRelated();
             if (related != null)
             {

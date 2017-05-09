@@ -26,22 +26,17 @@ namespace Model
 
         private void CheckChildren(Item parent)
         {
-            List<Item> itemsOnNextLevel = parent.GetChildren(); // This causes the configuration Items to be loaded.
+            List<Item> itemsOnNextLevel = parent.GetChildren();
             if (itemsOnNextLevel != null)
             {
                 foreach (Item item in itemsOnNextLevel)
                 {
-                    // If we find the camera we want, remember it and return with no further checks
-                    // It must have Kind == Camera and it must not be a folder (It seems that camera folders have Kind == Camera)
                     if (item.FQID.Kind == Kind.Camera && item.FQID.FolderType == FolderType.No)
                     {
-                        // Does the name match the camera name we are looking for? Here we accept a non-perfect match
-                        Camera c = new Camera(item.FQID, item.Name);
                         _listCam.Add(c);
                     }
                     else
                     {
-                        // We have not found our camera, so check the next level of Items in case this Item has children.
                         if (item.HasChildren != HasChildren.No)
                             CheckChildren(item);
                     }

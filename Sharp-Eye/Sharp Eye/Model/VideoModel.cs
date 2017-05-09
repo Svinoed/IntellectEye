@@ -29,7 +29,7 @@ namespace Model
             _imageViewer.Dock = DockStyle.Fill;
             panel.Controls.Clear();
             panel.Controls.Add(_imageViewer);
-            _imageViewer.CameraFQID = (FQID) camera.Id;
+            _imageViewer.CameraFQID = camera.Id;
             _imageViewer.EnableVisibleHeader = true;
             _imageViewer.EnableVisibleLiveIndicator = EnvironmentManager.Instance.Mode == Mode.ClientLive;
             _imageViewer.EnableMousePtzEmbeddedHandler = true;

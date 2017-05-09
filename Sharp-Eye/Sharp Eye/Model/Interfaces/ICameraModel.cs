@@ -8,7 +8,7 @@ namespace Model.Interfaces
 {
     public interface ICameraModel
     {
-        Object Id { set; get; }
+        dynamic Id { set; get; }
         string Name { set; get; }
     }
 }
