@@ -33,6 +33,7 @@ namespace Model
                 {
                     if (item.FQID.Kind == Kind.Camera && item.FQID.FolderType == FolderType.No)
                     {
+                        ICameraModel c = new Camera(item.FQID, item.Name);
                         _listCam.Add(c);
                     }
                     else
