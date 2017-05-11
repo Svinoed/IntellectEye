@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace Model.Interfaces
 {
-    public interface ICameraModel
+    public interface IBookMarkerModel
     {
-        dynamic Id { set; get; }
-        string Name { set; get; }
-        dynamic MicrophoneId { set; get; }
+        void CreateMarker(DateTime time, ICameraModel camera);
     }
 }
