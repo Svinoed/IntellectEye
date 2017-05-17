@@ -80,6 +80,7 @@
     <Compile Include="ComposContainer.cs" />
     <Compile Include="Interfaces\ILoginPresenter.cs" />
     <Compile Include="Interfaces\IMainPresenter.cs" />
+    <Compile Include="Interfaces\ISmallVideoPresenter.cs" />
     <Compile Include="Interfaces\IVideoPresenter.cs" />
     <Compile Include="LoginPresenter.cs" />
     <Compile Include="MainPresenter.cs" />
@@ -89,12 +90,17 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="SmallVideoPresenter.cs" />
     <Compile Include="VideoPresenter.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Contract\Contract.csproj">
       <Project>{78e02f04-cd97-4e29-8ded-2aae3e90529c}</Project>
       <Name>Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\View\View.csproj">
+      <Project>{8750a7c9-72cd-410b-bd25-48d3aed684f2}</Project>
+      <Name>View</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

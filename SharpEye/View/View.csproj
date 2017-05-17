@@ -68,6 +68,12 @@
       <DependentUpon>MainControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SmallControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SmallControl.Designer.cs">
+      <DependentUpon>SmallControl.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="LoginControl.resx">
@@ -75,6 +81,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainControl.resx">
       <DependentUpon>MainControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SmallControl.resx">
+      <DependentUpon>SmallControl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
