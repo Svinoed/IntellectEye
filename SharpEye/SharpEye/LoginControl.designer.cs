@@ -78,6 +78,7 @@
             this.ServerTextBox.Name = "ServerTextBox";
             this.ServerTextBox.Size = new System.Drawing.Size(186, 20);
             this.ServerTextBox.TabIndex = 3;
+            this.ServerTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ServerTextBox_KeyUp);
             // 
             // UserTextBox
             // 
@@ -85,6 +86,7 @@
             this.UserTextBox.Name = "UserTextBox";
             this.UserTextBox.Size = new System.Drawing.Size(185, 20);
             this.UserTextBox.TabIndex = 4;
+            this.UserTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.UserTextBox_KeyUp);
             // 
             // PasswordTextBox
             // 
@@ -92,6 +94,7 @@
             this.PasswordTextBox.Name = "PasswordTextBox";
             this.PasswordTextBox.Size = new System.Drawing.Size(187, 20);
             this.PasswordTextBox.TabIndex = 5;
+            this.PasswordTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.PasswordTextBox_KeyUp);
             // 
             // AdressLabel
             // 
@@ -127,8 +130,6 @@
             this.NotificationLabel.Name = "NotificationLabel";
             this.NotificationLabel.Size = new System.Drawing.Size(0, 13);
             this.NotificationLabel.TabIndex = 9;
-
-            this.SuspendLayout();
             // 
             // LoginControl
             // 

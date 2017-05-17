@@ -112,5 +112,10 @@ namespace View
             //SequenceScreenplayEditor sequenceScreenplayEditorWindow = new SequenceScreenplayEditor();
             //sequenceScreenplayEditorWindow.Show();
         }
+
+        public void AddList(List<ISmallView> list)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

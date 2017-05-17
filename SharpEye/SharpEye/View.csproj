@@ -52,6 +52,7 @@
     <Compile Include="Interfaces\ILoginView.cs" />
     <Compile Include="Interfaces\ILogView.cs" />
     <Compile Include="Interfaces\IMainView.cs" />
+    <Compile Include="Interfaces\IPlaybackView.cs" />
     <Compile Include="Interfaces\ISmallView.cs" />
     <Compile Include="Interfaces\IVideoView.cs" />
     <Compile Include="Interfaces\IView.cs" />
@@ -67,6 +68,12 @@
     <Compile Include="MainControl.designer.cs">
       <DependentUpon>MainControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="PlaybackControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PlaybackControl.designer.cs">
+      <DependentUpon>PlaybackControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -75,6 +82,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainControl.resx">
       <DependentUpon>MainControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlaybackControl.resx">
+      <DependentUpon>PlaybackControl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

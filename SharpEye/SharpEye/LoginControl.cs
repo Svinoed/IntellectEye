@@ -68,6 +68,28 @@ namespace View
             AutoLogin = AutoLoginCheck.Checked;
         }
 
+        private void ServerTextBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Return)
+            {
+                UserTextBox.Select();
+            }
+        }
 
+        private void UserTextBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Return)
+            {
+                PasswordTextBox.Select();
+            }
+        }
+
+        private void PasswordTextBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Return)
+            {
+                LogInButton.PerformClick();
+            }
+        }
     }
 }
