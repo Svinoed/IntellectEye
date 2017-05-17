@@ -74,6 +74,7 @@
     <Compile Include="SmallControl.Designer.cs">
       <DependentUpon>SmallControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\Group.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="LoginControl.resx">

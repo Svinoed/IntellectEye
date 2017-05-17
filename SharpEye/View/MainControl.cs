@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using View.Interfaces;
+using View.Utils;
 
 namespace View
 {
@@ -17,6 +18,9 @@ namespace View
 
         public string Camera { get { return this._camera; } set { this._camera = value; } }
         public event Action CameraSelected;
+        public event Action<string> CamEditClick;
+        public event Action GropsEditClick;
+
         public bool ViewVisible { get => this.Visible; set =>  this.Visible = value; }
         
         public MainControl()
@@ -28,7 +32,8 @@ namespace View
             panel1.Location = new Point(tabControl1.Width-panel1.Width, tabControl1.Location.Y);
         }
 
-        public void AddList(List<ISmallView> list)
+        // Это Диме
+        public void AddListControl(List<ISmallView> list)
         {
             throw new NotImplementedException();
         }
@@ -117,5 +122,14 @@ namespace View
             //sequenceScreenplayEditorWindow.Show();
         }
 
+        public Group EditGroup(Group group)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Group> EditGroups(List<Group> groups)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
