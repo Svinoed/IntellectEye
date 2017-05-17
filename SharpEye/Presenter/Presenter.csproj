@@ -96,10 +96,6 @@
       <Project>{78e02f04-cd97-4e29-8ded-2aae3e90529c}</Project>
       <Name>Contract</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SharpEye\View.csproj">
-      <Project>{8750a7c9-72cd-410b-bd25-48d3aed684f2}</Project>
-      <Name>View</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ActiveXComponent.resx">
