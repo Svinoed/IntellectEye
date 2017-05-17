@@ -122,12 +122,12 @@ namespace View
             //sequenceScreenplayEditorWindow.Show();
         }
 
-        public Group EditGroup(Group group)
+        public Group EditGroup(Group group, Dictionary<dynamic, string> cameras)
         {
             throw new NotImplementedException();
         }
 
-        public List<Group> EditGroups(List<Group> groups)
+        public List<Group> EditGroups(List<Group> groups, Dictionary<dynamic, string> camerass)
         {
             throw new NotImplementedException();
         }

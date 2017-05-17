@@ -21,8 +21,8 @@ namespace View.Interfaces
         event Action<string> CamEditClick;
         event Action GropsEditClick;
 
-        Group EditGroup(Group group);
-        List<Group> EditGroups(List<Group> groups);
+        Group EditGroup(Group group, Dictionary<dynamic, string> cameras);
+        List<Group> EditGroups(List<Group> groups, Dictionary<dynamic, string> cameras);
        
     }
 }

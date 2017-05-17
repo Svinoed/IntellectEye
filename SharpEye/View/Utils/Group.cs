@@ -9,12 +9,12 @@ namespace View.Utils
     public class Group
     {
         public string Name { get; set; }
-        public List<string> Cameras { get; set; }
+        public Dictionary<dynamic, string> Cameras { get; set; }
 
         public Group()
         {
-            Cameras = new List<string>();
+            Cameras = new Dictionary<dynamic, string>();
         }
-
+        
     }
 }

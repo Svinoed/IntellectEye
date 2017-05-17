@@ -34,7 +34,8 @@ namespace Presenter
             {
                 this._view = view;
                 _handler = handler;
-                _view.CameraSelected += () => CameraSelected();
+                _view.CamEditClick += (g) => EditGroup(g);
+                _view.GropsEditClick += () => EditGroups();
             }
             else
             {
@@ -61,6 +62,16 @@ namespace Presenter
             {
                 _view.ViewVisible = visible;
             }
+        }
+
+        private void EditGroup(string group)
+        {
+
+        } 
+
+        private void EditGroups()
+        {
+
         }
 
         private void CameraSelected()
