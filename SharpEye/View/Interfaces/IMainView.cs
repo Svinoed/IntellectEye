@@ -12,6 +12,7 @@ namespace View.Interfaces
         string Camera { set; get; }
         event Action CameraSelected;
 
+        bool ViewVisible { get; set; }
         void AddVideoControl(IVideoView view);
         void SetCameraList(string[] cameras);
 

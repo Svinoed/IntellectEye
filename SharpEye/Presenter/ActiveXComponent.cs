@@ -25,6 +25,8 @@ namespace Presenter
     {
         private ILoginPresenter _loginPresenter;
         private IMainPresenter _mainPresenter;
+        private IVideoPresenter _videoPresenter; // Контрол для одной камеры
+
         [Import]
         private IInitialModel _initModel;
 
@@ -34,7 +36,7 @@ namespace Presenter
             InitializeComponent();           
         }
 
-        public void LoadLoginView(ILoginView view)
+        private void LoadLoginView(ILoginView view)
         {
             UserControl loginView = (UserControl)view;
             // Устанавливаем контрол по центру
@@ -45,7 +47,7 @@ namespace Presenter
         }
 
 
-        public void LoadMainView(IMainView view)
+        private void LoadMainView(IMainView view)
         {
             UserControl mainView = (UserControl)view;
             mainView.Width = this.ClientSize.Width;
@@ -56,12 +58,41 @@ namespace Presenter
 
         private void ConnectionCompleted()
         {
-            _mainPresenter = new MainPresenter(new MainControl());
+            _mainPresenter = new MainPresenter(new MainControl(), ShowVideoControl);
             LoadMainView(_mainPresenter.GetView());
-
             _mainPresenter.Run();
         }
 
+        /// <summary>
+        /// Показать контрол для одной камеры
+        /// </summary>
+        private void ShowVideoControl(ICameraModel camera)
+        {
+            _mainPresenter.SetVisible(false);
+            UserControl videoControl = (UserControl)_videoPresenter.GetView();
+            videoControl.Dock = DockStyle.Fill;
+            this.Controls.Add(videoControl);
+            _videoPresenter.Camera = camera;
+        }
+
+        private void CloseVideoControl()
+        {
+            this.Controls.Remove((UserControl) _videoPresenter.GetView());
+            _mainPresenter.SetVisible(true);
+        }
+
+        private void ActiveXComponent_Load(object sender, EventArgs e)
+        {
+            ComposContainer.Instance().Compose(this);
+
+            _initModel.Init();
+
+            _loginPresenter = new LoginPresenter(new LoginControl());
+            _loginPresenter.Connected += () => ConnectionCompleted();
+
+            LoadLoginView(_loginPresenter.GetView());
+            _loginPresenter.Connect();
+        }
 
         #region ComReg
 
@@ -154,18 +185,5 @@ namespace Presenter
 
         #endregion
 
-        private void ActiveXComponent_Load(object sender, EventArgs e)
-        {
-            
-            ComposContainer.Instance().Compose(this);
-
-            _initModel.Init();
-
-            _loginPresenter = new LoginPresenter(new LoginControl());
-            _loginPresenter.Connected += () => ConnectionCompleted();
-
-            LoadLoginView(_loginPresenter.GetView());
-            _loginPresenter.Connect();
-        }
     }
 }

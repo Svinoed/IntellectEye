@@ -14,10 +14,11 @@ namespace View
     public partial class MainControl : UserControl, IMainView, ILogView
     {
         private string _camera;
+
         public string Camera { get { return this._camera; } set { this._camera = value; } }
         public event Action CameraSelected;
-
-
+        public bool ViewVisible { get => this.Visible; set =>  this.Visible = value; }
+        
         public MainControl()
         {
             InitializeComponent();
@@ -27,7 +28,10 @@ namespace View
             panel1.Location = new Point(tabControl1.Width-panel1.Width, tabControl1.Location.Y);
         }
 
-        
+        public void AddList(List<ISmallView> list)
+        {
+            throw new NotImplementedException();
+        }
 
 
         #region DrawGroupBox
@@ -112,5 +116,6 @@ namespace View
             //SequenceScreenplayEditor sequenceScreenplayEditorWindow = new SequenceScreenplayEditor();
             //sequenceScreenplayEditorWindow.Show();
         }
+
     }
 }

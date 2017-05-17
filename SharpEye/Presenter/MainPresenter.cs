@@ -25,11 +25,15 @@ namespace Presenter
         [Import]
         private IVideoPresenter _videoPresenter;
 
-        public MainPresenter(IMainView view)
+        // Переход к
+        private Action<ICameraModel> _handler;
+
+        public MainPresenter(IMainView view, Action<ICameraModel> handler)
         {
-            if(view != null)
+            if((view != null) && (handler != null))
             {
                 this._view = view;
+                _handler = handler;
                 _view.CameraSelected += () => CameraSelected();
             }
             else
@@ -49,6 +53,14 @@ namespace Presenter
             _view.SetCameraList(CameraNames());
             //_videoPresenter = new VideoPresenter( new VideoControl(), EntityCreator.VideoModelBuild(), EntityCreator.AudioModelBuild());
             _view.AddVideoControl(_videoPresenter.GetView());
+        }
+
+        public void SetVisible(bool visible)
+        {
+            if (visible != _view.ViewVisible)
+            {
+                _view.ViewVisible = visible;
+            }
         }
 
         private void CameraSelected()

@@ -18,7 +18,7 @@ namespace View.Interfaces
         event Action CreatePrintScreen;
         event Action CreateBookMarker;
         event Action CreateComment;
-        
+        event Action Back;
         // Продумывается
         event Action VolumeChanged;
     }

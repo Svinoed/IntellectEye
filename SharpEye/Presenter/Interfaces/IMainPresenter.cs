@@ -11,5 +11,6 @@ namespace Presenter.Interfaces
     {
         IMainView GetView();
         void Run();
+        void SetVisible(bool isVisible);
     }
 }
