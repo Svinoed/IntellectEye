@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presenter", "Presenter\Presenter.csproj", "{7626E1E1-E1B6-4DC5-870A-E3B59B5800F6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presenter", "BigEye\Presenter\Presenter.csproj", "{7626E1E1-E1B6-4DC5-870A-E3B59B5800F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contract", "Contract\Contract.csproj", "{78E02F04-CD97-4E29-8DED-2AAE3E90529C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contract", "BigEye\Contract\Contract.csproj", "{78E02F04-CD97-4E29-8DED-2AAE3E90529C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{C781E893-831E-4487-9BAE-9B7113CF1120}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "BigEye\Model\Model.csproj", "{C781E893-831E-4487-9BAE-9B7113CF1120}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "View", "View\View.csproj", "{8750A7C9-72CD-410B-BD25-48D3AED684F2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "View", "BigEye\View\View.csproj", "{8750A7C9-72CD-410B-BD25-48D3AED684F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "TestApp\TestApp.csproj", "{B77CA513-D0F2-463A-8018-2CAE1A96FBEB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "BigEye\TestApp\TestApp.csproj", "{B77CA513-D0F2-463A-8018-2CAE1A96FBEB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BigEye", "BigEye", "{923BA97B-46AD-4065-BC47-4BEBF6B75C3A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -86,5 +88,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7626E1E1-E1B6-4DC5-870A-E3B59B5800F6} = {923BA97B-46AD-4065-BC47-4BEBF6B75C3A}
+		{78E02F04-CD97-4E29-8DED-2AAE3E90529C} = {923BA97B-46AD-4065-BC47-4BEBF6B75C3A}
+		{C781E893-831E-4487-9BAE-9B7113CF1120} = {923BA97B-46AD-4065-BC47-4BEBF6B75C3A}
+		{8750A7C9-72CD-410B-BD25-48D3AED684F2} = {923BA97B-46AD-4065-BC47-4BEBF6B75C3A}
+		{B77CA513-D0F2-463A-8018-2CAE1A96FBEB} = {923BA97B-46AD-4065-BC47-4BEBF6B75C3A}
 	EndGlobalSection
 EndGlobal
