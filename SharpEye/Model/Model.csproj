@@ -36,6 +36,42 @@
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>SignIn.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Accessibility" />
     <Reference Include="System" />
@@ -51,13 +87,13 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="VideoOS.Platform">
-      <HintPath>C:\Program Files (x86)\Milestone\MIPSDK\Bin\VideoOS.Platform.dll</HintPath>
+      <HintPath>C:\Program Files\Milestone\MIPSDK\Bin\VideoOS.Platform.dll</HintPath>
     </Reference>
     <Reference Include="VideoOS.Platform.SDK">
-      <HintPath>C:\Program Files (x86)\Milestone\MIPSDK\Bin\VideoOS.Platform.SDK.dll</HintPath>
+      <HintPath>C:\Program Files\Milestone\MIPSDK\Bin\VideoOS.Platform.SDK.dll</HintPath>
     </Reference>
     <Reference Include="VideoOS.Platform.SDK.UI">
-      <HintPath>C:\Program Files (x86)\Milestone\MIPSDK\Bin\VideoOS.Platform.SDK.UI.dll</HintPath>
+      <HintPath>C:\Program Files\Milestone\MIPSDK\Bin\VideoOS.Platform.SDK.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

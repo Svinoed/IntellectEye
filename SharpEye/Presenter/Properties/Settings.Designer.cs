@@ -25,7 +25,7 @@ namespace Presenter.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("E:\\Projects\\IntellectEyeMEF\\SharpEye\\Presenter\\bin\\x86\\Debug")]
+        [global::System.Configuration.DefaultSettingValueAttribute("E:\\Projects\\IntellectEye\\SharpEye\\Presenter\\bin\\x64\\Debug")]
         public string AddinDirectory {
             get {
                 return ((string)(this["AddinDirectory"]));

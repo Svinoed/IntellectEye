@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="AddinDirectory" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">E:\Projects\IntellectEyeMEF\SharpEye\Presenter\bin\x86\Debug</Value>
+      <Value Profile="(Default)">E:\Projects\IntellectEye\SharpEye\Presenter\bin\x64\Debug</Value>
     </Setting>
   </Settings>
 </SettingsFile>
