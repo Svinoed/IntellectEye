@@ -138,6 +138,10 @@
       <Project>{7626e1e1-e1b6-4dc5-870a-e3b59b5800f6}</Project>
       <Name>Presenter</Name>
     </ProjectReference>
+    <ProjectReference Include="..\View\View.csproj">
+      <Project>{8750a7c9-72cd-410b-bd25-48d3aed684f2}</Project>
+      <Name>View</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
@@ -153,7 +157,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>CD "$$(ProjectDir)..\..\Common\Libs\"
+    <PostBuildEvent>CD  "$(ProjectDir)..\..\Common\Libs\"
 IF /I "$(PlatformName)" EQU "x86" call copyDependencies32.bat "$(TargetDir)"
 IF /I "$(PlatformName)" EQU "x64" call copyDependencies64.bat "$(TargetDir)"</PostBuildEvent>
   </PropertyGroup>

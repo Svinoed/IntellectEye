@@ -14,8 +14,6 @@ namespace View
 {
     public partial class MainControl : UserControl, IMainView, ILogView
     {
-        private string _camera;
-        public string Camera { get { return this._camera; } set { this._camera = value; } }
 
         public bool ViewVisible { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
