@@ -1,0 +1,6 @@
+После успешной сборки проекта запустите bat файлы, которые скопируют необходимые зависимости в папку сборки.
+Пример небольшого CMD скрипта приведен ниже
+
+cd "$(TargetDir).."
+IF /I "$(PlatformName)" EQU "x86" call copyDependencies32.bat "$(TargetDir)"
+IF /I "$(PlatformName)" EQU "x64" call copyDependencies64.bat "$(TargetDir)"

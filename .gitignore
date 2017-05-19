@@ -22,6 +22,7 @@ bld/
 [Oo]bj/
 [Ll]og/
 [Bb]uild/
+.vs/
 
 
 # Visual Studio profiler
