@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FBFF402A-88D1-4090-BCF5-A40E6F01A9EA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MiniEye</RootNamespace>
+    <AssemblyName>MiniEye</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RegisterForComInterop>true</RegisterForComInterop>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Sign.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <RegisterForComInterop>true</RegisterForComInterop>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <RegisterForComInterop>true</RegisterForComInterop>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.OLE.Interop, Version=7.1.40304.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\Microsoft.VisualStudio.OLE.Interop.7.10.6070\lib\Microsoft.VisualStudio.OLE.Interop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="VideoOS.Platform">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Milestone\MIPSDK\Bin\VideoOS.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="VideoOS.Platform.SDK">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Milestone\MIPSDK\Bin\VideoOS.Platform.SDK.dll</HintPath>
+    </Reference>
+    <Reference Include="VideoOS.Platform.SDK.Media">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Milestone\MIPSDK\Bin\VideoOS.Platform.SDK.Media.dll</HintPath>
+    </Reference>
+    <Reference Include="VideoOS.Platform.SDK.UI">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Milestone\MIPSDK\Bin\VideoOS.Platform.SDK.UI.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CameraData.cs" />
+    <Compile Include="SDK\Cameras.cs" />
+    <Compile Include="SDK\LiveStream.cs" />
+    <Compile Include="Views\CameraSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\CameraSettings.Designer.cs">
+      <DependentUpon>CameraSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MiniEye.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SDK\Connection.cs" />
+    <Compile Include="Views\Preview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Preview.Designer.cs">
+      <DependentUpon>Preview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="SDK\Libs\CopyExportFiles.bat" />
+    <None Include="SDK\Libs\CopyImageViewerActiveX.bat" />
+    <None Include="SDK\Libs\CopyLogFiles.bat" />
+    <None Include="SDK\Libs\CopyMedia.bat" />
+    <None Include="SDK\Libs\CopyMediaCpp.bat" />
+    <None Include="SDK\Libs\VideoOS.UI.manifest" />
+    <None Include="Sign.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\CameraSettings.resx">
+      <DependentUpon>CameraSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MiniEye.resx">
+      <DependentUpon>MiniEye.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Preview.resx">
+      <DependentUpon>Preview.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Settings256.png" />
+    <Content Include="SDK\Libs\3rd_party_software_terms_and_conditions.txt" />
+    <Content Include="SDK\Libs\AudioPlayerDotNet.dll" />
+    <Content Include="SDK\Libs\AudioPlayerDotNet_axinterop.dll" />
+    <Content Include="SDK\Libs\AudioPlayerDotNet_interop.dll" />
+    <Content Include="SDK\Libs\AVIExporterClientMW.dll" />
+    <Content Include="SDK\Libs\boost_chrono-vc120-mt-1_57.dll" />
+    <Content Include="SDK\Libs\boost_regex-vc120-mt-1_57.dll" />
+    <Content Include="SDK\Libs\boost_serialization-vc120-mt-1_57.dll" />
+    <Content Include="SDK\Libs\boost_system-vc120-mt-1_57.dll" />
+    <Content Include="SDK\Libs\boost_thread-vc120-mt-1_57.dll" />
+    <Content Include="SDK\Libs\CoreToolkits.dll" />
+    <Content Include="SDK\Libs\DBExporterClientMW.dll" />
+    <Content Include="SDK\Libs\icudt48.dll" />
+    <Content Include="SDK\Libs\icuin48.dll" />
+    <Content Include="SDK\Libs\icuio48.dll" />
+    <Content Include="SDK\Libs\icule48.dll" />
+    <Content Include="SDK\Libs\iculx48.dll" />
+    <Content Include="SDK\Libs\icutu48.dll" />
+    <Content Include="SDK\Libs\icuuc48.dll" />
+    <Content Include="SDK\Libs\ImageViewerDotNet.dll" />
+    <Content Include="SDK\Libs\ImageViewerDotNet_axinterop.dll" />
+    <Content Include="SDK\Libs\ImageViewerDotNet_interop.dll" />
+    <Content Include="SDK\Libs\IMV1.dll" />
+    <Content Include="SDK\Libs\LogServiceClientMW.dll" />
+    <Content Include="SDK\Libs\mfc120.dll" />
+    <Content Include="SDK\Libs\mfcm120.dll" />
+    <Content Include="SDK\Libs\Mm025.dll" />
+    <Content Include="SDK\Libs\msvcp120.dll" />
+    <Content Include="SDK\Libs\msvcp80.dll" />
+    <Content Include="SDK\Libs\msvcr120.dll" />
+    <Content Include="SDK\Libs\msvcr80.dll" />
+    <Content Include="SDK\Libs\python27.dll" />
+    <Content Include="SDK\Libs\ServerCommandServiceClient.dll" />
+    <Content Include="SDK\Libs\ToolkitFactoryProvider.dll" />
+    <Content Include="SDK\Libs\ToolkitSourcePlugin_mm025.dll" />
+    <Content Include="SDK\Libs\VideoOS.ConfigurationAPI.dll" />
+    <Content Include="SDK\Libs\VideoOS.DatabaseUtility.Common.dll" />
+    <Content Include="SDK\Libs\VideoOS.DatabaseUtility.MediaStorage.dll" />
+    <Content Include="SDK\Libs\VideoOS.DirectXMW.DirectInput.dll" />
+    <Content Include="SDK\Libs\VideoOS.DirectXMW.DirectSound.dll" />
+    <Content Include="SDK\Libs\VideoOS.Management.Common.dll" />
+    <Content Include="SDK\Libs\VideoOS.Management.VmoClient.dll" />
+    <Content Include="SDK\Libs\VideoOS.Management.VmoClient.XML" />
+    <Content Include="SDK\Libs\VideoOS.MM025Utility.dll" />
+    <Content Include="SDK\Libs\VideoOS.Platform.AccessControl.dll" />
+    <Content Include="SDK\Libs\VideoOS.Platform.dll" />
+    <Content Include="SDK\Libs\VideoOS.Platform.Primitives.dll" />
+    <Content Include="SDK\Libs\VideoOS.Platform.SDK.dll" />
+    <Content Include="SDK\Libs\VideoOS.Platform.SDK.Export.dll" />
+    <Content Include="SDK\Libs\VideoOS.Platform.SDK.Log.dll" />
+    <Content Include="SDK\Libs\VideoOS.Platform.SDK.Media.dll" />
+    <Content Include="Resources\Camera128.png" />
+    <Content Include="Resources\Camera16.png" />
+    <Content Include="Resources\Camera256.png" />
+    <Content Include="Resources\Camera32.png" />
+    <Content Include="Resources\Camera64.png" />
+    <Content Include="SDK\Libs\VideoOS.Platform.SDK.RemoteRetrievalTasks.dll" />
+    <Content Include="SDK\Libs\VideoOS.Platform.SDK.UI.dll" />
+    <Content Include="SDK\Libs\VideoOS.Platform.Transact.dll" />
+    <Content Include="SDK\Libs\VideoOS.Platform.Transact.XML" />
+    <Content Include="SDK\Libs\VideoOS.Toolkit.dll" />
+    <Content Include="SDK\Libs\VideoOS.UI.Common.WPF.VideoPlayer.dll" />
+    <Content Include="SDK\Libs\xerces-c_3_1.dll" />
+    <Content Include="SDK\Libs\xqilla23.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Settings\Settings.csproj">
+      <Project>{71758800-046b-441d-9392-128f5fac4058}</Project>
+      <Name>Settings</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>CD "$(ProjectDir)..\..\Common\Libs\"
+IF /I "$(PlatformName)" EQU "x86" call copyDependencies32.bat "$(TargetDir)"
+IF /I "$(PlatformName)" EQU "x64" call copyDependencies64.bat "$(TargetDir)"</PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,6 +1,6 @@
-﻿namespace TestApp
+﻿namespace TestForms
 {
-    partial class Form1
+    partial class ActiveXEmulator
     {
         /// <summary>
         /// Required designer variable.
@@ -28,31 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.mainLayout = new System.Windows.Forms.FlowLayoutPanel();
+            this.MainLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
-            // mainLayout
+            // MainLayout
             // 
-            this.mainLayout.Location = new System.Drawing.Point(12, 12);
-            this.mainLayout.Name = "mainLayout";
-            this.mainLayout.Size = new System.Drawing.Size(916, 558);
-            this.mainLayout.TabIndex = 0;
+            this.MainLayout.Location = new System.Drawing.Point(12, 25);
+            this.MainLayout.Name = "MainLayout";
+            this.MainLayout.Size = new System.Drawing.Size(199, 142);
+            this.MainLayout.TabIndex = 0;
             // 
-            // Form1
+            // ActiveXEmulator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(940, 582);
-            this.Controls.Add(this.mainLayout);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.MainLayout);
+            this.Name = "ActiveXEmulator";
+            this.Text = "ActiveXEmulator";
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.FlowLayoutPanel mainLayout;
+        private System.Windows.Forms.FlowLayoutPanel MainLayout;
     }
 }
-
