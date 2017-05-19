@@ -9,10 +9,6 @@ namespace View.Interfaces
 {
     public interface IMainView : IView
     {
-        // Временно
-        string Camera { set; get; }
-        event Action CameraSelected;
-        void SetCameraList(string[] cameras);
 
         bool ViewVisible { get; set; }
         void AddVideoControl(IVideoView view);
