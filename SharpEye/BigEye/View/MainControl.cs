@@ -14,30 +14,47 @@ namespace View
 {
     public partial class MainControl : UserControl, IMainView, ILogView
     {
-        private string _camera;
 
-        public string Camera { get { return this._camera; } set { this._camera = value; } }
+        public bool ViewVisible { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
         public event Action CameraSelected;
         public event Action<string> CamEditClick;
         public event Action GropsEditClick;
 
-        public bool ViewVisible { get { return this.Visible; } set { this.Visible = value; } }
-        
         public MainControl()
         {
             InitializeComponent();
-            this.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
-            this.Dock = DockStyle.Fill;
-            tabControl1.Location = this.Location;
-            panel1.Location = new Point(tabControl1.Width-panel1.Width, tabControl1.Location.Y);
+            DrawAll();
         }
 
-        // Это Диме
-        public void AddListControl(List<ISmallView> list)
+
+        #region DrawAll
+        private void DrawAll()
         {
-            throw new NotImplementedException();
+            this.Anchor = (AnchorStyles.Top & AnchorStyles.Bottom & AnchorStyles.Left & AnchorStyles.Right);
+            this.Dock = DockStyle.Fill;
+            tabControl.Location = this.Location;
+
+            panel1.Location = new Point(tabControl.Width - panel1.Width, tabControl.Location.Y);
+            panel1.Height = tabControl.ItemSize.Height;
+
+            searchTextBox.Multiline = false;
+            searchTextBox.Anchor = AnchorStyles.Left;
+            searchTextBox.WordWrap = false;
+
+            panel2.Height = 35;
+            panel2.Width = 180;
+            //panel2.Location = new Point(livePage.Width - panel2.Width, 0);
+
+            groupPanel.Width = 180;
+            groupPanel.Location = new Point(panel2.Location.X, panel2.Location.Y + panel2.Height);
+            listView1.Dock = DockStyle.Fill;
+
+
+            panel3.Location = new Point(tabControl.Width - panel1.Width, tabControl.Location.Y);
         }
 
+        #endregion
 
         #region DrawGroupBox
         // Задем свой стиль для журнала
@@ -81,6 +98,7 @@ namespace View
             throw new NotImplementedException();
         }
 
+        #region InterfacesImplementation
         public void AddVideoControl(IVideoView view)
         {
             // для одной камеры
@@ -89,11 +107,16 @@ namespace View
             livePage.Controls.Add(panel);
         }
 
+        public void AddList(List<ISmallView> viewList)
+        {
+        }
+
         public void SetCameraList(string[] cameras)
         {
             //string[] temp = { "K1", "K2" }; 
             //cameraComboBox.Items.AddRange(cameras);
         }
+#endregion
 
         private void cameraComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -104,22 +127,46 @@ namespace View
             }
         }
 
+
         private void groupEditor_MouseClick(object sender, MouseEventArgs e)
         {
+
+            //groupEditor.BackColor = SystemColors.ButtonHighlight;//.ButtonShadow;
             //GroupEditor groupEditorWindow = new GroupEditor();
             //groupEditorWindow.Show();
         }
 
         private void cameraEditor_MouseClick(object sender, MouseEventArgs e)
         {
-            ///CameraEditor cameraEditorWindow = new CameraEditor();
+            //CameraEditor cameraEditorWindow = new CameraEditor();
             //cameraEditorWindow.Show();
         }
 
-        private void sequenceScreenplayEditor_Click(object sender, EventArgs e)
+        private void sequenceScreenplayEditor_MouseClick(object sender, MouseEventArgs e)
         {
             //SequenceScreenplayEditor sequenceScreenplayEditorWindow = new SequenceScreenplayEditor();
             //sequenceScreenplayEditorWindow.Show();
+        }
+
+        private void searchButton_MouseClick(object sender, MouseEventArgs e)
+        {
+            //Для смены картинки. Не забыть поменять индексы, для итоговой подборки иконок!!!
+            if (searchButton.ImageIndex == 4)
+                searchButton.ImageIndex = 16;
+            else searchButton.ImageIndex = 4;
+
+            //Вызов метода поиска по листу
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        public void AddListControl(List<ISmallView> list)
+        {
+            throw new NotImplementedException();
         }
 
         public Group EditGroup(Group group, Dictionary<dynamic, string> cameras)
@@ -127,7 +174,7 @@ namespace View
             throw new NotImplementedException();
         }
 
-        public List<Group> EditGroups(List<Group> groups, Dictionary<dynamic, string> camerass)
+        public List<Group> EditGroups(List<Group> groups, Dictionary<dynamic, string> cameras)
         {
             throw new NotImplementedException();
         }
