@@ -10,6 +10,7 @@ using VideoOS.Platform.Live;
 using VideoOS.Platform.SDK.Platform;
 using Contract;
 using System.ComponentModel.Composition;
+using System.Diagnostics;
 
 namespace Model
 {
@@ -42,15 +43,19 @@ namespace Model
                 VideoOS.Platform.SDK.Environment.RemoveServer(uri);
                 Status = ConnectStatus.IncorrectPassOrLogin;
             }
-            catch (Exception undefined)//Как реагировать на другие ошибки?
+            catch (Exception)//Как реагировать на другие ошибки?
             {
                 //Дописать обработку ошибки
                 VideoOS.Platform.SDK.Environment.RemoveServer(uri);
-                throw new Exception(undefined.Message);
+                Status = ConnectStatus.Undefined;
+                //throw new Exception(undefined.Message);
             }
             finally
             {
-                Done();
+                if (Done != null)
+                    Done();
+                else
+                    Debug.WriteLine("LoginMode.Done не отслеживается");
             }
         }
     }
