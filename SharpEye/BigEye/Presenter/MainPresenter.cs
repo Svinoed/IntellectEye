@@ -51,7 +51,7 @@ namespace Presenter
         public void Run()
         {
             // временный код
-            //_view.SetCameraList(CameraNames());
+            _view.SetCameraList(CameraNames());
             //_videoPresenter = new VideoPresenter( new VideoControl(), EntityCreator.VideoModelBuild(), EntityCreator.AudioModelBuild());
             _view.AddVideoControl(_videoPresenter.GetView());
         }
@@ -76,8 +76,8 @@ namespace Presenter
 
         private void CameraSelected()
         {
-            //ICameraModel camera = _cameraManager.GetCameras().Find(c => c.Name == _view.Camera);
-            //_videoPresenter.Camera = camera;
+            ICameraModel camera = _cameraManager.GetCameras().Find(c => c.Name == _view.Camera);
+            _videoPresenter.Camera = camera;
         }
 
         #region array camera names

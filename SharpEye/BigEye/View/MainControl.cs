@@ -15,7 +15,7 @@ namespace View
     public partial class MainControl : UserControl, IMainView, ILogView
     {
 
-        public bool ViewVisible { get { throw new NotImplementedException(); } set { throw new NotImplementedException(); } }
+        public bool ViewVisible { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public event Action CameraSelected;
         public event Action<string> CamEditClick;
