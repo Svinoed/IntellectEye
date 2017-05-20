@@ -134,6 +134,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\Server\Milestone\Model.csproj">
+      <Project>{4f902ff2-7baa-439d-a0fa-26b748e227ca}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Presenter\Presenter.csproj">
       <Project>{7626e1e1-e1b6-4dc5-870a-e3b59b5800f6}</Project>
       <Name>Presenter</Name>

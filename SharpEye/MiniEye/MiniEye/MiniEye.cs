@@ -1,16 +1,18 @@
-﻿using System;
-using System.Windows.Forms;
+﻿using Microsoft.Win32;
+using System;
+using System.IO;
 using System.Drawing;
-using Microsoft.Win32;
 using System.Reflection;
 using System.Text;
-using System.Diagnostics;
+using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using Microsoft.VisualStudio.OLE.Interop;
-using System.Runtime.InteropServices.ComTypes;
-using System.ComponentModel;
 using Settings;
+using Contract;
+using System.ComponentModel;
+using System.ComponentModel.Composition;
+using System.ComponentModel.Composition.Hosting;
+
 
 namespace MiniEye
 {
@@ -125,7 +127,15 @@ namespace MiniEye
 
         private Views.CameraSettings _ViewSettings = null;
         private Views.Preview _ViewPreview = null;
-        private SDK.IConnection _ModelConnection = null;
+
+
+        [Import(typeof(ILoginModel))]
+        public ILoginModel _ModelConnection;
+
+        [Import]
+        public IInitialModel _ModelInitialization;
+
+
         private SDK.ICameras _ModelCameras = null;
         private SDK.ILiveStream _ModelLiveStream = null;
 
@@ -155,7 +165,7 @@ namespace MiniEye
         public MiniEye()
         {
             ///Восстановление состояния объекта проихсодит после вызова конструктора!
-            #region style settings
+            #region set visual style
             InitializeComponent();
             SetStyle(ControlStyles.SupportsTransparentBackColor, true);
             SetStyle(ControlStyles.Opaque, true);
@@ -163,22 +173,30 @@ namespace MiniEye
             cameraButton.BackColor = Color.Transparent;
             #endregion
 
-            //Загрузка данных по умолчанию
+            #region setup default user data
             this.AuthType = Settings.Settings.GetSettings().AuthType;
             this.Login = Settings.Settings.GetSettings().Login;
             this.Password = Settings.Settings.GetSettings().Password;
             this.ServerName = Settings.Settings.GetSettings().ServerName;
             this.DefaultSelectedCamera = "";
             this.CameraName = "";
-            //Инициализация работы с SDK
-            SDK.InitializeSDK.Initialize();
+            #endregion
+
+            #region video server initializaion
+            //Искать части проекта в директории где лежит проект
+            //TODO: добавить обработку исключений в случае если части программы не найдены
+            CompositionContainer container = new CompositionContainer(new DirectoryCatalog(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location.ToString())));
+            
+
+            container.ComposeParts(this);
+            _ModelInitialization.Init();
+            #endregion
 
             //Создание всех представлений
             _ViewSettings = new Views.CameraSettings(this);
             _ViewPreview = new Views.Preview(this);
 
             //Создание всех моделей
-            _ModelConnection = new SDK.Connection();
             _ModelCameras = new SDK.Cameras();
             _ModelLiveStream = new SDK.LiveStream();
             
@@ -202,7 +220,19 @@ namespace MiniEye
         /// </summary>
         private void _ViewSettings_OnCheckConnection(string server, Authorization authType, string login, string password)
         {
-            _ModelConnection.Connect(server, login, password, authType);
+            //TODO: Добавить тип авторизации при необходимости
+            _ModelConnection.Connect(server, login, password);
+            switch (_ModelConnection.Status)
+            {
+                case ConnectStatus.Ok:
+                    break;
+                case ConnectStatus.ServerNotFound:
+                    throw new Exception("Не удается найти сервер. Проверьте адрес подключения");
+                case ConnectStatus.IncorrectPassOrLogin:
+                    throw new Exception("Логин/пароль введены неверно");
+                default:
+                    throw new Exception("Неизвестная ошибка при подключении");
+            }
         }
 
         /// <summary>
