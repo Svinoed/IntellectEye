@@ -11,9 +11,10 @@ namespace Contract
     /// </summary>
     public enum ConnectStatus
     {
-        Undefined,
+        NotConnected,           //Просто не подключался
+        Undefined,              //Не определено
         Ok,
-        ServerNotFound,
-        IncorrectPassOrLogin
+        ServerNotFound,         //При подключении не найден сервер
+        IncorrectPassOrLogin    //Ошибка логина/пароля
     }
 }

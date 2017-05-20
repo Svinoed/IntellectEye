@@ -11,6 +11,10 @@ using Microsoft.VisualStudio.OLE.Interop;
 using System.Runtime.InteropServices.ComTypes;
 using System.ComponentModel;
 using Settings;
+using System.ComponentModel.Composition;
+using System.ComponentModel.Composition.Hosting;
+using System.IO;
+using Contract;
 
 namespace MiniEye
 {
@@ -125,7 +129,14 @@ namespace MiniEye
 
         private Views.CameraSettings _ViewSettings = null;
         private Views.Preview _ViewPreview = null;
-        private SDK.IConnection _ModelConnection = null;
+        //Импорт моделей видео сервера
+        [Import]
+        private IInitialModel _ModelInitialization;
+        [Import(typeof(ILoginModel))]
+        private ILoginModel _ModelConnection;
+
+
+        //private SDK.IConnection _ModelConnection = null;
         private SDK.ICameras _ModelCameras = null;
         private SDK.ILiveStream _ModelLiveStream = null;
 
@@ -155,14 +166,15 @@ namespace MiniEye
         public MiniEye()
         {
             ///Восстановление состояния объекта проихсодит после вызова конструктора!
-            #region style settings
+            #region set style
             InitializeComponent();
             SetStyle(ControlStyles.SupportsTransparentBackColor, true);
             SetStyle(ControlStyles.Opaque, true);
             this.BackColor = Color.Transparent;
             cameraButton.BackColor = Color.Transparent;
             #endregion
-
+            
+            #region set user settings
             //Загрузка данных по умолчанию
             this.AuthType = Settings.Settings.GetSettings().AuthType;
             this.Login = Settings.Settings.GetSettings().Login;
@@ -170,15 +182,20 @@ namespace MiniEye
             this.ServerName = Settings.Settings.GetSettings().ServerName;
             this.DefaultSelectedCamera = "";
             this.CameraName = "";
-            //Инициализация работы с SDK
-            SDK.InitializeSDK.Initialize();
+            #endregion
+
+            #region initialize  video server
+            //Связать части видео сервера с текущим объектом
+            CompositionContainer container = new CompositionContainer(new DirectoryCatalog(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location.ToString())));
+            container.ComposeParts(this);
+            _ModelInitialization.Init();
+            #endregion
 
             //Создание всех представлений
             _ViewSettings = new Views.CameraSettings(this);
             _ViewPreview = new Views.Preview(this);
 
             //Создание всех моделей
-            _ModelConnection = new SDK.Connection();
             _ModelCameras = new SDK.Cameras();
             _ModelLiveStream = new SDK.LiveStream();
             
@@ -202,7 +219,7 @@ namespace MiniEye
         /// </summary>
         private void _ViewSettings_OnCheckConnection(string server, Authorization authType, string login, string password)
         {
-            _ModelConnection.Connect(server, login, password, authType);
+            _ModelConnection.Connect(server, login, password);
         }
 
         /// <summary>

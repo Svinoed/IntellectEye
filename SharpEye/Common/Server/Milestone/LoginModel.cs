@@ -10,6 +10,7 @@ using VideoOS.Platform.Live;
 using VideoOS.Platform.SDK.Platform;
 using Contract;
 using System.ComponentModel.Composition;
+using System.Diagnostics;
 
 namespace Model
 {
@@ -24,6 +25,14 @@ namespace Model
             //На этом этапе мы уверены, что введённые данные правильные?
             if (!server.StartsWith("http://", true, null)) server = "http://" + server;
             Uri uri = new UriBuilder(server).Uri;
+            //Исключить дублирование подключения
+            if (VideoOS.Platform.SDK.Environment.IsLoggedIn(uri))
+            {
+                VideoOS.Platform.SDK.Environment.Logout();
+                VideoOS.Platform.SDK.Environment.RemoveServer(uri);
+                Status = ConnectStatus.NotConnected;
+            }
+
             CredentialCache cc = VideoOS.Platform.Login.Util.BuildCredentialCache(uri, login, password, "Basic");
             VideoOS.Platform.SDK.Environment.AddServer(uri, cc);
             try
@@ -36,21 +45,28 @@ namespace Model
             {
                 VideoOS.Platform.SDK.Environment.RemoveServer(uri);
                 Status = ConnectStatus.ServerNotFound;
+                throw new Exception("Сервер не найден");
             }
             catch (InvalidCredentialsMIPException)
             {
                 VideoOS.Platform.SDK.Environment.RemoveServer(uri);
                 Status = ConnectStatus.IncorrectPassOrLogin;
+                throw new Exception("Неправильный логин или пароль");
             }
-            catch (Exception undefined)//Как реагировать на другие ошибки?
+            catch (Exception)//Как реагировать на другие ошибки?
             {
                 //Дописать обработку ошибки
                 VideoOS.Platform.SDK.Environment.RemoveServer(uri);
-                throw new Exception(undefined.Message);
+                throw new Exception("Неизвестная ошибка при подключении");
             }
             finally
             {
-                Done();
+                //Нужен ли вообще этот Done, если в любом случае происходит возврат в вызывающий модуль+установка статуса
+                //Дополнительные ресурсы тратятся да и код сложнее
+                if (Done != null)
+                    Done();
+                else
+                    Debug.WriteLine("Done() при подключении не отслеживается");
             }
         }
     }
