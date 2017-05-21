@@ -56,14 +56,12 @@ namespace Presenter
                     break;
                 case Contract.ConnectStatus.ServerNotFound:
                     _view.ShowConError("Неправильное имя сервера");
-                    _view.Show();
                     break;
                 case Contract.ConnectStatus.IncorrectPassOrLogin:
                     _view.ShowConError("Неправильный логин или пароль");
-                    _view.Show();
                     break;
-                case Contract.ConnectStatus.Undefined://Нужен ли здесь обработчик?
-                    _view.Show();
+                default:
+                    _view.ShowConError("Неизвестная ошибка при подключении");
                     break;
             }
         }

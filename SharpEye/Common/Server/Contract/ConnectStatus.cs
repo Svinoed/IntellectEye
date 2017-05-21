@@ -11,6 +11,7 @@ namespace Contract
     /// </summary>
     public enum ConnectStatus
     {
+        NotConnected,
         Undefined,
         Ok,
         ServerNotFound,

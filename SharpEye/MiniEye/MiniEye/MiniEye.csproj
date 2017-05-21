@@ -81,6 +81,9 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.Composition.registration" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
@@ -233,6 +236,14 @@
     <Content Include="SDK\Libs\xqilla23.dll" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\Server\Contract\Contract.csproj">
+      <Project>{ed205e49-7380-4b84-bdc5-4dd821cfa7c4}</Project>
+      <Name>Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\Server\Milestone\Model.csproj">
+      <Project>{4f902ff2-7baa-439d-a0fa-26b748e227ca}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Common\Settings\Settings.csproj">
       <Project>{71758800-046b-441d-9392-128f5fac4058}</Project>
       <Name>Settings</Name>
