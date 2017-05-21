@@ -15,7 +15,7 @@ namespace Presenter
         private ISmallView _view;
         private ICameraModel _camera;
         [Import]
-        private Lazy<IVideoModel> _videoModel;
+        private IVideoModel _videoModel;
 
         public ICameraModel Camera
         {
@@ -27,7 +27,7 @@ namespace Presenter
             set
             {
                 _camera = value;
-                _videoModel.Value.SetVideoStreamInPanel(_camera, _view.VideoPanel);
+                _videoModel.SetVideoStreamInPanel(_camera, _view.VideoPanel);
             }
         }
 
@@ -35,6 +35,7 @@ namespace Presenter
 
         public SmallVideoPresenter(ISmallView view, Action<ICameraModel> handler)
         {
+            ComposContainer.Instance().Compose(this);
             if ((view != null) && (handler != null))
             {
                 _view = view;

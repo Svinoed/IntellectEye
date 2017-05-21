@@ -17,16 +17,16 @@ namespace Presenter
     /// Этот класс
     /// управляет всеми презентерами в приложении.
     /// </summary>
-    class MainPresenter : IMainPresenter
+    public class MainPresenter : IMainPresenter
     {
 
         private IMainView _view;
         [Import]
         private ICameraManagerModel _cameraManager;
-        [Import]
         private IVideoPresenter _videoPresenter;
 
         private Dictionary<Guid, Group> _groups;
+        private List<ISmallVideoPresenter> _smallPresenters; 
         private Group _activeGroup;
 
         // Переход к
@@ -34,14 +34,16 @@ namespace Presenter
 
         public MainPresenter(IMainView view, Action<ICameraModel> handler)
         {
-            if((view != null) && (handler != null))
+            ComposContainer.Instance().Compose(this);
+            if ((view != null) && (handler != null))
             {
                 this._view = view;
                 _handler = handler;
                 _view.CamEditClick += (g) => EditGroup(g);
                 _view.GropsEditClick += () => EditGroups();
-
+           
                 _groups = new Dictionary<Guid, Group>();
+                _smallPresenters = new List<ISmallVideoPresenter>();
             }
             else
             {
@@ -60,8 +62,10 @@ namespace Presenter
         public void Run()
         {
             LoadGroups();
-            List<ISmallView> listVideo = GetListVideo();
+            GreateSmallPresenter();
+            List<ISmallView> listVideo = GetListView();
             _view.AddListControl(listVideo);
+            SetCameraToSmallView();
         }
 
         #region ListVideo
@@ -69,18 +73,39 @@ namespace Presenter
         /// 
         /// </summary>
         /// <returns></returns>
-        private List<ISmallView> GetListVideo()
+        private void GreateSmallPresenter()
         {
-            List<ISmallView> listVideo = new List<ISmallView>();
-            foreach (var c in _activeGroup.Cameras.Keys)
+            int diff = _activeGroup.Cameras.Count - _smallPresenters.Count;
+            for (int i = 0; i < diff; i++)
             {
-                ICameraModel camera = _cameraManager.GetCameras().Find(p => p.Id == c);
                 ISmallVideoPresenter smallPresenter =
                     new SmallVideoPresenter(new SmallControl(), _handler);
-                smallPresenter.Camera = camera;
-                listVideo.Add(smallPresenter.GetView());
+                _smallPresenters.Add(smallPresenter);
+            }         
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private List<ISmallView> GetListView()
+        {
+            List<ISmallView> list = new List<ISmallView>();
+            foreach(var v in _smallPresenters)
+            {
+                list.Add(v.GetView());
             }
-            return listVideo;
+            return list;
+        }
+
+        private void SetCameraToSmallView()
+        {
+            var c = _activeGroup.Cameras.Keys;
+            for (int i = 0; i < c.Count; i++)
+            {
+                ICameraModel camera = _cameraManager.GetCameras().ElementAt(0);
+                _smallPresenters[i].Camera = camera;
+            }
         }
         #endregion
 
@@ -101,7 +126,7 @@ namespace Presenter
                 Group defaultGroup = new Group("По умолчанию");
                 for (int i = 0; i < countOfCamera && i < 16; i++)
                 {
-                    ICameraModel camera = _cameraManager.GetCameras().ElementAt(i);
+                    ICameraModel camera = _cameraManager.GetCameras().ElementAt(0);
                     defaultGroup.Cameras.Add(camera.Id, camera.Name);
                 }
                 _activeGroup = defaultGroup;
@@ -125,12 +150,6 @@ namespace Presenter
         private void EditGroups()
         {
 
-        }
-
-        private void CameraSelected()
-        {
-            //ICameraModel camera = _cameraManager.GetCameras().Find(c => c.Name == _view.Camera);
-            //_videoPresenter.Camera = camera;
         }
 
         #region array camera names

@@ -202,7 +202,7 @@ namespace View
             _videoTable.Dock = DockStyle.Fill;
             _videoTable.Controls.Clear();
             _videoTable.RowCount = rows;
-            _videoTable.ColumnCount = columns;
+            _videoTable.ColumnCount = columns; 
      
             for (int i = 0; i < rows; i++)
             {
@@ -211,13 +211,10 @@ namespace View
                     float height = 100 / rows;
                     float width = 100 / columns;
                     int cell = j + i * columns;
+                    _videoTable.RowStyles.Add(new RowStyle(SizeType.Percent, height));
+                    _videoTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, width));
 
-                    _videoTable.RowStyles[cell].SizeType = SizeType.Percent;
-                    _videoTable.RowStyles[cell].Height = height;
-                    _videoTable.ColumnStyles[cell].SizeType = SizeType.Percent;
-                    _videoTable.ColumnStyles[cell].Width = width;
-
-                    if (cell <= size)
+                    if (cell < size)
                     {
                         UserControl smallControl = (UserControl)list.ElementAt(cell);
                         smallControl.Dock = DockStyle.Fill;

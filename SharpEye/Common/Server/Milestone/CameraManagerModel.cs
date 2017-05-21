@@ -11,7 +11,7 @@ using System.ComponentModel.Composition;
 namespace Model
 {
     [Export(typeof(ICameraManagerModel))]
-    class CameraManagerModel : ICameraManagerModel
+    public class CameraManagerModel : ICameraManagerModel
     {
         private List<ICameraModel> _listCam;
         public List<ICameraModel> GetCameras()

@@ -35,6 +35,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Name = "ActiveXComponent";
+            this.Size = new System.Drawing.Size(865, 542);
             this.Load += new System.EventHandler(this.ActiveXComponent_Load);
             this.ResumeLayout(false);
 
