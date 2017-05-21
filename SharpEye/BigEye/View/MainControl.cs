@@ -21,10 +21,13 @@ namespace View
         public event Action<string> CamEditClick;
         public event Action GropsEditClick;
 
+        private TableLayoutPanel _videoTable;
+
         public MainControl()
         {
             InitializeComponent();
             DrawAll();
+            _videoTable = new TableLayoutPanel();
         }
 
 
@@ -166,7 +169,65 @@ namespace View
 
         public void AddListControl(List<ISmallView> list)
         {
-            throw new NotImplementedException();
+            int size = list.Count;
+            //валидация
+            if (list == null && size == 0)
+            {
+                return;
+            }
+            
+            int sqrt = (int)Math.Sqrt(size);
+            //число столбцов и колонок рассчитывается на основе квадратного корня из размера входящего списка
+            int columns;
+            if (sqrt * sqrt == size)
+            {
+                columns = sqrt;
+            }
+            else
+            {
+                columns = sqrt + 1;
+            }
+
+            int rows;
+            if ((columns - 1) * columns >= size)
+            {
+                rows = columns - 1;
+            }
+            else
+            {
+                rows = columns;
+            }
+
+            //строится и настраивается таблица
+            _videoTable.Dock = DockStyle.Fill;
+            _videoTable.Controls.Clear();
+            _videoTable.RowCount = rows;
+            _videoTable.ColumnCount = columns;
+     
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < columns; j++)
+                {
+                    float height = 100 / rows;
+                    float width = 100 / columns;
+                    int cell = j + i * columns;
+
+                    _videoTable.RowStyles[cell].SizeType = SizeType.Percent;
+                    _videoTable.RowStyles[cell].Height = height;
+                    _videoTable.ColumnStyles[cell].SizeType = SizeType.Percent;
+                    _videoTable.ColumnStyles[cell].Width = width;
+
+                    if (cell <= size)
+                    {
+                        UserControl smallControl = (UserControl)list.ElementAt(cell);
+                        smallControl.Dock = DockStyle.Fill;
+                        _videoTable.Controls.Add(smallControl);
+                    }
+                }
+            }
+
+            videoLivePanel.Controls.Clear();
+            videoLivePanel.Controls.Add(_videoTable);
         }
 
         public Group EditGroup(Group group, Dictionary<dynamic, string> cameras)
