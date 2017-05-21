@@ -49,5 +49,10 @@ namespace Presenter
                 FullScreen(Camera);
             }
         }
+
+        public ISmallView GetView()
+        {
+            return _view;
+        }
     }
 }
