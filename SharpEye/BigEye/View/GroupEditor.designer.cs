@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GroupEditor));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.listGroup = new System.Windows.Forms.ListView();
             this.controlButtonGroupBox = new System.Windows.Forms.GroupBox();
             this.delButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
@@ -38,18 +39,17 @@
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.moveDownBtn = new System.Windows.Forms.Button();
+            this.moveUpBtn = new System.Windows.Forms.Button();
+            this.moveLeftBtn = new System.Windows.Forms.Button();
+            this.moveRightBtn = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.listCamera = new System.Windows.Forms.ListView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.listCameraGroup = new System.Windows.Forms.ListView();
             this.groupNameTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.listGroup = new System.Windows.Forms.ListView();
-            this.listCamera = new System.Windows.Forms.ListView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -90,6 +90,19 @@
             this.splitContainer1.SplitterDistance = 140;
             this.splitContainer1.TabIndex = 0;
             this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
+            // 
+            // listGroup
+            // 
+            this.listGroup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listGroup.Location = new System.Drawing.Point(0, -2);
+            this.listGroup.MultiSelect = false;
+            this.listGroup.Name = "listGroup";
+            this.listGroup.Size = new System.Drawing.Size(133, 223);
+            this.listGroup.TabIndex = 2;
+            this.listGroup.UseCompatibleStateImageBehavior = false;
+            this.listGroup.View = System.Windows.Forms.View.List;
+            this.listGroup.SelectedIndexChanged += new System.EventHandler(this.listGroup_SelectedIndexChanged);
             // 
             // controlButtonGroupBox
             // 
@@ -152,57 +165,59 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button4);
-            this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.moveDownBtn);
+            this.groupBox1.Controls.Add(this.moveUpBtn);
+            this.groupBox1.Controls.Add(this.moveLeftBtn);
+            this.groupBox1.Controls.Add(this.moveRightBtn);
             this.groupBox1.Location = new System.Drawing.Point(146, 31);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(42, 190);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
-            // button4
+            // moveDownBtn
             // 
-            this.button4.BackColor = System.Drawing.Color.Gray;
-            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
-            this.button4.Location = new System.Drawing.Point(6, 154);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(30, 30);
-            this.button4.TabIndex = 5;
-            this.button4.UseVisualStyleBackColor = false;
+            this.moveDownBtn.BackColor = System.Drawing.Color.Gray;
+            this.moveDownBtn.Image = ((System.Drawing.Image)(resources.GetObject("moveDownBtn.Image")));
+            this.moveDownBtn.Location = new System.Drawing.Point(6, 154);
+            this.moveDownBtn.Name = "moveDownBtn";
+            this.moveDownBtn.Size = new System.Drawing.Size(30, 30);
+            this.moveDownBtn.TabIndex = 5;
+            this.moveDownBtn.UseVisualStyleBackColor = false;
+            this.moveDownBtn.Click += new System.EventHandler(this.MoveDown);
             // 
-            // button3
+            // moveUpBtn
             // 
-            this.button3.BackColor = System.Drawing.Color.Gray;
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.Location = new System.Drawing.Point(6, 115);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(30, 30);
-            this.button3.TabIndex = 4;
-            this.button3.UseVisualStyleBackColor = false;
+            this.moveUpBtn.BackColor = System.Drawing.Color.Gray;
+            this.moveUpBtn.Image = ((System.Drawing.Image)(resources.GetObject("moveUpBtn.Image")));
+            this.moveUpBtn.Location = new System.Drawing.Point(6, 115);
+            this.moveUpBtn.Name = "moveUpBtn";
+            this.moveUpBtn.Size = new System.Drawing.Size(30, 30);
+            this.moveUpBtn.TabIndex = 4;
+            this.moveUpBtn.UseVisualStyleBackColor = false;
+            this.moveUpBtn.Click += new System.EventHandler(this.MoveUp);
             // 
-            // button2
+            // moveLeftBtn
             // 
-            this.button2.BackColor = System.Drawing.Color.Gray;
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(6, 55);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(30, 30);
-            this.button2.TabIndex = 3;
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.moveLeftBtn.BackColor = System.Drawing.Color.Gray;
+            this.moveLeftBtn.Image = ((System.Drawing.Image)(resources.GetObject("moveLeftBtn.Image")));
+            this.moveLeftBtn.Location = new System.Drawing.Point(6, 55);
+            this.moveLeftBtn.Name = "moveLeftBtn";
+            this.moveLeftBtn.Size = new System.Drawing.Size(30, 30);
+            this.moveLeftBtn.TabIndex = 3;
+            this.moveLeftBtn.UseVisualStyleBackColor = false;
+            this.moveLeftBtn.Click += new System.EventHandler(this.MoveLeft);
             // 
-            // button1
+            // moveRightBtn
             // 
-            this.button1.BackColor = System.Drawing.Color.Gray;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(6, 19);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(30, 30);
-            this.button1.TabIndex = 2;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.moveRightBtn.BackColor = System.Drawing.Color.Gray;
+            this.moveRightBtn.Image = ((System.Drawing.Image)(resources.GetObject("moveRightBtn.Image")));
+            this.moveRightBtn.Location = new System.Drawing.Point(6, 19);
+            this.moveRightBtn.Name = "moveRightBtn";
+            this.moveRightBtn.Size = new System.Drawing.Size(30, 30);
+            this.moveRightBtn.TabIndex = 2;
+            this.moveRightBtn.UseVisualStyleBackColor = false;
+            this.moveRightBtn.Click += new System.EventHandler(this.MoveRight);
             // 
             // panel2
             // 
@@ -211,6 +226,15 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(131, 190);
             this.panel2.TabIndex = 3;
+            // 
+            // listCamera
+            // 
+            this.listCamera.Location = new System.Drawing.Point(0, 0);
+            this.listCamera.Name = "listCamera";
+            this.listCamera.Size = new System.Drawing.Size(128, 187);
+            this.listCamera.TabIndex = 0;
+            this.listCamera.UseCompatibleStateImageBehavior = false;
+            this.listCamera.View = System.Windows.Forms.View.List;
             // 
             // panel1
             // 
@@ -244,28 +268,6 @@
             this.label1.Size = new System.Drawing.Size(96, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Название группы";
-            // 
-            // listGroup
-            // 
-            this.listGroup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listGroup.Location = new System.Drawing.Point(0, -2);
-            this.listGroup.MultiSelect = false;
-            this.listGroup.Name = "listGroup";
-            this.listGroup.Size = new System.Drawing.Size(133, 223);
-            this.listGroup.TabIndex = 2;
-            this.listGroup.UseCompatibleStateImageBehavior = false;
-            this.listGroup.View = System.Windows.Forms.View.List;
-            this.listGroup.SelectedIndexChanged += new System.EventHandler(this.listGroup_SelectedIndexChanged);
-            // 
-            // listCamera
-            // 
-            this.listCamera.Location = new System.Drawing.Point(0, 0);
-            this.listCamera.Name = "listCamera";
-            this.listCamera.Size = new System.Drawing.Size(128, 187);
-            this.listCamera.TabIndex = 0;
-            this.listCamera.UseCompatibleStateImageBehavior = false;
-            this.listCamera.View = System.Windows.Forms.View.List;
             // 
             // GroupEditor
             // 
@@ -304,10 +306,10 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button moveDownBtn;
+        private System.Windows.Forms.Button moveUpBtn;
+        private System.Windows.Forms.Button moveLeftBtn;
+        private System.Windows.Forms.Button moveRightBtn;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button5;

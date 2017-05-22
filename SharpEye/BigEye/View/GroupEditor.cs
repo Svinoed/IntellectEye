@@ -97,29 +97,7 @@ namespace View
             toolTip1.ToolTipTitle = "gbvvf";
         }
 
-        /// <summary>
-        /// Добавляет камеру в группу и 
-        /// удаляетт её из общего списка
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void button2_Click(object sender, EventArgs e)
-        {
-            // by shukur
-            var items = listCamera.SelectedItems;
-            foreach(ListViewItem item in items)
-            {
-                KeyValuePair<dynamic, string> keyValue = (KeyValuePair<dynamic, string>)item.Tag;
-                if (!CameraContains(keyValue, listCameraGroup.Items))
-                {
-                    listCamera.Items.Remove(item);
-                    listCameraGroup.Items.Add(item);
-                }
-            }
-            
-
-        }
-
+        #region Load by shukur
         /// <summary>
         /// Отображает список групп
         /// </summary>
@@ -127,7 +105,6 @@ namespace View
         /// <param name="e"></param>
         private void GroupEditor_Load(object sender, EventArgs e)
         {
-            // by shukur
             foreach (var g in _groups)
             {
                 ListViewItem item = new ListViewItem(g.Value.Name);
@@ -135,6 +112,7 @@ namespace View
                 listGroup.Items.Add(item);
             }
         }
+        #endregion
 
         private void addButton_Click(object sender, EventArgs e)
         {
@@ -168,25 +146,70 @@ namespace View
 
         }
 
+        #region Move Camera by shukur
         /// <summary>
         /// Удаляет камеру из группы и
         /// добавляет её в общий список
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void button1_Click(object sender, EventArgs e)
+        private void MoveRight(object sender, EventArgs e)
         {
-            var items = listCameraGroup.SelectedItems;
+            HorizoltalItemsMovement(listCameraGroup, listCamera);
+        }
+
+        /// <summary>
+        /// Добавляет камеру в группу и 
+        /// удаляетт её из общего списка
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MoveLeft(object sender, EventArgs e)
+        { 
+            HorizoltalItemsMovement(listCamera, listCameraGroup);
+        }
+
+        private void MoveUp(object sender, EventArgs e)
+        {
+            VerticalItemsMovement(listCamera,-1);
+            VerticalItemsMovement(listCameraGroup, -1);
+        }
+
+        private void VerticalItemsMovement(ListView listView, int step)
+        {
+       
+            foreach (ListViewItem item in listView.SelectedItems)
+            {
+                if ((item.Index > 0 && step == -1) 
+                    || (item.Index == listView.Items.Count && step == 1))
+                {
+                    int index = item.Index + step;
+                    listView.Items.RemoveAt(item.Index);
+                    listView.Items.Insert(index, item);
+                }
+            }
+        }
+
+        private void HorizoltalItemsMovement(ListView from, ListView to)
+        {
+            var items = from.SelectedItems;
 
             foreach (ListViewItem item in items)
             {
                 KeyValuePair<dynamic, string> keyValue = (KeyValuePair<dynamic, string>)item.Tag;
-                if (!CameraContains(keyValue, listCamera.Items))
+                if (!CameraContains(keyValue, to.Items))
                 {
-                    listCameraGroup.Items.Remove(item);
-                    listCamera.Items.Add(item);
+                    from.Items.Remove(item);
+                    to.Items.Add(item);
                 }
             }
         }
+
+        private void MoveDown(object sender, EventArgs e)
+        {
+            VerticalItemsMovement(listCamera, 1);
+            VerticalItemsMovement(listCameraGroup, 1);
+        }
+        #endregion
     }
 }
