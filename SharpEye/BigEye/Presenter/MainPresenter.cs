@@ -40,7 +40,7 @@ namespace Presenter
                 this._view = view;
                 _handler = handler;
                 _view.CamEditClick += (g) => EditGroup(g);
-                _view.GropsEditClick += () => EditGroups();
+                _view.GroupsEditClick += () => EditGroups();
            
                 _groups = new Dictionary<Guid, Group>();
                 _smallPresenters = new List<ISmallVideoPresenter>();
@@ -66,6 +66,7 @@ namespace Presenter
             List<ISmallView> listVideo = GetListView();
             _view.AddListControl(listVideo);
             SetCameraToSmallView();
+            _view.SetGroup(_groups, _activeGroup.Id);
         }
 
         #region ListVideo
@@ -103,12 +104,11 @@ namespace Presenter
             var c = _activeGroup.Cameras.Keys;
             for (int i = 0; i < c.Count; i++)
             {
-                ICameraModel camera = _cameraManager.GetCameras().ElementAt(0);
+                ICameraModel camera = _cameraManager.GetCamera(c.ElementAt(i));
                 _smallPresenters[i].Camera = camera;
             }
         }
-        #endregion
-
+        
         /// <summary>
         /// Метод подгружает группы из конфига,
         /// если их нет, то создает одну группу по умолчанию
@@ -126,13 +126,14 @@ namespace Presenter
                 Group defaultGroup = new Group("По умолчанию");
                 for (int i = 0; i < countOfCamera && i < 16; i++)
                 {
-                    ICameraModel camera = _cameraManager.GetCameras().ElementAt(0);
+                    ICameraModel camera = _cameraManager.GetCameras().ElementAt(i);
                     defaultGroup.Cameras.Add(camera.Id, camera.Name);
                 }
                 _activeGroup = defaultGroup;
                 _groups.Add(defaultGroup.Id, defaultGroup);
             }
         }
+        #endregion
 
         public void SetVisible(bool visible)
         {
@@ -142,15 +143,34 @@ namespace Presenter
             }
         }
 
-        private void EditGroup(string group)
+        #region Edit handler by shukur
+        private void EditGroup(Group group)
         {
 
         } 
 
+        /// <summary>
+        /// Обрабатывает собитие кнопки редактирования групп
+        /// </summary>
         private void EditGroups()
         {
-
+            Dictionary<dynamic, string> cameras = GetListCamera();
+            _groups = _view.EditGroups(_groups, cameras);
         }
+
+        private Dictionary<dynamic, string> GetListCamera()
+        {
+            Dictionary<dynamic, string> cameras = new Dictionary<dynamic, string>();
+            List<ICameraModel> list = _cameraManager.GetCameras();
+
+            foreach (var c in list)
+            {
+                cameras.Add(c.Id, c.Name);
+            }
+
+            return cameras;
+        }
+        #endregion
 
         #region array camera names
         private string[] CameraNames()

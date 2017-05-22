@@ -9,5 +9,6 @@ namespace Contract
     public interface ICameraManagerModel
     {
         List<ICameraModel> GetCameras();
+        ICameraModel GetCamera(dynamic id);
     }
 }

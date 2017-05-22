@@ -34,7 +34,7 @@
             this.livePage = new System.Windows.Forms.TabPage();
             this.videoLivePanel = new System.Windows.Forms.Panel();
             this.groupPanel = new System.Windows.Forms.Panel();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.listGroup = new System.Windows.Forms.ListView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.searchButton = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
@@ -123,19 +123,19 @@
             // 
             this.groupPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupPanel.Controls.Add(this.listView1);
+            this.groupPanel.Controls.Add(this.listGroup);
             this.groupPanel.Location = new System.Drawing.Point(651, 44);
             this.groupPanel.Name = "groupPanel";
             this.groupPanel.Size = new System.Drawing.Size(175, 330);
             this.groupPanel.TabIndex = 3;
             // 
-            // listView1
+            // listGroup
             // 
-            this.listView1.Location = new System.Drawing.Point(37, 21);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(96, 276);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listGroup.Location = new System.Drawing.Point(37, 21);
+            this.listGroup.Name = "listGroup";
+            this.listGroup.Size = new System.Drawing.Size(96, 276);
+            this.listGroup.TabIndex = 0;
+            this.listGroup.UseCompatibleStateImageBehavior = false;
             // 
             // panel2
             // 
@@ -220,7 +220,7 @@
             this.menuPanel.Controls.Add(this.groupEditor);
             this.menuPanel.Controls.Add(this.button1);
             this.menuPanel.Controls.Add(this.sequenceScreenplayEditor);
-            this.menuPanel.Location = new System.Drawing.Point(666, 378);
+            this.menuPanel.Location = new System.Drawing.Point(651, 380);
             this.menuPanel.Name = "menuPanel";
             this.menuPanel.Size = new System.Drawing.Size(175, 35);
             this.menuPanel.TabIndex = 4;
@@ -246,6 +246,7 @@
             this.cameraEditor.Size = new System.Drawing.Size(30, 30);
             this.cameraEditor.TabIndex = 1;
             this.cameraEditor.UseVisualStyleBackColor = true;
+            this.cameraEditor.Click += new System.EventHandler(this.cameraEditor_Click);
             this.cameraEditor.MouseClick += new System.Windows.Forms.MouseEventHandler(this.cameraEditor_MouseClick);
             // 
             // groupEditor
@@ -261,6 +262,7 @@
             this.groupEditor.Size = new System.Drawing.Size(30, 30);
             this.groupEditor.TabIndex = 2;
             this.groupEditor.UseVisualStyleBackColor = true;
+            this.groupEditor.Click += new System.EventHandler(this.groupEditor_Click);
             this.groupEditor.MouseClick += new System.Windows.Forms.MouseEventHandler(this.groupEditor_MouseClick);
             // 
             // button1
@@ -602,7 +604,7 @@
         private System.Windows.Forms.Button settingBtn;
         private System.Windows.Forms.Button helpBtn;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView listGroup;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.ImageList imageList1;

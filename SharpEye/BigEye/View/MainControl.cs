@@ -17,17 +17,18 @@ namespace View
 
         public bool ViewVisible { get { throw new NotImplementedException(); } set { throw new NotImplementedException(); } }
 
-        public event Action CameraSelected;
-        public event Action<string> CamEditClick;
-        public event Action GropsEditClick;
+
+        public event Action<Group> CamEditClick;
+        public event Action GroupsEditClick;
 
         private TableLayoutPanel _videoTable;
-
+        private Dictionary<Guid, Group> _groups;
         public MainControl()
         {
             InitializeComponent();
             DrawAll();
             _videoTable = new TableLayoutPanel();
+            listGroup.View = System.Windows.Forms.View.List;
         }
 
 
@@ -51,7 +52,7 @@ namespace View
 
             groupPanel.Width = 180;
             groupPanel.Location = new Point(panel2.Location.X, panel2.Location.Y + panel2.Height);
-            listView1.Dock = DockStyle.Fill;
+            listGroup.Dock = DockStyle.Fill;
 
 
             panel3.Location = new Point(tabControl.Width - panel1.Width, tabControl.Location.Y);
@@ -121,14 +122,6 @@ namespace View
         }
 #endregion
 
-        private void cameraComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //Camera = cameraComboBox.SelectedItem.ToString();
-            if(CameraSelected != null)
-            {
-                CameraSelected();
-            }
-        }
 
 
         private void groupEditor_MouseClick(object sender, MouseEventArgs e)
@@ -167,6 +160,11 @@ namespace View
 
         }
 
+        #region AddListControl by dima. Refactor shukur
+        /// <summary>
+        /// Добавляет список контролов для отображения видео
+        /// </summary>
+        /// <param name="list"></param>
         public void AddListControl(List<ISmallView> list)
         {
             int size = list.Count;
@@ -226,15 +224,50 @@ namespace View
             videoLivePanel.Controls.Clear();
             videoLivePanel.Controls.Add(_videoTable);
         }
+        #endregion
 
         public Group EditGroup(Group group, Dictionary<dynamic, string> cameras)
         {
             throw new NotImplementedException();
         }
 
-        public List<Group> EditGroups(List<Group> groups, Dictionary<dynamic, string> cameras)
+        #region EditGroups by shukur
+        /// <summary>
+        /// Вызвает окно редактирования групп и
+        /// передает ей актуальный список камер и групп
+        /// </summary>
+        /// <param name="groups"></param>
+        /// <param name="cameras"></param>
+        /// <returns></returns>
+        public Dictionary<Guid, Group> EditGroups(Dictionary<Guid,Group> groups, Dictionary<dynamic, string> cameras)
         {
-            throw new NotImplementedException();
+            GroupEditor groupEditor = new GroupEditor(groups, cameras);
+            groupEditor.Show();
+            return null;
+        }
+
+        #endregion
+
+        public void SetGroup(Dictionary<Guid, Group> groups, Guid activeGroup)
+        {
+            _groups = groups;
+            foreach (var i in groups) {
+                listGroup.Items.Add(i.Value.Name);
+            }           
+        }
+
+        private void cameraEditor_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        // by shukur
+        private void groupEditor_Click(object sender, EventArgs e)
+        {
+            if (GroupsEditClick != null)
+            {
+                GroupsEditClick();
+            }
         }
     }
 }
