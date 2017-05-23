@@ -17,17 +17,18 @@ namespace View
 
         public bool ViewVisible { get { throw new NotImplementedException(); } set { throw new NotImplementedException(); } }
 
-        public event Action CameraSelected;
-        public event Action<string> CamEditClick;
-        public event Action GropsEditClick;
+
+        public event Action<Group> CamEditClick;
+        public event Action GroupsEditClick;
 
         private TableLayoutPanel _videoTable;
-
+        private Dictionary<Guid, Group> _groups;
         public MainControl()
         {
             InitializeComponent();
             DrawAll();
             _videoTable = new TableLayoutPanel();
+            listGroup.View = System.Windows.Forms.View.List;
         }
 
 
@@ -51,7 +52,7 @@ namespace View
 
             groupPanel.Width = 180;
             groupPanel.Location = new Point(panel2.Location.X, panel2.Location.Y + panel2.Height);
-            listView1.Dock = DockStyle.Fill;
+            listGroup.Dock = DockStyle.Fill;
 
             videoLivePanel.Anchor = (AnchorStyles.Top & AnchorStyles.Bottom & AnchorStyles.Left & AnchorStyles.Right);
 
@@ -122,22 +123,14 @@ namespace View
         }
 #endregion
 
-        private void cameraComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //Camera = cameraComboBox.SelectedItem.ToString();
-            if(CameraSelected != null)
-            {
-                CameraSelected();
-            }
-        }
 
 
         private void groupEditor_MouseClick(object sender, MouseEventArgs e)
         {
 
             groupEditor.BackColor = SystemColors.ButtonHighlight;//.ButtonShadow;
-            GroupEditor groupEditorWindow = new GroupEditor();
-            groupEditorWindow.Show();
+            //GroupEditor groupEditorWindow = new GroupEditor();
+            //groupEditorWindow.Show();
         }
 
         private void cameraEditor_MouseClick(object sender, MouseEventArgs e)
@@ -154,37 +147,17 @@ namespace View
 
         private void searchButton_MouseClick(object sender, MouseEventArgs e)
         {
-            //Для смены картинки. Не забыть поменять индексы, для итоговой подборки иконок!!!
-            if ((searchButton.ImageIndex == 2) && (searchTextBox.Text != null))
-            {
-                searchButton.ImageIndex = 3;
-                SearchGr();
-            }
-            else
-            {
-                searchButton.ImageIndex = 2;
-                SearchGrCancel();
-            }
-        }
-
-        void SearchGr()
-        {
-            listView1.BeginUpdate();
-            for (int i = 0; i < listView1.Items.Count; i++)
-            {
-                if (!listView1.Items[i].Text.Contains(searchTextBox.Text))
-                    listView1.Items[i].Remove();
-            }
-            listView1.EndUpdate();
 
         }
-        void SearchGrCancel()
-        {
 
 
-        }
-  
 
+
+        #region AddListControl by dima. Refactor shukur
+        /// <summary>
+        /// Добавляет список контролов для отображения видео
+        /// </summary>
+        /// <param name="list"></param>
         public void AddListControl(List<ISmallView> list)
         {
             int size = list.Count;
@@ -220,7 +193,7 @@ namespace View
             _videoTable.Dock = DockStyle.Fill;
             _videoTable.Controls.Clear();
             _videoTable.RowCount = rows;
-            _videoTable.ColumnCount = columns;
+            _videoTable.ColumnCount = columns; 
      
             for (int i = 0; i < rows; i++)
             {
@@ -229,13 +202,10 @@ namespace View
                     float height = 100 / rows;
                     float width = 100 / columns;
                     int cell = j + i * columns;
+                    _videoTable.RowStyles.Add(new RowStyle(SizeType.Percent, height));
+                    _videoTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, width));
 
-                    _videoTable.RowStyles[cell].SizeType = SizeType.Percent;
-                    _videoTable.RowStyles[cell].Height = height;
-                    _videoTable.ColumnStyles[cell].SizeType = SizeType.Percent;
-                    _videoTable.ColumnStyles[cell].Width = width;
-
-                    if (cell <= size)
+                    if (cell < size)
                     {
                         UserControl smallControl = (UserControl)list.ElementAt(cell);
                         smallControl.Dock = DockStyle.Fill;
@@ -247,15 +217,50 @@ namespace View
             videoLivePanel.Controls.Clear();
             videoLivePanel.Controls.Add(_videoTable);
         }
+        #endregion
 
         public Group EditGroup(Group group, Dictionary<dynamic, string> cameras)
         {
             throw new NotImplementedException();
         }
 
-        public List<Group> EditGroups(List<Group> groups, Dictionary<dynamic, string> cameras)
+        #region EditGroups by shukur
+        /// <summary>
+        /// Вызвает окно редактирования групп и
+        /// передает ей актуальный список камер и групп
+        /// </summary>
+        /// <param name="groups"></param>
+        /// <param name="cameras"></param>
+        /// <returns></returns>
+        public Dictionary<Guid, Group> EditGroups(Dictionary<Guid,Group> groups, Dictionary<dynamic, string> cameras)
         {
-            throw new NotImplementedException();
+            GroupEditor groupEditor = new GroupEditor(groups, cameras);
+            groupEditor.Show();
+            return null;
+        }
+
+        #endregion
+
+        public void SetGroup(Dictionary<Guid, Group> groups, Guid activeGroup)
+        {
+            _groups = groups;
+            foreach (var i in groups) {
+                listGroup.Items.Add(i.Value.Name);
+            }           
+        }
+
+        private void cameraEditor_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        // by shukur
+        private void groupEditor_Click(object sender, EventArgs e)
+        {
+            if (GroupsEditClick != null)
+            {
+                GroupsEditClick();
+            }
         }
 
         private void button4_MouseClick(object sender, MouseEventArgs e)

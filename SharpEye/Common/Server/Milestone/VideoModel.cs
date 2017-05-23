@@ -16,7 +16,7 @@ using System.ComponentModel.Composition;
 namespace Model
 {
     [Export(typeof(IVideoModel))]
-    class VideoModel : IVideoModel
+    public class VideoModel : IVideoModel
     {
         ImageViewerControl _imageViewer;
 
