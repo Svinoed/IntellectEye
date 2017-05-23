@@ -53,6 +53,7 @@ namespace View
             groupPanel.Location = new Point(panel2.Location.X, panel2.Location.Y + panel2.Height);
             listView1.Dock = DockStyle.Fill;
 
+            videoLivePanel.Anchor = (AnchorStyles.Top & AnchorStyles.Bottom & AnchorStyles.Left & AnchorStyles.Right);
 
             panel3.Location = new Point(tabControl.Width - panel1.Width, tabControl.Location.Y);
         }
@@ -134,15 +135,15 @@ namespace View
         private void groupEditor_MouseClick(object sender, MouseEventArgs e)
         {
 
-            //groupEditor.BackColor = SystemColors.ButtonHighlight;//.ButtonShadow;
-            //GroupEditor groupEditorWindow = new GroupEditor();
-            //groupEditorWindow.Show();
+            groupEditor.BackColor = SystemColors.ButtonHighlight;//.ButtonShadow;
+            GroupEditor groupEditorWindow = new GroupEditor();
+            groupEditorWindow.Show();
         }
 
         private void cameraEditor_MouseClick(object sender, MouseEventArgs e)
         {
-            //CameraEditor cameraEditorWindow = new CameraEditor();
-            //cameraEditorWindow.Show();
+            CameraEditor cameraEditorWindow = new CameraEditor();
+            cameraEditorWindow.Show();
         }
 
         private void sequenceScreenplayEditor_MouseClick(object sender, MouseEventArgs e)
@@ -154,18 +155,35 @@ namespace View
         private void searchButton_MouseClick(object sender, MouseEventArgs e)
         {
             //Для смены картинки. Не забыть поменять индексы, для итоговой подборки иконок!!!
-            if (searchButton.ImageIndex == 4)
-                searchButton.ImageIndex = 16;
-            else searchButton.ImageIndex = 4;
-
-            //Вызов метода поиска по листу
-
+            if ((searchButton.ImageIndex == 2) && (searchTextBox.Text != null))
+            {
+                searchButton.ImageIndex = 3;
+                SearchGr();
+            }
+            else
+            {
+                searchButton.ImageIndex = 2;
+                SearchGrCancel();
+            }
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        void SearchGr()
+        {
+            listView1.BeginUpdate();
+            for (int i = 0; i < listView1.Items.Count; i++)
+            {
+                if (!listView1.Items[i].Text.Contains(searchTextBox.Text))
+                    listView1.Items[i].Remove();
+            }
+            listView1.EndUpdate();
+
+        }
+        void SearchGrCancel()
         {
 
+
         }
+  
 
         public void AddListControl(List<ISmallView> list)
         {
@@ -238,6 +256,12 @@ namespace View
         public List<Group> EditGroups(List<Group> groups, Dictionary<dynamic, string> cameras)
         {
             throw new NotImplementedException();
+        }
+
+        private void button4_MouseClick(object sender, MouseEventArgs e)
+        {
+            SearchVideo searchVideo = new SearchVideo();
+            searchVideo.Show();
         }
     }
 }
