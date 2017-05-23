@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginControl));
             this.LogInButton = new System.Windows.Forms.Button();
             this.RememberPassCheck = new System.Windows.Forms.CheckBox();
             this.AutoLoginCheck = new System.Windows.Forms.CheckBox();
@@ -38,11 +40,14 @@
             this.UserLabel = new System.Windows.Forms.Label();
             this.PasswordLabel = new System.Windows.Forms.Label();
             this.NotificationLabel = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
             // LogInButton
             // 
-            this.LogInButton.Location = new System.Drawing.Point(110, 215);
+            this.LogInButton.Location = new System.Drawing.Point(113, 212);
             this.LogInButton.Name = "LogInButton";
             this.LogInButton.Size = new System.Drawing.Size(75, 23);
             this.LogInButton.TabIndex = 0;
@@ -53,7 +58,8 @@
             // RememberPassCheck
             // 
             this.RememberPassCheck.AutoSize = true;
-            this.RememberPassCheck.Location = new System.Drawing.Point(55, 192);
+            this.RememberPassCheck.ForeColor = System.Drawing.Color.White;
+            this.RememberPassCheck.Location = new System.Drawing.Point(55, 146);
             this.RememberPassCheck.Name = "RememberPassCheck";
             this.RememberPassCheck.Size = new System.Drawing.Size(121, 17);
             this.RememberPassCheck.TabIndex = 1;
@@ -64,7 +70,8 @@
             // AutoLoginCheck
             // 
             this.AutoLoginCheck.AutoSize = true;
-            this.AutoLoginCheck.Location = new System.Drawing.Point(169, 192);
+            this.AutoLoginCheck.ForeColor = System.Drawing.Color.White;
+            this.AutoLoginCheck.Location = new System.Drawing.Point(55, 163);
             this.AutoLoginCheck.Name = "AutoLoginCheck";
             this.AutoLoginCheck.Size = new System.Drawing.Size(73, 17);
             this.AutoLoginCheck.TabIndex = 2;
@@ -74,28 +81,35 @@
             // 
             // ServerTextBox
             // 
+            this.ServerTextBox.BackColor = System.Drawing.Color.LightGray;
+            this.ServerTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ServerTextBox.Location = new System.Drawing.Point(55, 35);
             this.ServerTextBox.Name = "ServerTextBox";
-            this.ServerTextBox.Size = new System.Drawing.Size(186, 20);
+            this.ServerTextBox.Size = new System.Drawing.Size(200, 20);
             this.ServerTextBox.TabIndex = 3;
             // 
             // UserTextBox
             // 
+            this.UserTextBox.BackColor = System.Drawing.Color.LightGray;
+            this.UserTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.UserTextBox.Location = new System.Drawing.Point(55, 76);
             this.UserTextBox.Name = "UserTextBox";
-            this.UserTextBox.Size = new System.Drawing.Size(185, 20);
+            this.UserTextBox.Size = new System.Drawing.Size(200, 20);
             this.UserTextBox.TabIndex = 4;
             // 
             // PasswordTextBox
             // 
+            this.PasswordTextBox.BackColor = System.Drawing.Color.LightGray;
+            this.PasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PasswordTextBox.Location = new System.Drawing.Point(55, 115);
             this.PasswordTextBox.Name = "PasswordTextBox";
-            this.PasswordTextBox.Size = new System.Drawing.Size(187, 20);
+            this.PasswordTextBox.Size = new System.Drawing.Size(200, 20);
             this.PasswordTextBox.TabIndex = 5;
             // 
             // AdressLabel
             // 
             this.AdressLabel.AutoSize = true;
+            this.AdressLabel.ForeColor = System.Drawing.Color.White;
             this.AdressLabel.Location = new System.Drawing.Point(52, 19);
             this.AdressLabel.Name = "AdressLabel";
             this.AdressLabel.Size = new System.Drawing.Size(86, 13);
@@ -105,6 +119,7 @@
             // UserLabel
             // 
             this.UserLabel.AutoSize = true;
+            this.UserLabel.ForeColor = System.Drawing.Color.White;
             this.UserLabel.Location = new System.Drawing.Point(52, 60);
             this.UserLabel.Name = "UserLabel";
             this.UserLabel.Size = new System.Drawing.Size(83, 13);
@@ -114,6 +129,7 @@
             // PasswordLabel
             // 
             this.PasswordLabel.AutoSize = true;
+            this.PasswordLabel.ForeColor = System.Drawing.Color.White;
             this.PasswordLabel.Location = new System.Drawing.Point(52, 99);
             this.PasswordLabel.Name = "PasswordLabel";
             this.PasswordLabel.Size = new System.Drawing.Size(48, 13);
@@ -123,17 +139,51 @@
             // NotificationLabel
             // 
             this.NotificationLabel.AutoSize = true;
-            this.NotificationLabel.Location = new System.Drawing.Point(55, 146);
+            this.NotificationLabel.ForeColor = System.Drawing.Color.White;
+            this.NotificationLabel.Location = new System.Drawing.Point(3, 240);
             this.NotificationLabel.Name = "NotificationLabel";
             this.NotificationLabel.Size = new System.Drawing.Size(0, 13);
             this.NotificationLabel.TabIndex = 9;
-
-            this.SuspendLayout();
+            // 
+            // button1
+            // 
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Blue;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ImageIndex = 0;
+            this.button1.ImageList = this.imageList1;
+            this.button1.Location = new System.Drawing.Point(255, 111);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(30, 30);
+            this.button1.TabIndex = 10;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button1_MouseClick);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "1.passwordVisibility.png");
+            this.imageList1.Images.SetKeyName(1, "2.passwordVisibilityOff.png");
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.progressBar1.Location = new System.Drawing.Point(3, 186);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(317, 16);
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progressBar1.TabIndex = 11;
             // 
             // LoginControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.NotificationLabel);
             this.Controls.Add(this.PasswordLabel);
             this.Controls.Add(this.UserLabel);
@@ -145,7 +195,7 @@
             this.Controls.Add(this.RememberPassCheck);
             this.Controls.Add(this.LogInButton);
             this.Name = "LoginControl";
-            this.Size = new System.Drawing.Size(320, 254);
+            this.Size = new System.Drawing.Size(320, 262);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -162,6 +212,8 @@
         private System.Windows.Forms.Label UserLabel;
         private System.Windows.Forms.Label PasswordLabel;
         private System.Windows.Forms.Label NotificationLabel;
-
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }
