@@ -118,6 +118,20 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="delButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vAAADrwBlbxySQAAAC1JREFUSEvtzaERACAAA7Huvy8aFkAAFZjk7m0bAODGLKrsBk+rjMfqYwB+ShZL
+        2ixIs6b0bgAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="addButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vAAADrwBlbxySQAAAE9JREFUSEvt0DEKACAIhWEv3ditul9lJDg4RJJDvg/eUEM/RACQWt8r6xQI4TD/
+        hiVwMxfrwdO58Fdak8ebutOrc09ImCOhEA6TLwwACtEAByBDfVmGXvgAAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="moveDownBtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
@@ -148,20 +162,6 @@
         vAAADrwBlbxySQAAAGpJREFUSEvt0cEJgDAQRNFtQRvWMrSPCB4tTNTJQRgkoLJkL5kH/5phiYmINCWh
         kxpQmA3x+IzCLIjHQy9fEY9PyI0f/NOIXEqPfs2l9OBbB+pQdc/hEDu6B/OlPaqOr8yF4MGwPxWR5pld
         6EdMeEd3eY4AAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="delButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAAC1JREFUSEvtzaERACAAA7Huvy8aFkAAFZjk7m0bAODGLKrsBk+rjMfqYwB+ShZL
-        2ixIs6b0bgAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="addButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAAE9JREFUSEvt0DEKACAIhWEv3ditul9lJDg4RJJDvg/eUEM/RACQWt8r6xQI4TD/
-        hiVwMxfrwdO58Fdak8ebutOrc09ImCOhEA6TLwwACtEAByBDfVmGXvgAAAAASUVORK5CYII=
 </value>
   </data>
   <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">

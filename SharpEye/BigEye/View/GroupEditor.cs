@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -17,7 +18,10 @@ namespace View
         // By shukur
         private Dictionary<Guid, Group> _groups;
         private Dictionary<dynamic, string> _cameras;
-        private Group _selectedGroup;
+        private ListViewItem _selectedGroupItem;
+        private bool _isChangedCameraList;
+        private bool _isChangedName;
+        private bool _isChangedListGrup;
 
         int controlButtonGroupBoxHeight = 41;
 
@@ -36,16 +40,20 @@ namespace View
             // This code by shukur
             _groups = groups;
             _cameras = cameras;
+            groupNameTextBox.LostFocus += (s, e) => GroupRename(s, e);
+            _isChangedCameraList = false;
+            _isChangedName = false;
+            _isChangedListGrup = false;
         }
 
 
         #region LoadCameras by shukur
         private void LoadCameras()
         {
-            
+            listCamera.Items.Clear();
             foreach(var c in _cameras)
             {
-                if (CameraContains(c, listCameraGroup.Items))
+                if (!CameraContains(c, listCameraGroup.Items))
                 {
                     ListViewItem item = new ListViewItem(c.Value);
                     item.Tag = c;
@@ -60,7 +68,7 @@ namespace View
             {
                 KeyValuePair<dynamic, string> keyValue = (KeyValuePair<dynamic, string>) c.Tag;
 
-                if (keyValue.Key == camera.Key) 
+                if (keyValue.Equals(camera)) 
                 {
                     return true;
                 }
@@ -84,19 +92,6 @@ namespace View
             controlButtonGroupBox.Width = splitContainer1.Panel1.Width;
         }
 
-        private void addButton_MouseHover(object sender, EventArgs e)
-        {
-            toolTip1.Active = true;
-            toolTip1.ToolTipTitle = "gbvvf";
-            
-        }
-
-        private void addButton_MouseEnter(object sender, EventArgs e)
-        {
-            toolTip1.Active = true;
-            toolTip1.ToolTipTitle = "gbvvf";
-        }
-
         #region Load by shukur
         /// <summary>
         /// Отображает список групп
@@ -114,11 +109,15 @@ namespace View
         }
         #endregion
 
+        #region Add and Delete group bu shukur
         private void addButton_Click(object sender, EventArgs e)
         {
-            // by shukur
+            Group group = new Group("Новая группа");
+            ListViewItem item = new ListViewItem(group.Name);
+            item.Tag = group;
+            listGroup.Items.Add(item);
         }
-
+        #endregion
         /// <summary>
         /// Отображает выбранную группу и 
         /// корректирует список камер
@@ -128,22 +127,46 @@ namespace View
         private void listGroup_SelectedIndexChanged(object sender, EventArgs e)
         {
             // by shukur
+
+            if (listGroup.SelectedItems.Count <= 0)
+            {
+                Debug.WriteLine("GroupEditorControl selectedItems count <=  0");
+                return;
+            }
+
+            if (_isChangedCameraList)
+            {
+                DialogResult dialogResult = MessageBox.Show(
+                    "Сохранить изменения ?",
+                    _selectedGroupItem.Text,
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question,
+                    MessageBoxDefaultButton.Button1,
+                    MessageBoxOptions.ServiceNotification);
+
+                if(dialogResult == DialogResult.Yes)
+                {
+                    Save();
+                }
+            }
+            _isChangedCameraList = false;
             ListViewItem item  = listGroup.SelectedItems[0];
             Group group = (Group) item.Tag;
-            if (_selectedGroup == group)
+            if (_selectedGroupItem == item)
             {
                 return;
             }
-            _selectedGroup = group;
-            groupNameTextBox.Text = _selectedGroup.Name;
-            foreach (var c in _selectedGroup.Cameras)
+            _selectedGroupItem = item;
+            groupNameTextBox.Text = _selectedGroupItem.Text;
+            listCameraGroup.Items.Clear();
+            foreach (var c in group.Cameras)
             {
-                ListViewItem itemCam = new ListViewItem(c.Value); // Устанавливаем имя камеры
+                ListViewItem itemCam = new ListViewItem(c.Value);
                 itemCam.Tag = c;
                 listCameraGroup.Items.Add(itemCam);
             }
-            LoadCameras();
 
+            LoadCameras();
         }
 
         #region Move Camera by shukur
@@ -155,7 +178,7 @@ namespace View
         /// <param name="e"></param>
         private void MoveRight(object sender, EventArgs e)
         {
-            HorizoltalItemsMovement(listCameraGroup, listCamera);
+            HorizoltalItemsMovement(listCamera, listCameraGroup);
         }
 
         /// <summary>
@@ -166,7 +189,7 @@ namespace View
         /// <param name="e"></param>
         private void MoveLeft(object sender, EventArgs e)
         { 
-            HorizoltalItemsMovement(listCamera, listCameraGroup);
+            HorizoltalItemsMovement(listCameraGroup, listCamera);
         }
 
         private void MoveUp(object sender, EventArgs e)
@@ -177,7 +200,7 @@ namespace View
 
         private void VerticalItemsMovement(ListView listView, int step)
         {
-       
+            _isChangedCameraList = true;
             foreach (ListViewItem item in listView.SelectedItems)
             {
                 if ((item.Index > 0 && step == -1) 
@@ -193,7 +216,7 @@ namespace View
         private void HorizoltalItemsMovement(ListView from, ListView to)
         {
             var items = from.SelectedItems;
-
+            _isChangedCameraList = true;
             foreach (ListViewItem item in items)
             {
                 KeyValuePair<dynamic, string> keyValue = (KeyValuePair<dynamic, string>)item.Tag;
@@ -211,5 +234,43 @@ namespace View
             VerticalItemsMovement(listCameraGroup, 1);
         }
         #endregion
+
+        #region Save and cancel by shukur
+        private void SaveBtnClick(object sender, EventArgs e)
+        {
+            Save();
+        }
+
+        private void Save()
+        {
+            if (_isChangedCameraList)
+            {
+                Dictionary<dynamic, string> changedListCamera = new Dictionary<dynamic, string>();
+                foreach (ListViewItem item in listCameraGroup.Items)
+                {
+                    KeyValuePair<dynamic, string> keyValue = (KeyValuePair<dynamic, string>)item.Tag;
+                    changedListCamera.Add(keyValue.Key, keyValue.Value);
+                }
+                Group changedGroup = (Group)_selectedGroupItem.Tag;
+                changedGroup.Cameras = changedListCamera;
+                _isChangedCameraList = false;
+            }
+         
+            if (_isChangedName)
+            {
+                if (!_selectedGroupItem.Name.Equals(groupNameTextBox.Text))
+                {
+                    _selectedGroupItem.Text = groupNameTextBox.Text;
+                    _isChangedName = false;
+                }
+            }
+        }
+        #endregion
+
+        private void GroupRename(object sender, EventArgs e)
+        {
+            if (!_selectedGroupItem.Text.Equals(groupNameTextBox.Text))
+                _isChangedCameraList = true;
+        }
     }
 }

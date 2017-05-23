@@ -135,8 +135,6 @@
             this.addButton.TabIndex = 0;
             this.addButton.UseVisualStyleBackColor = false;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
-            this.addButton.MouseEnter += new System.EventHandler(this.addButton_MouseEnter);
-            this.addButton.MouseHover += new System.EventHandler(this.addButton_MouseHover);
             // 
             // searchTextBox
             // 
@@ -162,6 +160,7 @@
             this.button5.TabIndex = 4;
             this.button5.Text = "Сохранить";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.SaveBtnClick);
             // 
             // groupBox1
             // 
@@ -221,7 +220,7 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.listCamera);
+            this.panel2.Controls.Add(this.listCameraGroup);
             this.panel2.Location = new System.Drawing.Point(194, 31);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(131, 190);
@@ -229,16 +228,16 @@
             // 
             // listCamera
             // 
-            this.listCamera.Location = new System.Drawing.Point(0, 0);
+            this.listCamera.Location = new System.Drawing.Point(0, 7);
             this.listCamera.Name = "listCamera";
-            this.listCamera.Size = new System.Drawing.Size(128, 187);
+            this.listCamera.Size = new System.Drawing.Size(128, 161);
             this.listCamera.TabIndex = 0;
             this.listCamera.UseCompatibleStateImageBehavior = false;
             this.listCamera.View = System.Windows.Forms.View.List;
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.listCameraGroup);
+            this.panel1.Controls.Add(this.listCamera);
             this.panel1.Location = new System.Drawing.Point(9, 50);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(131, 171);
@@ -246,9 +245,9 @@
             // 
             // listCameraGroup
             // 
-            this.listCameraGroup.Location = new System.Drawing.Point(3, 7);
+            this.listCameraGroup.Location = new System.Drawing.Point(7, 3);
             this.listCameraGroup.Name = "listCameraGroup";
-            this.listCameraGroup.Size = new System.Drawing.Size(121, 158);
+            this.listCameraGroup.Size = new System.Drawing.Size(121, 189);
             this.listCameraGroup.TabIndex = 0;
             this.listCameraGroup.UseCompatibleStateImageBehavior = false;
             this.listCameraGroup.View = System.Windows.Forms.View.List;
