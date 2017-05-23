@@ -129,8 +129,8 @@ namespace View
         {
 
             groupEditor.BackColor = SystemColors.ButtonHighlight;//.ButtonShadow;
-            GroupEditor groupEditorWindow = new GroupEditor();
-            groupEditorWindow.Show();
+            //GroupEditor groupEditorWindow = new GroupEditor();
+            //groupEditorWindow.Show();
         }
 
         private void cameraEditor_MouseClick(object sender, MouseEventArgs e)
@@ -147,36 +147,11 @@ namespace View
 
         private void searchButton_MouseClick(object sender, MouseEventArgs e)
         {
-            //Для смены картинки. Не забыть поменять индексы, для итоговой подборки иконок!!!
-            if ((searchButton.ImageIndex == 2) && (searchTextBox.Text != null))
-            {
-                searchButton.ImageIndex = 3;
-                SearchGr();
-            }
-            else
-            {
-                searchButton.ImageIndex = 2;
-                SearchGrCancel();
-            }
-        }
-
-        void SearchGr()
-        {
-            listView1.BeginUpdate();
-            for (int i = 0; i < listView1.Items.Count; i++)
-            {
-                if (!listView1.Items[i].Text.Contains(searchTextBox.Text))
-                    listView1.Items[i].Remove();
-            }
-            listView1.EndUpdate();
 
         }
-        void SearchGrCancel()
-        {
 
 
-        }
-  
+
 
         #region AddListControl by dima. Refactor shukur
         /// <summary>

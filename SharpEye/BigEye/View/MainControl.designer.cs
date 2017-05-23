@@ -131,12 +131,13 @@
             // 
             // listGroup
             // 
-            this.listView1.BackColor = System.Drawing.Color.LightGray;
-            this.listView1.Location = new System.Drawing.Point(37, 21);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(96, 276);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listGroup.Activation = System.Windows.Forms.ItemActivation.OneClick;
+            this.listGroup.HoverSelection = true;
+            this.listGroup.Location = new System.Drawing.Point(0, 0);
+            this.listGroup.Name = "listGroup";
+            this.listGroup.Size = new System.Drawing.Size(121, 97);
+            this.listGroup.TabIndex = 0;
+            this.listGroup.UseCompatibleStateImageBehavior = false;
             // 
             // panel2
             // 
@@ -163,7 +164,6 @@
             this.searchButton.Size = new System.Drawing.Size(20, 20);
             this.searchButton.TabIndex = 7;
             this.searchButton.UseVisualStyleBackColor = false;
-            this.searchButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.searchButton_MouseClick);
             // 
             // imageList1
             // 
