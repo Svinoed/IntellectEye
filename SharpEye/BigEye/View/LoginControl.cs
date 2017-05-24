@@ -87,12 +87,12 @@ namespace View
             if (PasswordTextBox.PasswordChar == '*')
             {
                 PasswordTextBox.PasswordChar = '\0';
-                button1.ImageIndex = 1;
+                hideShowPassword.ImageIndex = 1;
             }
             else
             {
                 PasswordTextBox.PasswordChar = '*';
-                button1.ImageIndex = 0;
+                hideShowPassword.ImageIndex = 0;
             }
         }
     }
