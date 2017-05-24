@@ -109,6 +109,7 @@ namespace Presenter
             for (int i = 0; i < count; i ++)
             {
                 ISmallView view = _smallPresenters[i].GetView();
+                view.ClearPanel();
                 list.Add(view);
             }
             return list;

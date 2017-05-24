@@ -30,5 +30,10 @@ namespace View
                 FullScreen();
             }
         }
+
+        public void ClearPanel()
+        {
+            _videoPanel.Controls.Clear();
+        }
     }
 }
