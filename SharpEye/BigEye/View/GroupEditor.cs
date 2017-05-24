@@ -38,45 +38,13 @@ namespace View
             listCamera.Dock = DockStyle.Fill;
 
             // This code by shukur
-            _groups = groups;
+            _groups = new Dictionary<Guid, Group> (groups); // клонируем коллекцию
             _cameras = cameras;
             groupNameTextBox.LostFocus += (s, e) => GroupRename(s, e);
             _isChangedCameraList = false;
             _isChangedName = false;
             _isChangedListGrup = false;
         }
-
-
-        #region LoadCameras by shukur
-        private void LoadCameras()
-        {
-            listCamera.Items.Clear();
-            foreach(var c in _cameras)
-            {
-                if (!CameraContains(c, listCameraGroup.Items))
-                {
-                    ListViewItem item = new ListViewItem(c.Value);
-                    item.Tag = c;
-                    listCamera.Items.Add(item);
-                }
-            }
-        }
-
-        private bool CameraContains(KeyValuePair<dynamic, string> camera,  ListViewItemCollection items)
-        {
-            foreach (ListViewItem c in items)
-            {
-                KeyValuePair<dynamic, string> keyValue = (KeyValuePair<dynamic, string>) c.Tag;
-
-                if (keyValue.Equals(camera)) 
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        #endregion
 
         private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
         {
@@ -107,17 +75,95 @@ namespace View
                 listGroup.Items.Add(item);
             }
         }
+
+        #region LoadCameras by shukur
+        private void LoadCameras()
+        {
+            listCamera.Items.Clear();
+            foreach (var c in _cameras)
+            {
+                if (!CameraContains(c, listCameraGroup.Items))
+                {
+                    ListViewItem item = new ListViewItem(c.Value);
+                    item.Tag = c;
+                    listCamera.Items.Add(item);
+                }
+            }
+        }
+
+        private bool CameraContains(KeyValuePair<dynamic, string> camera, ListViewItemCollection items)
+        {
+            foreach (ListViewItem c in items)
+            {
+                KeyValuePair<dynamic, string> keyValue = (KeyValuePair<dynamic, string>)c.Tag;
+
+                if (keyValue.Equals(camera))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        #endregion
+
         #endregion
 
         #region Add and Delete group bu shukur
         private void addButton_Click(object sender, EventArgs e)
         {
-            Group group = new Group("Новая группа");
+            Group group = new Group();
+            group.Name = GetNewName();
             ListViewItem item = new ListViewItem(group.Name);
             item.Tag = group;
             listGroup.Items.Add(item);
+            _groups.Add(group.Id, group);
+        }
+
+        private string GetNewName()
+        {
+            return GetActualName("Новая группа", "Новая группа");
+        }
+        private string GetActualName(string name, string oldName)
+        {
+            string newName = name;
+            for (int i = 0; i < _groups.Values.Count; i++ )
+            {
+               if (_groups.Values.ElementAt(i).Name.Equals(name))
+                {
+                    newName = GetActualName(oldName + i, oldName);
+                    return newName; 
+                }
+            } 
+            return newName;
+        }
+
+
+
+        #endregion
+
+        #region Filter by shukur
+
+        private void searchTextBox_TextChanged(object sender, EventArgs e)
+        {
+            Filter(listCamera, searchTextBox.Text);
+        }
+
+        private void Filter(ListView list, string filter)
+        {
+            list.Items.Clear();
+            foreach (var c in _cameras)
+            {
+                if (c.Value.ToString().StartsWith(filter))
+                {
+                    ListViewItem item = new ListViewItem(c.Value);
+                    item.Tag = c;
+                    list.Items.Add(item);
+                }
+            }
         }
         #endregion
+
         /// <summary>
         /// Отображает выбранную группу и 
         /// корректирует список камер
@@ -243,16 +289,15 @@ namespace View
 
         private void Save()
         {
+            Group changedGroup = (Group)_selectedGroupItem.Tag;
             if (_isChangedCameraList)
             {
-                Dictionary<dynamic, string> changedListCamera = new Dictionary<dynamic, string>();
+                changedGroup.Cameras.Clear();
                 foreach (ListViewItem item in listCameraGroup.Items)
                 {
                     KeyValuePair<dynamic, string> keyValue = (KeyValuePair<dynamic, string>)item.Tag;
-                    changedListCamera.Add(keyValue.Key, keyValue.Value);
+                    changedGroup.Cameras.Add(keyValue.Key, keyValue.Value);
                 }
-                Group changedGroup = (Group)_selectedGroupItem.Tag;
-                changedGroup.Cameras = changedListCamera;
                 _isChangedCameraList = false;
             }
          
@@ -261,6 +306,7 @@ namespace View
                 if (!_selectedGroupItem.Name.Equals(groupNameTextBox.Text))
                 {
                     _selectedGroupItem.Text = groupNameTextBox.Text;
+                    changedGroup.Name = groupNameTextBox.Text;
                     _isChangedName = false;
                 }
             }
@@ -270,7 +316,29 @@ namespace View
         private void GroupRename(object sender, EventArgs e)
         {
             if (!_selectedGroupItem.Text.Equals(groupNameTextBox.Text))
+            {
                 _isChangedCameraList = true;
+            }
         }
+
+        private void delButton_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+                "Выдействительно хотите удалить группу " + _selectedGroupItem.Text + " ?",
+                "Удалить ?",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button2,
+                MessageBoxOptions.ServiceNotification);
+
+            if (result == DialogResult.Yes)
+            {
+                listGroup.Items.Remove(_selectedGroupItem);
+                Group deletedGroup = (Group) _selectedGroupItem.Tag;
+                _groups.Remove(deletedGroup.Id);
+            }
+        }
+
+       
     }
 }

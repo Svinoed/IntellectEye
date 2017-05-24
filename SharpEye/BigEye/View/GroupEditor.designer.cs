@@ -44,9 +44,9 @@
             this.moveLeftBtn = new System.Windows.Forms.Button();
             this.moveRightBtn = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.listCamera = new System.Windows.Forms.ListView();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.listCameraGroup = new System.Windows.Forms.ListView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.listCamera = new System.Windows.Forms.ListView();
             this.groupNameTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
@@ -124,6 +124,7 @@
             this.delButton.Size = new System.Drawing.Size(30, 30);
             this.delButton.TabIndex = 1;
             this.delButton.UseVisualStyleBackColor = false;
+            this.delButton.Click += new System.EventHandler(this.delButton_Click);
             // 
             // addButton
             // 
@@ -142,6 +143,7 @@
             this.searchTextBox.Name = "searchTextBox";
             this.searchTextBox.Size = new System.Drawing.Size(131, 20);
             this.searchTextBox.TabIndex = 6;
+            this.searchTextBox.TextChanged += new System.EventHandler(this.searchTextBox_TextChanged);
             // 
             // button6
             // 
@@ -226,14 +228,17 @@
             this.panel2.Size = new System.Drawing.Size(131, 190);
             this.panel2.TabIndex = 3;
             // 
-            // listCamera
+            // listCameraGroup
             // 
-            this.listCamera.Location = new System.Drawing.Point(0, 7);
-            this.listCamera.Name = "listCamera";
-            this.listCamera.Size = new System.Drawing.Size(128, 161);
-            this.listCamera.TabIndex = 0;
-            this.listCamera.UseCompatibleStateImageBehavior = false;
-            this.listCamera.View = System.Windows.Forms.View.List;
+            this.listCameraGroup.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listCameraGroup.Location = new System.Drawing.Point(7, 3);
+            this.listCameraGroup.Name = "listCameraGroup";
+            this.listCameraGroup.Size = new System.Drawing.Size(121, 189);
+            this.listCameraGroup.TabIndex = 0;
+            this.listCameraGroup.UseCompatibleStateImageBehavior = false;
+            this.listCameraGroup.View = System.Windows.Forms.View.List;
             // 
             // panel1
             // 
@@ -243,17 +248,22 @@
             this.panel1.Size = new System.Drawing.Size(131, 171);
             this.panel1.TabIndex = 2;
             // 
-            // listCameraGroup
+            // listCamera
             // 
-            this.listCameraGroup.Location = new System.Drawing.Point(7, 3);
-            this.listCameraGroup.Name = "listCameraGroup";
-            this.listCameraGroup.Size = new System.Drawing.Size(121, 189);
-            this.listCameraGroup.TabIndex = 0;
-            this.listCameraGroup.UseCompatibleStateImageBehavior = false;
-            this.listCameraGroup.View = System.Windows.Forms.View.List;
+            this.listCamera.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listCamera.Location = new System.Drawing.Point(0, 7);
+            this.listCamera.Name = "listCamera";
+            this.listCamera.Size = new System.Drawing.Size(128, 161);
+            this.listCamera.TabIndex = 0;
+            this.listCamera.UseCompatibleStateImageBehavior = false;
+            this.listCamera.View = System.Windows.Forms.View.List;
             // 
             // groupNameTextBox
             // 
+            this.groupNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupNameTextBox.Location = new System.Drawing.Point(108, 5);
             this.groupNameTextBox.Name = "groupNameTextBox";
             this.groupNameTextBox.Size = new System.Drawing.Size(217, 20);
