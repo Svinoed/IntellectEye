@@ -32,43 +32,53 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MiniPlayBack));
             this.panel1 = new System.Windows.Forms.Panel();
             this.flowPanelZoom = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button11 = new System.Windows.Forms.Button();
+            this.speedTextBox = new System.Windows.Forms.TextBox();
+            this.zoomPlusButton = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.button12 = new System.Windows.Forms.Button();
+            this.zoomMinusButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.button8 = new System.Windows.Forms.Button();
-            this.button26 = new System.Windows.Forms.Button();
-            this.button25 = new System.Windows.Forms.Button();
-            this.button24 = new System.Windows.Forms.Button();
-            this.button23 = new System.Windows.Forms.Button();
-            this.button22 = new System.Windows.Forms.Button();
-            this.button21 = new System.Windows.Forms.Button();
-            this.button20 = new System.Windows.Forms.Button();
-            this.button18 = new System.Windows.Forms.Button();
-            this.flowPanel = new System.Windows.Forms.Panel();
-            this.button14 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.rightDownButton = new System.Windows.Forms.Button();
+            this.downButton = new System.Windows.Forms.Button();
+            this.leftDownButton = new System.Windows.Forms.Button();
+            this.rightButton = new System.Windows.Forms.Button();
+            this.rightUpButton = new System.Windows.Forms.Button();
+            this.upButton = new System.Windows.Forms.Button();
+            this.leftUpButton = new System.Windows.Forms.Button();
+            this.leftButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.flowPanel = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.resetButton = new System.Windows.Forms.Button();
+            this.helpButton = new System.Windows.Forms.Button();
+            this.settingsButton = new System.Windows.Forms.Button();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.switchOrderButton = new System.Windows.Forms.Button();
+            this.redoButton = new System.Windows.Forms.Button();
+            this.slowDownButton = new System.Windows.Forms.Button();
+            this.playButton = new System.Windows.Forms.Button();
+            this.fastUpButton = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.fullscreenButton = new System.Windows.Forms.Button();
+            this.commentButton = new System.Windows.Forms.Button();
+            this.screenshotButton = new System.Windows.Forms.Button();
+            this.exportButton = new System.Windows.Forms.Button();
+            this.bookmarkButton = new System.Windows.Forms.Button();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.videoPanel = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.flowPanelZoom.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.flowPanel.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.videoPanel);
             this.panel1.Controls.Add(this.flowPanelZoom);
             this.panel1.Controls.Add(this.flowPanel);
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -78,9 +88,9 @@
             // 
             // flowPanelZoom
             // 
-            this.flowPanelZoom.Controls.Add(this.textBox1);
-            this.flowPanelZoom.Controls.Add(this.button11);
-            this.flowPanelZoom.Controls.Add(this.button12);
+            this.flowPanelZoom.Controls.Add(this.speedTextBox);
+            this.flowPanelZoom.Controls.Add(this.zoomPlusButton);
+            this.flowPanelZoom.Controls.Add(this.zoomMinusButton);
             this.flowPanelZoom.Controls.Add(this.label1);
             this.flowPanelZoom.Controls.Add(this.tableLayoutPanel2);
             this.flowPanelZoom.Controls.Add(this.label2);
@@ -89,26 +99,26 @@
             this.flowPanelZoom.Size = new System.Drawing.Size(92, 248);
             this.flowPanelZoom.TabIndex = 26;
             // 
-            // textBox1
+            // speedTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(26, 117);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(49, 20);
-            this.textBox1.TabIndex = 29;
+            this.speedTextBox.Location = new System.Drawing.Point(26, 117);
+            this.speedTextBox.Name = "speedTextBox";
+            this.speedTextBox.Size = new System.Drawing.Size(49, 20);
+            this.speedTextBox.TabIndex = 29;
             // 
-            // button11
+            // zoomPlusButton
             // 
-            this.button11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.zoomPlusButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button11.ImageIndex = 13;
-            this.button11.ImageList = this.imageList1;
-            this.button11.Location = new System.Drawing.Point(62, 143);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(30, 30);
-            this.button11.TabIndex = 26;
-            this.button11.UseVisualStyleBackColor = true;
+            this.zoomPlusButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.zoomPlusButton.ImageIndex = 13;
+            this.zoomPlusButton.ImageList = this.imageList1;
+            this.zoomPlusButton.Location = new System.Drawing.Point(62, 143);
+            this.zoomPlusButton.Name = "zoomPlusButton";
+            this.zoomPlusButton.Size = new System.Drawing.Size(30, 30);
+            this.zoomPlusButton.TabIndex = 26;
+            this.zoomPlusButton.UseVisualStyleBackColor = true;
             // 
             // imageList1
             // 
@@ -137,20 +147,22 @@
             this.imageList1.Images.SetKeyName(20, "21.fullscreenExit.png");
             this.imageList1.Images.SetKeyName(21, "22.fullscreen.png");
             this.imageList1.Images.SetKeyName(22, "23.get.png");
+            this.imageList1.Images.SetKeyName(23, "24.comment.png");
+            this.imageList1.Images.SetKeyName(24, "25.playAgain.png");
             // 
-            // button12
+            // zoomMinusButton
             // 
-            this.button12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.zoomMinusButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button12.ImageIndex = 12;
-            this.button12.ImageList = this.imageList1;
-            this.button12.Location = new System.Drawing.Point(3, 143);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(30, 30);
-            this.button12.TabIndex = 27;
-            this.button12.UseVisualStyleBackColor = true;
+            this.zoomMinusButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.zoomMinusButton.ImageIndex = 12;
+            this.zoomMinusButton.ImageList = this.imageList1;
+            this.zoomMinusButton.Location = new System.Drawing.Point(3, 143);
+            this.zoomMinusButton.Name = "zoomMinusButton";
+            this.zoomMinusButton.Size = new System.Drawing.Size(30, 30);
+            this.zoomMinusButton.TabIndex = 27;
+            this.zoomMinusButton.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -169,14 +181,14 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel2.Controls.Add(this.button8, 1, 1);
-            this.tableLayoutPanel2.Controls.Add(this.button26, 2, 2);
-            this.tableLayoutPanel2.Controls.Add(this.button25, 1, 2);
-            this.tableLayoutPanel2.Controls.Add(this.button24, 0, 2);
-            this.tableLayoutPanel2.Controls.Add(this.button23, 2, 1);
-            this.tableLayoutPanel2.Controls.Add(this.button22, 2, 0);
-            this.tableLayoutPanel2.Controls.Add(this.button21, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.button20, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.button18, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.rightDownButton, 2, 2);
+            this.tableLayoutPanel2.Controls.Add(this.downButton, 1, 2);
+            this.tableLayoutPanel2.Controls.Add(this.leftDownButton, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.rightButton, 2, 1);
+            this.tableLayoutPanel2.Controls.Add(this.rightUpButton, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.upButton, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.leftUpButton, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.leftButton, 0, 1);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(2, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
@@ -186,7 +198,6 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(90, 90);
             this.tableLayoutPanel2.TabIndex = 27;
-            this.tableLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel2_Paint);
             // 
             // button8
             // 
@@ -202,297 +213,117 @@
             this.button8.TabIndex = 26;
             this.button8.UseVisualStyleBackColor = true;
             // 
-            // button26
+            // rightDownButton
             // 
-            this.button26.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.rightDownButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button26.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button26.ImageIndex = 9;
-            this.button26.ImageList = this.imageList1;
-            this.button26.Location = new System.Drawing.Point(63, 63);
-            this.button26.Name = "button26";
-            this.button26.Size = new System.Drawing.Size(24, 24);
-            this.button26.TabIndex = 34;
-            this.button26.UseVisualStyleBackColor = true;
+            this.rightDownButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.rightDownButton.ImageIndex = 9;
+            this.rightDownButton.ImageList = this.imageList1;
+            this.rightDownButton.Location = new System.Drawing.Point(63, 63);
+            this.rightDownButton.Name = "rightDownButton";
+            this.rightDownButton.Size = new System.Drawing.Size(24, 24);
+            this.rightDownButton.TabIndex = 34;
+            this.rightDownButton.UseVisualStyleBackColor = true;
             // 
-            // button25
+            // downButton
             // 
-            this.button25.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.downButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button25.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button25.ImageIndex = 5;
-            this.button25.ImageList = this.imageList1;
-            this.button25.Location = new System.Drawing.Point(33, 63);
-            this.button25.Name = "button25";
-            this.button25.Size = new System.Drawing.Size(24, 24);
-            this.button25.TabIndex = 33;
-            this.button25.UseVisualStyleBackColor = true;
+            this.downButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.downButton.ImageIndex = 5;
+            this.downButton.ImageList = this.imageList1;
+            this.downButton.Location = new System.Drawing.Point(33, 63);
+            this.downButton.Name = "downButton";
+            this.downButton.Size = new System.Drawing.Size(24, 24);
+            this.downButton.TabIndex = 33;
+            this.downButton.UseVisualStyleBackColor = true;
             // 
-            // button24
+            // leftDownButton
             // 
-            this.button24.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.leftDownButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button24.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button24.ImageIndex = 10;
-            this.button24.ImageList = this.imageList1;
-            this.button24.Location = new System.Drawing.Point(3, 63);
-            this.button24.Name = "button24";
-            this.button24.Size = new System.Drawing.Size(24, 24);
-            this.button24.TabIndex = 32;
-            this.button24.UseVisualStyleBackColor = true;
+            this.leftDownButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.leftDownButton.ImageIndex = 10;
+            this.leftDownButton.ImageList = this.imageList1;
+            this.leftDownButton.Location = new System.Drawing.Point(3, 63);
+            this.leftDownButton.Name = "leftDownButton";
+            this.leftDownButton.Size = new System.Drawing.Size(24, 24);
+            this.leftDownButton.TabIndex = 32;
+            this.leftDownButton.UseVisualStyleBackColor = true;
             // 
-            // button23
+            // rightButton
             // 
-            this.button23.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.rightButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button23.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button23.ImageIndex = 6;
-            this.button23.ImageList = this.imageList1;
-            this.button23.Location = new System.Drawing.Point(63, 33);
-            this.button23.Name = "button23";
-            this.button23.Size = new System.Drawing.Size(24, 24);
-            this.button23.TabIndex = 31;
-            this.button23.UseVisualStyleBackColor = true;
+            this.rightButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.rightButton.ImageIndex = 6;
+            this.rightButton.ImageList = this.imageList1;
+            this.rightButton.Location = new System.Drawing.Point(63, 33);
+            this.rightButton.Name = "rightButton";
+            this.rightButton.Size = new System.Drawing.Size(24, 24);
+            this.rightButton.TabIndex = 31;
+            this.rightButton.UseVisualStyleBackColor = true;
             // 
-            // button22
+            // rightUpButton
             // 
-            this.button22.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.rightUpButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button22.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button22.ImageIndex = 8;
-            this.button22.ImageList = this.imageList1;
-            this.button22.Location = new System.Drawing.Point(63, 3);
-            this.button22.Name = "button22";
-            this.button22.Size = new System.Drawing.Size(24, 24);
-            this.button22.TabIndex = 30;
-            this.button22.UseVisualStyleBackColor = true;
+            this.rightUpButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.rightUpButton.ImageIndex = 8;
+            this.rightUpButton.ImageList = this.imageList1;
+            this.rightUpButton.Location = new System.Drawing.Point(63, 3);
+            this.rightUpButton.Name = "rightUpButton";
+            this.rightUpButton.Size = new System.Drawing.Size(24, 24);
+            this.rightUpButton.TabIndex = 30;
+            this.rightUpButton.UseVisualStyleBackColor = true;
             // 
-            // button21
+            // upButton
             // 
-            this.button21.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.upButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button21.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button21.ImageIndex = 7;
-            this.button21.ImageList = this.imageList1;
-            this.button21.Location = new System.Drawing.Point(33, 3);
-            this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(24, 24);
-            this.button21.TabIndex = 29;
-            this.button21.UseVisualStyleBackColor = true;
+            this.upButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.upButton.ImageIndex = 7;
+            this.upButton.ImageList = this.imageList1;
+            this.upButton.Location = new System.Drawing.Point(33, 3);
+            this.upButton.Name = "upButton";
+            this.upButton.Size = new System.Drawing.Size(24, 24);
+            this.upButton.TabIndex = 29;
+            this.upButton.UseVisualStyleBackColor = true;
             // 
-            // button20
+            // leftUpButton
             // 
-            this.button20.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.leftUpButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button20.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button20.ImageIndex = 11;
-            this.button20.ImageList = this.imageList1;
-            this.button20.Location = new System.Drawing.Point(3, 3);
-            this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(24, 24);
-            this.button20.TabIndex = 28;
-            this.button20.UseVisualStyleBackColor = true;
+            this.leftUpButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.leftUpButton.ImageIndex = 11;
+            this.leftUpButton.ImageList = this.imageList1;
+            this.leftUpButton.Location = new System.Drawing.Point(3, 3);
+            this.leftUpButton.Name = "leftUpButton";
+            this.leftUpButton.Size = new System.Drawing.Size(24, 24);
+            this.leftUpButton.TabIndex = 28;
+            this.leftUpButton.UseVisualStyleBackColor = true;
             // 
-            // button18
+            // leftButton
             // 
-            this.button18.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.leftButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button18.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button18.ImageIndex = 4;
-            this.button18.ImageList = this.imageList1;
-            this.button18.Location = new System.Drawing.Point(3, 33);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(24, 24);
-            this.button18.TabIndex = 26;
-            this.button18.UseVisualStyleBackColor = true;
-            // 
-            // flowPanel
-            // 
-            this.flowPanel.Controls.Add(this.button14);
-            this.flowPanel.Controls.Add(this.button13);
-            this.flowPanel.Controls.Add(this.button9);
-            this.flowPanel.Controls.Add(this.button7);
-            this.flowPanel.Controls.Add(this.button6);
-            this.flowPanel.Controls.Add(this.button5);
-            this.flowPanel.Controls.Add(this.button4);
-            this.flowPanel.Controls.Add(this.button3);
-            this.flowPanel.Controls.Add(this.button2);
-            this.flowPanel.Controls.Add(this.button1);
-            this.flowPanel.Controls.Add(this.button10);
-            this.flowPanel.Controls.Add(this.progressBar1);
-            this.flowPanel.Location = new System.Drawing.Point(0, 254);
-            this.flowPanel.Name = "flowPanel";
-            this.flowPanel.Size = new System.Drawing.Size(562, 53);
-            this.flowPanel.TabIndex = 0;
-            // 
-            // button14
-            // 
-            this.button14.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button14.ImageIndex = 1;
-            this.button14.ImageList = this.imageList1;
-            this.button14.Location = new System.Drawing.Point(529, 20);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(30, 30);
-            this.button14.TabIndex = 27;
-            this.button14.UseVisualStyleBackColor = true;
-            // 
-            // button13
-            // 
-            this.button13.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button13.ImageIndex = 0;
-            this.button13.ImageList = this.imageList1;
-            this.button13.Location = new System.Drawing.Point(496, 20);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(30, 30);
-            this.button13.TabIndex = 26;
-            this.button13.UseVisualStyleBackColor = true;
-            // 
-            // button9
-            // 
-            this.button9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button9.ImageIndex = 22;
-            this.button9.ImageList = this.imageList1;
-            this.button9.Location = new System.Drawing.Point(71, 20);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(30, 30);
-            this.button9.TabIndex = 25;
-            this.button9.UseVisualStyleBackColor = true;
-            // 
-            // button7
-            // 
-            this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button7.ImageIndex = 2;
-            this.button7.ImageList = this.imageList1;
-            this.button7.Location = new System.Drawing.Point(35, 20);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(30, 30);
-            this.button7.TabIndex = 23;
-            this.button7.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button6.ImageIndex = 16;
-            this.button6.ImageList = this.imageList1;
-            this.button6.Location = new System.Drawing.Point(107, 20);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(30, 30);
-            this.button6.TabIndex = 22;
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button5.ImageIndex = 3;
-            this.button5.ImageList = this.imageList1;
-            this.button5.Location = new System.Drawing.Point(338, 20);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(30, 30);
-            this.button5.TabIndex = 21;
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button4.ImageIndex = 21;
-            this.button4.ImageList = this.imageList1;
-            this.button4.Location = new System.Drawing.Point(3, 20);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(30, 30);
-            this.button4.TabIndex = 20;
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button3.ImageIndex = 17;
-            this.button3.ImageList = this.imageList1;
-            this.button3.Location = new System.Drawing.Point(198, 20);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(30, 30);
-            this.button3.TabIndex = 19;
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.ImageIndex = 19;
-            this.button2.ImageList = this.imageList1;
-            this.button2.Location = new System.Drawing.Point(302, 20);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(30, 30);
-            this.button2.TabIndex = 18;
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.ImageIndex = 18;
-            this.button1.ImageList = this.imageList1;
-            this.button1.Location = new System.Drawing.Point(234, 20);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(30, 30);
-            this.button1.TabIndex = 17;
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button10
-            // 
-            this.button10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button10.ImageIndex = 14;
-            this.button10.ImageList = this.imageList1;
-            this.button10.Location = new System.Drawing.Point(266, 20);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(30, 30);
-            this.button10.TabIndex = 16;
-            this.button10.UseVisualStyleBackColor = true;
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.Location = new System.Drawing.Point(0, 3);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(559, 15);
-            this.progressBar1.TabIndex = 1;
+            this.leftButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.leftButton.ImageIndex = 4;
+            this.leftButton.ImageList = this.imageList1;
+            this.leftButton.Location = new System.Drawing.Point(3, 33);
+            this.leftButton.Name = "leftButton";
+            this.leftButton.Size = new System.Drawing.Size(24, 24);
+            this.leftButton.TabIndex = 26;
+            this.leftButton.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -503,6 +334,269 @@
             this.label2.Size = new System.Drawing.Size(34, 13);
             this.label2.TabIndex = 33;
             this.label2.Text = "Zoom";
+            // 
+            // flowPanel
+            // 
+            this.flowPanel.Controls.Add(this.tableLayoutPanel4);
+            this.flowPanel.Controls.Add(this.tableLayoutPanel3);
+            this.flowPanel.Controls.Add(this.tableLayoutPanel1);
+            this.flowPanel.Controls.Add(this.progressBar1);
+            this.flowPanel.Location = new System.Drawing.Point(0, 254);
+            this.flowPanel.Name = "flowPanel";
+            this.flowPanel.Size = new System.Drawing.Size(562, 53);
+            this.flowPanel.TabIndex = 0;
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 3;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel4.Controls.Add(this.resetButton, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.helpButton, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.settingsButton, 2, 0);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(469, 22);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 1;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(90, 30);
+            this.tableLayoutPanel4.TabIndex = 27;
+            // 
+            // resetButton
+            // 
+            this.resetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.resetButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.resetButton.ImageIndex = 3;
+            this.resetButton.ImageList = this.imageList1;
+            this.resetButton.Location = new System.Drawing.Point(3, 3);
+            this.resetButton.Name = "resetButton";
+            this.resetButton.Size = new System.Drawing.Size(24, 24);
+            this.resetButton.TabIndex = 21;
+            this.resetButton.UseVisualStyleBackColor = true;
+            // 
+            // helpButton
+            // 
+            this.helpButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.helpButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.helpButton.ImageIndex = 0;
+            this.helpButton.ImageList = this.imageList1;
+            this.helpButton.Location = new System.Drawing.Point(33, 3);
+            this.helpButton.Name = "helpButton";
+            this.helpButton.Size = new System.Drawing.Size(24, 24);
+            this.helpButton.TabIndex = 26;
+            this.helpButton.UseVisualStyleBackColor = true;
+            // 
+            // settingsButton
+            // 
+            this.settingsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.settingsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.settingsButton.ImageIndex = 1;
+            this.settingsButton.ImageList = this.imageList1;
+            this.settingsButton.Location = new System.Drawing.Point(63, 3);
+            this.settingsButton.Name = "settingsButton";
+            this.settingsButton.Size = new System.Drawing.Size(24, 24);
+            this.settingsButton.TabIndex = 27;
+            this.settingsButton.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 5;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel3.Controls.Add(this.switchOrderButton, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.redoButton, 4, 0);
+            this.tableLayoutPanel3.Controls.Add(this.slowDownButton, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.playButton, 2, 0);
+            this.tableLayoutPanel3.Controls.Add(this.fastUpButton, 3, 0);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(213, 19);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(150, 30);
+            this.tableLayoutPanel3.TabIndex = 27;
+            // 
+            // switchOrderButton
+            // 
+            this.switchOrderButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.switchOrderButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.switchOrderButton.ImageIndex = 17;
+            this.switchOrderButton.ImageList = this.imageList1;
+            this.switchOrderButton.Location = new System.Drawing.Point(3, 3);
+            this.switchOrderButton.Name = "switchOrderButton";
+            this.switchOrderButton.Size = new System.Drawing.Size(24, 24);
+            this.switchOrderButton.TabIndex = 19;
+            this.switchOrderButton.UseVisualStyleBackColor = true;
+            // 
+            // redoButton
+            // 
+            this.redoButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.redoButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.redoButton.ImageIndex = 24;
+            this.redoButton.ImageList = this.imageList1;
+            this.redoButton.Location = new System.Drawing.Point(123, 3);
+            this.redoButton.Name = "redoButton";
+            this.redoButton.Size = new System.Drawing.Size(24, 24);
+            this.redoButton.TabIndex = 29;
+            this.redoButton.UseVisualStyleBackColor = true;
+            // 
+            // slowDownButton
+            // 
+            this.slowDownButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.slowDownButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.slowDownButton.ImageIndex = 18;
+            this.slowDownButton.ImageList = this.imageList1;
+            this.slowDownButton.Location = new System.Drawing.Point(33, 3);
+            this.slowDownButton.Name = "slowDownButton";
+            this.slowDownButton.Size = new System.Drawing.Size(24, 24);
+            this.slowDownButton.TabIndex = 17;
+            this.slowDownButton.UseVisualStyleBackColor = true;
+            // 
+            // playButton
+            // 
+            this.playButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.playButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.playButton.ImageIndex = 14;
+            this.playButton.ImageList = this.imageList1;
+            this.playButton.Location = new System.Drawing.Point(63, 3);
+            this.playButton.Name = "playButton";
+            this.playButton.Size = new System.Drawing.Size(24, 24);
+            this.playButton.TabIndex = 16;
+            this.playButton.UseVisualStyleBackColor = true;
+            // 
+            // fastUpButton
+            // 
+            this.fastUpButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.fastUpButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.fastUpButton.ImageIndex = 19;
+            this.fastUpButton.ImageList = this.imageList1;
+            this.fastUpButton.Location = new System.Drawing.Point(93, 3);
+            this.fastUpButton.Name = "fastUpButton";
+            this.fastUpButton.Size = new System.Drawing.Size(24, 24);
+            this.fastUpButton.TabIndex = 18;
+            this.fastUpButton.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 5;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.Controls.Add(this.fullscreenButton, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.commentButton, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.screenshotButton, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.exportButton, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.bookmarkButton, 3, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 22);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(150, 30);
+            this.tableLayoutPanel1.TabIndex = 27;
+            // 
+            // fullscreenButton
+            // 
+            this.fullscreenButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.fullscreenButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.fullscreenButton.ImageIndex = 21;
+            this.fullscreenButton.ImageList = this.imageList1;
+            this.fullscreenButton.Location = new System.Drawing.Point(3, 3);
+            this.fullscreenButton.Name = "fullscreenButton";
+            this.fullscreenButton.Size = new System.Drawing.Size(24, 24);
+            this.fullscreenButton.TabIndex = 20;
+            this.fullscreenButton.UseVisualStyleBackColor = true;
+            // 
+            // commentButton
+            // 
+            this.commentButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.commentButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.commentButton.ImageIndex = 23;
+            this.commentButton.ImageList = this.imageList1;
+            this.commentButton.Location = new System.Drawing.Point(123, 3);
+            this.commentButton.Name = "commentButton";
+            this.commentButton.Size = new System.Drawing.Size(24, 24);
+            this.commentButton.TabIndex = 28;
+            this.commentButton.UseVisualStyleBackColor = true;
+            // 
+            // screenshotButton
+            // 
+            this.screenshotButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.screenshotButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.screenshotButton.ImageIndex = 2;
+            this.screenshotButton.ImageList = this.imageList1;
+            this.screenshotButton.Location = new System.Drawing.Point(33, 3);
+            this.screenshotButton.Name = "screenshotButton";
+            this.screenshotButton.Size = new System.Drawing.Size(24, 24);
+            this.screenshotButton.TabIndex = 23;
+            this.screenshotButton.UseVisualStyleBackColor = true;
+            // 
+            // exportButton
+            // 
+            this.exportButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.exportButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.exportButton.ImageIndex = 22;
+            this.exportButton.ImageList = this.imageList1;
+            this.exportButton.Location = new System.Drawing.Point(63, 3);
+            this.exportButton.Name = "exportButton";
+            this.exportButton.Size = new System.Drawing.Size(24, 24);
+            this.exportButton.TabIndex = 25;
+            this.exportButton.UseVisualStyleBackColor = true;
+            // 
+            // bookmarkButton
+            // 
+            this.bookmarkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.bookmarkButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bookmarkButton.ImageIndex = 16;
+            this.bookmarkButton.ImageList = this.imageList1;
+            this.bookmarkButton.Location = new System.Drawing.Point(93, 3);
+            this.bookmarkButton.Name = "bookmarkButton";
+            this.bookmarkButton.Size = new System.Drawing.Size(24, 24);
+            this.bookmarkButton.TabIndex = 22;
+            this.bookmarkButton.UseVisualStyleBackColor = true;
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(0, 3);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(559, 15);
+            this.progressBar1.TabIndex = 1;
+            // 
+            // videoPanel
+            // 
+            this.videoPanel.Location = new System.Drawing.Point(6, 6);
+            this.videoPanel.Name = "videoPanel";
+            this.videoPanel.Size = new System.Drawing.Size(455, 242);
+            this.videoPanel.TabIndex = 27;
             // 
             // MiniPlayBack
             // 
@@ -517,6 +611,9 @@
             this.flowPanelZoom.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.flowPanel.ResumeLayout(false);
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -526,33 +623,39 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel flowPanel;
         private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button switchOrderButton;
+        private System.Windows.Forms.Button fastUpButton;
+        private System.Windows.Forms.Button slowDownButton;
+        private System.Windows.Forms.Button playButton;
+        private System.Windows.Forms.Button screenshotButton;
+        private System.Windows.Forms.Button bookmarkButton;
+        private System.Windows.Forms.Button resetButton;
+        private System.Windows.Forms.Button fullscreenButton;
         private System.Windows.Forms.ImageList imageList1;
-        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button exportButton;
         private System.Windows.Forms.Panel flowPanelZoom;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Button button26;
-        private System.Windows.Forms.Button button25;
-        private System.Windows.Forms.Button button24;
-        private System.Windows.Forms.Button button23;
-        private System.Windows.Forms.Button button22;
-        private System.Windows.Forms.Button button21;
-        private System.Windows.Forms.Button button20;
-        private System.Windows.Forms.Button button18;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button rightDownButton;
+        private System.Windows.Forms.Button downButton;
+        private System.Windows.Forms.Button leftDownButton;
+        private System.Windows.Forms.Button rightButton;
+        private System.Windows.Forms.Button rightUpButton;
+        private System.Windows.Forms.Button upButton;
+        private System.Windows.Forms.Button leftUpButton;
+        private System.Windows.Forms.Button leftButton;
+        private System.Windows.Forms.TextBox speedTextBox;
+        private System.Windows.Forms.Button zoomPlusButton;
+        private System.Windows.Forms.Button zoomMinusButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button settingsButton;
+        private System.Windows.Forms.Button helpButton;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button commentButton;
+        private System.Windows.Forms.Button redoButton;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Panel videoPanel;
     }
 }

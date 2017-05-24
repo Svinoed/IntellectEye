@@ -29,13 +29,8 @@ namespace View
         {
             InitializeComponent();
             
-            listGroup.Width = splitContainer1.Panel1.Width;
-            listGroup.Height = splitContainer1.Panel1.Height- controlButtonGroupBoxHeight;
-            controlButtonGroupBox.Location = new Point(splitContainer1.Location.X, splitContainer1.Height - controlButtonGroupBoxHeight);
-            controlButtonGroupBox.Height = controlButtonGroupBoxHeight;
-            controlButtonGroupBox.Width = splitContainer1.Panel1.Width;
-            //splitContainer2.SplitterWidth = 50;
             listCamera.Dock = DockStyle.Fill;
+
 
             // This code by shukur
             _groups = new Dictionary<Guid, Group> (groups); // клонируем коллекцию
