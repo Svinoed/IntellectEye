@@ -22,6 +22,7 @@ namespace View
         private bool _isChangedCameraList;
         private bool _isChangedName;
         private bool _isChangedListGrup;
+        public Dictionary<Guid, Group>  Result { get; set; }
 
         int controlButtonGroupBoxHeight = 41;
 
@@ -118,6 +119,7 @@ namespace View
             item.Tag = group;
             listGroup.Items.Add(item);
             _groups.Add(group.Id, group);
+            Result = _groups;
         }
 
         private string GetNewName()
@@ -180,7 +182,7 @@ namespace View
                 return;
             }
 
-            if (_isChangedCameraList)
+            if (_isChangedCameraList | _isChangedName)
             {
                 DialogResult dialogResult = MessageBox.Show(
                     "Сохранить изменения ?",
@@ -289,6 +291,11 @@ namespace View
 
         private void Save()
         {
+            if (_selectedGroupItem == null)
+            {
+                Debug.WriteLine("selectedGroup null");
+                return;
+            }
             Group changedGroup = (Group)_selectedGroupItem.Tag;
             if (_isChangedCameraList)
             {
@@ -310,6 +317,7 @@ namespace View
                     _isChangedName = false;
                 }
             }
+            Result = _groups;
         }
         #endregion
 
@@ -317,7 +325,7 @@ namespace View
         {
             if (!_selectedGroupItem.Text.Equals(groupNameTextBox.Text))
             {
-                _isChangedCameraList = true;
+                _isChangedName = true;
             }
         }
 
@@ -339,6 +347,23 @@ namespace View
             }
         }
 
-       
+        private void CancelClick(object sender, EventArgs e)
+        {
+
+            if (Result != null)
+            {
+                DialogResult result = MessageBox.Show("Вы действительно хотите отменить все изменения?",
+                "Отменить", MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button2,
+                MessageBoxOptions.DefaultDesktopOnly);
+
+                if (result == DialogResult.Yes)
+                {
+                    Result = null;
+                    this.Close();
+                }
+            }     
+        }
     }
 }

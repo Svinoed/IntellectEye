@@ -44,6 +44,7 @@ namespace Presenter
            
                 _groups = new Dictionary<Guid, Group>();
                 _smallPresenters = new List<ISmallVideoPresenter>();
+                LoadGroups();
             }
             else
             {
@@ -61,7 +62,6 @@ namespace Presenter
         /// </summary>
         public void Run()
         {
-            LoadGroups();
             GreateSmallPresenter();
             List<ISmallView> listVideo = GetListView();
             _view.AddListControl(listVideo);
@@ -155,7 +155,19 @@ namespace Presenter
         private void EditGroups()
         {
             Dictionary<dynamic, string> cameras = GetListCamera();
-            _groups = _view.EditGroups(_groups, cameras);
+            var groups = _view.EditGroups(_groups, cameras);
+            if (groups == null)
+            {
+                return; // изменений не было
+            }
+            _groups = groups;
+
+            if (!_groups.ContainsKey(_activeGroup.Id))
+            {
+                _activeGroup = _groups.ElementAt(0).Value;
+            }
+            _view.SetGroup(_groups, _activeGroup.Id);
+            //Run();
         }
 
         private Dictionary<dynamic, string> GetListCamera()
@@ -169,19 +181,6 @@ namespace Presenter
             }
 
             return cameras;
-        }
-        #endregion
-
-        #region array camera names
-        private string[] CameraNames()
-        {
-            int count = _cameraManager.GetCameras().Count;
-            string[] names = new string[count];
-            for(int i = 0; i < count; i++)
-            {
-                names[i] = _cameraManager.GetCameras().ElementAt(i).Name;
-            }
-            return names;
         }
         #endregion
 
