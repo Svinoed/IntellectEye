@@ -20,6 +20,7 @@ namespace View
 
         public event Action<Group> CamEditClick;
         public event Action GroupsEditClick;
+        public event Action<Group> GroupSelected;
 
         private TableLayoutPanel _videoTable;
         private Dictionary<Guid, Group> _groups;
@@ -250,18 +251,19 @@ namespace View
             }
         #endregion
 
-            #region Set list group
-            public void SetGroups(Dictionary<Guid, Group> groups, Guid activeGroup)
+        #region Set list group
+        public void SetGroups(Dictionary<Guid, Group> groups, Guid activeGroup)
+        {
+            _groups = groups;
+            listGroup.Items.Clear();
+            foreach(var g in groups)
             {
-                _groups = groups;
-                listGroup.Items.Clear();
-
-                foreach (var i in groups)
-                {
-                    listGroup.Items.Add(i.Value.Name);
-                }
+                ListViewItem item = new ListViewItem(g.Value.Name);
+                item.Tag = g.Value;
+                listGroup.Items.Add(item);
             }
-            #endregion
+        }
+        #endregion
 
         #endregion
 
@@ -277,5 +279,21 @@ namespace View
             searchVideo.Show();
         }
 
+        private void listGroup_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void listGroup_Click(object sender, EventArgs e)
+        {
+            if (GroupSelected != null)
+            {
+                if (listGroup.SelectedItems.Count > 0)
+                {
+                    Group g = (Group)listGroup.SelectedItems[0].Tag;
+                    GroupSelected(g);
+                }
+            }
+        }
     }
 }

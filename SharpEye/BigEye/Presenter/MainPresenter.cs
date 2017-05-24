@@ -41,6 +41,7 @@ namespace Presenter
                 _handler = handler;
                 _view.CamEditClick += (g) => EditGroup(g);
                 _view.GroupsEditClick += () => EditGroups();
+                _view.GroupSelected += SetActiveGroup;
            
                 _groups = new Dictionary<Guid, Group>();
                 _smallPresenters = new List<ISmallVideoPresenter>();
@@ -206,6 +207,16 @@ namespace Presenter
             return cameras;
         }
         #endregion
+
+        private void SetActiveGroup(Group group)
+        {
+            if (!group.Equals(_activeGroup))
+            {
+                _activeGroup = group;
+                RefreshVideo();
+            }
+        }
+
 
         #region Video live
         private void VideoLive()
