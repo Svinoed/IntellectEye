@@ -193,26 +193,26 @@ namespace View
             _videoTable.Dock = DockStyle.Fill;
             _videoTable.Controls.Clear();
             _videoTable.RowCount = rows;
-            _videoTable.ColumnCount = columns; 
-     
-            for (int i = 0; i < rows; i++)
-            {
-                for (int j = 0; j < columns; j++)
-                {
-                    float height = 100 / rows;
-                    float width = 100 / columns;
-                    int cell = j + i * columns;
-                    _videoTable.RowStyles.Add(new RowStyle(SizeType.Percent, height));
-                    _videoTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, width));
+            _videoTable.ColumnCount = columns;
+            float height = 100 / rows;
+            float width = 100 / columns;
 
-                    if (cell < size)
-                    {
-                        UserControl smallControl = (UserControl)list.ElementAt(cell);
-                        smallControl.Dock = DockStyle.Fill;
-                        _videoTable.Controls.Add(smallControl);
-                    }
-                }
+            for(int i = 0; i < rows; i++)
+            {
+                _videoTable.RowStyles.Add(new RowStyle(SizeType.Percent, height));
             }
+            
+            for (int i = 0; i < columns; i++ )
+            {
+                _videoTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, width));
+            }
+            
+            foreach (var c in list)
+            {
+                UserControl smallControl = (UserControl) c;
+                smallControl.Dock = DockStyle.Fill;
+                _videoTable.Controls.Add(smallControl);
+            }     
 
             videoLivePanel.Controls.Clear();
             videoLivePanel.Controls.Add(_videoTable);

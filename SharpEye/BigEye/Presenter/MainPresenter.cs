@@ -122,11 +122,11 @@ namespace Presenter
             }
             else
             {
-                int countOfCamera = _cameraManager.GetCameras().Count;
+                List<ICameraModel> cameras = _cameraManager.GetCameras();
                 Group defaultGroup = new Group("По умолчанию");
-                for (int i = 0; i < countOfCamera && i < 16; i++)
+                for (int i = 0; i < cameras.Count && i < 16; i++)
                 {
-                    ICameraModel camera = _cameraManager.GetCameras().ElementAt(i);
+                    ICameraModel camera = cameras.ElementAt(i);
                     defaultGroup.Cameras.Add(camera.Id, camera.Name);
                 }
                 _activeGroup = defaultGroup;
