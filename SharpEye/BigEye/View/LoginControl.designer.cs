@@ -40,14 +40,15 @@
             this.UserLabel = new System.Windows.Forms.Label();
             this.PasswordLabel = new System.Windows.Forms.Label();
             this.NotificationLabel = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.hideShowPassword = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.cancelbutton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // LogInButton
             // 
-            this.LogInButton.Location = new System.Drawing.Point(113, 212);
+            this.LogInButton.Location = new System.Drawing.Point(63, 208);
             this.LogInButton.Name = "LogInButton";
             this.LogInButton.Size = new System.Drawing.Size(75, 23);
             this.LogInButton.TabIndex = 0;
@@ -145,21 +146,19 @@
             this.NotificationLabel.Size = new System.Drawing.Size(0, 13);
             this.NotificationLabel.TabIndex = 9;
             // 
-            // button1
+            // hideShowPassword
             // 
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Blue;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ImageIndex = 0;
-            this.button1.ImageList = this.imageList1;
-            this.button1.Location = new System.Drawing.Point(255, 111);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(30, 30);
-            this.button1.TabIndex = 10;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button1_MouseClick);
+            this.hideShowPassword.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.hideShowPassword.FlatAppearance.BorderSize = 0;
+            this.hideShowPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.hideShowPassword.ImageIndex = 0;
+            this.hideShowPassword.ImageList = this.imageList1;
+            this.hideShowPassword.Location = new System.Drawing.Point(255, 111);
+            this.hideShowPassword.Name = "hideShowPassword";
+            this.hideShowPassword.Size = new System.Drawing.Size(30, 30);
+            this.hideShowPassword.TabIndex = 10;
+            this.hideShowPassword.UseVisualStyleBackColor = false;
+            this.hideShowPassword.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button1_MouseClick);
             // 
             // imageList1
             // 
@@ -170,20 +169,29 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar1.Location = new System.Drawing.Point(3, 186);
+            this.progressBar1.Location = new System.Drawing.Point(0, 186);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(317, 16);
+            this.progressBar1.Size = new System.Drawing.Size(320, 16);
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.progressBar1.TabIndex = 11;
+            // 
+            // cancelbutton
+            // 
+            this.cancelbutton.Location = new System.Drawing.Point(144, 208);
+            this.cancelbutton.Name = "cancelbutton";
+            this.cancelbutton.Size = new System.Drawing.Size(75, 23);
+            this.cancelbutton.TabIndex = 12;
+            this.cancelbutton.Text = "Отменить";
+            this.cancelbutton.UseVisualStyleBackColor = true;
             // 
             // LoginControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Controls.Add(this.cancelbutton);
             this.Controls.Add(this.progressBar1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.hideShowPassword);
             this.Controls.Add(this.NotificationLabel);
             this.Controls.Add(this.PasswordLabel);
             this.Controls.Add(this.UserLabel);
@@ -212,8 +220,9 @@
         private System.Windows.Forms.Label UserLabel;
         private System.Windows.Forms.Label PasswordLabel;
         private System.Windows.Forms.Label NotificationLabel;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button hideShowPassword;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.Button cancelbutton;
     }
 }

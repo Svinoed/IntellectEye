@@ -121,6 +121,7 @@
             this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBox1.BackColor = System.Drawing.Color.LightGray;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(64, 3);
             this.comboBox1.Name = "comboBox1";
@@ -261,6 +262,7 @@
             // 
             // listView1
             // 
+            this.listView1.BackColor = System.Drawing.Color.LightGray;
             this.listView1.Location = new System.Drawing.Point(14, 23);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(164, 167);
@@ -271,11 +273,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightGray;
+            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(484, 262);
             this.Controls.Add(this.splitContainer1);
             this.MinimumSize = new System.Drawing.Size(500, 300);
             this.Name = "SearchVideo";
+            this.Opacity = 0.95D;
+            this.ShowIcon = false;
             this.Text = "SearchVideo";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);

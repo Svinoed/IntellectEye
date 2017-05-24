@@ -66,6 +66,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.helpBtn = new System.Windows.Forms.Button();
             this.settingBtn = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tabControl.SuspendLayout();
             this.livePage.SuspendLayout();
             this.groupPanel.SuspendLayout();
@@ -77,6 +79,8 @@
             this.panel4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
@@ -99,7 +103,6 @@
             // livePage
             // 
             this.livePage.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.livePage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.livePage.Controls.Add(this.videoLivePanel);
             this.livePage.Controls.Add(this.groupPanel);
             this.livePage.Controls.Add(this.panel2);
@@ -124,14 +127,15 @@
             this.groupPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupPanel.Controls.Add(this.listGroup);
-            this.groupPanel.Location = new System.Drawing.Point(651, 44);
+            this.groupPanel.Location = new System.Drawing.Point(655, 44);
             this.groupPanel.Name = "groupPanel";
-            this.groupPanel.Size = new System.Drawing.Size(175, 330);
+            this.groupPanel.Size = new System.Drawing.Size(175, 324);
             this.groupPanel.TabIndex = 3;
             // 
             // listGroup
             // 
             this.listGroup.Activation = System.Windows.Forms.ItemActivation.OneClick;
+            this.listGroup.BackColor = System.Drawing.Color.LightGray;
             this.listGroup.HoverSelection = true;
             this.listGroup.Location = new System.Drawing.Point(0, 0);
             this.listGroup.Name = "listGroup";
@@ -144,7 +148,7 @@
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.Controls.Add(this.searchButton);
             this.panel2.Controls.Add(this.searchTextBox);
-            this.panel2.Location = new System.Drawing.Point(651, 3);
+            this.panel2.Location = new System.Drawing.Point(655, 3);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(175, 35);
             this.panel2.TabIndex = 5;
@@ -189,6 +193,7 @@
             this.imageList1.Images.SetKeyName(17, "18.switch.png");
             this.imageList1.Images.SetKeyName(18, "19.slow.png");
             this.imageList1.Images.SetKeyName(19, "20.fast.png");
+            this.imageList1.Images.SetKeyName(20, "21.playAgain.png");
             // 
             // searchTextBox
             // 
@@ -205,14 +210,11 @@
             // menuPanel
             // 
             this.menuPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.menuPanel.Controls.Add(this.tableLayoutPanel2);
             this.menuPanel.Controls.Add(this.pictureBox1);
-            this.menuPanel.Controls.Add(this.cameraEditor);
-            this.menuPanel.Controls.Add(this.groupEditor);
-            this.menuPanel.Controls.Add(this.button1);
-            this.menuPanel.Controls.Add(this.sequenceScreenplayEditor);
-            this.menuPanel.Location = new System.Drawing.Point(651, 380);
+            this.menuPanel.Location = new System.Drawing.Point(655, 374);
             this.menuPanel.Name = "menuPanel";
-            this.menuPanel.Size = new System.Drawing.Size(175, 35);
+            this.menuPanel.Size = new System.Drawing.Size(175, 45);
             this.menuPanel.TabIndex = 4;
             // 
             // pictureBox1
@@ -231,9 +233,9 @@
             this.cameraEditor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.cameraEditor.ImageIndex = 4;
             this.cameraEditor.ImageList = this.imageList1;
-            this.cameraEditor.Location = new System.Drawing.Point(22, 2);
+            this.cameraEditor.Location = new System.Drawing.Point(3, 3);
             this.cameraEditor.Name = "cameraEditor";
-            this.cameraEditor.Size = new System.Drawing.Size(30, 30);
+            this.cameraEditor.Size = new System.Drawing.Size(34, 34);
             this.cameraEditor.TabIndex = 1;
             this.cameraEditor.UseVisualStyleBackColor = true;
             this.cameraEditor.Click += new System.EventHandler(this.cameraEditor_Click);
@@ -247,9 +249,9 @@
             this.groupEditor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.groupEditor.ImageIndex = 5;
             this.groupEditor.ImageList = this.imageList1;
-            this.groupEditor.Location = new System.Drawing.Point(58, 3);
+            this.groupEditor.Location = new System.Drawing.Point(43, 3);
             this.groupEditor.Name = "groupEditor";
-            this.groupEditor.Size = new System.Drawing.Size(30, 30);
+            this.groupEditor.Size = new System.Drawing.Size(34, 34);
             this.groupEditor.TabIndex = 2;
             this.groupEditor.UseVisualStyleBackColor = true;
             this.groupEditor.Click += new System.EventHandler(this.groupEditor_Click);
@@ -263,9 +265,9 @@
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button1.ImageIndex = 7;
             this.button1.ImageList = this.imageList1;
-            this.button1.Location = new System.Drawing.Point(130, 3);
+            this.button1.Location = new System.Drawing.Point(123, 3);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(30, 30);
+            this.button1.Size = new System.Drawing.Size(34, 34);
             this.button1.TabIndex = 4;
             this.button1.UseVisualStyleBackColor = true;
             // 
@@ -277,9 +279,9 @@
             this.sequenceScreenplayEditor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.sequenceScreenplayEditor.ImageIndex = 6;
             this.sequenceScreenplayEditor.ImageList = this.imageList1;
-            this.sequenceScreenplayEditor.Location = new System.Drawing.Point(94, 2);
+            this.sequenceScreenplayEditor.Location = new System.Drawing.Point(83, 3);
             this.sequenceScreenplayEditor.Name = "sequenceScreenplayEditor";
-            this.sequenceScreenplayEditor.Size = new System.Drawing.Size(30, 30);
+            this.sequenceScreenplayEditor.Size = new System.Drawing.Size(34, 34);
             this.sequenceScreenplayEditor.TabIndex = 3;
             this.sequenceScreenplayEditor.UseVisualStyleBackColor = true;
             this.sequenceScreenplayEditor.MouseClick += new System.Windows.Forms.MouseEventHandler(this.sequenceScreenplayEditor_MouseClick);
@@ -287,7 +289,6 @@
             // playbackPage
             // 
             this.playbackPage.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.playbackPage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.playbackPage.Controls.Add(this.panel5);
             this.playbackPage.Controls.Add(this.panel4);
             this.playbackPage.Controls.Add(this.panel3);
@@ -300,14 +301,10 @@
             // 
             // panel5
             // 
-            this.panel5.Controls.Add(this.button8);
+            this.panel5.Controls.Add(this.tableLayoutPanel1);
             this.panel5.Controls.Add(this.button6);
-            this.panel5.Controls.Add(this.button5);
             this.panel5.Controls.Add(this.button3);
-            this.panel5.Controls.Add(this.button2);
-            this.panel5.Controls.Add(this.button11);
             this.panel5.Controls.Add(this.progressBar1);
-            this.panel5.Controls.Add(this.button10);
             this.panel5.Location = new System.Drawing.Point(1, 339);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(774, 77);
@@ -321,9 +318,9 @@
             this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button8.ImageIndex = 17;
             this.button8.ImageList = this.imageList1;
-            this.button8.Location = new System.Drawing.Point(305, 42);
+            this.button8.Location = new System.Drawing.Point(3, 3);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(30, 30);
+            this.button8.Size = new System.Drawing.Size(34, 34);
             this.button8.TabIndex = 21;
             this.button8.UseVisualStyleBackColor = true;
             // 
@@ -349,9 +346,9 @@
             this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button5.ImageIndex = 18;
             this.button5.ImageList = this.imageList1;
-            this.button5.Location = new System.Drawing.Point(341, 42);
+            this.button5.Location = new System.Drawing.Point(43, 3);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(30, 30);
+            this.button5.Size = new System.Drawing.Size(34, 34);
             this.button5.TabIndex = 19;
             this.button5.UseVisualStyleBackColor = true;
             // 
@@ -375,10 +372,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.ImageIndex = 19;
-            this.button2.Location = new System.Drawing.Point(41, 42);
+            this.button2.ImageIndex = 20;
+            this.button2.ImageList = this.imageList1;
+            this.button2.Location = new System.Drawing.Point(163, 3);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(30, 30);
+            this.button2.Size = new System.Drawing.Size(34, 34);
             this.button2.TabIndex = 17;
             this.button2.UseVisualStyleBackColor = true;
             // 
@@ -390,15 +388,15 @@
             this.button11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button11.ImageIndex = 19;
             this.button11.ImageList = this.imageList1;
-            this.button11.Location = new System.Drawing.Point(413, 42);
+            this.button11.Location = new System.Drawing.Point(123, 3);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(30, 30);
+            this.button11.Size = new System.Drawing.Size(34, 34);
             this.button11.TabIndex = 16;
             this.button11.UseVisualStyleBackColor = true;
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(3, 14);
+            this.progressBar1.Location = new System.Drawing.Point(3, 8);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(768, 23);
             this.progressBar1.TabIndex = 0;
@@ -411,9 +409,9 @@
             this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button10.ImageIndex = 14;
             this.button10.ImageList = this.imageList1;
-            this.button10.Location = new System.Drawing.Point(377, 43);
+            this.button10.Location = new System.Drawing.Point(83, 3);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(30, 30);
+            this.button10.Size = new System.Drawing.Size(34, 34);
             this.button10.TabIndex = 15;
             this.button10.UseVisualStyleBackColor = true;
             // 
@@ -423,9 +421,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.Controls.Add(this.button7);
             this.panel4.Controls.Add(this.button4);
-            this.panel4.Location = new System.Drawing.Point(781, 3);
+            this.panel4.Location = new System.Drawing.Point(785, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(55, 409);
+            this.panel4.Size = new System.Drawing.Size(55, 413);
             this.panel4.TabIndex = 1;
             // 
             // button7
@@ -434,7 +432,7 @@
             this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button7.ImageIndex = 12;
             this.button7.ImageList = this.imageList1;
-            this.button7.Location = new System.Drawing.Point(12, 70);
+            this.button7.Location = new System.Drawing.Point(12, 72);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(34, 34);
             this.button7.TabIndex = 12;
@@ -446,7 +444,7 @@
             this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button4.ImageIndex = 11;
             this.button4.ImageList = this.imageList1;
-            this.button4.Location = new System.Drawing.Point(12, 13);
+            this.button4.Location = new System.Drawing.Point(12, 15);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(34, 34);
             this.button4.TabIndex = 9;
@@ -549,6 +547,44 @@
             this.settingBtn.TabIndex = 5;
             this.settingBtn.UseVisualStyleBackColor = true;
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 5;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.Controls.Add(this.button8, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.button5, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.button2, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.button10, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.button11, 3, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(296, 34);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(200, 40);
+            this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 4;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel2.Controls.Add(this.cameraEditor, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.button1, 3, 0);
+            this.tableLayoutPanel2.Controls.Add(this.groupEditor, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.sequenceScreenplayEditor, 2, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(12, 3);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(160, 40);
+            this.tableLayoutPanel2.TabIndex = 0;
+            // 
             // MainControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -571,6 +607,8 @@
             this.panel4.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -612,5 +650,7 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }

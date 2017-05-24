@@ -32,32 +32,32 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CameraViewer));
             this.videoPanel = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.button26 = new System.Windows.Forms.Button();
-            this.button25 = new System.Windows.Forms.Button();
-            this.button24 = new System.Windows.Forms.Button();
-            this.button23 = new System.Windows.Forms.Button();
-            this.button22 = new System.Windows.Forms.Button();
-            this.button21 = new System.Windows.Forms.Button();
-            this.button20 = new System.Windows.Forms.Button();
-            this.button18 = new System.Windows.Forms.Button();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.button1 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.speedTextBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.zoomMinusButton = new System.Windows.Forms.Button();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.zoomPlusButton = new System.Windows.Forms.Button();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.rightDownButton = new System.Windows.Forms.Button();
+            this.downButton = new System.Windows.Forms.Button();
+            this.leftDownButton = new System.Windows.Forms.Button();
+            this.rightButton = new System.Windows.Forms.Button();
+            this.rightUpButton = new System.Windows.Forms.Button();
+            this.upButton = new System.Windows.Forms.Button();
+            this.leftUpButton = new System.Windows.Forms.Button();
+            this.leftButton = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.exitFullscreenButton = new System.Windows.Forms.Button();
+            this.settingsButton = new System.Windows.Forms.Button();
+            this.helpButton = new System.Windows.Forms.Button();
+            this.screenshotButton = new System.Windows.Forms.Button();
+            this.bookmarkButton = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.resetButton = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,10 +72,10 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.textBox1);
+            this.panel2.Controls.Add(this.speedTextBox);
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.button12);
-            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.zoomMinusButton);
+            this.panel2.Controls.Add(this.zoomPlusButton);
             this.panel2.Controls.Add(this.tableLayoutPanel2);
             this.panel2.Location = new System.Drawing.Point(744, 3);
             this.panel2.Name = "panel2";
@@ -83,149 +83,46 @@
             this.panel2.TabIndex = 0;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
-            // panel1
+            // label2
             // 
-            this.panel1.Controls.Add(this.button7);
-            this.panel1.Location = new System.Drawing.Point(3, 464);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(854, 35);
-            this.panel1.TabIndex = 1;
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(40, 171);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(34, 13);
+            this.label2.TabIndex = 32;
+            this.label2.Text = "Zoom";
             // 
-            // tableLayoutPanel2
+            // speedTextBox
             // 
-            this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel2.Controls.Add(this.button26, 2, 2);
-            this.tableLayoutPanel2.Controls.Add(this.button25, 1, 2);
-            this.tableLayoutPanel2.Controls.Add(this.button24, 0, 2);
-            this.tableLayoutPanel2.Controls.Add(this.button23, 2, 1);
-            this.tableLayoutPanel2.Controls.Add(this.button22, 2, 0);
-            this.tableLayoutPanel2.Controls.Add(this.button21, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.button20, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.button18, 0, 1);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(10, 3);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 3;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(90, 90);
-            this.tableLayoutPanel2.TabIndex = 28;
+            this.speedTextBox.Location = new System.Drawing.Point(31, 127);
+            this.speedTextBox.Name = "speedTextBox";
+            this.speedTextBox.Size = new System.Drawing.Size(49, 20);
+            this.speedTextBox.TabIndex = 31;
             // 
-            // button26
+            // label1
             // 
-            this.button26.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(28, 111);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(55, 13);
+            this.label1.TabIndex = 30;
+            this.label1.Text = "Скорость";
+            // 
+            // zoomMinusButton
+            // 
+            this.zoomMinusButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button26.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button26.ImageIndex = 9;
-            this.button26.ImageList = this.imageList1;
-            this.button26.Location = new System.Drawing.Point(63, 63);
-            this.button26.Name = "button26";
-            this.button26.Size = new System.Drawing.Size(24, 24);
-            this.button26.TabIndex = 34;
-            this.button26.UseVisualStyleBackColor = true;
-            // 
-            // button25
-            // 
-            this.button25.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button25.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button25.ImageIndex = 5;
-            this.button25.ImageList = this.imageList1;
-            this.button25.Location = new System.Drawing.Point(33, 63);
-            this.button25.Name = "button25";
-            this.button25.Size = new System.Drawing.Size(24, 24);
-            this.button25.TabIndex = 33;
-            this.button25.UseVisualStyleBackColor = true;
-            // 
-            // button24
-            // 
-            this.button24.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button24.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button24.ImageIndex = 10;
-            this.button24.ImageList = this.imageList1;
-            this.button24.Location = new System.Drawing.Point(3, 63);
-            this.button24.Name = "button24";
-            this.button24.Size = new System.Drawing.Size(24, 24);
-            this.button24.TabIndex = 32;
-            this.button24.UseVisualStyleBackColor = true;
-            // 
-            // button23
-            // 
-            this.button23.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button23.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button23.ImageIndex = 6;
-            this.button23.ImageList = this.imageList1;
-            this.button23.Location = new System.Drawing.Point(63, 33);
-            this.button23.Name = "button23";
-            this.button23.Size = new System.Drawing.Size(24, 24);
-            this.button23.TabIndex = 31;
-            this.button23.UseVisualStyleBackColor = true;
-            // 
-            // button22
-            // 
-            this.button22.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button22.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button22.ImageIndex = 8;
-            this.button22.ImageList = this.imageList1;
-            this.button22.Location = new System.Drawing.Point(63, 3);
-            this.button22.Name = "button22";
-            this.button22.Size = new System.Drawing.Size(24, 24);
-            this.button22.TabIndex = 30;
-            this.button22.UseVisualStyleBackColor = true;
-            // 
-            // button21
-            // 
-            this.button21.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button21.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button21.ImageIndex = 7;
-            this.button21.ImageList = this.imageList1;
-            this.button21.Location = new System.Drawing.Point(33, 3);
-            this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(24, 24);
-            this.button21.TabIndex = 29;
-            this.button21.UseVisualStyleBackColor = true;
-            // 
-            // button20
-            // 
-            this.button20.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button20.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button20.ImageIndex = 11;
-            this.button20.ImageList = this.imageList1;
-            this.button20.Location = new System.Drawing.Point(3, 3);
-            this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(24, 24);
-            this.button20.TabIndex = 28;
-            this.button20.UseVisualStyleBackColor = true;
-            // 
-            // button18
-            // 
-            this.button18.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button18.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button18.ImageIndex = 4;
-            this.button18.ImageList = this.imageList1;
-            this.button18.Location = new System.Drawing.Point(3, 33);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(24, 24);
-            this.button18.TabIndex = 26;
-            this.button18.UseVisualStyleBackColor = true;
+            this.zoomMinusButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.zoomMinusButton.ImageIndex = 12;
+            this.zoomMinusButton.ImageList = this.imageList1;
+            this.zoomMinusButton.Location = new System.Drawing.Point(7, 162);
+            this.zoomMinusButton.Name = "zoomMinusButton";
+            this.zoomMinusButton.Size = new System.Drawing.Size(30, 30);
+            this.zoomMinusButton.TabIndex = 29;
+            this.zoomMinusButton.UseVisualStyleBackColor = true;
             // 
             // imageList1
             // 
@@ -255,107 +152,234 @@
             this.imageList1.Images.SetKeyName(21, "22.fullscreen.png");
             this.imageList1.Images.SetKeyName(22, "23.get.png");
             // 
-            // button1
+            // zoomPlusButton
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.zoomPlusButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.ImageIndex = 13;
-            this.button1.ImageList = this.imageList1;
-            this.button1.Location = new System.Drawing.Point(77, 162);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(30, 30);
-            this.button1.TabIndex = 5;
-            this.button1.UseVisualStyleBackColor = true;
+            this.zoomPlusButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.zoomPlusButton.ImageIndex = 13;
+            this.zoomPlusButton.ImageList = this.imageList1;
+            this.zoomPlusButton.Location = new System.Drawing.Point(77, 162);
+            this.zoomPlusButton.Name = "zoomPlusButton";
+            this.zoomPlusButton.Size = new System.Drawing.Size(30, 30);
+            this.zoomPlusButton.TabIndex = 5;
+            this.zoomPlusButton.UseVisualStyleBackColor = true;
             // 
-            // button12
+            // tableLayoutPanel2
             // 
-            this.button12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tableLayoutPanel2.ColumnCount = 3;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel2.Controls.Add(this.rightDownButton, 2, 2);
+            this.tableLayoutPanel2.Controls.Add(this.downButton, 1, 2);
+            this.tableLayoutPanel2.Controls.Add(this.leftDownButton, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.rightButton, 2, 1);
+            this.tableLayoutPanel2.Controls.Add(this.rightUpButton, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.upButton, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.leftUpButton, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.leftButton, 0, 1);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(10, 3);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 3;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(90, 90);
+            this.tableLayoutPanel2.TabIndex = 28;
+            // 
+            // rightDownButton
+            // 
+            this.rightDownButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button12.ImageIndex = 12;
-            this.button12.ImageList = this.imageList1;
-            this.button12.Location = new System.Drawing.Point(7, 162);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(30, 30);
-            this.button12.TabIndex = 29;
-            this.button12.UseVisualStyleBackColor = true;
+            this.rightDownButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.rightDownButton.ImageIndex = 9;
+            this.rightDownButton.ImageList = this.imageList1;
+            this.rightDownButton.Location = new System.Drawing.Point(63, 63);
+            this.rightDownButton.Name = "rightDownButton";
+            this.rightDownButton.Size = new System.Drawing.Size(24, 24);
+            this.rightDownButton.TabIndex = 34;
+            this.rightDownButton.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // downButton
             // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(28, 111);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 13);
-            this.label1.TabIndex = 30;
-            this.label1.Text = "Скорость";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(31, 127);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(49, 20);
-            this.textBox1.TabIndex = 31;
-            // 
-            // button2
-            // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.downButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.ImageIndex = 1;
-            this.button2.ImageList = this.imageList1;
-            this.button2.Location = new System.Drawing.Point(123, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(24, 24);
-            this.button2.TabIndex = 32;
-            this.button2.UseVisualStyleBackColor = true;
+            this.downButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.downButton.ImageIndex = 5;
+            this.downButton.ImageList = this.imageList1;
+            this.downButton.Location = new System.Drawing.Point(33, 63);
+            this.downButton.Name = "downButton";
+            this.downButton.Size = new System.Drawing.Size(24, 24);
+            this.downButton.TabIndex = 33;
+            this.downButton.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // leftDownButton
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.leftDownButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button3.ImageIndex = 0;
-            this.button3.ImageList = this.imageList1;
-            this.button3.Location = new System.Drawing.Point(93, 3);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(24, 24);
-            this.button3.TabIndex = 33;
-            this.button3.UseVisualStyleBackColor = true;
+            this.leftDownButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.leftDownButton.ImageIndex = 10;
+            this.leftDownButton.ImageList = this.imageList1;
+            this.leftDownButton.Location = new System.Drawing.Point(3, 63);
+            this.leftDownButton.Name = "leftDownButton";
+            this.leftDownButton.Size = new System.Drawing.Size(24, 24);
+            this.leftDownButton.TabIndex = 32;
+            this.leftDownButton.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // rightButton
             // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.rightButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button4.ImageIndex = 2;
-            this.button4.ImageList = this.imageList1;
-            this.button4.Location = new System.Drawing.Point(33, 3);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(24, 24);
-            this.button4.TabIndex = 34;
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.rightButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.rightButton.ImageIndex = 6;
+            this.rightButton.ImageList = this.imageList1;
+            this.rightButton.Location = new System.Drawing.Point(63, 33);
+            this.rightButton.Name = "rightButton";
+            this.rightButton.Size = new System.Drawing.Size(24, 24);
+            this.rightButton.TabIndex = 31;
+            this.rightButton.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // rightUpButton
             // 
-            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.rightUpButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button5.ImageIndex = 16;
-            this.button5.ImageList = this.imageList1;
-            this.button5.Location = new System.Drawing.Point(63, 3);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(24, 24);
-            this.button5.TabIndex = 35;
-            this.button5.UseVisualStyleBackColor = true;
+            this.rightUpButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.rightUpButton.ImageIndex = 8;
+            this.rightUpButton.ImageList = this.imageList1;
+            this.rightUpButton.Location = new System.Drawing.Point(63, 3);
+            this.rightUpButton.Name = "rightUpButton";
+            this.rightUpButton.Size = new System.Drawing.Size(24, 24);
+            this.rightUpButton.TabIndex = 30;
+            this.rightUpButton.UseVisualStyleBackColor = true;
+            // 
+            // upButton
+            // 
+            this.upButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.upButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.upButton.ImageIndex = 7;
+            this.upButton.ImageList = this.imageList1;
+            this.upButton.Location = new System.Drawing.Point(33, 3);
+            this.upButton.Name = "upButton";
+            this.upButton.Size = new System.Drawing.Size(24, 24);
+            this.upButton.TabIndex = 29;
+            this.upButton.UseVisualStyleBackColor = true;
+            // 
+            // leftUpButton
+            // 
+            this.leftUpButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.leftUpButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.leftUpButton.ImageIndex = 11;
+            this.leftUpButton.ImageList = this.imageList1;
+            this.leftUpButton.Location = new System.Drawing.Point(3, 3);
+            this.leftUpButton.Name = "leftUpButton";
+            this.leftUpButton.Size = new System.Drawing.Size(24, 24);
+            this.leftUpButton.TabIndex = 28;
+            this.leftUpButton.UseVisualStyleBackColor = true;
+            // 
+            // leftButton
+            // 
+            this.leftButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.leftButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.leftButton.ImageIndex = 4;
+            this.leftButton.ImageList = this.imageList1;
+            this.leftButton.Location = new System.Drawing.Point(3, 33);
+            this.leftButton.Name = "leftButton";
+            this.leftButton.Size = new System.Drawing.Size(24, 24);
+            this.leftButton.TabIndex = 26;
+            this.leftButton.UseVisualStyleBackColor = true;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.exitFullscreenButton);
+            this.panel1.Location = new System.Drawing.Point(3, 464);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(854, 35);
+            this.panel1.TabIndex = 1;
+            // 
+            // exitFullscreenButton
+            // 
+            this.exitFullscreenButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.exitFullscreenButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.exitFullscreenButton.ImageIndex = 20;
+            this.exitFullscreenButton.ImageList = this.imageList1;
+            this.exitFullscreenButton.Location = new System.Drawing.Point(3, 3);
+            this.exitFullscreenButton.Name = "exitFullscreenButton";
+            this.exitFullscreenButton.Size = new System.Drawing.Size(30, 30);
+            this.exitFullscreenButton.TabIndex = 32;
+            this.exitFullscreenButton.UseVisualStyleBackColor = true;
+            // 
+            // settingsButton
+            // 
+            this.settingsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.settingsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.settingsButton.ImageIndex = 1;
+            this.settingsButton.ImageList = this.imageList1;
+            this.settingsButton.Location = new System.Drawing.Point(123, 3);
+            this.settingsButton.Name = "settingsButton";
+            this.settingsButton.Size = new System.Drawing.Size(24, 24);
+            this.settingsButton.TabIndex = 32;
+            this.settingsButton.UseVisualStyleBackColor = true;
+            // 
+            // helpButton
+            // 
+            this.helpButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.helpButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.helpButton.ImageIndex = 0;
+            this.helpButton.ImageList = this.imageList1;
+            this.helpButton.Location = new System.Drawing.Point(93, 3);
+            this.helpButton.Name = "helpButton";
+            this.helpButton.Size = new System.Drawing.Size(24, 24);
+            this.helpButton.TabIndex = 33;
+            this.helpButton.UseVisualStyleBackColor = true;
+            // 
+            // screenshotButton
+            // 
+            this.screenshotButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.screenshotButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.screenshotButton.ImageIndex = 2;
+            this.screenshotButton.ImageList = this.imageList1;
+            this.screenshotButton.Location = new System.Drawing.Point(33, 3);
+            this.screenshotButton.Name = "screenshotButton";
+            this.screenshotButton.Size = new System.Drawing.Size(24, 24);
+            this.screenshotButton.TabIndex = 34;
+            this.screenshotButton.UseVisualStyleBackColor = true;
+            this.screenshotButton.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // bookmarkButton
+            // 
+            this.bookmarkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.bookmarkButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bookmarkButton.ImageIndex = 16;
+            this.bookmarkButton.ImageList = this.imageList1;
+            this.bookmarkButton.Location = new System.Drawing.Point(63, 3);
+            this.bookmarkButton.Name = "bookmarkButton";
+            this.bookmarkButton.Size = new System.Drawing.Size(24, 24);
+            this.bookmarkButton.TabIndex = 35;
+            this.bookmarkButton.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel1
             // 
@@ -365,11 +389,11 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.Controls.Add(this.button6, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.button4, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.button2, 4, 0);
-            this.tableLayoutPanel1.Controls.Add(this.button5, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.button3, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.resetButton, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.screenshotButton, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.settingsButton, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.bookmarkButton, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.helpButton, 3, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(704, 464);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
@@ -377,43 +401,19 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(150, 30);
             this.tableLayoutPanel1.TabIndex = 36;
             // 
-            // button6
+            // resetButton
             // 
-            this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.resetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button6.ImageIndex = 3;
-            this.button6.ImageList = this.imageList1;
-            this.button6.Location = new System.Drawing.Point(3, 3);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(24, 24);
-            this.button6.TabIndex = 36;
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // button7
-            // 
-            this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button7.ImageIndex = 20;
-            this.button7.ImageList = this.imageList1;
-            this.button7.Location = new System.Drawing.Point(3, 3);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(30, 30);
-            this.button7.TabIndex = 32;
-            this.button7.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(40, 171);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(34, 13);
-            this.label2.TabIndex = 32;
-            this.label2.Text = "Zoom";
+            this.resetButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.resetButton.ImageIndex = 3;
+            this.resetButton.ImageList = this.imageList1;
+            this.resetButton.Location = new System.Drawing.Point(3, 3);
+            this.resetButton.Name = "resetButton";
+            this.resetButton.Size = new System.Drawing.Size(24, 24);
+            this.resetButton.TabIndex = 36;
+            this.resetButton.UseVisualStyleBackColor = true;
             // 
             // CameraViewer
             // 
@@ -428,8 +428,8 @@
             this.Size = new System.Drawing.Size(857, 512);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.panel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -441,26 +441,26 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Button button26;
-        private System.Windows.Forms.Button button25;
-        private System.Windows.Forms.Button button24;
-        private System.Windows.Forms.Button button23;
-        private System.Windows.Forms.Button button22;
-        private System.Windows.Forms.Button button21;
-        private System.Windows.Forms.Button button20;
-        private System.Windows.Forms.Button button18;
+        private System.Windows.Forms.Button rightDownButton;
+        private System.Windows.Forms.Button downButton;
+        private System.Windows.Forms.Button leftDownButton;
+        private System.Windows.Forms.Button rightButton;
+        private System.Windows.Forms.Button rightUpButton;
+        private System.Windows.Forms.Button upButton;
+        private System.Windows.Forms.Button leftUpButton;
+        private System.Windows.Forms.Button leftButton;
         private System.Windows.Forms.ImageList imageList1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button zoomPlusButton;
+        private System.Windows.Forms.Button zoomMinusButton;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.TextBox speedTextBox;
+        private System.Windows.Forms.Button settingsButton;
+        private System.Windows.Forms.Button helpButton;
+        private System.Windows.Forms.Button screenshotButton;
+        private System.Windows.Forms.Button bookmarkButton;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button exitFullscreenButton;
+        private System.Windows.Forms.Button resetButton;
         private System.Windows.Forms.Label label2;
     }
 }
