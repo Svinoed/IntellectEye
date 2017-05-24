@@ -21,8 +21,7 @@ namespace View
         private ListViewItem _selectedGroupItem;
         private bool _isChangedCameraList;
         private bool _isChangedName;
-        private bool _isChangedListGrup;
-        public Dictionary<Guid, Group>  Result { get; set; }
+        public Dictionary<Guid, Group>  EditedGrops { get; set; }
 
         int controlButtonGroupBoxHeight = 41;
 
@@ -44,7 +43,7 @@ namespace View
             groupNameTextBox.LostFocus += (s, e) => GroupRename(s, e);
             _isChangedCameraList = false;
             _isChangedName = false;
-            _isChangedListGrup = false;
+            EditedGrops = null;
         }
 
         private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
@@ -119,7 +118,7 @@ namespace View
             item.Tag = group;
             listGroup.Items.Add(item);
             _groups.Add(group.Id, group);
-            Result = _groups;
+            EditedGrops = _groups;
         }
 
         private string GetNewName()
@@ -189,8 +188,7 @@ namespace View
                     _selectedGroupItem.Text,
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question,
-                    MessageBoxDefaultButton.Button1,
-                    MessageBoxOptions.ServiceNotification);
+                    MessageBoxDefaultButton.Button1);
 
                 if(dialogResult == DialogResult.Yes)
                 {
@@ -317,7 +315,7 @@ namespace View
                     _isChangedName = false;
                 }
             }
-            Result = _groups;
+            EditedGrops = _groups;
         }
         #endregion
 
@@ -336,8 +334,7 @@ namespace View
                 "Удалить ?",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question,
-                MessageBoxDefaultButton.Button2,
-                MessageBoxOptions.ServiceNotification);
+                MessageBoxDefaultButton.Button2);
 
             if (result == DialogResult.Yes)
             {
@@ -350,20 +347,21 @@ namespace View
         private void CancelClick(object sender, EventArgs e)
         {
 
-            if (Result != null)
+            if (EditedGrops != null || _isChangedCameraList || _isChangedName)
             {
                 DialogResult result = MessageBox.Show("Вы действительно хотите отменить все изменения?",
-                "Отменить", MessageBoxButtons.YesNo,
+                "Отменить изменения", MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question,
-                MessageBoxDefaultButton.Button2,
-                MessageBoxOptions.DefaultDesktopOnly);
+                MessageBoxDefaultButton.Button2);
 
                 if (result == DialogResult.Yes)
                 {
-                    Result = null;
+                    EditedGrops = null;
                     this.Close();
                 }
-            }     
+                return;
+            }
+            this.Close();
         }
     }
 }

@@ -238,7 +238,7 @@ namespace View
             {
                 GroupEditor groupEditor = new GroupEditor(groups, cameras);
                 groupEditor.ShowDialog();
-                return groupEditor.Result;
+                return groupEditor.EditedGrops;
             }
 
             private void groupEditor_Click(object sender, EventArgs e)
