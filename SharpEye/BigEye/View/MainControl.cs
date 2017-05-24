@@ -251,7 +251,7 @@ namespace View
         #endregion
 
             #region Set list group
-            public void SetGroup(Dictionary<Guid, Group> groups, Guid activeGroup)
+            public void SetGroups(Dictionary<Guid, Group> groups, Guid activeGroup)
             {
                 _groups = groups;
                 listGroup.Items.Clear();

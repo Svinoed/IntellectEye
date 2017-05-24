@@ -17,8 +17,15 @@ namespace Model
 
         public ICameraModel GetCamera(dynamic id)
         {
-            FQID fqid = id;
-            return _listCam.Find(c => c.Id == fqid);
+            FQID fqid = (FQID) id;
+            foreach (var c in _listCam) {
+                FQID camId = (FQID) c.Id;
+                if (camId.Equals(fqid))
+                {
+                    return c;
+                }
+            }
+            return null;
         }
 
         public List<ICameraModel> GetCameras()

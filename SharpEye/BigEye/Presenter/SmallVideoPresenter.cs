@@ -17,19 +17,7 @@ namespace Presenter
         [Import]
         private IVideoModel _videoModel;
 
-        public ICameraModel Camera
-        {
-            get
-            {
-                return _camera;
-            }
-
-            set
-            {
-                _camera = value;
-                _videoModel.SetVideoStreamInPanel(_camera, _view.VideoPanel);
-            }
-        }
+        public ICameraModel Camera { get { return _camera; } set { _camera = value;} }
 
         public event Action<ICameraModel> FullScreen;
 
@@ -54,6 +42,11 @@ namespace Presenter
         public ISmallView GetView()
         {
             return _view;
+        }
+
+        public void SetCamera()
+        {
+            _videoModel.SetVideoStreamInPanel(_camera, _view.VideoPanel);
         }
     }
 }
