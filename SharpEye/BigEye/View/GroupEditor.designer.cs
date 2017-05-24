@@ -31,25 +31,25 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GroupEditor));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.listGroup = new System.Windows.Forms.ListView();
             this.controlButtonGroupBox = new System.Windows.Forms.GroupBox();
             this.delButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
-            this.groupList = new System.Windows.Forms.ListBox();
+            this.searchTextBox = new System.Windows.Forms.TextBox();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.moveDownBtn = new System.Windows.Forms.Button();
+            this.moveUpBtn = new System.Windows.Forms.Button();
+            this.moveLeftBtn = new System.Windows.Forms.Button();
+            this.moveRightBtn = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.listCameraGroup = new System.Windows.Forms.ListView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.treeView1 = new System.Windows.Forms.TreeView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.listCamera = new System.Windows.Forms.ListView();
+            this.groupNameTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.textBox2 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -69,27 +69,40 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.listGroup);
             this.splitContainer1.Panel1.Controls.Add(this.controlButtonGroupBox);
-            this.splitContainer1.Panel1.Controls.Add(this.groupList);
             this.splitContainer1.Panel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.splitContainer1.Panel1MinSize = 50;
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.textBox2);
+            this.splitContainer1.Panel2.Controls.Add(this.searchTextBox);
             this.splitContainer1.Panel2.Controls.Add(this.button6);
             this.splitContainer1.Panel2.Controls.Add(this.button5);
             this.splitContainer1.Panel2.Controls.Add(this.groupBox1);
             this.splitContainer1.Panel2.Controls.Add(this.panel2);
             this.splitContainer1.Panel2.Controls.Add(this.panel1);
-            this.splitContainer1.Panel2.Controls.Add(this.textBox1);
+            this.splitContainer1.Panel2.Controls.Add(this.groupNameTextBox);
             this.splitContainer1.Panel2.Controls.Add(this.label1);
             this.splitContainer1.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.splitContainer1.Panel2MinSize = 50;
-            this.splitContainer1.Size = new System.Drawing.Size(484, 261);
+            this.splitContainer1.Size = new System.Drawing.Size(484, 262);
             this.splitContainer1.SplitterDistance = 140;
             this.splitContainer1.TabIndex = 0;
             this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
+            // 
+            // listGroup
+            // 
+            this.listGroup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listGroup.Location = new System.Drawing.Point(0, -2);
+            this.listGroup.MultiSelect = false;
+            this.listGroup.Name = "listGroup";
+            this.listGroup.Size = new System.Drawing.Size(133, 223);
+            this.listGroup.TabIndex = 2;
+            this.listGroup.UseCompatibleStateImageBehavior = false;
+            this.listGroup.View = System.Windows.Forms.View.List;
+            this.listGroup.SelectedIndexChanged += new System.EventHandler(this.listGroup_SelectedIndexChanged);
             // 
             // controlButtonGroupBox
             // 
@@ -111,6 +124,7 @@
             this.delButton.Size = new System.Drawing.Size(30, 30);
             this.delButton.TabIndex = 1;
             this.delButton.UseVisualStyleBackColor = false;
+            this.delButton.Click += new System.EventHandler(this.delButton_Click);
             // 
             // addButton
             // 
@@ -121,35 +135,15 @@
             this.addButton.Size = new System.Drawing.Size(30, 30);
             this.addButton.TabIndex = 0;
             this.addButton.UseVisualStyleBackColor = false;
-            this.addButton.MouseEnter += new System.EventHandler(this.addButton_MouseEnter);
-            this.addButton.MouseHover += new System.EventHandler(this.addButton_MouseHover);
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
-            // groupList
+            // searchTextBox
             // 
-            this.groupList.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.groupList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.groupList.FormattingEnabled = true;
-            this.groupList.HorizontalScrollbar = true;
-            this.groupList.Items.AddRange(new object[] {
-            "Группа 1",
-            "Группа 2",
-            "Группа 3",
-            "Группа 4",
-            "Группа 5",
-            "Группа 6",
-            "Группа 7",
-            "Группа 8",
-            "Группа 9",
-            "Группа 10",
-            "Группа 11",
-            "Группа 12",
-            "Группа 13",
-            "Группа 14",
-            "Группа 15"});
-            this.groupList.Location = this.splitContainer1.Location;
-            this.groupList.Name = "groupList";
-            this.groupList.Size = new System.Drawing.Size(140, 221);
-            this.groupList.TabIndex = 0;
+            this.searchTextBox.Location = new System.Drawing.Point(9, 31);
+            this.searchTextBox.Name = "searchTextBox";
+            this.searchTextBox.Size = new System.Drawing.Size(131, 20);
+            this.searchTextBox.TabIndex = 6;
+            this.searchTextBox.TextChanged += new System.EventHandler(this.searchTextBox_TextChanged);
             // 
             // button6
             // 
@@ -159,6 +153,7 @@
             this.button6.TabIndex = 5;
             this.button6.Text = "Отменить";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.CancelClick);
             // 
             // button5
             // 
@@ -168,96 +163,112 @@
             this.button5.TabIndex = 4;
             this.button5.Text = "Сохранить";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.SaveBtnClick);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button4);
-            this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.moveDownBtn);
+            this.groupBox1.Controls.Add(this.moveUpBtn);
+            this.groupBox1.Controls.Add(this.moveLeftBtn);
+            this.groupBox1.Controls.Add(this.moveRightBtn);
             this.groupBox1.Location = new System.Drawing.Point(146, 31);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(42, 190);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
-            // button4
+            // moveDownBtn
             // 
-            this.button4.BackColor = System.Drawing.Color.Gray;
-            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
-            this.button4.Location = new System.Drawing.Point(6, 154);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(30, 30);
-            this.button4.TabIndex = 5;
-            this.button4.UseVisualStyleBackColor = false;
+            this.moveDownBtn.BackColor = System.Drawing.Color.Gray;
+            this.moveDownBtn.Image = ((System.Drawing.Image)(resources.GetObject("moveDownBtn.Image")));
+            this.moveDownBtn.Location = new System.Drawing.Point(6, 154);
+            this.moveDownBtn.Name = "moveDownBtn";
+            this.moveDownBtn.Size = new System.Drawing.Size(30, 30);
+            this.moveDownBtn.TabIndex = 5;
+            this.moveDownBtn.UseVisualStyleBackColor = false;
+            this.moveDownBtn.Click += new System.EventHandler(this.MoveDown);
             // 
-            // button3
+            // moveUpBtn
             // 
-            this.button3.BackColor = System.Drawing.Color.Gray;
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.Location = new System.Drawing.Point(6, 115);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(30, 30);
-            this.button3.TabIndex = 4;
-            this.button3.UseVisualStyleBackColor = false;
+            this.moveUpBtn.BackColor = System.Drawing.Color.Gray;
+            this.moveUpBtn.Image = ((System.Drawing.Image)(resources.GetObject("moveUpBtn.Image")));
+            this.moveUpBtn.Location = new System.Drawing.Point(6, 115);
+            this.moveUpBtn.Name = "moveUpBtn";
+            this.moveUpBtn.Size = new System.Drawing.Size(30, 30);
+            this.moveUpBtn.TabIndex = 4;
+            this.moveUpBtn.UseVisualStyleBackColor = false;
+            this.moveUpBtn.Click += new System.EventHandler(this.MoveUp);
             // 
-            // button2
+            // moveLeftBtn
             // 
-            this.button2.BackColor = System.Drawing.Color.Gray;
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(6, 55);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(30, 30);
-            this.button2.TabIndex = 3;
-            this.button2.UseVisualStyleBackColor = false;
+            this.moveLeftBtn.BackColor = System.Drawing.Color.Gray;
+            this.moveLeftBtn.Image = ((System.Drawing.Image)(resources.GetObject("moveLeftBtn.Image")));
+            this.moveLeftBtn.Location = new System.Drawing.Point(6, 55);
+            this.moveLeftBtn.Name = "moveLeftBtn";
+            this.moveLeftBtn.Size = new System.Drawing.Size(30, 30);
+            this.moveLeftBtn.TabIndex = 3;
+            this.moveLeftBtn.UseVisualStyleBackColor = false;
+            this.moveLeftBtn.Click += new System.EventHandler(this.MoveLeft);
             // 
-            // button1
+            // moveRightBtn
             // 
-            this.button1.BackColor = System.Drawing.Color.Gray;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(6, 19);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(30, 30);
-            this.button1.TabIndex = 2;
-            this.button1.UseVisualStyleBackColor = false;
+            this.moveRightBtn.BackColor = System.Drawing.Color.Gray;
+            this.moveRightBtn.Image = ((System.Drawing.Image)(resources.GetObject("moveRightBtn.Image")));
+            this.moveRightBtn.Location = new System.Drawing.Point(6, 19);
+            this.moveRightBtn.Name = "moveRightBtn";
+            this.moveRightBtn.Size = new System.Drawing.Size(30, 30);
+            this.moveRightBtn.TabIndex = 2;
+            this.moveRightBtn.UseVisualStyleBackColor = false;
+            this.moveRightBtn.Click += new System.EventHandler(this.MoveRight);
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.listBox1);
+            this.panel2.Controls.Add(this.listCameraGroup);
             this.panel2.Location = new System.Drawing.Point(194, 31);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(131, 190);
             this.panel2.TabIndex = 3;
             // 
-            // listBox1
+            // listCameraGroup
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(8, 19);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(120, 95);
-            this.listBox1.TabIndex = 0;
+            this.listCameraGroup.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listCameraGroup.Location = new System.Drawing.Point(7, 3);
+            this.listCameraGroup.Name = "listCameraGroup";
+            this.listCameraGroup.Size = new System.Drawing.Size(121, 189);
+            this.listCameraGroup.TabIndex = 0;
+            this.listCameraGroup.UseCompatibleStateImageBehavior = false;
+            this.listCameraGroup.View = System.Windows.Forms.View.List;
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.treeView1);
+            this.panel1.Controls.Add(this.listCamera);
             this.panel1.Location = new System.Drawing.Point(9, 50);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(131, 171);
             this.panel1.TabIndex = 2;
             // 
-            // treeView1
+            // listCamera
             // 
-            this.treeView1.Location = new System.Drawing.Point(3, 19);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(121, 97);
-            this.treeView1.TabIndex = 0;
+            this.listCamera.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listCamera.Location = new System.Drawing.Point(0, 7);
+            this.listCamera.Name = "listCamera";
+            this.listCamera.Size = new System.Drawing.Size(128, 161);
+            this.listCamera.TabIndex = 0;
+            this.listCamera.UseCompatibleStateImageBehavior = false;
+            this.listCamera.View = System.Windows.Forms.View.List;
             // 
-            // textBox1
+            // groupNameTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(108, 5);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(217, 20);
-            this.textBox1.TabIndex = 1;
+            this.groupNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupNameTextBox.Location = new System.Drawing.Point(108, 5);
+            this.groupNameTextBox.Name = "groupNameTextBox";
+            this.groupNameTextBox.Size = new System.Drawing.Size(217, 20);
+            this.groupNameTextBox.TabIndex = 1;
             // 
             // label1
             // 
@@ -268,25 +279,19 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Название группы";
             // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(9, 31);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(131, 20);
-            this.textBox2.TabIndex = 6;
-            // 
             // GroupEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.ClientSize = new System.Drawing.Size(484, 261);
+            this.ClientSize = new System.Drawing.Size(484, 262);
             this.Controls.Add(this.splitContainer1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(500, 300);
             this.Name = "GroupEditor";
             this.Text = "Редактор групп";
+            this.Load += new System.EventHandler(this.GroupEditor_Load);
             this.Resize += new System.EventHandler(this.GroupEditor_Resize);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -303,24 +308,24 @@
 
         #endregion
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.ListBox groupList;
         private System.Windows.Forms.GroupBox controlButtonGroupBox;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox groupNameTextBox;
         private System.Windows.Forms.Button delButton;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TreeView treeView1;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button moveDownBtn;
+        private System.Windows.Forms.Button moveUpBtn;
+        private System.Windows.Forms.Button moveLeftBtn;
+        private System.Windows.Forms.Button moveRightBtn;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox searchTextBox;
+        private System.Windows.Forms.ListView listCameraGroup;
+        private System.Windows.Forms.ListView listGroup;
+        private System.Windows.Forms.ListView listCamera;
     }
 }
