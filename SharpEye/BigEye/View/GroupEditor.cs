@@ -29,13 +29,8 @@ namespace View
         {
             InitializeComponent();
             
-            listGroup.Width = splitContainer1.Panel1.Width;
-            listGroup.Height = splitContainer1.Panel1.Height- controlButtonGroupBoxHeight;
-            controlButtonGroupBox.Location = new Point(splitContainer1.Location.X, splitContainer1.Height - controlButtonGroupBoxHeight);
-            controlButtonGroupBox.Height = controlButtonGroupBoxHeight;
-            controlButtonGroupBox.Width = splitContainer1.Panel1.Width;
-            //splitContainer2.SplitterWidth = 50;
             listCamera.Dock = DockStyle.Fill;
+
 
             // This code by shukur
             _groups = groups;
@@ -78,18 +73,11 @@ namespace View
 
         #endregion
 
-        private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
-        {
-            this.listGroup.Width = this.splitContainer1.Panel1.Width;
-            controlButtonGroupBox.Width = splitContainer1.Panel1.Width;
-        }
+     
         
         private void GroupEditor_Resize(object sender, EventArgs e)
         {
-            listGroup.Height = splitContainer1.Panel1.Height - controlButtonGroupBoxHeight;
-            controlButtonGroupBox.Location = new Point(splitContainer1.Location.X, splitContainer1.Height - controlButtonGroupBoxHeight);
-            controlButtonGroupBox.Height = controlButtonGroupBoxHeight;
-            controlButtonGroupBox.Width = splitContainer1.Panel1.Width;
+            
         }
 
         #region Load by shukur
@@ -270,7 +258,7 @@ namespace View
         private void GroupRename(object sender, EventArgs e)
         {
             if (!_selectedGroupItem.Text.Equals(groupNameTextBox.Text))
-                _isChangedCameraList = true;
+                _isChangedName = true;
         }
     }
 }

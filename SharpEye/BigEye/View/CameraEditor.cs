@@ -15,6 +15,10 @@ namespace View
         public CameraEditor()
         {
             InitializeComponent();
+            camEditorMainPanel.Anchor = (AnchorStyles.Top & AnchorStyles.Bottom & AnchorStyles.Left & AnchorStyles.Right);
+            camEditorMainPanel.Dock = DockStyle.Fill;
+            camPanel.Dock= DockStyle.Fill;
+            camList.Dock = DockStyle.Fill;
         }
     }
 }
