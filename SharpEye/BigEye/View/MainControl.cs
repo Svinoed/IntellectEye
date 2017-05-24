@@ -193,26 +193,26 @@ namespace View
             _videoTable.Dock = DockStyle.Fill;
             _videoTable.Controls.Clear();
             _videoTable.RowCount = rows;
-            _videoTable.ColumnCount = columns; 
-     
-            for (int i = 0; i < rows; i++)
-            {
-                for (int j = 0; j < columns; j++)
-                {
-                    float height = 100 / rows;
-                    float width = 100 / columns;
-                    int cell = j + i * columns;
-                    _videoTable.RowStyles.Add(new RowStyle(SizeType.Percent, height));
-                    _videoTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, width));
+            _videoTable.ColumnCount = columns;
+            float height = 100 / rows;
+            float width = 100 / columns;
 
-                    if (cell < size)
-                    {
-                        UserControl smallControl = (UserControl)list.ElementAt(cell);
-                        smallControl.Dock = DockStyle.Fill;
-                        _videoTable.Controls.Add(smallControl);
-                    }
-                }
+            for(int i = 0; i < rows; i++)
+            {
+                _videoTable.RowStyles.Add(new RowStyle(SizeType.Percent, height));
             }
+            
+            for (int i = 0; i < columns; i++ )
+            {
+                _videoTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, width));
+            }
+            
+            foreach (var c in list)
+            {
+                UserControl smallControl = (UserControl) c;
+                smallControl.Dock = DockStyle.Fill;
+                _videoTable.Controls.Add(smallControl);
+            }     
 
             videoLivePanel.Controls.Clear();
             videoLivePanel.Controls.Add(_videoTable);
@@ -224,49 +224,58 @@ namespace View
             throw new NotImplementedException();
         }
 
-        #region EditGroups by shukur
-        /// <summary>
-        /// Вызвает окно редактирования групп и
-        /// передает ей актуальный список камер и групп
-        /// </summary>
-        /// <param name="groups"></param>
-        /// <param name="cameras"></param>
-        /// <returns></returns>
-        public Dictionary<Guid, Group> EditGroups(Dictionary<Guid,Group> groups, Dictionary<dynamic, string> cameras)
-        {
-            GroupEditor groupEditor = new GroupEditor(groups, cameras);
-            groupEditor.Show();
-            return null;
-        }
+        #region this co by shukur
 
+            #region EditGroups
+            /// <summary>
+            /// Вызвает окно редактирования групп и
+            /// передает ей актуальный список камер и групп
+            /// </summary>
+            /// <param name="groups"></param>
+            /// <param name="cameras"></param>
+            /// <returns></returns>
+            public Dictionary<Guid, Group> EditGroups(Dictionary<Guid, Group> groups, Dictionary<dynamic, string> cameras)
+            {
+                GroupEditor groupEditor = new GroupEditor(groups, cameras);
+                groupEditor.ShowDialog();
+                return groupEditor.EditedGrops;
+            }
+
+            private void groupEditor_Click(object sender, EventArgs e)
+            {
+                if (GroupsEditClick != null)
+                {
+                    GroupsEditClick();
+                }
+            }
         #endregion
 
-        public void SetGroup(Dictionary<Guid, Group> groups, Guid activeGroup)
-        {
-            _groups = groups;
-            foreach (var i in groups) {
-                listGroup.Items.Add(i.Value.Name);
-            }           
-        }
+            #region Set list group
+            public void SetGroup(Dictionary<Guid, Group> groups, Guid activeGroup)
+            {
+                _groups = groups;
+                listGroup.Items.Clear();
+
+                foreach (var i in groups)
+                {
+                    listGroup.Items.Add(i.Value.Name);
+                }
+            }
+            #endregion
+
+        #endregion
 
         private void cameraEditor_Click(object sender, EventArgs e)
         {
 
         }
-
-        // by shukur
-        private void groupEditor_Click(object sender, EventArgs e)
-        {
-            if (GroupsEditClick != null)
-            {
-                GroupsEditClick();
-            }
-        }
+        
 
         private void button4_MouseClick(object sender, MouseEventArgs e)
         {
             SearchVideo searchVideo = new SearchVideo();
             searchVideo.Show();
         }
+
     }
 }

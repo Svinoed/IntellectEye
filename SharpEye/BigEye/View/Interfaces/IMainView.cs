@@ -14,6 +14,7 @@ namespace View.Interfaces
         void AddVideoControl(IVideoView view);
         void AddListControl(List<ISmallView> list);
         void SetGroup(Dictionary<Guid, Group> groups, Guid activeGroup);
+
         event Action<Group> CamEditClick;
         event Action GroupsEditClick;
 

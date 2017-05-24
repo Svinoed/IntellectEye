@@ -21,7 +21,7 @@ namespace View
         private ListViewItem _selectedGroupItem;
         private bool _isChangedCameraList;
         private bool _isChangedName;
-        private bool _isChangedListGrup;
+        public Dictionary<Guid, Group>  EditedGrops { get; set; }
 
         int controlButtonGroupBoxHeight = 41;
 
@@ -33,51 +33,26 @@ namespace View
 
 
             // This code by shukur
-            _groups = groups;
+            _groups = new Dictionary<Guid, Group> (groups); // клонируем коллекцию
             _cameras = cameras;
             groupNameTextBox.LostFocus += (s, e) => GroupRename(s, e);
             _isChangedCameraList = false;
             _isChangedName = false;
-            _isChangedListGrup = false;
+            EditedGrops = null;
         }
 
-
-        #region LoadCameras by shukur
-        private void LoadCameras()
+        private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
         {
-            listCamera.Items.Clear();
-            foreach(var c in _cameras)
-            {
-                if (!CameraContains(c, listCameraGroup.Items))
-                {
-                    ListViewItem item = new ListViewItem(c.Value);
-                    item.Tag = c;
-                    listCamera.Items.Add(item);
-                }
-            }
+            this.listGroup.Width = this.splitContainer1.Panel1.Width;
+            controlButtonGroupBox.Width = splitContainer1.Panel1.Width;
         }
-
-        private bool CameraContains(KeyValuePair<dynamic, string> camera,  ListViewItemCollection items)
-        {
-            foreach (ListViewItem c in items)
-            {
-                KeyValuePair<dynamic, string> keyValue = (KeyValuePair<dynamic, string>) c.Tag;
-
-                if (keyValue.Equals(camera)) 
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        #endregion
-
-     
         
         private void GroupEditor_Resize(object sender, EventArgs e)
         {
-            
+            listGroup.Height = splitContainer1.Panel1.Height - controlButtonGroupBoxHeight;
+            controlButtonGroupBox.Location = new Point(splitContainer1.Location.X, splitContainer1.Height - controlButtonGroupBoxHeight);
+            controlButtonGroupBox.Height = controlButtonGroupBoxHeight;
+            controlButtonGroupBox.Width = splitContainer1.Panel1.Width;
         }
 
         #region Load by shukur
@@ -95,17 +70,96 @@ namespace View
                 listGroup.Items.Add(item);
             }
         }
+
+        #region LoadCameras by shukur
+        private void LoadCameras()
+        {
+            listCamera.Items.Clear();
+            foreach (var c in _cameras)
+            {
+                if (!CameraContains(c, listCameraGroup.Items))
+                {
+                    ListViewItem item = new ListViewItem(c.Value);
+                    item.Tag = c;
+                    listCamera.Items.Add(item);
+                }
+            }
+        }
+
+        private bool CameraContains(KeyValuePair<dynamic, string> camera, ListViewItemCollection items)
+        {
+            foreach (ListViewItem c in items)
+            {
+                KeyValuePair<dynamic, string> keyValue = (KeyValuePair<dynamic, string>)c.Tag;
+
+                if (keyValue.Equals(camera))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        #endregion
+
         #endregion
 
         #region Add and Delete group bu shukur
         private void addButton_Click(object sender, EventArgs e)
         {
-            Group group = new Group("Новая группа");
+            Group group = new Group();
+            group.Name = GetNewName();
             ListViewItem item = new ListViewItem(group.Name);
             item.Tag = group;
             listGroup.Items.Add(item);
+            _groups.Add(group.Id, group);
+            EditedGrops = _groups;
+        }
+
+        private string GetNewName()
+        {
+            return GetActualName("Новая группа", "Новая группа");
+        }
+        private string GetActualName(string name, string oldName)
+        {
+            string newName = name;
+            for (int i = 0; i < _groups.Values.Count; i++ )
+            {
+               if (_groups.Values.ElementAt(i).Name.Equals(name))
+                {
+                    newName = GetActualName(oldName + i, oldName);
+                    return newName; 
+                }
+            } 
+            return newName;
+        }
+
+
+
+        #endregion
+
+        #region Filter by shukur
+
+        private void searchTextBox_TextChanged(object sender, EventArgs e)
+        {
+            Filter(listCamera, searchTextBox.Text);
+        }
+
+        private void Filter(ListView list, string filter)
+        {
+            list.Items.Clear();
+            foreach (var c in _cameras)
+            {
+                if (c.Value.ToString().StartsWith(filter))
+                {
+                    ListViewItem item = new ListViewItem(c.Value);
+                    item.Tag = c;
+                    list.Items.Add(item);
+                }
+            }
         }
         #endregion
+
         /// <summary>
         /// Отображает выбранную группу и 
         /// корректирует список камер
@@ -122,15 +176,14 @@ namespace View
                 return;
             }
 
-            if (_isChangedCameraList)
+            if (_isChangedCameraList | _isChangedName)
             {
                 DialogResult dialogResult = MessageBox.Show(
                     "Сохранить изменения ?",
                     _selectedGroupItem.Text,
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question,
-                    MessageBoxDefaultButton.Button1,
-                    MessageBoxOptions.ServiceNotification);
+                    MessageBoxDefaultButton.Button1);
 
                 if(dialogResult == DialogResult.Yes)
                 {
@@ -231,16 +284,20 @@ namespace View
 
         private void Save()
         {
+            if (_selectedGroupItem == null)
+            {
+                Debug.WriteLine("selectedGroup null");
+                return;
+            }
+            Group changedGroup = (Group)_selectedGroupItem.Tag;
             if (_isChangedCameraList)
             {
-                Dictionary<dynamic, string> changedListCamera = new Dictionary<dynamic, string>();
+                changedGroup.Cameras.Clear();
                 foreach (ListViewItem item in listCameraGroup.Items)
                 {
                     KeyValuePair<dynamic, string> keyValue = (KeyValuePair<dynamic, string>)item.Tag;
-                    changedListCamera.Add(keyValue.Key, keyValue.Value);
+                    changedGroup.Cameras.Add(keyValue.Key, keyValue.Value);
                 }
-                Group changedGroup = (Group)_selectedGroupItem.Tag;
-                changedGroup.Cameras = changedListCamera;
                 _isChangedCameraList = false;
             }
          
@@ -249,16 +306,57 @@ namespace View
                 if (!_selectedGroupItem.Name.Equals(groupNameTextBox.Text))
                 {
                     _selectedGroupItem.Text = groupNameTextBox.Text;
+                    changedGroup.Name = groupNameTextBox.Text;
                     _isChangedName = false;
                 }
             }
+            EditedGrops = _groups;
         }
         #endregion
 
         private void GroupRename(object sender, EventArgs e)
         {
             if (!_selectedGroupItem.Text.Equals(groupNameTextBox.Text))
+            {
                 _isChangedName = true;
+            }
+        }
+
+        private void delButton_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+                "Выдействительно хотите удалить группу " + _selectedGroupItem.Text + " ?",
+                "Удалить ?",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button2);
+
+            if (result == DialogResult.Yes)
+            {
+                listGroup.Items.Remove(_selectedGroupItem);
+                Group deletedGroup = (Group) _selectedGroupItem.Tag;
+                _groups.Remove(deletedGroup.Id);
+            }
+        }
+
+        private void CancelClick(object sender, EventArgs e)
+        {
+
+            if (EditedGrops != null || _isChangedCameraList || _isChangedName)
+            {
+                DialogResult result = MessageBox.Show("Вы действительно хотите отменить все изменения?",
+                "Отменить изменения", MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button2);
+
+                if (result == DialogResult.Yes)
+                {
+                    EditedGrops = null;
+                    this.Close();
+                }
+                return;
+            }
+            this.Close();
         }
     }
 }
