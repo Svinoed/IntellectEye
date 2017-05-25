@@ -79,6 +79,7 @@
             this.MinimumSize = new System.Drawing.Size(200, 200);
             this.Name = "Preview";
             this.ShowIcon = false;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Preview_FormClosing);
             this.SizeChanged += new System.EventHandler(this.Preview_SizeChanged);
             this._VideoPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();

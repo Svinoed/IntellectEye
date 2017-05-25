@@ -16,8 +16,18 @@ namespace MiniEye.Views
     public partial class Preview : Form
     {
         ICameraData _Data;
+        /// <summary>
+        /// Действие при изменении формы
+        /// </summary>
         public new event EventHandler OnResize;
-        public event Action OnSettingsChange; 
+        /// <summary>
+        /// Действие при нажатии на кнопку изменения настроек
+        /// </summary>
+        public event Action OnSettingsChange;
+        /// <summary>
+        /// Действие при закрытии формы. Необходимо для освобождения ресурсов
+        /// </summary>
+        public event Action OnClose;
 
         public Preview(ICameraData data)
         {
@@ -28,12 +38,20 @@ namespace MiniEye.Views
 
         private void Preview_SizeChanged(object sender, EventArgs e)
         {
-            OnResize(sender, e);
+            //При вызове изменения размеров выполняется проверка на null
+            OnResize?.Invoke(sender, e);
         }
 
         private void settingsButton_Click(object sender, EventArgs e)
         {
-            OnSettingsChange();
+            //При изменении настроек выполняется проверка на null
+            OnSettingsChange?.Invoke();
+        }
+
+        private void Preview_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //перед вызовом выполняется проверка на null
+            OnClose?.Invoke();
         }
     }
 }

@@ -139,11 +139,8 @@ namespace MiniEye
         private ICameraManagerModel _ModelCameraManager;
         [Import(typeof(ISerializable))]
         private ISerializable _ModelSerializeDevise;
-        //[Import(typeof(IVideoModel))]
-        //private IVideoModel _ModelLiveStream;
-
-        private SDK.ILiveStream _ModelLiveStream = null;
-
+        [Import(typeof(IVideoModel))]
+        private IVideoModel _ModelLiveStream;
 
         #region Save state properties
         [Browsable(false)]
@@ -209,19 +206,6 @@ namespace MiniEye
             _ViewSettings.OnGetCameraRequest += _Settings_OnGetCameraRequest;
             _ViewSettings.OnSettingsApplyed += _ViewSettings_OnSettingsApplyed;
             _ViewSettings.OnCameraSelected += _ViewSettings_OnCameraSelected;
-            _ViewPreview.OnResize += _ViewPreview_OnResize;
-        }
-        /// <summary>
-        /// Запрос изменений размеров изображения с камеры при изменении размеров формы
-        /// </summary>
-        private void _ViewPreview_OnResize(object sender, EventArgs e)
-        {
-            if(_ModelLiveStream != null)
-            {
-                int width = ((Form)sender).Width;
-                int height = ((Form)sender).Height;
-                _ModelLiveStream.Resize(width, height);
-            }
         }
 
         /// <summary>
@@ -271,32 +255,18 @@ namespace MiniEye
             _ViewPreview.Text = this.CameraName;    //Установить обновленные данные
 
             //Создание модели
-            _ModelLiveStream = new SDK.LiveStream();
-            _ModelLiveStream.ImageIsReady += _ModelLiveStream_ImageIsReady;
-            if (!_ModelLiveStream.Initialize(_ModelSerializeDevise.Deserialize(this.SelectedCamera), _ViewPreview._VideoPanel.Width, _ViewPreview._VideoPanel.Height))
+            try
             {
+                _ModelLiveStream.SetVideoStreamInPanel(_ModelSerializeDevise.Deserialize(this.SelectedCamera), _ViewPreview._VideoPanel);
+            }
+            catch (Exception)
+            {
+                IsStateSaved = false;
                 MessageBox.Show("Невозможно установить камеру");
                 return;
             }
+            //Не показываем просмотр если камера не установилась
             _ViewPreview.Show();
-        }
-
-        /// <summary>
-        /// Получение изображения из модели и установка его в 
-        /// </summary>
-        /// <param name="picture"></param>
-        private void _ModelLiveStream_ImageIsReady(Bitmap picture)
-        {
-            //Если окно закрыто то отписываемся от получения сообщений и освобождаются ресурсы
-            if (_ViewPreview.IsDisposed)
-                _ModelLiveStream.ImageIsReady -= _ModelLiveStream_ImageIsReady;
-            if (_ViewPreview.pictureBox.Size.Width != 0 && _ViewPreview.pictureBox.Size.Height != 0)
-            {
-                if (picture.Width != _ViewPreview.pictureBox.Width || picture.Height != _ViewPreview.pictureBox.Height)
-                    _ViewPreview.pictureBox.Image = new Bitmap(picture, _ViewPreview.pictureBox.Size);
-                else
-                    _ViewPreview.pictureBox.Image = picture;
-            }
         }
 
         /// <summary>
@@ -317,7 +287,6 @@ namespace MiniEye
                 if (_ViewPreview.IsDisposed || _ViewPreview == null)
                 {
                     _ViewPreview = new Views.Preview(this);
-                    _ModelLiveStream.ImageIsReady += _ModelLiveStream_ImageIsReady;
                 }
                  
                // _ViewPreview.Text = this.CameraName;
