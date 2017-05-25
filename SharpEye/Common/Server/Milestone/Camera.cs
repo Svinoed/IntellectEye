@@ -27,6 +27,10 @@ namespace Model
             Id = id;
             Name = name;
             MicrophoneId = micId;
-        } 
+        }
+        public override string ToString()
+        {
+            return this.Name;
+        }
     }
 }

@@ -80,6 +80,9 @@
       <HintPath>..\packages\Microsoft.VisualStudio.OLE.Interop.7.10.6070\lib\Microsoft.VisualStudio.OLE.Interop.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Presenter">
+      <HintPath>..\..\BigEye\Presenter\obj\x86\Debug\Presenter.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.Composition.registration" />
@@ -104,6 +107,9 @@
     </Reference>
     <Reference Include="VideoOS.Platform.SDK.UI">
       <HintPath>..\..\..\..\..\Program Files (x86)\Milestone\MIPSDK\Bin\VideoOS.Platform.SDK.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="View">
+      <HintPath>..\..\BigEye\View\obj\x86\Debug\View.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -145,12 +151,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="SDK\Libs\CopyExportFiles.bat" />
-    <None Include="SDK\Libs\CopyImageViewerActiveX.bat" />
-    <None Include="SDK\Libs\CopyLogFiles.bat" />
-    <None Include="SDK\Libs\CopyMedia.bat" />
-    <None Include="SDK\Libs\CopyMediaCpp.bat" />
-    <None Include="SDK\Libs\VideoOS.UI.manifest" />
     <None Include="Sign.snk" />
   </ItemGroup>
   <ItemGroup>
@@ -170,70 +170,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Settings256.png" />
-    <Content Include="SDK\Libs\3rd_party_software_terms_and_conditions.txt" />
-    <Content Include="SDK\Libs\AudioPlayerDotNet.dll" />
-    <Content Include="SDK\Libs\AudioPlayerDotNet_axinterop.dll" />
-    <Content Include="SDK\Libs\AudioPlayerDotNet_interop.dll" />
-    <Content Include="SDK\Libs\AVIExporterClientMW.dll" />
-    <Content Include="SDK\Libs\boost_chrono-vc120-mt-1_57.dll" />
-    <Content Include="SDK\Libs\boost_regex-vc120-mt-1_57.dll" />
-    <Content Include="SDK\Libs\boost_serialization-vc120-mt-1_57.dll" />
-    <Content Include="SDK\Libs\boost_system-vc120-mt-1_57.dll" />
-    <Content Include="SDK\Libs\boost_thread-vc120-mt-1_57.dll" />
-    <Content Include="SDK\Libs\CoreToolkits.dll" />
-    <Content Include="SDK\Libs\DBExporterClientMW.dll" />
-    <Content Include="SDK\Libs\icudt48.dll" />
-    <Content Include="SDK\Libs\icuin48.dll" />
-    <Content Include="SDK\Libs\icuio48.dll" />
-    <Content Include="SDK\Libs\icule48.dll" />
-    <Content Include="SDK\Libs\iculx48.dll" />
-    <Content Include="SDK\Libs\icutu48.dll" />
-    <Content Include="SDK\Libs\icuuc48.dll" />
-    <Content Include="SDK\Libs\ImageViewerDotNet.dll" />
-    <Content Include="SDK\Libs\ImageViewerDotNet_axinterop.dll" />
-    <Content Include="SDK\Libs\ImageViewerDotNet_interop.dll" />
-    <Content Include="SDK\Libs\IMV1.dll" />
-    <Content Include="SDK\Libs\LogServiceClientMW.dll" />
-    <Content Include="SDK\Libs\mfc120.dll" />
-    <Content Include="SDK\Libs\mfcm120.dll" />
-    <Content Include="SDK\Libs\Mm025.dll" />
-    <Content Include="SDK\Libs\msvcp120.dll" />
-    <Content Include="SDK\Libs\msvcp80.dll" />
-    <Content Include="SDK\Libs\msvcr120.dll" />
-    <Content Include="SDK\Libs\msvcr80.dll" />
-    <Content Include="SDK\Libs\python27.dll" />
-    <Content Include="SDK\Libs\ServerCommandServiceClient.dll" />
-    <Content Include="SDK\Libs\ToolkitFactoryProvider.dll" />
-    <Content Include="SDK\Libs\ToolkitSourcePlugin_mm025.dll" />
-    <Content Include="SDK\Libs\VideoOS.ConfigurationAPI.dll" />
-    <Content Include="SDK\Libs\VideoOS.DatabaseUtility.Common.dll" />
-    <Content Include="SDK\Libs\VideoOS.DatabaseUtility.MediaStorage.dll" />
-    <Content Include="SDK\Libs\VideoOS.DirectXMW.DirectInput.dll" />
-    <Content Include="SDK\Libs\VideoOS.DirectXMW.DirectSound.dll" />
-    <Content Include="SDK\Libs\VideoOS.Management.Common.dll" />
-    <Content Include="SDK\Libs\VideoOS.Management.VmoClient.dll" />
-    <Content Include="SDK\Libs\VideoOS.Management.VmoClient.XML" />
-    <Content Include="SDK\Libs\VideoOS.MM025Utility.dll" />
-    <Content Include="SDK\Libs\VideoOS.Platform.AccessControl.dll" />
-    <Content Include="SDK\Libs\VideoOS.Platform.dll" />
-    <Content Include="SDK\Libs\VideoOS.Platform.Primitives.dll" />
-    <Content Include="SDK\Libs\VideoOS.Platform.SDK.dll" />
-    <Content Include="SDK\Libs\VideoOS.Platform.SDK.Export.dll" />
-    <Content Include="SDK\Libs\VideoOS.Platform.SDK.Log.dll" />
-    <Content Include="SDK\Libs\VideoOS.Platform.SDK.Media.dll" />
     <Content Include="Resources\Camera128.png" />
     <Content Include="Resources\Camera16.png" />
     <Content Include="Resources\Camera256.png" />
     <Content Include="Resources\Camera32.png" />
     <Content Include="Resources\Camera64.png" />
-    <Content Include="SDK\Libs\VideoOS.Platform.SDK.RemoteRetrievalTasks.dll" />
-    <Content Include="SDK\Libs\VideoOS.Platform.SDK.UI.dll" />
-    <Content Include="SDK\Libs\VideoOS.Platform.Transact.dll" />
-    <Content Include="SDK\Libs\VideoOS.Platform.Transact.XML" />
-    <Content Include="SDK\Libs\VideoOS.Toolkit.dll" />
-    <Content Include="SDK\Libs\VideoOS.UI.Common.WPF.VideoPlayer.dll" />
-    <Content Include="SDK\Libs\xerces-c_3_1.dll" />
-    <Content Include="SDK\Libs\xqilla23.dll" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Common\Server\Contract\Contract.csproj">
