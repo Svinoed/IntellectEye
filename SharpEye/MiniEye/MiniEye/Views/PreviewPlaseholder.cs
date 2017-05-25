@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace MiniEye.Views
 {
-    public partial class PreviewPlaseholder : UserControl
+    public partial class PreviewPlaceholder : UserControl
     {
         public Panel _VideoPanel { get { return this.panel; } }
-        public PreviewPlaseholder()
+        public PreviewPlaceholder()
         {
             InitializeComponent();
         }

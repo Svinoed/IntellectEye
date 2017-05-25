@@ -1,6 +1,6 @@
 ﻿namespace MiniEye.Views
 {
-    partial class PreviewPlaseholder
+    partial class PreviewPlaceholder
     {
         /// <summary> 
         /// Required designer variable.
