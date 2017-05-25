@@ -17,9 +17,10 @@ namespace MiniEye.Views
     {
         ICameraData _Data;
         public new event EventHandler OnResize;
+        public event Action OnSettingsChange; 
+
         public Preview(ICameraData data)
         {
-            
             _Data = data;
             InitializeComponent();
             this.Text = data.CameraName;
@@ -28,6 +29,11 @@ namespace MiniEye.Views
         private void Preview_SizeChanged(object sender, EventArgs e)
         {
             OnResize(sender, e);
+        }
+
+        private void settingsButton_Click(object sender, EventArgs e)
+        {
+            OnSettingsChange();
         }
     }
 }

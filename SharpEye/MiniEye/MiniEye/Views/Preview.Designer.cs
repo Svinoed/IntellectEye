@@ -42,21 +42,20 @@
             this.settingsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.settingsButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
             this.settingsButton.FlatAppearance.BorderSize = 0;
-            this.settingsButton.Location = new System.Drawing.Point(12, 364);
+            this.settingsButton.Location = new System.Drawing.Point(12, 183);
             this.settingsButton.Name = "settingsButton";
             this.settingsButton.Size = new System.Drawing.Size(30, 30);
             this.settingsButton.TabIndex = 2;
             this.settingsButton.UseVisualStyleBackColor = true;
             this.settingsButton.Visible = false;
+            this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
             // 
             // _VideoPanel
             // 
-            this._VideoPanel.Controls.Add(this.settingsButton);
             this._VideoPanel.Controls.Add(this.pictureBox);
-            this._VideoPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this._VideoPanel.Location = new System.Drawing.Point(0, 0);
             this._VideoPanel.Name = "_VideoPanel";
-            this._VideoPanel.Size = new System.Drawing.Size(542, 406);
+            this._VideoPanel.Size = new System.Drawing.Size(184, 162);
             this._VideoPanel.TabIndex = 3;
             // 
             // pictureBox
@@ -64,7 +63,7 @@
             this.pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox.Location = new System.Drawing.Point(0, 0);
             this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(542, 406);
+            this.pictureBox.Size = new System.Drawing.Size(184, 162);
             this.pictureBox.TabIndex = 3;
             this.pictureBox.TabStop = false;
             // 
@@ -72,7 +71,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(542, 406);
+            this.ClientSize = new System.Drawing.Size(233, 225);
+            this.Controls.Add(this.settingsButton);
             this.Controls.Add(this._VideoPanel);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
