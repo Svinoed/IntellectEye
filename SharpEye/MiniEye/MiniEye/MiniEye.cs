@@ -253,20 +253,20 @@ namespace MiniEye
             this.CameraName = data.CameraName;
             _ViewSettings.Hide();
             _ViewPreview.Text = this.CameraName;    //Установить обновленные данные
-
+            //Нужно сначала показать пользователю форму, после чего вставлять в нее видео
+            _ViewPreview.Show();
             //Создание модели
             try
             {
-                _ModelLiveStream.SetVideoStreamInPanel(_ModelSerializeDevise.Deserialize(this.SelectedCamera), _ViewPreview._VideoPanel);
+                ICameraModel camera = _ModelCameraManager.GetCameras().Find(cam => cam.Name.Equals(SelectedCameraName));
+                _ModelLiveStream.SetVideoStreamInPanel(camera, _ViewPreview._VideoPanel);
+                //_ModelLiveStream.SetVideoStreamInPanel(_ModelSerializeDevise.Deserialize(this.SelectedCamera), _ViewPreview._VideoPanel);
             }
             catch (Exception)
             {
                 IsStateSaved = false;
-                MessageBox.Show("Невозможно установить камеру");
-                return;
+                MessageBox.Show("Ошибка при установке камеры");
             }
-            //Не показываем просмотр если камера не установилась
-            _ViewPreview.Show();
         }
 
         /// <summary>

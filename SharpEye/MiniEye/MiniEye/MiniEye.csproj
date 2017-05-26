@@ -143,12 +143,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Views\PreviewPlaseholder.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Views\PreviewPlaseholder.Designer.cs">
-      <DependentUpon>PreviewPlaseholder.cs</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -172,9 +166,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Preview.resx">
       <DependentUpon>Preview.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\PreviewPlaseholder.resx">
-      <DependentUpon>PreviewPlaseholder.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.settingsButton = new System.Windows.Forms.Button();
+            this._VideoPanel = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // settingsButton
@@ -46,12 +47,21 @@
             this.settingsButton.Visible = false;
             this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
             // 
+            // _VideoPanel
+            // 
+            this._VideoPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._VideoPanel.Location = new System.Drawing.Point(0, 0);
+            this._VideoPanel.Name = "_VideoPanel";
+            this._VideoPanel.Size = new System.Drawing.Size(184, 162);
+            this._VideoPanel.TabIndex = 3;
+            // 
             // Preview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(184, 162);
             this.Controls.Add(this.settingsButton);
+            this.Controls.Add(this._VideoPanel);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(200, 200);
@@ -66,5 +76,6 @@
         #endregion
 
         private System.Windows.Forms.Button settingsButton;
+        public System.Windows.Forms.Panel _VideoPanel;
     }
 }

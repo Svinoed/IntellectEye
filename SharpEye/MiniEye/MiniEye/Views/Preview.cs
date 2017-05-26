@@ -28,17 +28,12 @@ namespace MiniEye.Views
         /// Действие при закрытии формы. Необходимо для освобождения ресурсов
         /// </summary>
         public event Action OnClose;
-        public Panel _VideoPanel;
 
         public Preview(ICameraData data)
         {
             _Data = data;
             InitializeComponent();
             this.Text = data.CameraName;
-            PreviewPlaceholder placeholder = new PreviewPlaceholder();
-            placeholder.Dock = DockStyle.Fill;
-            this._VideoPanel = placeholder._VideoPanel;
-            this.Controls.Add(placeholder);
         }
 
         private void Preview_SizeChanged(object sender, EventArgs e)
