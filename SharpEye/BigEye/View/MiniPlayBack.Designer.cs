@@ -31,8 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MiniPlayBack));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.videoPanel = new System.Windows.Forms.Panel();
             this.flowPanelZoom = new System.Windows.Forms.Panel();
-            this.speedTextBox = new System.Windows.Forms.TextBox();
             this.zoomPlusButton = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.zoomMinusButton = new System.Windows.Forms.Button();
@@ -66,7 +66,7 @@
             this.exportButton = new System.Windows.Forms.Button();
             this.bookmarkButton = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.videoPanel = new System.Windows.Forms.Panel();
+            this.playbackSpeedLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.flowPanelZoom.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -86,9 +86,16 @@
             this.panel1.Size = new System.Drawing.Size(562, 307);
             this.panel1.TabIndex = 0;
             // 
+            // videoPanel
+            // 
+            this.videoPanel.Location = new System.Drawing.Point(6, 6);
+            this.videoPanel.Name = "videoPanel";
+            this.videoPanel.Size = new System.Drawing.Size(455, 242);
+            this.videoPanel.TabIndex = 27;
+            // 
             // flowPanelZoom
             // 
-            this.flowPanelZoom.Controls.Add(this.speedTextBox);
+            this.flowPanelZoom.Controls.Add(this.playbackSpeedLabel);
             this.flowPanelZoom.Controls.Add(this.zoomPlusButton);
             this.flowPanelZoom.Controls.Add(this.zoomMinusButton);
             this.flowPanelZoom.Controls.Add(this.label1);
@@ -98,13 +105,6 @@
             this.flowPanelZoom.Name = "flowPanelZoom";
             this.flowPanelZoom.Size = new System.Drawing.Size(92, 248);
             this.flowPanelZoom.TabIndex = 26;
-            // 
-            // speedTextBox
-            // 
-            this.speedTextBox.Location = new System.Drawing.Point(26, 117);
-            this.speedTextBox.Name = "speedTextBox";
-            this.speedTextBox.Size = new System.Drawing.Size(49, 20);
-            this.speedTextBox.TabIndex = 29;
             // 
             // zoomPlusButton
             // 
@@ -591,12 +591,15 @@
             this.progressBar1.Size = new System.Drawing.Size(559, 15);
             this.progressBar1.TabIndex = 1;
             // 
-            // videoPanel
+            // playbackSpeedLabel
             // 
-            this.videoPanel.Location = new System.Drawing.Point(6, 6);
-            this.videoPanel.Name = "videoPanel";
-            this.videoPanel.Size = new System.Drawing.Size(455, 242);
-            this.videoPanel.TabIndex = 27;
+            this.playbackSpeedLabel.AutoSize = true;
+            this.playbackSpeedLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.playbackSpeedLabel.Location = new System.Drawing.Point(16, 117);
+            this.playbackSpeedLabel.Name = "playbackSpeedLabel";
+            this.playbackSpeedLabel.Size = new System.Drawing.Size(10, 13);
+            this.playbackSpeedLabel.TabIndex = 34;
+            this.playbackSpeedLabel.Text = " ";
             // 
             // MiniPlayBack
             // 
@@ -643,7 +646,6 @@
         private System.Windows.Forms.Button upButton;
         private System.Windows.Forms.Button leftUpButton;
         private System.Windows.Forms.Button leftButton;
-        private System.Windows.Forms.TextBox speedTextBox;
         private System.Windows.Forms.Button zoomPlusButton;
         private System.Windows.Forms.Button zoomMinusButton;
         private System.Windows.Forms.Label label1;
@@ -657,5 +659,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel videoPanel;
+        private System.Windows.Forms.Label playbackSpeedLabel;
     }
 }
