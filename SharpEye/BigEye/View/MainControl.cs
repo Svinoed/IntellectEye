@@ -9,13 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using View.Interfaces;
 using View.Utils;
+using System.Threading;
 
 namespace View
 {
     public partial class MainControl : UserControl, IMainView, ILogView
     {
 
-        public bool ViewVisible { get { throw new NotImplementedException(); } set { throw new NotImplementedException(); } }
+        public bool ViewVisible { get { return this.Visible; } set { this.Visible = value; } }
 
 
         public event Action<Group> CamEditClick;
@@ -27,9 +28,11 @@ namespace View
         public MainControl()
         {
             InitializeComponent();
+            this.Dock = DockStyle.Fill;
             DrawAll();
-            _videoTable = new TableLayoutPanel();
+            //_videoTable = new TableLayoutPanel();
             listGroup.View = System.Windows.Forms.View.List;
+            _videoTable = new TableLayoutPanel();
         }
 
 
@@ -150,15 +153,14 @@ namespace View
         {
 
         }
-
-
-
+        
 
         #region AddListControl by dima. Refactor shukur
         /// <summary>
         /// Добавляет список контролов для отображения видео
         /// </summary>
         /// <param name="list"></param>
+
         public void AddListControl(List<ISmallView> list)
         {
             int size = list.Count;
@@ -167,7 +169,7 @@ namespace View
             {
                 return;
             }
-            
+
             int sqrt = (int)Math.Sqrt(size);
             //число столбцов и колонок рассчитывается на основе квадратного корня из размера входящего списка
             int columns;
@@ -198,26 +200,29 @@ namespace View
             float height = 100 / rows;
             float width = 100 / columns;
 
-            for(int i = 0; i < rows; i++)
+            for (int i = 0; i < rows; i++)
             {
                 _videoTable.RowStyles.Add(new RowStyle(SizeType.Percent, height));
             }
-            
-            for (int i = 0; i < columns; i++ )
+
+            for (int i = 0; i < columns; i++)
             {
                 _videoTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, width));
             }
-            
+
             foreach (var c in list)
             {
-                UserControl smallControl = (UserControl) c;
+                UserControl smallControl = (UserControl)c;
                 smallControl.Dock = DockStyle.Fill;
                 _videoTable.Controls.Add(smallControl);
-            }     
+
+            }
 
             videoLivePanel.Controls.Clear();
             videoLivePanel.Controls.Add(_videoTable);
+
         }
+
         #endregion
 
         public Group EditGroup(Group group, Dictionary<dynamic, string> cameras)

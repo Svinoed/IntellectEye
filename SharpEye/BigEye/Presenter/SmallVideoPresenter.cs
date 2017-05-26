@@ -28,12 +28,13 @@ namespace Presenter
             {
                 _view = view;
                 FullScreen += handler;
+                _view.FullScreen += () => ViewFullScreenHandler();
             }
         }
 
         private void ViewFullScreenHandler()
         {
-            if (FullScreen != null)
+            if (FullScreen != null && _camera != null)
             {
                 FullScreen(Camera);
             }
@@ -44,9 +45,24 @@ namespace Presenter
             return _view;
         }
 
-        public void SetCamera()
+        public async void SetCamera()
         {
-            _videoModel.SetVideoStreamInPanel(_camera, _view.VideoPanel);
+  
+            await Task.Run(() =>
+            {
+                _view.VideoPanel.Invoke(((Action)delegate
+              {
+                  _videoModel.SetVideoStreamInPanel(_camera, _view.VideoPanel, (s, e) =>
+                  {
+                      ViewFullScreenHandler();
+                  });
+              })); 
+            });
+        }
+
+        public void Disconnect()
+        {
+           _videoModel.Disconnect();
         }
     }
 }

@@ -76,7 +76,7 @@ namespace Presenter
             {
                 GreateSmallPresenter();
             }
-
+            DisconnectAll();
             List<ISmallView> listVideo = GetListView();
             _view.AddListControl(listVideo);
             SetCameraToSmallView();
@@ -116,16 +116,24 @@ namespace Presenter
             return list;
         }
 
+        private void DisconnectAll()
+        {
+            foreach (var p in _smallPresenters)
+            {
+                p.Disconnect();
+            }
+        }
+
         private void SetCameraToSmallView()
         {
-            var c = _activeGroup.Cameras.Keys;;
+            var c = _activeGroup.Cameras.Keys; ;
             for (int i = 0; i < c.Count; i++)
             {
                 ICameraModel camera = _cameraManager.GetCamera(c.ElementAt(i));
                 ISmallVideoPresenter presenter = _smallPresenters[i];
                 presenter.Camera = camera;
                 presenter.SetCamera();
-            }
+            }          
         }
 
         

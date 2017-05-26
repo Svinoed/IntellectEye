@@ -14,5 +14,6 @@ namespace Presenter.Interfaces
         event Action<ICameraModel> FullScreen;
         ISmallView GetView();
         void SetCamera();
+        void Disconnect();
     }
 }
