@@ -41,19 +41,6 @@ namespace View
             EditedGrops = null;
         }
 
-        private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
-        {
-            this.listGroup.Width = this.splitContainer1.Panel1.Width;
-            controlButtonGroupBox.Width = splitContainer1.Panel1.Width;
-        }
-        
-        private void GroupEditor_Resize(object sender, EventArgs e)
-        {
-            listGroup.Height = splitContainer1.Panel1.Height - controlButtonGroupBoxHeight;
-            controlButtonGroupBox.Location = new Point(splitContainer1.Location.X, splitContainer1.Height - controlButtonGroupBoxHeight);
-            controlButtonGroupBox.Height = controlButtonGroupBoxHeight;
-            controlButtonGroupBox.Width = splitContainer1.Panel1.Width;
-        }
 
         #region Load by shukur
         /// <summary>

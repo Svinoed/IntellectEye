@@ -35,5 +35,30 @@ namespace View
         public event Action CreateComment;
         public event Action Back;
         public event Action VolumeChanged;
+
+        private void switchOrderButton_Click(object sender, EventArgs e)
+        {
+            ChangeDirectionButtonPressed();
+        }
+
+        private void slowDownButton_Click(object sender, EventArgs e)
+        {
+            SlowDownButtonPressed();
+        }
+
+        private void playButton_Click(object sender, EventArgs e)
+        {
+            PlayButtonPressed();
+        }
+
+        private void fastUpButton_Click(object sender, EventArgs e)
+        {
+            SpeedUpButtonPressed();
+        }
+
+        private void redoButton_Click(object sender, EventArgs e)
+        {
+            ResetSpeedButtonPressed();
+        }
     }
 }

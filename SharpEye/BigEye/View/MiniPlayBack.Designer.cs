@@ -33,6 +33,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.videoPanel = new System.Windows.Forms.Panel();
             this.flowPanelZoom = new System.Windows.Forms.Panel();
+            this.playbackSpeedLabel = new System.Windows.Forms.Label();
             this.zoomPlusButton = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.zoomMinusButton = new System.Windows.Forms.Button();
@@ -66,7 +67,6 @@
             this.exportButton = new System.Windows.Forms.Button();
             this.bookmarkButton = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.playbackSpeedLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.flowPanelZoom.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -105,6 +105,16 @@
             this.flowPanelZoom.Name = "flowPanelZoom";
             this.flowPanelZoom.Size = new System.Drawing.Size(92, 248);
             this.flowPanelZoom.TabIndex = 26;
+            // 
+            // playbackSpeedLabel
+            // 
+            this.playbackSpeedLabel.AutoSize = true;
+            this.playbackSpeedLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.playbackSpeedLabel.Location = new System.Drawing.Point(16, 117);
+            this.playbackSpeedLabel.Name = "playbackSpeedLabel";
+            this.playbackSpeedLabel.Size = new System.Drawing.Size(10, 13);
+            this.playbackSpeedLabel.TabIndex = 34;
+            this.playbackSpeedLabel.Text = " ";
             // 
             // zoomPlusButton
             // 
@@ -437,6 +447,7 @@
             this.switchOrderButton.Size = new System.Drawing.Size(24, 24);
             this.switchOrderButton.TabIndex = 19;
             this.switchOrderButton.UseVisualStyleBackColor = true;
+            this.switchOrderButton.Click += new System.EventHandler(this.switchOrderButton_Click);
             // 
             // redoButton
             // 
@@ -451,6 +462,7 @@
             this.redoButton.Size = new System.Drawing.Size(24, 24);
             this.redoButton.TabIndex = 29;
             this.redoButton.UseVisualStyleBackColor = true;
+            this.redoButton.Click += new System.EventHandler(this.redoButton_Click);
             // 
             // slowDownButton
             // 
@@ -465,6 +477,7 @@
             this.slowDownButton.Size = new System.Drawing.Size(24, 24);
             this.slowDownButton.TabIndex = 17;
             this.slowDownButton.UseVisualStyleBackColor = true;
+            this.slowDownButton.Click += new System.EventHandler(this.slowDownButton_Click);
             // 
             // playButton
             // 
@@ -479,6 +492,7 @@
             this.playButton.Size = new System.Drawing.Size(24, 24);
             this.playButton.TabIndex = 16;
             this.playButton.UseVisualStyleBackColor = true;
+            this.playButton.Click += new System.EventHandler(this.playButton_Click);
             // 
             // fastUpButton
             // 
@@ -493,6 +507,7 @@
             this.fastUpButton.Size = new System.Drawing.Size(24, 24);
             this.fastUpButton.TabIndex = 18;
             this.fastUpButton.UseVisualStyleBackColor = true;
+            this.fastUpButton.Click += new System.EventHandler(this.fastUpButton_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -590,16 +605,6 @@
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(559, 15);
             this.progressBar1.TabIndex = 1;
-            // 
-            // playbackSpeedLabel
-            // 
-            this.playbackSpeedLabel.AutoSize = true;
-            this.playbackSpeedLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.playbackSpeedLabel.Location = new System.Drawing.Point(16, 117);
-            this.playbackSpeedLabel.Name = "playbackSpeedLabel";
-            this.playbackSpeedLabel.Size = new System.Drawing.Size(10, 13);
-            this.playbackSpeedLabel.TabIndex = 34;
-            this.playbackSpeedLabel.Text = " ";
             // 
             // MiniPlayBack
             // 

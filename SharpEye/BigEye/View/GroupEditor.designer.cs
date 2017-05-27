@@ -441,7 +441,6 @@
             this.ShowIcon = false;
             this.Text = "Редактор групп";
             this.Load += new System.EventHandler(this.GroupEditor_Load);
-            this.Resize += new System.EventHandler(this.GroupEditor_Resize);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
