@@ -17,20 +17,41 @@ using System.ComponentModel.Composition;
 namespace Model
 {
     [Export(typeof(IPrintScreenModel))]
-    class PrintScreenModel : IPrintScreenModel
+    public class PrintScreenModel : IPrintScreenModel
     {
         // Содержит токен подключения к серверу
-        private LoginSettings _loginSettings; 
-
-        public PrintScreenModel()
+        private LoginSettings _loginSettings;
+        private string _hostName;
+        public string HostName
         {
-            // здесь получаем адрес сервера из конфигурации
-            string server =  "http://217.18.157.5";
-            _loginSettings = LoginSettingsCache.GetLoginSettings(server);
+            set
+            {
+                _hostName = value;
+                _loginSettings = LoginSettingsCache.GetLoginSettings(_hostName);
+            }
+            get
+            {
+                return _hostName;
+            }
         }
+        public event Action<float> Progress;
+        public event Action<byte[], string> Created;
+        public event Action<string> SendMessage;
 
-        public bool CreateScreen(DateTime dateTime, ICameraModel camera, string directory, string fileName)
+        private const string CONNECTION_FAILED = "Не удалось открыть соединение";
+        private const string NO_CON_REQUEST = "Неудалось отправить запрос подключения к серверу";
+        private const string NO_CON_RESPONSE = "Нет ответа подключения от сервера";
+        private const string AUTH_FAILED = "Аутетификация не прошла";
+        private const string NO_CREATE_IMG_REQUEST = "Запрос создания изображения не отправлен";
+        private const string NO_CREATE_IMG_RESPONSE = "Ответ создания изображения не получен";
+        private const string UNCORRECT_RESPONSE_IMG = "Получен не верный формат данных";
+
+        public void CreateLiveScreen(ICameraModel camera)
         {
+            if (Created == null || SendMessage == null)
+            {
+                throw new NullReferenceException("Created or SendMessage is null");
+            }
             Socket sock;
             string hostName = "";
             Item cameraItem = Configuration.Instance.GetItem(camera.Id);
@@ -49,8 +70,11 @@ namespace Model
             }
             catch (Exception e)
             {
-                return false;
+                Debug.WriteLine("Не удалось открыть соединение: {0}", e.Message);
+                SendMessage?.Invoke(CONNECTION_FAILED);
+                return;
             }
+            Progress?.Invoke(0.14f);
 
             //Строим запрос запрос в формате «Image Server API»
             string sendString = string.Format(
@@ -66,9 +90,10 @@ namespace Model
             int bs = sock.Send(bytesToSend, bytesToSend.Length, 0); // bs -чисто отправленных байтов
             if (bs != bytesToSend.Length)
             {
-                return false;
+                SendMessage(NO_CON_REQUEST);
+                return;
             }
-
+            Progress?.Invoke(0.28f);
             // Подготавливаемся к ответу
             int maxbuf = 1024 * 500; // Задаем размер буфера
             Byte[] bytesReceived = new Byte[maxbuf];
@@ -76,9 +101,10 @@ namespace Model
 
             if (bytes == 0)
             {
-                return false;
+                SendMessage(NO_CON_RESPONSE);
+                return;
             }
-
+            Progress?.Invoke(0.42f);
             string stringReceived = Encoding.UTF8.GetString(bytesReceived, 0, bytes);
 
             // Смотрим выполнилось соединение
@@ -96,9 +122,10 @@ namespace Model
 
             if (!authenticated)
             {
-                return false;
+                SendMessage(AUTH_FAILED); 
+                return;
             }
-
+            Progress?.Invoke(0.60f);
             // Cтроим запрос LIVE запрос
             sendString = string.Format("<?xml version=\"1.0\" encoding=\"utf-8\"?><methodcall><requestid>1</requestid>" +
                 "<methodname>live</methodname>" +
@@ -111,22 +138,24 @@ namespace Model
             bs = sock.Send(bytesToSend, bytesToSend.Length, 0);
             if (bs != bytesToSend.Length)
             {
-                return false;
+                SendMessage(NO_CREATE_IMG_REQUEST); ;
+                return;
             }
-
+            Progress?.Invoke(0.74f);
             bool gotImage = false;
             while(!gotImage)
             {
                 bytes = PrintScreenUtils.RecvUntilCrLfCrLf(sock, bytesReceived, 0, maxbuf);
                 if (bytes == 0)
                 {
-                    return false;
+                    SendMessage(NO_CREATE_IMG_RESPONSE);
+                    return;
                 }
 
                 stringReceived = Encoding.UTF8.GetString(bytesReceived, 0, bytes);
                 Console.WriteLine(stringReceived);
 
-                // Находим заглловок изображения
+                // Находим загловок изображения
                 if (bytesReceived[0] != 'I')
                 {
                     continue;
@@ -145,8 +174,10 @@ namespace Model
 
                 if (!(bytes == expectedSize || bytes == - expectedSize))
                 {
-                    return false;
+                    SendMessage(UNCORRECT_RESPONSE_IMG);
+                    return;
                 }
+                Progress?.Invoke(0.92f);
 
                 int startJpegData = -1;
                 int lengthJpegData = -1;
@@ -170,16 +201,12 @@ namespace Model
                 {
                     break;
                 }
-
+                Progress?.Invoke(1.0f);
                 Byte[] jpeg = new Byte[lengthJpegData];
-
                 Array.Copy(bytesReceived, startJpegData, jpeg, 0, lengthJpegData);
-                string fName = fileName + ".jpg"; 
-                string fullFileName = Path.Combine(directory, fName);
-                File.WriteAllBytes(fullFileName, jpeg);
-                return true;
+                Created?.Invoke(jpeg, "jpeg");
+                return;
             }
-            return true;
         }
     }
 }

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Contract;
 using View.Interfaces;
 using System.ComponentModel.Composition;
+using System.Diagnostics;
 
 namespace Presenter
 {
@@ -28,12 +29,12 @@ namespace Presenter
             {
                 _view = view;
                 FullScreen += handler;
-                _view.FullScreen += () => ViewFullScreenHandler();
             }
         }
 
-        private void ViewFullScreenHandler()
+        private void ViewFullScreenHandler(object sender, EventArgs e)
         {
+            Debug.WriteLine("Sender: {0}\nArgs: {1}", sender.ToString(), e.ToString());
             if (FullScreen != null && _camera != null)
             {
                 FullScreen(Camera);
@@ -47,15 +48,13 @@ namespace Presenter
 
         public async void SetCamera()
         {
-  
+          
             await Task.Run(() =>
             {
-                _view.VideoPanel.Invoke(((Action)delegate
+                _view.VideoPanel.Invoke(((Action) delegate
               {
-                  _videoModel.SetVideoStreamInPanel(_camera, _view.VideoPanel, (s, e) =>
-                  {
-                      ViewFullScreenHandler();
-                  });
+                  _videoModel.SetVideoStreamInPanel(_camera, 
+                      _view.VideoPanel, ViewFullScreenHandler);
               })); 
             });
         }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,107 +30,122 @@ namespace View
         public event Action Home;
         public event Action<float> ZoomIn;
         public event Action<float> ZoomOut;
+
         public event Action VolumeChanged;
+
+        private readonly SaveFileDialog _saveFileDialog;
+        private readonly ProgressBar _progressBar;
+
         public CameraViewer()
         {
             InitializeComponent();
             //this.Anchor = (AnchorStyles.Top & AnchorStyles.Bottom & AnchorStyles.Left & AnchorStyles.Right);
             this.Dock = DockStyle.Fill;
+            _saveFileDialog = new SaveFileDialog();
+            _progressBar = new ProgressBar();
+            _progressBar.Minimum = 0;
+            _progressBar.Maximum = 100;
+            //_progressBar.Style = ProgressBarStyle.Marquee;
+            //_progressBar.PerformStep();
         }
 
+        public void SaveImage(byte[] img, string format)
+        {
+            _saveFileDialog.Filter = "Image files (*" + format + ")" + "|*" + format;
+            if (_saveFileDialog.ShowDialog() == DialogResult.Cancel)
+            {
+                return;
+            }
+            string fileName = _saveFileDialog.FileName;
+            File.WriteAllBytes(fileName, img);
+            MessageBox.Show("Сохранен");
+        }
+
+        public void ShowMessage(string message)
+        {
+            MessageBox.Show(message);
+        }
+
+        public void ShowProgressBar()
+        {
+            
+        }
+
+        public void HideProgressBar()
+        {
+            _progressBar.Hide();
+        }
+
+        public void SetValueProgressBar(float value)
+        {
+            _progressBar.Value = (int) (value * 100);
+        }
+
+        #region Move
         private void upButton_Click(object sender, EventArgs e)
         {
-            if (Up != null)
-            {
-                Up();
-            }
+            Up?.Invoke();
         }
 
         private void rightUpButton_Click(object sender, EventArgs e)
         {
-            if (UpRight != null)
-            {
-                UpRight();
-            }
+            UpRight?.Invoke();
         }
 
         private void downButton_Click(object sender, EventArgs e)
         {
-            if (Down != null)
-            {
-                Down();
-            }
+            Down?.Invoke();
         }
 
         private void leftUpButton_Click(object sender, EventArgs e)
         {
-            if (UpLeft != null)
-            {
-                UpLeft();
-            }
+            UpLeft?.Invoke();
         }
 
         private void rightButton_Click(object sender, EventArgs e)
         {
-            if (ToRight != null)
-            {
-                ToRight();
-            }
+            ToRight?.Invoke();
         }
 
         private void leftButton_Click(object sender, EventArgs e)
         {
-            if (ToLeft != null)
-            {
-                ToLeft();
-            }
+            ToLeft?.Invoke();
         }
 
         private void leftDownButton_Click(object sender, EventArgs e)
         {
-            if (DownLeft != null)
-            {
-                DownLeft();
-            }
+            DownLeft?.Invoke();
         }
 
         private void rightDownButton_Click(object sender, EventArgs e)
         {
-            if (DownRight != null)
-            {
-                DownRight();
-            }
+            DownRight?.Invoke();
         }
 
         private void zoomMinusButton_Click(object sender, EventArgs e)
         {
-            if (ZoomOut != null)
-            {
-                ZoomOut(0.1f);
-            }
+            ZoomOut?.Invoke(0.1f);
         }
 
         private void zoomPlusButton_Click(object sender, EventArgs e)
         {
-            if (ZoomIn != null)
-            {
-                ZoomIn(0.1f);
-            }
+            ZoomIn?.Invoke(0.1f);
         }
 
         private void exitFullscreenButton_Click(object sender, EventArgs e)
         {
-            if (Back != null)
-            {
-                Back();
-            }
+            Back?.Invoke();
         }
 
         private void resetButton_Click(object sender, EventArgs e)
         {
-            if (Home != null) {
-                Home();
-            }
+            Home?.Invoke();
+        }
+        #endregion
+
+        private void screenshotButton_Click(object sender, EventArgs e)
+        {
+            CreatePrintScreen?.Invoke();
         }
     }
 }

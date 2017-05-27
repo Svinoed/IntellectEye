@@ -374,6 +374,7 @@
             this.screenshotButton.Size = new System.Drawing.Size(24, 24);
             this.screenshotButton.TabIndex = 34;
             this.screenshotButton.UseVisualStyleBackColor = true;
+            this.screenshotButton.Click += new System.EventHandler(this.screenshotButton_Click);
             // 
             // bookmarkButton
             // 

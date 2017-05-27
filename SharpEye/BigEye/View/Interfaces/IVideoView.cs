@@ -29,7 +29,13 @@ namespace View.Interfaces
         event Action<float> ZoomIn;
         event Action<float> ZoomOut;
 
+        void SaveImage(byte[] img, string format);
+        void ShowMessage(string message);
 
+        void ShowProgressBar();
+        void HideProgressBar();
+
+        void SetValueProgressBar(float value);
         // Продумывается
         event Action VolumeChanged;
     }
