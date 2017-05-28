@@ -13,7 +13,7 @@ namespace View
 {
     public partial class SmallControl : UserControl, ISmallView
     {
-        public Panel VideoPanel { get { return _videoPanel; } }
+        public Panel VideoPanel { get { return videoPanel; } }
         public event Action FullScreen;
 
         public SmallControl()
@@ -25,10 +25,41 @@ namespace View
 
         private void _videoPanel_Paint(object sender, PaintEventArgs e)
         {
-            if (FullScreen != null)
+
+        }
+
+        public void ClearPanel()
+        {
+            videoPanel.Controls.Clear();
+        }
+
+        private void videoPanel_ControlAdded(object sender, ControlEventArgs e)
+        {
+            this.videoPanel.BringToFront();
+            foreach(Control c in videoPanel.Controls)
             {
-                FullScreen();
+                c.SendToBack();
             }
+        }
+
+        private void videoPanel_DoubleClick(object sender, EventArgs e)
+        {
+            MessageBox.Show("Panel");
+        }
+
+        private void SmallControl_Click(object sender, EventArgs e)
+        {
+            FullScreen();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FullScreen();
+        }
+
+        private void videoPanel_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            MessageBox.Show("Panel");
         }
     }
 }

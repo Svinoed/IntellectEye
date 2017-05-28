@@ -40,21 +40,23 @@
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.searchTextBox = new System.Windows.Forms.TextBox();
             this.menuPanel = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.cameraEditor = new System.Windows.Forms.Button();
-            this.groupEditor = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.groupEditor = new System.Windows.Forms.Button();
             this.sequenceScreenplayEditor = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.playbackPage = new System.Windows.Forms.TabPage();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.button8 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.button10 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.panel4 = new System.Windows.Forms.Panel();
             this.button7 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -66,21 +68,19 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.helpBtn = new System.Windows.Forms.Button();
             this.settingBtn = new System.Windows.Forms.Button();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tabControl.SuspendLayout();
             this.livePage.SuspendLayout();
             this.groupPanel.SuspendLayout();
             this.panel2.SuspendLayout();
             this.menuPanel.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.playbackPage.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
@@ -142,6 +142,8 @@
             this.listGroup.Size = new System.Drawing.Size(121, 97);
             this.listGroup.TabIndex = 0;
             this.listGroup.UseCompatibleStateImageBehavior = false;
+            this.listGroup.SelectedIndexChanged += new System.EventHandler(this.listGroup_SelectedIndexChanged);
+            this.listGroup.Click += new System.EventHandler(this.listGroup_Click);
             // 
             // panel2
             // 
@@ -217,13 +219,23 @@
             this.menuPanel.Size = new System.Drawing.Size(175, 45);
             this.menuPanel.TabIndex = 4;
             // 
-            // pictureBox1
+            // tableLayoutPanel2
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(4, -30);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(12, 12);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.tableLayoutPanel2.ColumnCount = 4;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel2.Controls.Add(this.cameraEditor, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.button1, 3, 0);
+            this.tableLayoutPanel2.Controls.Add(this.groupEditor, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.sequenceScreenplayEditor, 2, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(12, 3);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(160, 40);
+            this.tableLayoutPanel2.TabIndex = 0;
             // 
             // cameraEditor
             // 
@@ -241,6 +253,20 @@
             this.cameraEditor.Click += new System.EventHandler(this.cameraEditor_Click);
             this.cameraEditor.MouseClick += new System.Windows.Forms.MouseEventHandler(this.cameraEditor_MouseClick);
             // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.ImageIndex = 7;
+            this.button1.ImageList = this.imageList1;
+            this.button1.Location = new System.Drawing.Point(123, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(34, 34);
+            this.button1.TabIndex = 4;
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // groupEditor
             // 
             this.groupEditor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -257,20 +283,6 @@
             this.groupEditor.Click += new System.EventHandler(this.groupEditor_Click);
             this.groupEditor.MouseClick += new System.Windows.Forms.MouseEventHandler(this.groupEditor_MouseClick);
             // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.ImageIndex = 7;
-            this.button1.ImageList = this.imageList1;
-            this.button1.Location = new System.Drawing.Point(123, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(34, 34);
-            this.button1.TabIndex = 4;
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // sequenceScreenplayEditor
             // 
             this.sequenceScreenplayEditor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -285,6 +297,14 @@
             this.sequenceScreenplayEditor.TabIndex = 3;
             this.sequenceScreenplayEditor.UseVisualStyleBackColor = true;
             this.sequenceScreenplayEditor.MouseClick += new System.Windows.Forms.MouseEventHandler(this.sequenceScreenplayEditor_MouseClick);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(4, -30);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(12, 12);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // playbackPage
             // 
@@ -310,6 +330,26 @@
             this.panel5.Size = new System.Drawing.Size(774, 77);
             this.panel5.TabIndex = 0;
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 5;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.Controls.Add(this.button8, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.button5, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.button2, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.button10, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.button11, 3, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(296, 34);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(200, 40);
+            this.tableLayoutPanel1.TabIndex = 0;
+            // 
             // button8
             // 
             this.button8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -323,20 +363,6 @@
             this.button8.Size = new System.Drawing.Size(34, 34);
             this.button8.TabIndex = 21;
             this.button8.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button6.ImageIndex = 16;
-            this.button6.ImageList = this.imageList1;
-            this.button6.Location = new System.Drawing.Point(5, 42);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(30, 30);
-            this.button6.TabIndex = 20;
-            this.button6.UseVisualStyleBackColor = true;
             // 
             // button5
             // 
@@ -352,20 +378,6 @@
             this.button5.TabIndex = 19;
             this.button5.UseVisualStyleBackColor = true;
             // 
-            // button3
-            // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button3.ImageIndex = 13;
-            this.button3.ImageList = this.imageList1;
-            this.button3.Location = new System.Drawing.Point(741, 42);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(30, 30);
-            this.button3.TabIndex = 18;
-            this.button3.UseVisualStyleBackColor = true;
-            // 
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -379,6 +391,20 @@
             this.button2.Size = new System.Drawing.Size(34, 34);
             this.button2.TabIndex = 17;
             this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button10
+            // 
+            this.button10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button10.ImageIndex = 14;
+            this.button10.ImageList = this.imageList1;
+            this.button10.Location = new System.Drawing.Point(83, 3);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(34, 34);
+            this.button10.TabIndex = 15;
+            this.button10.UseVisualStyleBackColor = true;
             // 
             // button11
             // 
@@ -394,26 +420,40 @@
             this.button11.TabIndex = 16;
             this.button11.UseVisualStyleBackColor = true;
             // 
+            // button6
+            // 
+            this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button6.ImageIndex = 16;
+            this.button6.ImageList = this.imageList1;
+            this.button6.Location = new System.Drawing.Point(5, 42);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(30, 30);
+            this.button6.TabIndex = 20;
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button3.ImageIndex = 13;
+            this.button3.ImageList = this.imageList1;
+            this.button3.Location = new System.Drawing.Point(741, 42);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(30, 30);
+            this.button3.TabIndex = 18;
+            this.button3.UseVisualStyleBackColor = true;
+            // 
             // progressBar1
             // 
             this.progressBar1.Location = new System.Drawing.Point(3, 8);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(768, 23);
             this.progressBar1.TabIndex = 0;
-            // 
-            // button10
-            // 
-            this.button10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button10.ImageIndex = 14;
-            this.button10.ImageList = this.imageList1;
-            this.button10.Location = new System.Drawing.Point(83, 3);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(34, 34);
-            this.button10.TabIndex = 15;
-            this.button10.UseVisualStyleBackColor = true;
             // 
             // panel4
             // 
@@ -547,44 +587,6 @@
             this.settingBtn.TabIndex = 5;
             this.settingBtn.UseVisualStyleBackColor = true;
             // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 5;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1.Controls.Add(this.button8, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.button5, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.button2, 4, 0);
-            this.tableLayoutPanel1.Controls.Add(this.button10, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.button11, 3, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(296, 34);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(200, 40);
-            this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 4;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel2.Controls.Add(this.cameraEditor, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.button1, 3, 0);
-            this.tableLayoutPanel2.Controls.Add(this.groupEditor, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.sequenceScreenplayEditor, 2, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(12, 3);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(160, 40);
-            this.tableLayoutPanel2.TabIndex = 0;
-            // 
             // MainControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -601,14 +603,14 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.menuPanel.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.playbackPage.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

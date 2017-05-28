@@ -67,7 +67,6 @@
             this.videoPanel.Name = "videoPanel";
             this.videoPanel.Size = new System.Drawing.Size(738, 458);
             this.videoPanel.TabIndex = 0;
-            this.videoPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // panel2
             // 
@@ -81,7 +80,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(110, 455);
             this.panel2.TabIndex = 0;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // label2
             // 
@@ -123,6 +121,7 @@
             this.zoomMinusButton.Size = new System.Drawing.Size(30, 30);
             this.zoomMinusButton.TabIndex = 29;
             this.zoomMinusButton.UseVisualStyleBackColor = true;
+            this.zoomMinusButton.Click += new System.EventHandler(this.zoomMinusButton_Click);
             // 
             // imageList1
             // 
@@ -165,6 +164,7 @@
             this.zoomPlusButton.Size = new System.Drawing.Size(30, 30);
             this.zoomPlusButton.TabIndex = 5;
             this.zoomPlusButton.UseVisualStyleBackColor = true;
+            this.zoomPlusButton.Click += new System.EventHandler(this.zoomPlusButton_Click);
             // 
             // tableLayoutPanel2
             // 
@@ -203,6 +203,7 @@
             this.rightDownButton.Size = new System.Drawing.Size(24, 24);
             this.rightDownButton.TabIndex = 34;
             this.rightDownButton.UseVisualStyleBackColor = true;
+            this.rightDownButton.Click += new System.EventHandler(this.rightDownButton_Click);
             // 
             // downButton
             // 
@@ -217,6 +218,7 @@
             this.downButton.Size = new System.Drawing.Size(24, 24);
             this.downButton.TabIndex = 33;
             this.downButton.UseVisualStyleBackColor = true;
+            this.downButton.Click += new System.EventHandler(this.downButton_Click);
             // 
             // leftDownButton
             // 
@@ -231,6 +233,7 @@
             this.leftDownButton.Size = new System.Drawing.Size(24, 24);
             this.leftDownButton.TabIndex = 32;
             this.leftDownButton.UseVisualStyleBackColor = true;
+            this.leftDownButton.Click += new System.EventHandler(this.leftDownButton_Click);
             // 
             // rightButton
             // 
@@ -245,6 +248,7 @@
             this.rightButton.Size = new System.Drawing.Size(24, 24);
             this.rightButton.TabIndex = 31;
             this.rightButton.UseVisualStyleBackColor = true;
+            this.rightButton.Click += new System.EventHandler(this.rightButton_Click);
             // 
             // rightUpButton
             // 
@@ -259,6 +263,7 @@
             this.rightUpButton.Size = new System.Drawing.Size(24, 24);
             this.rightUpButton.TabIndex = 30;
             this.rightUpButton.UseVisualStyleBackColor = true;
+            this.rightUpButton.Click += new System.EventHandler(this.rightUpButton_Click);
             // 
             // upButton
             // 
@@ -273,6 +278,7 @@
             this.upButton.Size = new System.Drawing.Size(24, 24);
             this.upButton.TabIndex = 29;
             this.upButton.UseVisualStyleBackColor = true;
+            this.upButton.Click += new System.EventHandler(this.upButton_Click);
             // 
             // leftUpButton
             // 
@@ -287,6 +293,7 @@
             this.leftUpButton.Size = new System.Drawing.Size(24, 24);
             this.leftUpButton.TabIndex = 28;
             this.leftUpButton.UseVisualStyleBackColor = true;
+            this.leftUpButton.Click += new System.EventHandler(this.leftUpButton_Click);
             // 
             // leftButton
             // 
@@ -301,6 +308,7 @@
             this.leftButton.Size = new System.Drawing.Size(24, 24);
             this.leftButton.TabIndex = 26;
             this.leftButton.UseVisualStyleBackColor = true;
+            this.leftButton.Click += new System.EventHandler(this.leftButton_Click);
             // 
             // panel1
             // 
@@ -323,6 +331,7 @@
             this.exitFullscreenButton.Size = new System.Drawing.Size(30, 30);
             this.exitFullscreenButton.TabIndex = 32;
             this.exitFullscreenButton.UseVisualStyleBackColor = true;
+            this.exitFullscreenButton.Click += new System.EventHandler(this.exitFullscreenButton_Click);
             // 
             // settingsButton
             // 
@@ -365,7 +374,7 @@
             this.screenshotButton.Size = new System.Drawing.Size(24, 24);
             this.screenshotButton.TabIndex = 34;
             this.screenshotButton.UseVisualStyleBackColor = true;
-            this.screenshotButton.Click += new System.EventHandler(this.button4_Click);
+            this.screenshotButton.Click += new System.EventHandler(this.screenshotButton_Click);
             // 
             // bookmarkButton
             // 
@@ -414,6 +423,7 @@
             this.resetButton.Size = new System.Drawing.Size(24, 24);
             this.resetButton.TabIndex = 36;
             this.resetButton.UseVisualStyleBackColor = true;
+            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
             // 
             // CameraViewer
             // 

@@ -43,16 +43,11 @@ namespace View
 
         private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
         {
-            this.listGroup.Width = this.splitContainer1.Panel1.Width;
-            controlButtonGroupBox.Width = splitContainer1.Panel1.Width;
         }
         
         private void GroupEditor_Resize(object sender, EventArgs e)
         {
-            listGroup.Height = splitContainer1.Panel1.Height - controlButtonGroupBoxHeight;
-            controlButtonGroupBox.Location = new Point(splitContainer1.Location.X, splitContainer1.Height - controlButtonGroupBoxHeight);
-            controlButtonGroupBox.Height = controlButtonGroupBoxHeight;
-            controlButtonGroupBox.Width = splitContainer1.Panel1.Width;
+
         }
 
         #region Load by shukur
@@ -245,7 +240,7 @@ namespace View
             foreach (ListViewItem item in listView.SelectedItems)
             {
                 if ((item.Index > 0 && step == -1) 
-                    || (item.Index == listView.Items.Count && step == 1))
+                    || (item.Index < (listView.Items.Count - 1) && step == 1))
                 {
                     int index = item.Index + step;
                     listView.Items.RemoveAt(item.Index);
