@@ -138,7 +138,7 @@ namespace MiniEye
         [Import(typeof(ICameraManagerModel))]
         private ICameraManagerModel _ModelCameraManager;
         [Import(typeof(ISerializable))]
-        private ISerializable _ModelSerializeDevise;
+        private ISerializable _ModelSerializeDevice;
         [Import(typeof(IVideoModel))]
         private IVideoModel _ModelLiveStream;
 
@@ -214,7 +214,7 @@ namespace MiniEye
         /// </summary>
         private void _ViewSettings_OnCameraSelected(object camera)
         {
-            this.SelectedCamera = _ModelSerializeDevise.Serialize((ICameraModel)camera);
+            this.SelectedCamera = _ModelSerializeDevice.Serialize((ICameraModel)camera);
         }
 
         /// <summary>
@@ -243,8 +243,6 @@ namespace MiniEye
         private void _ViewSettings_OnSettingsApplyed(ICameraData data)
         {
             IsStateSaved = true; //Сохранить состояние контрола
-
-            //TODO: реализовать проверку данных
             this.AuthType = data.AuthType;
             this.Login = data.Login;
             this.Password = data.Password;
@@ -252,21 +250,7 @@ namespace MiniEye
             this.SelectedCameraName = data.SelectedCameraName;
             this.CameraName = data.CameraName;
             _ViewSettings.Hide();
-            _ViewPreview.Text = this.CameraName;    //Установить обновленные данные
-            //Нужно сначала показать пользователю форму, после чего вставлять в нее видео
-            _ViewPreview.Show();
-            //Создание модели
-            try
-            {
-                ICameraModel camera = _ModelCameraManager.GetCameras().Find(cam => cam.Name.Equals(SelectedCameraName));
-                _ModelLiveStream.SetVideoStreamInPanel(camera, _ViewPreview._VideoPanel);
-                //_ModelLiveStream.SetVideoStreamInPanel(_ModelSerializeDevise.Deserialize(this.SelectedCamera), _ViewPreview._VideoPanel);
-            }
-            catch (Exception)
-            {
-                IsStateSaved = false;
-                MessageBox.Show("Ошибка при установке камеры");
-            }
+            InitializePreview();    //Привязать камеру к окну просмотра и показать пользователю
         }
 
         /// <summary>
@@ -285,17 +269,8 @@ namespace MiniEye
                 //методы которого вызываются контейнером
                 _ViewSettings.SetSettings(this);
                 if (_ViewPreview.IsDisposed || _ViewPreview == null)
-                {
                     _ViewPreview = new Views.Preview(this);
-                }
-                 
-               // _ViewPreview.Text = this.CameraName;
-
-                //Настроить соединение с камерой
-                //ICameraModel camera = _ModelSerializeDevise.Deserialize(this.SelectedCamera);
-
-
-                _ViewPreview.Show();
+                InitializePreview();    //Привязать камеру к окну просмотра и показать пользователю
             }
         }
         /// <summary>
@@ -308,5 +283,27 @@ namespace MiniEye
                 listCamera.Add(camera);
             return listCamera;
         }
+        private void InitializePreview()
+        {
+            //Установить обновленные данные
+            _ViewPreview.Text = this.CameraName;
+            //Нужно сначала показать пользователю форму, после чего вставлять в нее видео
+            _ViewPreview.Show();
+            //Привязка отображения к камере
+            try
+            {
+                //ICameraModel camera = _ModelCameraManager.GetCameras().Find(cam => cam.Name.Equals(SelectedCameraName));
+                ICameraModel camera = _ModelSerializeDevice.Deserialize(SelectedCamera);
+
+                MessageBox.Show("Test");
+                _ModelLiveStream.SetVideoStreamInPanel(camera, _ViewPreview._VideoPanel);
+            }
+            catch (Exception err)
+            {
+                IsStateSaved = false;
+                MessageBox.Show($"Ошибка при установке камеры {err.Message}");
+            }
+        }
+
     }
 }

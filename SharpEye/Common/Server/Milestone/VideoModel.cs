@@ -26,7 +26,6 @@ namespace Model
 
         public void SetVideoStreamInPanel(ICameraModel camera, Panel panel)
         {
-            
             _imageViewer = ClientControl.Instance.GenerateImageViewerControl();
             _imageViewer.Dock = DockStyle.Fill;
             panel.Controls.Clear();

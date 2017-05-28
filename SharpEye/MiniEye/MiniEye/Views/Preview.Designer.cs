@@ -44,7 +44,7 @@
             this.settingsButton.Size = new System.Drawing.Size(30, 30);
             this.settingsButton.TabIndex = 2;
             this.settingsButton.UseVisualStyleBackColor = true;
-            this.settingsButton.Visible = false;
+            this.settingsButton.Visible = true;
             this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
             // 
             // _VideoPanel
