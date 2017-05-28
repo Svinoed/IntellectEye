@@ -15,6 +15,8 @@ namespace View
     public partial class CameraViewer : UserControl, IVideoView
     {
         public Panel VideoPanel { get { return videoPanel; } set { videoPanel = value; } }
+       
+        #region Move fields
         public event Action ToRight;
         public event Action ToLeft;
         public event Action CreatePrintScreen;
@@ -30,11 +32,13 @@ namespace View
         public event Action Home;
         public event Action<float> ZoomIn;
         public event Action<float> ZoomOut;
+        #endregion
 
         public event Action VolumeChanged;
 
         private readonly SaveFileDialog _saveFileDialog;
-        private readonly ProgressBar _progressBar;
+        private ProgressBar _progressBar;
+        private Form _progressForm;
 
         public CameraViewer()
         {
@@ -42,43 +46,88 @@ namespace View
             //this.Anchor = (AnchorStyles.Top & AnchorStyles.Bottom & AnchorStyles.Left & AnchorStyles.Right);
             this.Dock = DockStyle.Fill;
             _saveFileDialog = new SaveFileDialog();
-            _progressBar = new ProgressBar();
-            _progressBar.Minimum = 0;
-            _progressBar.Maximum = 100;
-            //_progressBar.Style = ProgressBarStyle.Marquee;
-            //_progressBar.PerformStep();
         }
 
         public void SaveImage(byte[] img, string format)
         {
-            _saveFileDialog.Filter = "Image files (*" + format + ")" + "|*" + format;
-            if (_saveFileDialog.ShowDialog() == DialogResult.Cancel)
+            this.Invoke((MethodInvoker) delegate
             {
-                return;
-            }
-            string fileName = _saveFileDialog.FileName;
-            File.WriteAllBytes(fileName, img);
-            MessageBox.Show("Сохранен");
+                _saveFileDialog.Filter = "Image files (*" + format + ")" + "|*" + format;
+                if (_saveFileDialog.ShowDialog() == DialogResult.Cancel)
+                {
+                    return;
+                }
+                string fileName = _saveFileDialog.FileName;
+                File.WriteAllBytes(fileName, img);
+                MessageBox.Show("Файл сохранен!");
+            });
+
         }
 
         public void ShowMessage(string message)
         {
-            MessageBox.Show(message);
+            this.Invoke((MethodInvoker) delegate
+            {
+                MessageBox.Show(message);
+            });
         }
 
         public void ShowProgressBar()
         {
-            
+            _progressBar = new ProgressBar
+            {
+                Minimum = 0,
+                Maximum = 100,
+                Style = ProgressBarStyle.Blocks
+            };
+            _progressForm = new Form();
+            _progressForm.Controls.Add(_progressBar);
+            _progressForm.ShowDialog();
         }
 
         public void HideProgressBar()
         {
-            _progressBar.Hide();
+            _progressForm.Invoke((MethodInvoker) delegate 
+            {
+                _progressForm.Close();
+            });
         }
 
-        public void SetValueProgressBar(float value)
+        private void SetPtzControl(bool value)
         {
-            _progressBar.Value = (int) (value * 100);
+            upButton.Enabled = value;
+            leftUpButton.Enabled = value;
+            rightUpButton.Enabled = value;
+
+            leftButton.Enabled = value;
+            rightButton.Enabled = value;
+
+            downButton.Enabled = value;
+            leftDownButton.Enabled = value;
+            rightDownButton.Enabled = value;
+
+            resetButton.Enabled = value;
+        }
+
+        public void HidePtzControl()
+        {
+            SetPtzControl(false);
+        }
+
+        public void ShowPtzControl()
+        {
+            SetPtzControl(true);
+        }
+
+        public async Task SetValueProgressBar(float value)
+        {
+            await Task.Run(() =>
+            {
+             _progressBar.Invoke((MethodInvoker) delegate
+              {
+                _progressBar.Value = (int) (value * 100);
+              });
+            });
         }
 
         #region Move

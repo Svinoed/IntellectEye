@@ -50,7 +50,7 @@ namespace Model
                     if (item.FQID.Kind == Kind.Camera && item.FQID.FolderType == FolderType.No)
                     {
                         ICameraModel c;
-                        FQID relatedFQID = GetRelatedMic(item.GetRelated());
+                        FQID relatedFQID = GetRelatedMicrophone(item.GetRelated());
                         if (relatedFQID != null)
                         {
                             c = new Camera(item.FQID, item.Name, relatedFQID);
@@ -59,6 +59,10 @@ namespace Model
                         {
                             c = new Camera(item.FQID, item.Name);
                         }
+
+                        c.IsPtz = item.Properties.ContainsKey("PTZ") 
+                                && string.Compare(item.Properties["PTZ"], "Yes", true) == 0;
+
                         _listCam.Add(c);
                     }
                     else
@@ -70,7 +74,7 @@ namespace Model
             }
         }
 
-        private FQID GetRelatedMic(List<Item> relatedItems)
+        private FQID GetRelatedMicrophone(List<Item> relatedItems)
         {
             foreach (Item item in relatedItems)
             {

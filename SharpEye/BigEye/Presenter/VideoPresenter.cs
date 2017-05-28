@@ -13,14 +13,14 @@ namespace Presenter
 {
     class VideoPresenter: IVideoPresenter
     {
-        private IVideoView _view;
+        private readonly IVideoView _view;
         private ICameraModel _camera;
-        private Action _backHandler;
+        private readonly Action _backHandler;
 
         [Import]
         private IVideoModel _videoModel;
-        private IAudioModel _audioModel;//Она тут нужна или отдельно выносим? Ответ: Да, нужна. Все правильно делаешь.
-
+        [Import]
+        private IAudioModel _audioModel;
         [Import]
         private IPTZModel _ptzModel;
         [Import]
@@ -30,9 +30,7 @@ namespace Presenter
             set
             {
                 this._camera = value;
-                _videoModel.SetVideoStreamInPanel(_camera, _view.VideoPanel);
-                _ptzModel.Camera = _camera;
-                //_audioModel.SetAudioStreamInPanelDefault(_camera, _view.VideoPanel);           
+                Set();
             }
         }
 
@@ -56,20 +54,45 @@ namespace Presenter
         private void Back()
         {
             _videoModel.Disconnect();
+            _audioModel.Disconnect();
             _backHandler();
         }
+ 
 
         public IVideoView GetView()
         {
             return _view;
         }
 
+        private void Set()
+        {
+            _videoModel.SetVideoStreamInPanel(_camera, _view.VideoPanel);
+            if (_camera.IsPtz)
+            {
+                _ptzModel.Camera = _camera;
+                _view.ShowPtzControl();
+            }
+            else
+            {
+                _view.HidePtzControl();
+            }
+
+            if (_camera.MicrophoneId != null)
+            {
+                _audioModel.SetAudioStreamInPanel(_camera, _view.VideoPanel);
+            }
+        }
+
         private void CreateScreen ()
         {
             // из конфига 
-            _printScreenModel.HostName = "5.136.72.14";
+            _printScreenModel.HostName = "5.136.125.97";
+            Task task = new Task(() =>
+            {
+                _printScreenModel.CreateLiveScreen(_camera);
+            });
+            task.Start();
             _view.ShowProgressBar();
-            _printScreenModel.CreateLiveScreen(_camera);
         }
 
         private void PrintScreenCreated(byte[] img, string format)
@@ -88,9 +111,9 @@ namespace Presenter
             _view.ShowMessage(message);
         }
 
-        private void Progress(float value)
+        private async void Progress(float value)
         {
-            _view.SetValueProgressBar(value);
+            await _view.SetValueProgressBar(value);
         }
 
         #region PTZCommand handler
@@ -113,11 +136,11 @@ namespace Presenter
                 task.Start();
             };
             _view.UpLeft += () => {
-                Task task = new Task(() => { _ptzModel.Left(); });
+                Task task = new Task(() => { _ptzModel.UpLeft(); });
                 task.Start();
             };
             _view.UpRight += () => {
-                Task task = new Task(() => { _ptzModel.Right(); });
+                Task task = new Task(() => { _ptzModel.UpRight(); });
                 task.Start();
             };
             _view.ToLeft += () => {
@@ -133,7 +156,7 @@ namespace Presenter
                 task.Start();
             };
             _view.ZoomOut += (s) => {
-                Task task = new Task(() => { });
+                Task task = new Task(() => { _ptzModel.ZoomOut(s); });
                 task.Start();
             };
             _view.Home += () => {

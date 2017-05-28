@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using View.Interfaces;
 using System.Windows.Forms;
 
@@ -34,8 +35,9 @@ namespace View.Interfaces
 
         void ShowProgressBar();
         void HideProgressBar();
-
-        void SetValueProgressBar(float value);
+        void HidePtzControl();
+        void ShowPtzControl();
+        Task SetValueProgressBar(float value);
         // Продумывается
         event Action VolumeChanged;
     }
