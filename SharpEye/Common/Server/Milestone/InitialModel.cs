@@ -16,6 +16,8 @@ namespace Model
             VideoOS.Platform.SDK.Environment.Initialize();
             VideoOS.Platform.SDK.UI.Environment.Initialize();
             VideoOS.Platform.SDK.Environment.Properties.ConfigurationRefreshIntervalInMs = 5000;
+            VideoOS.Platform.SDK.Export.Environment.Initialize();
+            VideoOS.Platform.SDK.Media.Environment.Initialize();
         }
     }
 }

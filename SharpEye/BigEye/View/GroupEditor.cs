@@ -41,14 +41,6 @@ namespace View
             EditedGrops = null;
         }
 
-        private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
-        {
-        }
-        
-        private void GroupEditor_Resize(object sender, EventArgs e)
-        {
-
-        }
 
         #region Load by shukur
         /// <summary>
