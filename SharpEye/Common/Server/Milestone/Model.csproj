@@ -94,10 +94,10 @@
       <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Milestone\MIPSDK\Bin\VideoOS.Platform.SDK.dll</HintPath>
     </Reference>
     <Reference Include="VideoOS.Platform.SDK.Export">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Milestone\MIPSDK\Bin\VideoOS.Platform.SDK.Export.dll</HintPath>
+      <HintPath>..\..\Libs\lib32\VideoOS.Platform.SDK.Export.dll</HintPath>
     </Reference>
     <Reference Include="VideoOS.Platform.SDK.Media">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Milestone\MIPSDK\Bin\VideoOS.Platform.SDK.Media.dll</HintPath>
+      <HintPath>..\..\Libs\lib32\VideoOS.Platform.SDK.Media.dll</HintPath>
     </Reference>
     <Reference Include="VideoOS.Platform.SDK.UI">
       <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Milestone\MIPSDK\Bin\VideoOS.Platform.SDK.UI.dll</HintPath>
