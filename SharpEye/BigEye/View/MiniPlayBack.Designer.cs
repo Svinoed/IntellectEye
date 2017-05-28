@@ -31,8 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MiniPlayBack));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.videoPanel = new System.Windows.Forms.Panel();
             this.flowPanelZoom = new System.Windows.Forms.Panel();
-            this.speedTextBox = new System.Windows.Forms.TextBox();
+            this.playbackSpeedLabel = new System.Windows.Forms.Label();
             this.zoomPlusButton = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.zoomMinusButton = new System.Windows.Forms.Button();
@@ -66,7 +67,6 @@
             this.exportButton = new System.Windows.Forms.Button();
             this.bookmarkButton = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.videoPanel = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.flowPanelZoom.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -86,9 +86,16 @@
             this.panel1.Size = new System.Drawing.Size(562, 307);
             this.panel1.TabIndex = 0;
             // 
+            // videoPanel
+            // 
+            this.videoPanel.Location = new System.Drawing.Point(6, 6);
+            this.videoPanel.Name = "videoPanel";
+            this.videoPanel.Size = new System.Drawing.Size(455, 242);
+            this.videoPanel.TabIndex = 27;
+            // 
             // flowPanelZoom
             // 
-            this.flowPanelZoom.Controls.Add(this.speedTextBox);
+            this.flowPanelZoom.Controls.Add(this.playbackSpeedLabel);
             this.flowPanelZoom.Controls.Add(this.zoomPlusButton);
             this.flowPanelZoom.Controls.Add(this.zoomMinusButton);
             this.flowPanelZoom.Controls.Add(this.label1);
@@ -99,12 +106,15 @@
             this.flowPanelZoom.Size = new System.Drawing.Size(92, 248);
             this.flowPanelZoom.TabIndex = 26;
             // 
-            // speedTextBox
+            // playbackSpeedLabel
             // 
-            this.speedTextBox.Location = new System.Drawing.Point(26, 117);
-            this.speedTextBox.Name = "speedTextBox";
-            this.speedTextBox.Size = new System.Drawing.Size(49, 20);
-            this.speedTextBox.TabIndex = 29;
+            this.playbackSpeedLabel.AutoSize = true;
+            this.playbackSpeedLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.playbackSpeedLabel.Location = new System.Drawing.Point(16, 117);
+            this.playbackSpeedLabel.Name = "playbackSpeedLabel";
+            this.playbackSpeedLabel.Size = new System.Drawing.Size(10, 13);
+            this.playbackSpeedLabel.TabIndex = 34;
+            this.playbackSpeedLabel.Text = " ";
             // 
             // zoomPlusButton
             // 
@@ -437,6 +447,7 @@
             this.switchOrderButton.Size = new System.Drawing.Size(24, 24);
             this.switchOrderButton.TabIndex = 19;
             this.switchOrderButton.UseVisualStyleBackColor = true;
+            this.switchOrderButton.Click += new System.EventHandler(this.switchOrderButton_Click);
             // 
             // redoButton
             // 
@@ -451,6 +462,7 @@
             this.redoButton.Size = new System.Drawing.Size(24, 24);
             this.redoButton.TabIndex = 29;
             this.redoButton.UseVisualStyleBackColor = true;
+            this.redoButton.Click += new System.EventHandler(this.redoButton_Click);
             // 
             // slowDownButton
             // 
@@ -465,6 +477,7 @@
             this.slowDownButton.Size = new System.Drawing.Size(24, 24);
             this.slowDownButton.TabIndex = 17;
             this.slowDownButton.UseVisualStyleBackColor = true;
+            this.slowDownButton.Click += new System.EventHandler(this.slowDownButton_Click);
             // 
             // playButton
             // 
@@ -479,6 +492,7 @@
             this.playButton.Size = new System.Drawing.Size(24, 24);
             this.playButton.TabIndex = 16;
             this.playButton.UseVisualStyleBackColor = true;
+            this.playButton.Click += new System.EventHandler(this.playButton_Click);
             // 
             // fastUpButton
             // 
@@ -493,6 +507,7 @@
             this.fastUpButton.Size = new System.Drawing.Size(24, 24);
             this.fastUpButton.TabIndex = 18;
             this.fastUpButton.UseVisualStyleBackColor = true;
+            this.fastUpButton.Click += new System.EventHandler(this.fastUpButton_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -591,13 +606,6 @@
             this.progressBar1.Size = new System.Drawing.Size(559, 15);
             this.progressBar1.TabIndex = 1;
             // 
-            // videoPanel
-            // 
-            this.videoPanel.Location = new System.Drawing.Point(6, 6);
-            this.videoPanel.Name = "videoPanel";
-            this.videoPanel.Size = new System.Drawing.Size(455, 242);
-            this.videoPanel.TabIndex = 27;
-            // 
             // MiniPlayBack
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -643,7 +651,6 @@
         private System.Windows.Forms.Button upButton;
         private System.Windows.Forms.Button leftUpButton;
         private System.Windows.Forms.Button leftButton;
-        private System.Windows.Forms.TextBox speedTextBox;
         private System.Windows.Forms.Button zoomPlusButton;
         private System.Windows.Forms.Button zoomMinusButton;
         private System.Windows.Forms.Label label1;
@@ -657,5 +664,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel videoPanel;
+        private System.Windows.Forms.Label playbackSpeedLabel;
     }
 }
