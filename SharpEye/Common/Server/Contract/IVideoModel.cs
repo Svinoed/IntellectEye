@@ -10,5 +10,8 @@ namespace Contract
     public interface IVideoModel
     {
         void SetVideoStreamInPanel(ICameraModel camera, Panel panel);
+        void SetVideoStreamInPanel(ICameraModel camera, Panel panel, EventHandler doubleClickHandler);
+        void Disconnect();
+        void PTZDefault();
     }
 }

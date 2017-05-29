@@ -512,6 +512,7 @@
             this.switchOrderButton.Size = new System.Drawing.Size(24, 24);
             this.switchOrderButton.TabIndex = 19;
             this.switchOrderButton.UseVisualStyleBackColor = true;
+            this.switchOrderButton.Click += new System.EventHandler(this.switchOrderButton_Click);
             // 
             // fastUpButton
             // 
@@ -540,6 +541,7 @@
             this.playButton.Size = new System.Drawing.Size(24, 24);
             this.playButton.TabIndex = 16;
             this.playButton.UseVisualStyleBackColor = true;
+            this.playButton.Click += new System.EventHandler(this.playButton_Click);
             // 
             // slowDownButton
             // 
@@ -680,7 +682,6 @@
         private System.Windows.Forms.Button upButton;
         private System.Windows.Forms.Button leftUpButton;
         private System.Windows.Forms.Button leftButton;
-        private System.Windows.Forms.TextBox speedTextBox;
         private System.Windows.Forms.Button zoomPlusButton;
         private System.Windows.Forms.Button zoomMinusButton;
         private System.Windows.Forms.Label label1;

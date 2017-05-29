@@ -42,12 +42,6 @@ namespace View
         }
 
 
-        
-        private void GroupEditor_Resize(object sender, EventArgs e)
-        {
-
-        }
-
         #region Load by shukur
         /// <summary>
         /// Отображает список групп
@@ -238,7 +232,7 @@ namespace View
             foreach (ListViewItem item in listView.SelectedItems)
             {
                 if ((item.Index > 0 && step == -1) 
-                    || (item.Index == listView.Items.Count && step == 1))
+                    || (item.Index < (listView.Items.Count - 1) && step == 1))
                 {
                     int index = item.Index + step;
                     listView.Items.RemoveAt(item.Index);

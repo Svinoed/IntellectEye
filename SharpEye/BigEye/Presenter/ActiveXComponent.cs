@@ -34,6 +34,7 @@ namespace Presenter
         public ActiveXComponent()
         {
             InitializeComponent();
+            //this.Dock = DockStyle.Fill;
         }
 
         private void LoadLoginView(ILoginView view)
@@ -92,6 +93,8 @@ namespace Presenter
 
             LoadLoginView(_loginPresenter.GetView());
             _loginPresenter.Connect();
+
+            _videoPresenter = new VideoPresenter(new CameraViewer(), CloseVideoControl);
         }
 
         #region ComReg

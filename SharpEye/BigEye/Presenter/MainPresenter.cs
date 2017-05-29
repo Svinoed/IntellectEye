@@ -41,6 +41,7 @@ namespace Presenter
                 _handler = handler;
                 _view.CamEditClick += (g) => EditGroup(g);
                 _view.GroupsEditClick += () => EditGroups();
+                _view.GroupSelected += SetActiveGroup;
            
                 _groups = new Dictionary<Guid, Group>();
                 _smallPresenters = new List<ISmallVideoPresenter>();
@@ -66,7 +67,20 @@ namespace Presenter
             List<ISmallView> listVideo = GetListView();
             _view.AddListControl(listVideo);
             SetCameraToSmallView();
-            _view.SetGroup(_groups, _activeGroup.Id);
+            _view.SetGroups(_groups, _activeGroup.Id);
+        }
+
+        private void RefreshVideo()
+        {
+            if (_activeGroup.Cameras.Count > _smallPresenters.Count)
+            {
+                GreateSmallPresenter();
+            }
+            DisconnectAll();
+            List<ISmallView> listVideo = GetListView();
+            _view.AddListControl(listVideo);
+            SetCameraToSmallView();
+            _view.SetGroups(_groups, _activeGroup.Id);
         }
 
         #region ListVideo
@@ -92,22 +106,36 @@ namespace Presenter
         private List<ISmallView> GetListView()
         {
             List<ISmallView> list = new List<ISmallView>();
-            foreach(var v in _smallPresenters)
+            int count = _activeGroup.Cameras.Count;
+            for (int i = 0; i < count; i ++)
             {
-                list.Add(v.GetView());
+                ISmallView view = _smallPresenters[i].GetView();
+                view.ClearPanel();
+                list.Add(view);
             }
             return list;
         }
 
+        private void DisconnectAll()
+        {
+            foreach (var p in _smallPresenters)
+            {
+                p.Disconnect();
+            }
+        }
+
         private void SetCameraToSmallView()
         {
-            var c = _activeGroup.Cameras.Keys;
+            var c = _activeGroup.Cameras.Keys; ;
             for (int i = 0; i < c.Count; i++)
             {
                 ICameraModel camera = _cameraManager.GetCamera(c.ElementAt(i));
-                _smallPresenters[i].Camera = camera;
-            }
+                ISmallVideoPresenter presenter = _smallPresenters[i];
+                presenter.Camera = camera;
+                presenter.SetCamera();
+            }          
         }
+
         
         /// <summary>
         /// Метод подгружает группы из конфига,
@@ -166,8 +194,12 @@ namespace Presenter
             {
                 _activeGroup = _groups.ElementAt(0).Value;
             }
-            _view.SetGroup(_groups, _activeGroup.Id);
-            //Run();
+            else
+            {
+                _activeGroup = _groups[_activeGroup.Id];
+            }
+            
+            RefreshVideo();
         }
 
         private Dictionary<dynamic, string> GetListCamera()
@@ -183,6 +215,16 @@ namespace Presenter
             return cameras;
         }
         #endregion
+
+        private void SetActiveGroup(Group group)
+        {
+            if (!group.Equals(_activeGroup))
+            {
+                _activeGroup = group;
+                RefreshVideo();
+            }
+        }
+
 
         #region Video live
         private void VideoLive()

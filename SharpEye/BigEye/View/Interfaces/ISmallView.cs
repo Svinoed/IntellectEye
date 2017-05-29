@@ -11,5 +11,6 @@ namespace View.Interfaces
     {
         Panel VideoPanel { get; }
         event Action FullScreen;
+        void ClearPanel();
     }
 }

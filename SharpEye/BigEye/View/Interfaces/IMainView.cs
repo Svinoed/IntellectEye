@@ -13,10 +13,11 @@ namespace View.Interfaces
         bool ViewVisible { get; set; }
         void AddVideoControl(IVideoView view);
         void AddListControl(List<ISmallView> list);
-        void SetGroup(Dictionary<Guid, Group> groups, Guid activeGroup);
+        void SetGroups(Dictionary<Guid, Group> groups, Guid activeGroup);
 
         event Action<Group> CamEditClick;
         event Action GroupsEditClick;
+        event Action<Group> GroupSelected;
 
         Group EditGroup(Group group, Dictionary<dynamic, string> cameras);
         Dictionary<Guid, Group> EditGroups(Dictionary<Guid,Group> groups, Dictionary<dynamic, string> cameras);

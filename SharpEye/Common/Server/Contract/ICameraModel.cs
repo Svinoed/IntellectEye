@@ -11,5 +11,6 @@ namespace Contract
         dynamic Id { set; get; }
         string Name { set; get; }
         dynamic MicrophoneId { set; get; }
+        bool IsPtz { set; get; }
     }
 }

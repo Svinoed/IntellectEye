@@ -79,6 +79,7 @@
             this.searchTextBox.Name = "searchTextBox";
             this.searchTextBox.Size = new System.Drawing.Size(130, 20);
             this.searchTextBox.TabIndex = 6;
+            this.searchTextBox.TextChanged += new System.EventHandler(this.searchTextBox_TextChanged);
             // 
             // moveDownBtn
             // 
@@ -444,7 +445,6 @@
             this.ShowIcon = false;
             this.Text = "Редактор групп";
             this.Load += new System.EventHandler(this.GroupEditor_Load);
-            this.Resize += new System.EventHandler(this.GroupEditor_Resize);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();

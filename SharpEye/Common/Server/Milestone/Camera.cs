@@ -15,6 +15,7 @@ namespace Model
         public object Id { get; set; }
         public string Name { get; set; }
         public dynamic MicrophoneId { get; set; }
+        public bool IsPtz { set; get; }
 
         public Camera(FQID id, string name)
         {
