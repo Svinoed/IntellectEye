@@ -35,7 +35,6 @@
             this.flowPanelZoom = new System.Windows.Forms.Panel();
             this.tableLayoutPanelZoom = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
-            this.speedTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.button8 = new System.Windows.Forms.Button();
@@ -68,6 +67,7 @@
             this.exportButton = new System.Windows.Forms.Button();
             this.bookmarkButton = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.playbackSpeedLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.flowPanelZoom.SuspendLayout();
             this.tableLayoutPanelZoom.SuspendLayout();
@@ -128,8 +128,8 @@
             this.tableLayoutPanel7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.tableLayoutPanel7.ColumnCount = 1;
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel7.Controls.Add(this.speedTextBox, 0, 1);
             this.tableLayoutPanel7.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel7.Controls.Add(this.playbackSpeedLabel, 0, 1);
             this.tableLayoutPanel7.Location = new System.Drawing.Point(32, 99);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 2;
@@ -137,13 +137,6 @@
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel7.Size = new System.Drawing.Size(55, 40);
             this.tableLayoutPanel7.TabIndex = 30;
-            // 
-            // speedTextBox
-            // 
-            this.speedTextBox.Location = new System.Drawing.Point(3, 16);
-            this.speedTextBox.Name = "speedTextBox";
-            this.speedTextBox.Size = new System.Drawing.Size(49, 20);
-            this.speedTextBox.TabIndex = 29;
             // 
             // label1
             // 
@@ -635,6 +628,15 @@
             this.progressBar1.Size = new System.Drawing.Size(543, 15);
             this.progressBar1.TabIndex = 1;
             // 
+            // playbackSpeedLabel
+            // 
+            this.playbackSpeedLabel.AutoSize = true;
+            this.playbackSpeedLabel.Location = new System.Drawing.Point(3, 13);
+            this.playbackSpeedLabel.Name = "playbackSpeedLabel";
+            this.playbackSpeedLabel.Size = new System.Drawing.Size(35, 13);
+            this.playbackSpeedLabel.TabIndex = 29;
+            this.playbackSpeedLabel.Text = "label3";
+            // 
             // MiniPlayBack
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -696,5 +698,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelZoom;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.Label playbackSpeedLabel;
     }
 }
