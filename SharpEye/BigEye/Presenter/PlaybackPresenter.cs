@@ -42,12 +42,12 @@ namespace Presenter
             {
                 _view = view;
                 //_audioModel = audioModel;
-                _view.PlayButtonPressed += () => play();
-                _view.SlowDownButtonPressed += () => slowDown();
-                _view.SpeedUpButtonPressed += () => speedUp();
-                _view.ChangeDirectionButtonPressed += () => changeDirection();
-                _view.ResetSpeedButtonPressed += () => resetSpeed();
-                _playbackModel.SpeedChanged += () => updateSpeed();
+                _view.PlayButtonPressed += play;
+                _view.SlowDownButtonPressed += slowDown;
+                _view.SpeedUpButtonPressed += speedUp;
+                _view.ChangeDirectionButtonPressed += changeDirection;
+                _view.ResetSpeedButtonPressed += resetSpeed;
+                _playbackModel.SpeedChanged += updateSpeed;
                 _view.CreateComment += () => throw new NotImplementedException();
                 _view.CreateBookMarker += () => throw new NotImplementedException();
                 _view.CreatePrintScreen += () => throw new NotImplementedException();

@@ -23,16 +23,16 @@ namespace View
         public event Action GroupsEditClick;
         public event Action<Group> GroupSelected;
 
-        private TableLayoutPanel _videoTable;
+        private TableLayoutPanel _videoLiveTable;
         private Dictionary<Guid, Group> _groups;
         public MainControl()
         {
             InitializeComponent();
             this.Dock = DockStyle.Fill;
             DrawAll();
-            //_videoTable = new TableLayoutPanel();
+            //_videoLiveTable = new TableLayoutPanel();
             listGroup.View = System.Windows.Forms.View.List;
-            _videoTable = new TableLayoutPanel();
+            _videoLiveTable = new TableLayoutPanel();
         }
 
 
@@ -155,13 +155,13 @@ namespace View
         }
         
 
-        #region AddListControl by dima. Refactor shukur
+        #region AddListVideoLiveControl by dima. Refactor shukur
         /// <summary>
         /// Добавляет список контролов для отображения видео
         /// </summary>
         /// <param name="list"></param>
 
-        public void AddListControl(List<ISmallView> list)
+        public void AddListVideoLiveControl(List<ISmallView> list)
         {
             int size = list.Count;
             //валидация
@@ -193,33 +193,33 @@ namespace View
             }
 
             //строится и настраивается таблица
-            _videoTable.Dock = DockStyle.Fill;
-            _videoTable.Controls.Clear();
-            _videoTable.RowCount = rows;
-            _videoTable.ColumnCount = columns;
+            _videoLiveTable.Dock = DockStyle.Fill;
+            _videoLiveTable.Controls.Clear();
+            _videoLiveTable.RowCount = rows;
+            _videoLiveTable.ColumnCount = columns;
             float height = 100 / rows;
             float width = 100 / columns;
 
             for (int i = 0; i < rows; i++)
             {
-                _videoTable.RowStyles.Add(new RowStyle(SizeType.Percent, height));
+                _videoLiveTable.RowStyles.Add(new RowStyle(SizeType.Percent, height));
             }
 
             for (int i = 0; i < columns; i++)
             {
-                _videoTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, width));
+                _videoLiveTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, width));
             }
 
             foreach (var c in list)
             {
                 UserControl smallControl = (UserControl)c;
                 smallControl.Dock = DockStyle.Fill;
-                _videoTable.Controls.Add(smallControl);
+                _videoLiveTable.Controls.Add(smallControl);
 
             }
 
             videoLivePanel.Controls.Clear();
-            videoLivePanel.Controls.Add(_videoTable);
+            videoLivePanel.Controls.Add(_videoLiveTable);
 
         }
 
@@ -247,13 +247,10 @@ namespace View
                 return groupEditor.EditedGrops;
             }
 
-            private void groupEditor_Click(object sender, EventArgs e)
-            {
-                if (GroupsEditClick != null)
-                {
-                    GroupsEditClick();
-                }
-            }
+        private void groupEditor_Click(object sender, EventArgs e)
+        {
+            GroupsEditClick?.Invoke();
+        }
         #endregion
 
         #region Set list group
@@ -270,7 +267,22 @@ namespace View
         }
         #endregion
 
+        #region Playback
+
+        public void AddPlaybackControl(IPlaybackView view)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddListPlayBack(List<IPlaybackView> list)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
+
+        #endregion
+
 
         private void cameraEditor_Click(object sender, EventArgs e)
         {

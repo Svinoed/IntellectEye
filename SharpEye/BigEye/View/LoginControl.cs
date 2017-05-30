@@ -20,11 +20,20 @@ namespace View
 
     public partial class LoginControl : UserControl, ILoginView
     {
+
+        public string Server { get; set; }
+        public string UserName { get; set; }
+        public string Password { get; set; }
+        public bool RememberPassword { get; set; }
+        public bool AutoLogin { get; set; }
+
+        public event Action Login;
+
         public LoginControl()
         {
             InitializeComponent();
 
-            this.Anchor = (AnchorStyles.Top & AnchorStyles.Bottom & AnchorStyles.Left & AnchorStyles.Right);
+            this.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom) | AnchorStyles.Left)| AnchorStyles.Right)));
             PasswordTextBox.PasswordChar = '*';
             progressBar1.ForeColor = Color.Aqua;
 
@@ -34,20 +43,6 @@ namespace View
             Region rgn = new Region(path);
             button1.Region = rgn;
             */
-        }
-
-        public string Server { get; set; } 
-        public string UserName { get; set; } 
-        public string Password { get; set; }
-        public bool RememberPassword { get; set; }
-        public bool AutoLogin { get; set; }
-
-        public event Action Login;
-
-        public void Close()
-        {
-            //Properties.Settings.Default.Save();//Сохранение настроек при закрытии контрола или формы
-            throw new NotImplementedException();
         }
 
         public void ShowConError(string message)
@@ -61,7 +56,7 @@ namespace View
             UserName = UserTextBox.Text;
             Password = PasswordTextBox.Text;
 
-            Login();
+            Login?.Invoke();
         }
 
 

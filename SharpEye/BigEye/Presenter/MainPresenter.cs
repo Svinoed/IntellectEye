@@ -65,7 +65,7 @@ namespace Presenter
         {
             GreateSmallPresenter();
             List<ISmallView> listVideo = GetListView();
-            _view.AddListControl(listVideo);
+            _view.AddListVideoLiveControl(listVideo);
             SetCameraToSmallView();
             _view.SetGroups(_groups, _activeGroup.Id);
         }
@@ -78,7 +78,7 @@ namespace Presenter
             }
             DisconnectAll();
             List<ISmallView> listVideo = GetListView();
-            _view.AddListControl(listVideo);
+            _view.AddListVideoLiveControl(listVideo);
             SetCameraToSmallView();
             _view.SetGroups(_groups, _activeGroup.Id);
         }

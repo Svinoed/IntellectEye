@@ -7,12 +7,12 @@ using View.Utils;
 
 namespace View.Interfaces
 {
-    public interface IMainView : IView
+    public interface IMainView
     {
 
         bool ViewVisible { get; set; }
         void AddVideoControl(IVideoView view);
-        void AddListControl(List<ISmallView> list);
+        void AddListVideoLiveControl(List<ISmallView> list);
         void SetGroups(Dictionary<Guid, Group> groups, Guid activeGroup);
 
         event Action<Group> CamEditClick;
@@ -21,6 +21,8 @@ namespace View.Interfaces
 
         Group EditGroup(Group group, Dictionary<dynamic, string> cameras);
         Dictionary<Guid, Group> EditGroups(Dictionary<Guid,Group> groups, Dictionary<dynamic, string> cameras);
-       
+
+        void AddPlaybackControl(IPlaybackView view);
+        void AddListPlayBack(List<IPlaybackView> list);
     }
 }

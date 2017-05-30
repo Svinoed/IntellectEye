@@ -14,7 +14,7 @@ namespace View
 {
     public partial class CameraViewer : UserControl, IVideoView
     {
-        public Panel VideoPanel { get { return videoPanel; } set { videoPanel = value; } }
+        public Panel VideoPanel { get { return videoPanel; } }
        
         #region Move fields
         public event Action ToRight;
