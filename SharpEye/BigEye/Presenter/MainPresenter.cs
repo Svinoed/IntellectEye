@@ -26,11 +26,12 @@ namespace Presenter
         private IVideoPresenter _videoPresenter;
 
         private Dictionary<Guid, Group> _groups;
-        private List<ISmallVideoPresenter> _smallPresenters; 
+        private List<ISmallVideoPresenter> _smallPresenters;
+        private List<IPlaybackPresenter> _playbackPresenters;
         private Group _activeGroup;
 
         // Переход к
-        private Action<ICameraModel> _handler;
+        private readonly Action<ICameraModel> _handler;
 
         public MainPresenter(IMainView view, Action<ICameraModel> handler)
         {
@@ -39,12 +40,13 @@ namespace Presenter
             {
                 this._view = view;
                 _handler = handler;
-                _view.CamEditClick += (g) => EditGroup(g);
-                _view.GroupsEditClick += () => EditGroups();
+                _view.GroupsEditClick += EditGroups;
                 _view.GroupSelected += SetActiveGroup;
+                _view.ActivatedPlaybackTab += ActivatedPlayBackTab;
            
                 _groups = new Dictionary<Guid, Group>();
                 _smallPresenters = new List<ISmallVideoPresenter>();
+                _playbackPresenters = new List<IPlaybackPresenter>();
                 LoadGroups();
             }
             else
@@ -64,104 +66,11 @@ namespace Presenter
         public void Run()
         {
             GreateSmallPresenter();
-            List<ISmallView> listVideo = GetListView();
+            List<IVideoBase> listVideo = new List<IVideoBase>(GetListView());
             _view.AddListVideoLiveControl(listVideo);
             SetCameraToSmallView();
             _view.SetGroups(_groups, _activeGroup.Id);
         }
-
-        private void RefreshVideo()
-        {
-            if (_activeGroup.Cameras.Count > _smallPresenters.Count)
-            {
-                GreateSmallPresenter();
-            }
-            DisconnectAll();
-            List<ISmallView> listVideo = GetListView();
-            _view.AddListVideoLiveControl(listVideo);
-            SetCameraToSmallView();
-            _view.SetGroups(_groups, _activeGroup.Id);
-        }
-
-        #region ListVideo
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        private void GreateSmallPresenter()
-        {
-            int diff = _activeGroup.Cameras.Count - _smallPresenters.Count;
-            for (int i = 0; i < diff; i++)
-            {
-                ISmallVideoPresenter smallPresenter =
-                    new SmallVideoPresenter(new SmallControl(), _handler);
-                _smallPresenters.Add(smallPresenter);
-            }         
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        private List<ISmallView> GetListView()
-        {
-            List<ISmallView> list = new List<ISmallView>();
-            int count = _activeGroup.Cameras.Count;
-            for (int i = 0; i < count; i ++)
-            {
-                ISmallView view = _smallPresenters[i].GetView();
-                view.ClearPanel();
-                list.Add(view);
-            }
-            return list;
-        }
-
-        private void DisconnectAll()
-        {
-            foreach (var p in _smallPresenters)
-            {
-                p.Disconnect();
-            }
-        }
-
-        private void SetCameraToSmallView()
-        {
-            var c = _activeGroup.Cameras.Keys; ;
-            for (int i = 0; i < c.Count; i++)
-            {
-                ICameraModel camera = _cameraManager.GetCamera(c.ElementAt(i));
-                ISmallVideoPresenter presenter = _smallPresenters[i];
-                presenter.Camera = camera;
-                presenter.SetCamera();
-            }          
-        }
-
-        
-        /// <summary>
-        /// Метод подгружает группы из конфига,
-        /// если их нет, то создает одну группу по умолчанию
-        /// </summary>
-        private void LoadGroups()
-        {
-            // Здесь, подгружаем список групп
-            if (false)
-            {
-
-            }
-            else
-            {
-                List<ICameraModel> cameras = _cameraManager.GetCameras();
-                Group defaultGroup = new Group("По умолчанию");
-                for (int i = 0; i < cameras.Count && i < 16; i++)
-                {
-                    ICameraModel camera = cameras.ElementAt(i);
-                    defaultGroup.Cameras.Add(camera.Id, camera.Name);
-                }
-                _activeGroup = defaultGroup;
-                _groups.Add(defaultGroup.Id, defaultGroup);
-            }
-        }
-        #endregion
 
         public void SetVisible(bool visible)
         {
@@ -171,12 +80,9 @@ namespace Presenter
             }
         }
 
+        #region  Video live
+
         #region Edit handler by shukur
-        private void EditGroup(Group group)
-        {
-
-        } 
-
         /// <summary>
         /// Обрабатывает собитие кнопки редактирования групп
         /// </summary>
@@ -198,7 +104,7 @@ namespace Presenter
             {
                 _activeGroup = _groups[_activeGroup.Id];
             }
-            
+
             RefreshVideo();
         }
 
@@ -225,18 +131,129 @@ namespace Presenter
             }
         }
 
-
-        #region Video live
-        private void VideoLive()
+        #region ListVideo
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private void GreateSmallPresenter()
         {
+            int diff = _activeGroup.Cameras.Count - _smallPresenters.Count;
+            for (int i = 0; i < diff; i++)
+            {
+                ISmallVideoPresenter smallPresenter =
+                    new SmallVideoPresenter(new SmallControl(), _handler);
+                _smallPresenters.Add(smallPresenter);
+            }
+        }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private List<IVideoBase> GetListView()
+        {
+            List<IVideoBase> list = new List<IVideoBase>();
+            int count = _activeGroup.Cameras.Count;
+            for (int i = 0; i < count; i++)
+            {
+                ISmallView view = _smallPresenters[i].GetView();
+                view.ClearPanel();
+                list.Add(view);
+            }
+            return list;
+        }
+
+        private void DisconnectAll()
+        {
+            foreach (var p in _smallPresenters)
+            {
+                p.Disconnect();
+            }
+        }
+
+        private void SetCameraToSmallView()
+        {
+            var c = _activeGroup.Cameras.Keys; ;
+            for (int i = 0; i < c.Count; i++)
+            {
+                ICameraModel camera = _cameraManager.GetCamera(c.ElementAt(i));
+                ISmallVideoPresenter presenter = _smallPresenters[i];
+                presenter.Camera = camera;
+                presenter.SetCamera();
+            }
+        }
+
+
+        /// <summary>
+        /// Метод подгружает группы из конфига,
+        /// если их нет, то создает одну группу по умолчанию
+        /// </summary>
+        private void LoadGroups()
+        {
+            // Здесь, подгружаем список групп
+            if (false)
+            {
+
+            }
+            else
+            {
+                List<ICameraModel> cameras = _cameraManager.GetCameras();
+                Group defaultGroup = new Group("По умолчанию");
+                for (int i = 0; i < cameras.Count && i < 16; i++)
+                {
+                    ICameraModel camera = cameras.ElementAt(i);
+                    defaultGroup.Cameras.Add(camera.Id, camera.Name);
+                }
+                _activeGroup = defaultGroup;
+                _groups.Add(defaultGroup.Id, defaultGroup);
+            }
         }
         #endregion
 
-        #region Video playback
-        private void VideoPlayback()
+        private void RefreshVideo()
         {
+            if (_activeGroup.Cameras.Count > _smallPresenters.Count)
+            {
+                GreateSmallPresenter();
+            }
+            DisconnectAll();
+            List<IVideoBase> listVideo = GetListView();
+            _view.AddListVideoLiveControl(listVideo);
+            SetCameraToSmallView();
+            _view.SetGroups(_groups, _activeGroup.Id);
+        }
 
+        #endregion
+
+
+
+        #region Video playback
+
+        private void ActivatedPlayBackTab()
+        {
+            GreatePlaybacks();
+            List<IVideoBase> list = GetPlaybackView();
+            _view.AddListPlayBack(list);
+        }
+
+        private void GreatePlaybacks()
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                IPlaybackPresenter playbackPresenter = new PlaybackPresenter(new MiniPlayBack());
+                _playbackPresenters.Add(playbackPresenter);
+            }
+        }
+
+        private List<IVideoBase> GetPlaybackView()
+        {
+            List<IVideoBase> list = new List<IVideoBase>();
+            foreach (IPlaybackPresenter p in _playbackPresenters)
+            {
+                list.Add(p.GetView());
+            }
+            return list;
         }
         #endregion
     }
