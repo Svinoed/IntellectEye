@@ -108,14 +108,13 @@
     <Compile Include="GroupEditor.designer.cs">
       <DependentUpon>GroupEditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\IContainerView.cs" />
     <Compile Include="Interfaces\ILoginView.cs" />
     <Compile Include="Interfaces\ILogView.cs" />
     <Compile Include="Interfaces\IMainView.cs" />
     <Compile Include="Interfaces\IPlaybackView.cs" />
     <Compile Include="Interfaces\ISmallView.cs" />
+    <Compile Include="Interfaces\IVideoBase.cs" />
     <Compile Include="Interfaces\IVideoView.cs" />
-    <Compile Include="Interfaces\IView.cs" />
     <Compile Include="LoginControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
