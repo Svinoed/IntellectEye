@@ -4,12 +4,15 @@ using VideoOS.Platform;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.ComponentModel.Composition;
+using System.Windows.Forms;
+using System.Runtime.Serialization;
+using System.Reflection;
 
 namespace Model
 {
     [Serializable]
-    [Export(typeof(ISerializable))]
-    class SerializeDevice : ISerializable
+    [Export(typeof(Contract.ISerializable))]
+    class SerializeDevice : Contract.ISerializable
     {
         string _CameraId;
         string _CameraName;
@@ -39,6 +42,8 @@ namespace Model
         {
             byte[] bytes = Convert.FromBase64String(serializedCamera);
             BinaryFormatter serializer = new BinaryFormatter();
+            //Перед десериализацией сделать биндинк сборок и имен
+            serializer.Binder = new PreMergeToMergedDeserializationBinder();
             using (MemoryStream stream = new MemoryStream(bytes))
             {
                 SerializeDevice device = (SerializeDevice)serializer.Deserialize(stream);
@@ -50,6 +55,27 @@ namespace Model
                 else
                     return new Camera(new FQID(_CameraId), _CameraName);
             }
+        }
+    }
+    /// <summary>
+    /// Данный класс нужен для работы COM, если десериализуемый объект находится в той же сборке
+    /// необходимо сопоставление имен сборок иначе эта сборка будет не найдена
+    /// </summary>
+    sealed class PreMergeToMergedDeserializationBinder : SerializationBinder
+    {
+        public override Type BindToType(string assemblyName, string typeName)
+        {
+            Type typeToDeserialize = null;
+
+            // For each assemblyName/typeName that you want to deserialize to
+            // a different type, set typeToDeserialize to the desired type.
+            String exeAssembly = Assembly.GetExecutingAssembly().FullName;
+
+            // The following line of code returns the type.
+            typeToDeserialize = Type.GetType(String.Format("{0}, {1}",
+                typeName, exeAssembly));
+
+            return typeToDeserialize;
         }
     }
 }

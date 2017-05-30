@@ -170,6 +170,7 @@ namespace MiniEye.Views
         private void DefaultCameraComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             _CameraData.SelectedCameraName = this.DefaultCameraComboBox.SelectedItem.ToString();
+            //Отправить выбранную камеру вызывающему объекту
             OnCameraSelected(this.DefaultCameraComboBox.SelectedItem);
         }
         /// <summary>

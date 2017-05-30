@@ -160,7 +160,7 @@ namespace MiniEye
         public string Password { get; set; }
         //Свойства могут быть сохранены только в виде примитивных типов, поэтому камера
         //конвертируется в строку
-        public string SelectedCamera = null;
+        public string SelectedCamera { get; set; }
         #endregion
 
 
@@ -265,11 +265,23 @@ namespace MiniEye
             }
             else
             {
+                MessageBox.Show(SelectedCamera);
                 //Настройки автоматически восстанавливаются при использовании IPersistStorage
                 //методы которого вызываются контейнером
                 _ViewSettings.SetSettings(this);
                 if (_ViewPreview.IsDisposed || _ViewPreview == null)
                     _ViewPreview = new Views.Preview(this);
+                try
+                {
+                    _ViewSettings_OnCheckConnection(this.ServerName, Authorization.Basic, this.Login, this.Password);
+                    //Без запроса камер повторное использование не работает
+                    _Settings_OnGetCameraRequest();
+                }
+                catch (Exception)
+                {
+                    _ViewSettings.Show();
+                    return;
+                }
                 InitializePreview();    //Привязать камеру к окну просмотра и показать пользователю
             }
         }
@@ -283,6 +295,10 @@ namespace MiniEye
                 listCamera.Add(camera);
             return listCamera;
         }
+        /// <summary>
+        /// Инициализация окна предварительного просмотра изображения
+        /// также сопоставление окна с камерой
+        /// </summary>
         private void InitializePreview()
         {
             //Установить обновленные данные
@@ -292,16 +308,13 @@ namespace MiniEye
             //Привязка отображения к камере
             try
             {
-                //ICameraModel camera = _ModelCameraManager.GetCameras().Find(cam => cam.Name.Equals(SelectedCameraName));
                 ICameraModel camera = _ModelSerializeDevice.Deserialize(SelectedCamera);
-
-                MessageBox.Show("Test");
                 _ModelLiveStream.SetVideoStreamInPanel(camera, _ViewPreview._VideoPanel);
             }
-            catch (Exception err)
+            catch (Exception)
             {
                 IsStateSaved = false;
-                MessageBox.Show($"Ошибка при установке камеры {err.Message}");
+                MessageBox.Show($"Ошибка при установке камеры");
             }
         }
 
