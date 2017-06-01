@@ -34,10 +34,10 @@
             this.startTlabel = new System.Windows.Forms.Label();
             this.stopTlabel = new System.Windows.Forms.Label();
             this.startT = new System.Windows.Forms.DateTimePicker();
+            this.addVideoButton = new System.Windows.Forms.Button();
             this.camTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.camSearchTextBox = new System.Windows.Forms.TextBox();
             this.camListView = new System.Windows.Forms.ListView();
-            this.addVideoButton = new System.Windows.Forms.Button();
             this.mainTableLayoutPanel.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.camTableLayoutPanel.SuspendLayout();
@@ -115,6 +115,17 @@
             this.startT.Size = new System.Drawing.Size(100, 20);
             this.startT.TabIndex = 7;
             // 
+            // addVideoButton
+            // 
+            this.addVideoButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.addVideoButton.Location = new System.Drawing.Point(15, 129);
+            this.addVideoButton.Name = "addVideoButton";
+            this.addVideoButton.Size = new System.Drawing.Size(75, 23);
+            this.addVideoButton.TabIndex = 8;
+            this.addVideoButton.Text = "Выбрать";
+            this.addVideoButton.UseVisualStyleBackColor = true;
+            this.addVideoButton.Click += new System.EventHandler(this.addVideoButton_Click);
+            // 
             // camTableLayoutPanel
             // 
             this.camTableLayoutPanel.ColumnCount = 1;
@@ -148,16 +159,6 @@
             this.camListView.Size = new System.Drawing.Size(160, 123);
             this.camListView.TabIndex = 1;
             this.camListView.UseCompatibleStateImageBehavior = false;
-            // 
-            // addVideoButton
-            // 
-            this.addVideoButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.addVideoButton.Location = new System.Drawing.Point(15, 129);
-            this.addVideoButton.Name = "addVideoButton";
-            this.addVideoButton.Size = new System.Drawing.Size(75, 23);
-            this.addVideoButton.TabIndex = 8;
-            this.addVideoButton.Text = "Выбрать";
-            this.addVideoButton.UseVisualStyleBackColor = true;
             // 
             // TEMPORARYSearchVideo
             // 

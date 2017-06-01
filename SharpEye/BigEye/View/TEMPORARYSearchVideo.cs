@@ -17,6 +17,9 @@ namespace View
             InitializeComponent();
         }
 
+        private void addVideoButton_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }
