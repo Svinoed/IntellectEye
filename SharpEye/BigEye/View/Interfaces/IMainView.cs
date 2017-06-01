@@ -11,7 +11,8 @@ namespace View.Interfaces
     {
 
         bool ViewVisible { get; set; }
-        void AddVideoControl(IVideoView view);
+        void AddVideoControl(IVideoBase view);
+        void ClearCellsLiveTable(int startIndex);
         void AddListVideoLiveControl(List<IVideoBase> list);
         void SetGroups(Dictionary<Guid, Group> groups, Guid activeGroup);
 
@@ -22,7 +23,7 @@ namespace View.Interfaces
 
         Dictionary<Guid, Group> EditGroups(Dictionary<Guid,Group> groups, Dictionary<dynamic, string> cameras);
 
-        void AddPlaybackControl(IPlaybackView view);
+        void AddPlaybackControl(IVideoBase view);
         void AddListPlayBack(List<IVideoBase> list);
     }
 }

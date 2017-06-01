@@ -32,7 +32,8 @@ namespace View
         {
             InitializeComponent();
             
-            _videoTable = new TableLayoutPanel();
+            _videoLiveTable = new TableLayoutPanel();
+            _playbackTable = new TableLayoutPanel();
         }
 
 
@@ -78,55 +79,20 @@ namespace View
             throw new NotImplementedException();
         }
 
-        #region InterfacesImplementation
-        public void AddVideoControl(IVideoView view)
+ 
+        public void AddVideoControl(IVideoBase view)
         {
-            // для одной камеры
-            Panel panel = view.VideoPanel;
-            panel.Dock = DockStyle.Fill;
-            livePage.Controls.Add(panel);
+            UserControl c = (UserControl) view;
+            _videoLiveTable.Controls.Add(c);
         }
 
-        public void AddList(List<ISmallView> viewList)
+        public void ClearCellsLiveTable(int startIndex)
         {
+            for (int i = startIndex; i < _videoLiveTable.Controls.Count; i++)
+            {
+                _videoLiveTable.Controls.RemoveAt(i);
+            }
         }
-
-        public void SetCameraList(string[] cameras)
-        {
-            //string[] temp = { "K1", "K2" }; 
-            //cameraComboBox.Items.AddRange(cameras);
-        }
-#endregion
-       
-
-        #region AddListVideoLiveControl by dima. Refactor shukur
-
-
-        private void groupEditor_MouseClick(object sender, MouseEventArgs e)
-        {
-
-            groupEditorButton.BackColor = SystemColors.ButtonHighlight;//.ButtonShadow;
-            //GroupEditor groupEditorWindow = new GroupEditor();
-            //groupEditorWindow.Show();
-        }
-
-        private void cameraEditor_MouseClick(object sender, MouseEventArgs e)
-        {
-            CameraEditor cameraEditorWindow = new CameraEditor();
-            cameraEditorWindow.Show();
-        }
-
-        private void sequenceScreenplayEditor_MouseClick(object sender, MouseEventArgs e)
-        {
-            //SequenceScreenplayEditor sequenceScreenplayEditorWindow = new SequenceScreenplayEditor();
-            //sequenceScreenplayEditorWindow.Show();
-        }
-
-        private void searchButton_MouseClick(object sender, MouseEventArgs e)
-        {
-
-        }
-        
 
         #region AddListControl by dima. Refactor shukur
         /// <summary>
@@ -204,20 +170,20 @@ namespace View
 
         #region this co by shukur
 
-            #region EditGroups
-            /// <summary>
-            /// Вызвает окно редактирования групп и
-            /// передает ей актуальный список камер и групп
-            /// </summary>
-            /// <param name="groups"></param>
-            /// <param name="cameras"></param>
-            /// <returns></returns>
-            public Dictionary<Guid, Group> EditGroups(Dictionary<Guid, Group> groups, Dictionary<dynamic, string> cameras)
-            {
-                GroupEditor groupEditor = new GroupEditor(groups, cameras);
-                groupEditor.ShowDialog();
-                return groupEditor.EditedGrops;
-            }
+        #region EditGroups
+        /// <summary>
+        /// Вызвает окно редактирования групп и
+        /// передает ей актуальный список камер и групп
+        /// </summary>
+        /// <param name="groups"></param>
+        /// <param name="cameras"></param>
+        /// <returns></returns>
+        public Dictionary<Guid, Group> EditGroups(Dictionary<Guid, Group> groups, Dictionary<dynamic, string> cameras)
+        {
+            GroupEditor groupEditor = new GroupEditor(groups, cameras);
+            groupEditor.ShowDialog();
+            return groupEditor.EditedGrops;
+        }
 
         private void groupEditor_Click(object sender, EventArgs e)
         {
@@ -241,14 +207,14 @@ namespace View
 
         #region Playback
 
-        public void AddPlaybackControl(IPlaybackView view)
+        public void AddPlaybackControl(IVideoBase view)
         {
             throw new NotImplementedException();
         }
 
         public void AddListPlayBack(List<IVideoBase> list)
         {
-            AddListControl(list, _playbackTable, playbackPanel);
+            AddListControl(list, _playbackTable, videoPlayBackPanel);
         }
 
         #endregion

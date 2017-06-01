@@ -110,6 +110,7 @@
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(881, 389);
             this.tabControl.TabIndex = 1;
+            this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
             // livePage
             // 
@@ -195,8 +196,6 @@
             this.cameraEditorButton.Size = new System.Drawing.Size(34, 34);
             this.cameraEditorButton.TabIndex = 1;
             this.cameraEditorButton.UseVisualStyleBackColor = true;
-            this.cameraEditorButton.Click += new System.EventHandler(this.cameraEditor_Click);
-            this.cameraEditorButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.cameraEditor_MouseClick);
             // 
             // imageList1
             // 
@@ -252,7 +251,6 @@
             this.groupEditorButton.TabIndex = 2;
             this.groupEditorButton.UseVisualStyleBackColor = true;
             this.groupEditorButton.Click += new System.EventHandler(this.groupEditor_Click);
-            this.groupEditorButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.groupEditor_MouseClick);
             // 
             // sequenceScreenplayEditButton
             // 
@@ -267,7 +265,6 @@
             this.sequenceScreenplayEditButton.Size = new System.Drawing.Size(34, 34);
             this.sequenceScreenplayEditButton.TabIndex = 3;
             this.sequenceScreenplayEditButton.UseVisualStyleBackColor = true;
-            this.sequenceScreenplayEditButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.sequenceScreenplayEditor_MouseClick);
             // 
             // groupPanel
             // 
@@ -289,6 +286,7 @@
             this.listGroup.Size = new System.Drawing.Size(194, 255);
             this.listGroup.TabIndex = 0;
             this.listGroup.UseCompatibleStateImageBehavior = false;
+            this.listGroup.View = System.Windows.Forms.View.List;
             // 
             // tableLayoutPanel4
             // 
@@ -575,7 +573,6 @@
             this.addNewButton.Size = new System.Drawing.Size(34, 34);
             this.addNewButton.TabIndex = 9;
             this.addNewButton.UseVisualStyleBackColor = true;
-            this.addNewButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button4_MouseClick);
             // 
             // listView1
             // 

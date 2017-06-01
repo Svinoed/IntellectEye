@@ -23,7 +23,6 @@ namespace Presenter
         private IMainView _view;
         [Import]
         private ICameraManagerModel _cameraManager;
-        private IVideoPresenter _videoPresenter;
 
         private Dictionary<Guid, Group> _groups;
         private List<ISmallVideoPresenter> _smallPresenters;
@@ -100,12 +99,32 @@ namespace Presenter
             {
                 _activeGroup = _groups.ElementAt(0).Value;
             }
-            else
+            else if (!IsChangedActiveGroupe())
             {
-                _activeGroup = _groups[_activeGroup.Id];
+                return;
             }
 
+            _activeGroup = _groups[_activeGroup.Id];
             RefreshVideo();
+        }
+
+        private bool IsChangedActiveGroupe()
+        {
+            var keys = _groups[_activeGroup.Id].Cameras.Keys;
+            if (keys.Count != _activeGroup.Cameras.Count)
+            {
+                return true;
+            }
+
+            for (int i = 0; i < keys.Count; i++)
+            {
+                ICameraModel camera = _cameraManager.GetCamera(keys.ElementAt(i));
+                if (!camera.EqualsId(_activeGroup.Cameras.ElementAt(i).Key))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         private Dictionary<dynamic, string> GetListCamera()
@@ -179,8 +198,9 @@ namespace Presenter
             {
                 ICameraModel camera = _cameraManager.GetCamera(c.ElementAt(i));
                 ISmallVideoPresenter presenter = _smallPresenters[i];
+                presenter.Disconnect();
                 presenter.Camera = camera;
-                presenter.SetCamera();
+                presenter.ShowVideo();
             }
         }
 
@@ -199,7 +219,7 @@ namespace Presenter
             else
             {
                 List<ICameraModel> cameras = _cameraManager.GetCameras();
-                Group defaultGroup = new Group("По умолчанию");
+                Group defaultGroup = new Group("Группа по умолчанию");
                 for (int i = 0; i < cameras.Count && i < 16; i++)
                 {
                     ICameraModel camera = cameras.ElementAt(i);
@@ -213,17 +233,44 @@ namespace Presenter
 
         private void RefreshVideo()
         {
-            if (_activeGroup.Cameras.Count > _smallPresenters.Count)
+            int prevControlNumber = FreePlace(_smallPresenters.Count);
+            int diff = _activeGroup.Cameras.Count - _smallPresenters.Count;
+            int currentControlNumber = FreePlace(_activeGroup.Cameras.Count);
+
+            // Если число камер в группе увеличилось 
+            // и в сетке есть места для новых камер, то помещаем их туда
+            if (diff > 0 && diff <= prevControlNumber)
             {
+                int prevSize = _smallPresenters.Count;
                 GreateSmallPresenter();
+                for (int i = prevSize; i < _activeGroup.Cameras.Count; i++)
+                {
+                    _view.AddVideoControl(_smallPresenters[i].GetView());
+                }
             }
-            DisconnectAll();
-            List<IVideoBase> listVideo = GetListView();
-            _view.AddListVideoLiveControl(listVideo);
+            // Если число камер в группе уменьшилось так, что не нужно перестраиваить сетку,
+            // то пользуемся ей
+            else if (diff < 0 && currentControlNumber == prevControlNumber)
+            {
+                int index = _smallPresenters.Count + diff;
+                for (int i = index - 1; i < _smallPresenters.Count; i++)
+                {
+                    _smallPresenters[i].Disconnect();
+                    _smallPresenters.RemoveAt(i);
+                }
+
+               _view.ClearCellsLiveTable(index);    
+            }
+            // Нет возможности воспользоваться созданной сеткой
+            else if (diff > prevControlNumber || (diff < 0 && currentControlNumber != prevControlNumber))
+            {
+                DisconnectAll();
+                List<IVideoBase> listVideo = GetListView();
+                _view.AddListVideoLiveControl(listVideo);
+            }
             SetCameraToSmallView();
             _view.SetGroups(_groups, _activeGroup.Id);
         }
-
         #endregion
 
 
@@ -232,9 +279,33 @@ namespace Presenter
 
         private void ActivatedPlayBackTab()
         {
-            GreatePlaybacks();
+            if (_playbackPresenters.Count == 0)
+            {
+                GreatePlaybacks();
+            }
             List<IVideoBase> list = GetPlaybackView();
             _view.AddListPlayBack(list);
+        }
+
+        private void AddPlayback()
+        {
+            int numberFreePlace = FreePlace(_playbackPresenters.Count);
+            IPlaybackPresenter playbackPresenter = new PlaybackPresenter(new MiniPlayBack());
+            _playbackPresenters.Add(playbackPresenter);
+            if (numberFreePlace > 0)
+            {
+                _view.AddPlaybackControl(playbackPresenter.GetView());
+            }
+            else
+            {
+                List<IVideoBase> list = GetPlaybackView();
+                _view.AddListPlayBack(list);
+            }
+        }
+
+        private void RemovePlayback()
+        {
+            
         }
 
         private void GreatePlaybacks()
@@ -256,5 +327,36 @@ namespace Presenter
             return list;
         }
         #endregion
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="size">Число элементов требующих размещения</param>
+        /// <returns>Число свободных мест</returns>
+        private int FreePlace(int size)
+        {
+            int sqrt = (int)Math.Sqrt(size);
+            int columns;
+            if (sqrt * sqrt == size)
+            {
+                columns = sqrt;
+            }
+            else
+            {
+                columns = sqrt + 1;
+            }
+
+            int rows;
+            if ((columns - 1) * columns >= size)
+            {
+                rows = columns - 1;
+            }
+            else
+            {
+                rows = columns;
+            }
+
+            int cels = rows * columns;
+            return cels;
+        }
     }
 }
