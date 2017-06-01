@@ -38,6 +38,7 @@
             System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("");
             System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("");
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.searchButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.sourceComboBox = new System.Windows.Forms.ComboBox();
@@ -47,13 +48,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.bookmarkComboBox = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.label9 = new System.Windows.Forms.Label();
             this.camComboBox = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.commentTextBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.resListView = new System.Windows.Forms.ListView();
@@ -87,6 +88,7 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.Controls.Add(this.searchButton, 0, 7);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel5, 0, 5);
@@ -95,16 +97,27 @@
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(4, 4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 7;
+            this.tableLayoutPanel1.RowCount = 8;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(277, 325);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85.1282F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.87179F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(277, 364);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // searchButton
+            // 
+            this.searchButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.searchButton.Location = new System.Drawing.Point(86, 339);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(105, 22);
+            this.searchButton.TabIndex = 6;
+            this.searchButton.Text = "Начать поиск";
+            this.searchButton.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel2
             // 
@@ -198,7 +211,7 @@
             this.tableLayoutPanel5.ColumnCount = 2;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Controls.Add(this.comboBox2, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.bookmarkComboBox, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.label6, 0, 0);
             this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 139);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
@@ -207,15 +220,15 @@
             this.tableLayoutPanel5.Size = new System.Drawing.Size(268, 35);
             this.tableLayoutPanel5.TabIndex = 3;
             // 
-            // comboBox2
+            // bookmarkComboBox
             // 
-            this.comboBox2.BackColor = System.Drawing.Color.LightGray;
-            this.comboBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(93, 3);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(172, 21);
-            this.comboBox2.TabIndex = 3;
+            this.bookmarkComboBox.BackColor = System.Drawing.Color.LightGray;
+            this.bookmarkComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bookmarkComboBox.FormattingEnabled = true;
+            this.bookmarkComboBox.Location = new System.Drawing.Point(93, 3);
+            this.bookmarkComboBox.Name = "bookmarkComboBox";
+            this.bookmarkComboBox.Size = new System.Drawing.Size(172, 21);
+            this.bookmarkComboBox.TabIndex = 3;
             // 
             // label6
             // 
@@ -267,24 +280,25 @@
             this.tableLayoutPanel9.ColumnCount = 2;
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel9.Controls.Add(this.textBox1, 1, 0);
+            this.tableLayoutPanel9.Controls.Add(this.commentTextBox, 1, 0);
             this.tableLayoutPanel9.Controls.Add(this.label7, 0, 0);
+            this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel9.Location = new System.Drawing.Point(3, 180);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
             this.tableLayoutPanel9.RowCount = 1;
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(271, 142);
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(271, 153);
             this.tableLayoutPanel9.TabIndex = 5;
             // 
-            // textBox1
+            // commentTextBox
             // 
-            this.textBox1.BackColor = System.Drawing.Color.LightGray;
-            this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Location = new System.Drawing.Point(93, 3);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(175, 136);
-            this.textBox1.TabIndex = 4;
+            this.commentTextBox.BackColor = System.Drawing.Color.LightGray;
+            this.commentTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.commentTextBox.Location = new System.Drawing.Point(93, 3);
+            this.commentTextBox.Multiline = true;
+            this.commentTextBox.Name = "commentTextBox";
+            this.commentTextBox.Size = new System.Drawing.Size(175, 153);
+            this.commentTextBox.TabIndex = 4;
             // 
             // label7
             // 
@@ -337,7 +351,7 @@
             listViewItem6});
             this.resListView.Location = new System.Drawing.Point(3, 16);
             this.resListView.Name = "resListView";
-            this.resListView.Size = new System.Drawing.Size(607, 268);
+            this.resListView.Size = new System.Drawing.Size(628, 307);
             this.resListView.TabIndex = 0;
             this.resListView.UseCompatibleStateImageBehavior = false;
             this.resListView.View = System.Windows.Forms.View.Details;
@@ -394,7 +408,7 @@
             this.mainTableLayoutPanel.Name = "mainTableLayoutPanel";
             this.mainTableLayoutPanel.RowCount = 1;
             this.mainTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.mainTableLayoutPanel.Size = new System.Drawing.Size(905, 333);
+            this.mainTableLayoutPanel.Size = new System.Drawing.Size(922, 372);
             this.mainTableLayoutPanel.TabIndex = 1;
             // 
             // tableLayoutPanel7
@@ -411,7 +425,7 @@
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(613, 325);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(634, 364);
             this.tableLayoutPanel7.TabIndex = 1;
             // 
             // tableLayoutPanel6
@@ -421,12 +435,12 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 146F));
             this.tableLayoutPanel6.Controls.Add(this.addToPlayBackButton, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.nextResButton, 3, 0);
             this.tableLayoutPanel6.Controls.Add(this.lastResButton, 2, 0);
             this.tableLayoutPanel6.Controls.Add(this.cleanResButton, 1, 0);
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(74, 290);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(85, 329);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -474,7 +488,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
-            this.ClientSize = new System.Drawing.Size(905, 333);
+            this.ClientSize = new System.Drawing.Size(922, 372);
             this.Controls.Add(this.mainTableLayoutPanel);
             this.MinimumSize = new System.Drawing.Size(560, 345);
             this.Name = "SearchVideo";
@@ -509,10 +523,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox bookmarkComboBox;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox commentTextBox;
         private System.Windows.Forms.ListView resListView;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TableLayoutPanel mainTableLayoutPanel;
@@ -536,5 +550,6 @@
         private System.Windows.Forms.Button lastResButton;
         private System.Windows.Forms.DateTimePicker startT;
         private System.Windows.Forms.DateTimePicker stopT;
+        private System.Windows.Forms.Button searchButton;
     }
 }

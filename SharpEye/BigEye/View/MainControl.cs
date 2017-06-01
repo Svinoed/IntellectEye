@@ -28,10 +28,10 @@ namespace View
         public MainControl()
         {
             InitializeComponent();
-            
             _videoTable = new TableLayoutPanel();
         }
 
+       
 
         #region DrawGroupBox
         // Задем свой стиль для журнала
@@ -93,35 +93,13 @@ namespace View
             //string[] temp = { "K1", "K2" }; 
             //cameraComboBox.Items.AddRange(cameras);
         }
-#endregion
+        #endregion
 
 
+    
 
-        private void groupEditor_MouseClick(object sender, MouseEventArgs e)
-        {
 
-            groupEditorButton.BackColor = SystemColors.ButtonHighlight;//.ButtonShadow;
-            //GroupEditor groupEditorWindow = new GroupEditor();
-            //groupEditorWindow.Show();
-        }
-
-        private void cameraEditor_MouseClick(object sender, MouseEventArgs e)
-        {
-            CameraEditor cameraEditorWindow = new CameraEditor();
-            cameraEditorWindow.Show();
-        }
-
-        private void sequenceScreenplayEditor_MouseClick(object sender, MouseEventArgs e)
-        {
-            //SequenceScreenplayEditor sequenceScreenplayEditorWindow = new SequenceScreenplayEditor();
-            //sequenceScreenplayEditorWindow.Show();
-        }
-
-        private void searchButton_MouseClick(object sender, MouseEventArgs e)
-        {
-
-        }
-        
+    
 
         #region AddListControl by dima. Refactor shukur
         /// <summary>
@@ -242,15 +220,10 @@ namespace View
 
         private void cameraEditor_Click(object sender, EventArgs e)
         {
-
+            CameraEditor cameraEditorWindow = new CameraEditor();
+            cameraEditorWindow.Show();
         }
         
-
-        private void button4_MouseClick(object sender, MouseEventArgs e)
-        {
-            SearchVideo searchVideo = new SearchVideo();
-            searchVideo.Show();
-        }
 
         private void listGroup_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -267,6 +240,19 @@ namespace View
                     GroupSelected(g);
                 }
             }
+        }
+
+        private void playForAllButton_Click(object sender, EventArgs e)
+        {
+            if (playForAllButton.ImageIndex == 14)
+                playForAllButton.ImageIndex = 15;
+            else playForAllButton.ImageIndex = 14;
+        }
+
+        private void addNewButton_Click(object sender, EventArgs e)
+        {
+            SearchVideo searchVideo = new SearchVideo();
+            searchVideo.Show();
         }
     }
 }

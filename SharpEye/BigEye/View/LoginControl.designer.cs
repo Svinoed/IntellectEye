@@ -159,7 +159,7 @@
             // 
             this.NotificationLabel.AutoSize = true;
             this.NotificationLabel.ForeColor = System.Drawing.Color.White;
-            this.NotificationLabel.Location = new System.Drawing.Point(3, 233);
+            this.NotificationLabel.Location = new System.Drawing.Point(3, 257);
             this.NotificationLabel.Name = "NotificationLabel";
             this.NotificationLabel.Size = new System.Drawing.Size(0, 13);
             this.NotificationLabel.TabIndex = 9;
@@ -188,10 +188,9 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.progressBar1.Location = new System.Drawing.Point(3, 178);
+            this.progressBar1.Location = new System.Drawing.Point(3, 202);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(298, 16);
+            this.progressBar1.Size = new System.Drawing.Size(358, 16);
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.progressBar1.TabIndex = 11;
             // 
@@ -208,10 +207,10 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.NotificationLabel, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.progressBar1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -220,7 +219,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(304, 271);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(364, 303);
             this.tableLayoutPanel1.TabIndex = 13;
             // 
             // tableLayoutPanel4
@@ -236,7 +235,7 @@
             this.tableLayoutPanel4.Controls.Add(this.UserLabel, 0, 2);
             this.tableLayoutPanel4.Controls.Add(this.RememberPassCheck, 0, 6);
             this.tableLayoutPanel4.Controls.Add(this.PasswordLabel, 0, 4);
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(44, 3);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(73, 3);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 8;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -247,7 +246,7 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(216, 169);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(217, 178);
             this.tableLayoutPanel4.TabIndex = 14;
             // 
             // tableLayoutPanel3
@@ -272,7 +271,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
             this.tableLayoutPanel2.Controls.Add(this.cancelbutton, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.LogInButton, 0, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(77, 200);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(107, 224);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
@@ -288,7 +287,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "LoginControl";
-            this.Size = new System.Drawing.Size(304, 271);
+            this.Size = new System.Drawing.Size(364, 303);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);

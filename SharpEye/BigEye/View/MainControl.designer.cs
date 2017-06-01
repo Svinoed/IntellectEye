@@ -74,6 +74,7 @@
             this.settingBtn = new System.Windows.Forms.Button();
             this.mainLiveTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.mainToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.tabControl.SuspendLayout();
             this.livePage.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -108,7 +109,7 @@
             this.tabControl.Multiline = true;
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(881, 389);
+            this.tabControl.Size = new System.Drawing.Size(855, 426);
             this.tabControl.TabIndex = 1;
             // 
             // livePage
@@ -194,9 +195,9 @@
             this.cameraEditorButton.Name = "cameraEditorButton";
             this.cameraEditorButton.Size = new System.Drawing.Size(34, 34);
             this.cameraEditorButton.TabIndex = 1;
+            this.mainToolTip.SetToolTip(this.cameraEditorButton, "Редактор камер (в разработке)");
             this.cameraEditorButton.UseVisualStyleBackColor = true;
             this.cameraEditorButton.Click += new System.EventHandler(this.cameraEditor_Click);
-            this.cameraEditorButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.cameraEditor_MouseClick);
             // 
             // imageList1
             // 
@@ -236,6 +237,7 @@
             this.screenPlayButton.Name = "screenPlayButton";
             this.screenPlayButton.Size = new System.Drawing.Size(34, 34);
             this.screenPlayButton.TabIndex = 4;
+            this.mainToolTip.SetToolTip(this.screenPlayButton, "Запуск сценария (в разработке)");
             this.screenPlayButton.UseVisualStyleBackColor = true;
             // 
             // groupEditorButton
@@ -250,9 +252,9 @@
             this.groupEditorButton.Name = "groupEditorButton";
             this.groupEditorButton.Size = new System.Drawing.Size(34, 34);
             this.groupEditorButton.TabIndex = 2;
+            this.mainToolTip.SetToolTip(this.groupEditorButton, "Редактор групп");
             this.groupEditorButton.UseVisualStyleBackColor = true;
             this.groupEditorButton.Click += new System.EventHandler(this.groupEditor_Click);
-            this.groupEditorButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.groupEditor_MouseClick);
             // 
             // sequenceScreenplayEditButton
             // 
@@ -266,8 +268,8 @@
             this.sequenceScreenplayEditButton.Name = "sequenceScreenplayEditButton";
             this.sequenceScreenplayEditButton.Size = new System.Drawing.Size(34, 34);
             this.sequenceScreenplayEditButton.TabIndex = 3;
+            this.mainToolTip.SetToolTip(this.sequenceScreenplayEditButton, "Редактор сценариев  (в разработке)");
             this.sequenceScreenplayEditButton.UseVisualStyleBackColor = true;
-            this.sequenceScreenplayEditButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.sequenceScreenplayEditor_MouseClick);
             // 
             // groupPanel
             // 
@@ -288,7 +290,9 @@
             this.listGroup.Name = "listGroup";
             this.listGroup.Size = new System.Drawing.Size(194, 255);
             this.listGroup.TabIndex = 0;
+            this.mainToolTip.SetToolTip(this.listGroup, "Список созданных групп");
             this.listGroup.UseCompatibleStateImageBehavior = false;
+            this.listGroup.View = System.Windows.Forms.View.List;
             // 
             // tableLayoutPanel4
             // 
@@ -314,6 +318,7 @@
             this.searchTextBox.Name = "searchTextBox";
             this.searchTextBox.Size = new System.Drawing.Size(153, 26);
             this.searchTextBox.TabIndex = 5;
+            this.mainToolTip.SetToolTip(this.searchTextBox, "Поиск по группам");
             // 
             // label1
             // 
@@ -336,7 +341,7 @@
             this.playbackPage.Location = new System.Drawing.Point(4, 34);
             this.playbackPage.Name = "playbackPage";
             this.playbackPage.Padding = new System.Windows.Forms.Padding(3);
-            this.playbackPage.Size = new System.Drawing.Size(873, 351);
+            this.playbackPage.Size = new System.Drawing.Size(847, 388);
             this.playbackPage.TabIndex = 1;
             this.playbackPage.Text = "Воспроизведение";
             // 
@@ -353,7 +358,7 @@
             this.mainPlayBackTableLayoutPanel.Name = "mainPlayBackTableLayoutPanel";
             this.mainPlayBackTableLayoutPanel.RowCount = 1;
             this.mainPlayBackTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.mainPlayBackTableLayoutPanel.Size = new System.Drawing.Size(867, 345);
+            this.mainPlayBackTableLayoutPanel.Size = new System.Drawing.Size(841, 382);
             this.mainPlayBackTableLayoutPanel.TabIndex = 2;
             // 
             // tableLayoutPanel1
@@ -368,7 +373,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(650, 337);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(630, 374);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // videoPlayBackPanel
@@ -376,7 +381,7 @@
             this.videoPlayBackPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.videoPlayBackPanel.Location = new System.Drawing.Point(3, 3);
             this.videoPlayBackPanel.Name = "videoPlayBackPanel";
-            this.videoPlayBackPanel.Size = new System.Drawing.Size(644, 258);
+            this.videoPlayBackPanel.Size = new System.Drawing.Size(624, 306);
             this.videoPlayBackPanel.TabIndex = 0;
             // 
             // panel5
@@ -384,36 +389,36 @@
             this.panel5.Controls.Add(this.tableLayoutPanel6);
             this.panel5.Controls.Add(this.progressBar1);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(3, 267);
+            this.panel5.Location = new System.Drawing.Point(3, 315);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(644, 67);
+            this.panel5.Size = new System.Drawing.Size(624, 56);
             this.panel5.TabIndex = 0;
             // 
             // tableLayoutPanel6
             // 
             this.tableLayoutPanel6.ColumnCount = 9;
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 36F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 36F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 36F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 36F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel6.Controls.Add(this.redoAllBbutton, 6, 0);
-            this.tableLayoutPanel6.Controls.Add(this.fustUpAllButton, 5, 0);
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.tableLayoutPanel6.Controls.Add(this.resetButton, 8, 0);
-            this.tableLayoutPanel6.Controls.Add(this.slowDownAllButton, 3, 0);
+            this.tableLayoutPanel6.Controls.Add(this.bookmarkForAllButton, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.playForAllButton, 4, 0);
             this.tableLayoutPanel6.Controls.Add(this.switchForAllButton, 2, 0);
-            this.tableLayoutPanel6.Controls.Add(this.bookmarkForAllButton, 0, 0);
+            this.tableLayoutPanel6.Controls.Add(this.fustUpAllButton, 5, 0);
+            this.tableLayoutPanel6.Controls.Add(this.redoAllBbutton, 6, 0);
+            this.tableLayoutPanel6.Controls.Add(this.slowDownAllButton, 3, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 27);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 20);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(644, 40);
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(624, 36);
             this.tableLayoutPanel6.TabIndex = 21;
             // 
             // redoAllBbutton
@@ -424,10 +429,11 @@
             this.redoAllBbutton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.redoAllBbutton.ImageIndex = 20;
             this.redoAllBbutton.ImageList = this.imageList1;
-            this.redoAllBbutton.Location = new System.Drawing.Point(384, 3);
+            this.redoAllBbutton.Location = new System.Drawing.Point(369, 3);
             this.redoAllBbutton.Name = "redoAllBbutton";
-            this.redoAllBbutton.Size = new System.Drawing.Size(34, 34);
+            this.redoAllBbutton.Size = new System.Drawing.Size(30, 30);
             this.redoAllBbutton.TabIndex = 23;
+            this.mainToolTip.SetToolTip(this.redoAllBbutton, "Повторять воспроизведение");
             this.redoAllBbutton.UseVisualStyleBackColor = true;
             // 
             // fustUpAllButton
@@ -438,10 +444,11 @@
             this.fustUpAllButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.fustUpAllButton.ImageIndex = 19;
             this.fustUpAllButton.ImageList = this.imageList1;
-            this.fustUpAllButton.Location = new System.Drawing.Point(344, 3);
+            this.fustUpAllButton.Location = new System.Drawing.Point(333, 3);
             this.fustUpAllButton.Name = "fustUpAllButton";
-            this.fustUpAllButton.Size = new System.Drawing.Size(34, 34);
+            this.fustUpAllButton.Size = new System.Drawing.Size(30, 30);
             this.fustUpAllButton.TabIndex = 25;
+            this.mainToolTip.SetToolTip(this.fustUpAllButton, "Ускорить все видео");
             this.fustUpAllButton.UseVisualStyleBackColor = true;
             // 
             // resetButton
@@ -452,10 +459,11 @@
             this.resetButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.resetButton.ImageIndex = 13;
             this.resetButton.ImageList = this.imageList1;
-            this.resetButton.Location = new System.Drawing.Point(605, 3);
+            this.resetButton.Location = new System.Drawing.Point(591, 3);
             this.resetButton.Name = "resetButton";
-            this.resetButton.Size = new System.Drawing.Size(36, 34);
+            this.resetButton.Size = new System.Drawing.Size(30, 30);
             this.resetButton.TabIndex = 18;
+            this.mainToolTip.SetToolTip(this.resetButton, "Сброс всех настроек");
             this.resetButton.UseVisualStyleBackColor = true;
             // 
             // slowDownAllButton
@@ -466,10 +474,11 @@
             this.slowDownAllButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.slowDownAllButton.ImageIndex = 18;
             this.slowDownAllButton.ImageList = this.imageList1;
-            this.slowDownAllButton.Location = new System.Drawing.Point(264, 3);
+            this.slowDownAllButton.Location = new System.Drawing.Point(261, 3);
             this.slowDownAllButton.Name = "slowDownAllButton";
-            this.slowDownAllButton.Size = new System.Drawing.Size(34, 34);
+            this.slowDownAllButton.Size = new System.Drawing.Size(30, 30);
             this.slowDownAllButton.TabIndex = 26;
+            this.mainToolTip.SetToolTip(this.slowDownAllButton, "Замедлить все видео");
             this.slowDownAllButton.UseVisualStyleBackColor = true;
             // 
             // playForAllButton
@@ -480,11 +489,13 @@
             this.playForAllButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.playForAllButton.ImageIndex = 14;
             this.playForAllButton.ImageList = this.imageList1;
-            this.playForAllButton.Location = new System.Drawing.Point(304, 3);
+            this.playForAllButton.Location = new System.Drawing.Point(297, 3);
             this.playForAllButton.Name = "playForAllButton";
-            this.playForAllButton.Size = new System.Drawing.Size(34, 34);
+            this.playForAllButton.Size = new System.Drawing.Size(30, 30);
             this.playForAllButton.TabIndex = 24;
+            this.mainToolTip.SetToolTip(this.playForAllButton, "Воспроизвести/приостаносить все видео");
             this.playForAllButton.UseVisualStyleBackColor = true;
+            this.playForAllButton.Click += new System.EventHandler(this.playForAllButton_Click);
             // 
             // switchForAllButton
             // 
@@ -494,10 +505,11 @@
             this.switchForAllButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.switchForAllButton.ImageIndex = 17;
             this.switchForAllButton.ImageList = this.imageList1;
-            this.switchForAllButton.Location = new System.Drawing.Point(224, 3);
+            this.switchForAllButton.Location = new System.Drawing.Point(225, 3);
             this.switchForAllButton.Name = "switchForAllButton";
-            this.switchForAllButton.Size = new System.Drawing.Size(34, 34);
+            this.switchForAllButton.Size = new System.Drawing.Size(30, 30);
             this.switchForAllButton.TabIndex = 27;
+            this.mainToolTip.SetToolTip(this.switchForAllButton, "Сменить порядок воспроизведения всех видео");
             this.switchForAllButton.UseVisualStyleBackColor = true;
             // 
             // bookmarkForAllButton
@@ -510,8 +522,9 @@
             this.bookmarkForAllButton.ImageList = this.imageList1;
             this.bookmarkForAllButton.Location = new System.Drawing.Point(3, 3);
             this.bookmarkForAllButton.Name = "bookmarkForAllButton";
-            this.bookmarkForAllButton.Size = new System.Drawing.Size(34, 34);
+            this.bookmarkForAllButton.Size = new System.Drawing.Size(30, 30);
             this.bookmarkForAllButton.TabIndex = 20;
+            this.mainToolTip.SetToolTip(this.bookmarkForAllButton, "Поставить метку на всех");
             this.bookmarkForAllButton.UseVisualStyleBackColor = true;
             // 
             // progressBar1
@@ -519,7 +532,7 @@
             this.progressBar1.Dock = System.Windows.Forms.DockStyle.Top;
             this.progressBar1.Location = new System.Drawing.Point(0, 0);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(644, 23);
+            this.progressBar1.Size = new System.Drawing.Size(624, 16);
             this.progressBar1.TabIndex = 0;
             // 
             // tableLayoutPanel7
@@ -529,12 +542,12 @@
             this.tableLayoutPanel7.Controls.Add(this.tableLayoutPanel8, 0, 1);
             this.tableLayoutPanel7.Controls.Add(this.listView1, 0, 0);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(661, 4);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(641, 4);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 2;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(202, 337);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(196, 374);
             this.tableLayoutPanel7.TabIndex = 1;
             // 
             // tableLayoutPanel8
@@ -545,7 +558,7 @@
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel8.Controls.Add(this.cleanAllButton, 1, 0);
             this.tableLayoutPanel8.Controls.Add(this.addNewButton, 0, 0);
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(61, 294);
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(58, 331);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 1;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -562,6 +575,7 @@
             this.cleanAllButton.Name = "cleanAllButton";
             this.cleanAllButton.Size = new System.Drawing.Size(34, 34);
             this.cleanAllButton.TabIndex = 12;
+            this.mainToolTip.SetToolTip(this.cleanAllButton, "Удалить видео из списка воспроизведения");
             this.cleanAllButton.UseVisualStyleBackColor = true;
             // 
             // addNewButton
@@ -574,27 +588,30 @@
             this.addNewButton.Name = "addNewButton";
             this.addNewButton.Size = new System.Drawing.Size(34, 34);
             this.addNewButton.TabIndex = 9;
+            this.mainToolTip.SetToolTip(this.addNewButton, "Добавить видео к просмотру");
             this.addNewButton.UseVisualStyleBackColor = true;
-            this.addNewButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button4_MouseClick);
+            this.addNewButton.Click += new System.EventHandler(this.addNewButton_Click);
             // 
             // listView1
             // 
             this.listView1.BackColor = System.Drawing.Color.LightGray;
+            this.listView1.CheckBoxes = true;
             this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView1.Location = new System.Drawing.Point(3, 3);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(196, 285);
+            this.listView1.Size = new System.Drawing.Size(190, 322);
             this.listView1.TabIndex = 2;
             this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
             // 
             // logGroupBox
             // 
             this.logGroupBox.Controls.Add(this.logTableLayoutPanel);
             this.logGroupBox.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.logGroupBox.ForeColor = System.Drawing.Color.White;
-            this.logGroupBox.Location = new System.Drawing.Point(3, 398);
+            this.logGroupBox.Location = new System.Drawing.Point(3, 435);
             this.logGroupBox.Name = "logGroupBox";
-            this.logGroupBox.Size = new System.Drawing.Size(881, 56);
+            this.logGroupBox.Size = new System.Drawing.Size(855, 56);
             this.logGroupBox.TabIndex = 2;
             this.logGroupBox.TabStop = false;
             this.logGroupBox.Text = "Журнал";
@@ -625,6 +642,7 @@
             this.yellowBtn.Name = "yellowBtn";
             this.yellowBtn.Size = new System.Drawing.Size(30, 30);
             this.yellowBtn.TabIndex = 2;
+            this.mainToolTip.SetToolTip(this.yellowBtn, "Предупреждающий сигнал (в разработке)");
             this.yellowBtn.UseVisualStyleBackColor = true;
             // 
             // logBtn
@@ -636,6 +654,7 @@
             this.logBtn.Name = "logBtn";
             this.logBtn.Size = new System.Drawing.Size(30, 30);
             this.logBtn.TabIndex = 0;
+            this.mainToolTip.SetToolTip(this.logBtn, "Журнал  (в разработке)");
             this.logBtn.UseVisualStyleBackColor = true;
             // 
             // redBtn
@@ -647,6 +666,7 @@
             this.redBtn.Name = "redBtn";
             this.redBtn.Size = new System.Drawing.Size(30, 30);
             this.redBtn.TabIndex = 1;
+            this.mainToolTip.SetToolTip(this.redBtn, "Сообщения об ошибке  (в разработке)");
             this.redBtn.UseVisualStyleBackColor = true;
             // 
             // helpBtn
@@ -662,6 +682,7 @@
             this.helpBtn.Name = "helpBtn";
             this.helpBtn.Size = new System.Drawing.Size(28, 30);
             this.helpBtn.TabIndex = 6;
+            this.mainToolTip.SetToolTip(this.helpBtn, "Справка (в разработке)");
             this.helpBtn.UseVisualStyleBackColor = true;
             // 
             // settingBtn
@@ -677,6 +698,7 @@
             this.settingBtn.Name = "settingBtn";
             this.settingBtn.Size = new System.Drawing.Size(28, 30);
             this.settingBtn.TabIndex = 5;
+            this.mainToolTip.SetToolTip(this.settingBtn, "Настройки (в разработке)");
             this.settingBtn.UseVisualStyleBackColor = true;
             // 
             // mainLiveTableLayoutPanel
@@ -691,7 +713,7 @@
             this.mainLiveTableLayoutPanel.RowCount = 2;
             this.mainLiveTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.mainLiveTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.mainLiveTableLayoutPanel.Size = new System.Drawing.Size(887, 457);
+            this.mainLiveTableLayoutPanel.Size = new System.Drawing.Size(861, 494);
             this.mainLiveTableLayoutPanel.TabIndex = 7;
             // 
             // tableLayoutPanel5
@@ -702,12 +724,17 @@
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.Controls.Add(this.settingBtn, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.helpBtn, 0, 0);
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(810, 0);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(784, 0);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(68, 34);
             this.tableLayoutPanel5.TabIndex = 8;
+            // 
+            // mainToolTip
+            // 
+            this.mainToolTip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
+            this.mainToolTip.ForeColor = System.Drawing.Color.White;
             // 
             // MainControl
             // 
@@ -717,7 +744,7 @@
             this.Controls.Add(this.tableLayoutPanel5);
             this.Controls.Add(this.mainLiveTableLayoutPanel);
             this.Name = "MainControl";
-            this.Size = new System.Drawing.Size(887, 457);
+            this.Size = new System.Drawing.Size(861, 494);
             this.tabControl.ResumeLayout(false);
             this.livePage.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
@@ -786,5 +813,6 @@
         private System.Windows.Forms.Button redoAllBbutton;
         private System.Windows.Forms.Button slowDownAllButton;
         private System.Windows.Forms.Button switchForAllButton;
+        private System.Windows.Forms.ToolTip mainToolTip;
     }
 }

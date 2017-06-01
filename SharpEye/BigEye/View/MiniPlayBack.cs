@@ -94,6 +94,9 @@ namespace View
 
         private void playButton_Click(object sender, EventArgs e)
         {
+            if (playButton.ImageIndex == 14)
+            playButton.ImageIndex = 15;
+            else playButton.ImageIndex = 14;
             PlayButtonPressed();
         }
 
@@ -106,5 +109,20 @@ namespace View
         {
             ResetSpeedButtonPressed();
         }
+
+        private void fullscreenButton_Click(object sender, EventArgs e)
+        {
+            if (fullscreenButton.ImageIndex == 21)
+            {
+                fullscreenButton.ImageIndex = 20;
+                playBToolTip.SetToolTip(fullscreenButton, "Выйти из полноэкранного режима");
+            }
+            else
+            {
+                fullscreenButton.ImageIndex = 21;
+                playBToolTip.SetToolTip(fullscreenButton, "Перейти в полноэкранный режим");
+            }
+        }
+
     }
 }
