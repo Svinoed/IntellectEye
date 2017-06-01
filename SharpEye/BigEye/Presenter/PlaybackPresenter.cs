@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace Presenter
 {
-    class PlaybackPresenter
+    class PlaybackPresenter : IPlaybackPresenter
     {
     
     private IPlaybackView _view;
@@ -42,15 +42,15 @@ namespace Presenter
             {
                 _view = view;
                 //_audioModel = audioModel;
-                _view.PlayButtonPressed += () => play();
-                _view.SlowDownButtonPressed += () => slowDown();
-                _view.SpeedUpButtonPressed += () => speedUp();
-                _view.ChangeDirectionButtonPressed += () => changeDirection();
-                _view.ResetSpeedButtonPressed += () => resetSpeed();
-                _playbackModel.SpeedChanged += () => updateSpeed();
-                _view.CreateComment += () => throw new NotImplementedException();
-                _view.CreateBookMarker += () => throw new NotImplementedException();
-                _view.CreatePrintScreen += () => throw new NotImplementedException();
+                _view.PlayButtonPressed += play;
+                _view.SlowDownButtonPressed += slowDown;
+                _view.SpeedUpButtonPressed += speedUp;
+                _view.ChangeDirectionButtonPressed += changeDirection;
+                _view.ResetSpeedButtonPressed += resetSpeed;
+                _playbackModel.SpeedChanged += updateSpeed;
+                _view.CreateComment += () => { throw new NotImplementedException(); };
+                _view.CreateBookMarker += () => { throw new NotImplementedException(); };
+                _view.CreatePrintScreen += () => { throw new NotImplementedException(); };
             }
             else
             {
@@ -58,36 +58,36 @@ namespace Presenter
             }
         }
 
-        private void play()
-        {
-            _playbackModel.Play();
-        }
+    public void play()
+    {
+        _playbackModel.Play();
+    }
 
-        private void speedUp()
-        {
-            _playbackModel.SpeedUp();
-        }
+    public void speedUp()
+    {
+        _playbackModel.SpeedUp();
+    }
 
-        private void slowDown()
-        {
-            _playbackModel.SlowDown();
-        }
+    public void slowDown()
+    {
+        _playbackModel.SlowDown();
+    }
 
 
-        private void changeDirection()
-        {
-            _playbackModel.ChangeDirection();
-        }
+        public void changeDirection()
+    {
+        _playbackModel.ChangeDirection();
+    }
 
-        private void resetSpeed()
-        {
-            _playbackModel.ResetSpeed();
-        }
+        public void resetSpeed()
+    {
+        _playbackModel.ResetSpeed();
+    }
 
-        private void updateSpeed()
-        {
-            _view.CurrentPlaybackSpeedLabel.Text = _playbackModel.PlaybackSpeed.ToString();
-        }
+        public void updateSpeed()
+    {
+        _view.CurrentPlaybackSpeedLabel.Text = _playbackModel.PlaybackSpeed.ToString();
+    }
 
 
     public IVideoView GetView()
@@ -106,5 +106,6 @@ namespace Presenter
             id = _playbackModel.chooseCameraManually();
             return id;
         }
-}
+
+    }
 }

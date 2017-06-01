@@ -15,16 +15,24 @@ namespace MiniEye.Views
         /// <summary>
         /// Делегат, определяющий сигнатуру получения списка камер
         /// </summary>
-        public delegate List<string> CameraListRequested();
-
+        public delegate List<object> CameraListRequested();
+        /// <summary>
+        /// Делегат определяющий сигнатуру изменения данных камеры
+        /// </summary>
         public delegate void CameraDataChanged(ICameraData data);
-
+        /// <summary>
+        /// Делегат определяющий сигнатуру проверки соединения
+        /// </summary>
         public delegate void CheckConnectionRequested(string server, Authorization authType, string login, string password);
+        /// <summary>
+        /// Делегат определяющий сигнатуру того, что камера выбрана
+        /// </summary>
+        public delegate void CameraSelected(object camera);
+
         /// <summary>
         /// Событие, возникающее когда пользователь запрашивает список камер
         /// </summary>
         public event CameraListRequested OnGetCameraRequest;
-
         /// <summary>
         /// Событие, возникающее при запросе пользователя на проверку подключения
         /// </summary>
@@ -33,6 +41,10 @@ namespace MiniEye.Views
         /// Событие, возникающее при принятии настроек
         /// </summary>
         public event CameraDataChanged OnSettingsApplyed;
+        /// <summary>
+        /// Событие, возникающее при выборе и смене камеры
+        /// </summary>
+        public event CameraSelected OnCameraSelected;
         #endregion
 
         /// <summary>
@@ -64,8 +76,8 @@ namespace MiniEye.Views
             this.CameraNameTextBox.Text = data.CameraName;
             this.DefaultCameraComboBox.Items.Clear();
             //Состояние камеры меняется только если она она есть
-            if(!data.DefaultSelectedCamera.Equals(""))
-                this.DefaultCameraComboBox.Items.Add(data.DefaultSelectedCamera);
+            if(!data.SelectedCameraName.Equals(""))
+                this.DefaultCameraComboBox.Items.Add(data.SelectedCameraName);
         }
         /// <summary>
         /// Вызывается при изменении состояния глобальных настроек
@@ -125,7 +137,7 @@ namespace MiniEye.Views
                     this.LoginTextBox.Text,
                     this.PasswordTextBox.Text);
                 //Запросить список камер
-                List<string> cameras = OnGetCameraRequest();
+                List<object> cameras = OnGetCameraRequest();
                 if (cameras.Count == 0)
                     throw new ArgumentOutOfRangeException("Найдено камер: 0");
 
@@ -157,7 +169,9 @@ namespace MiniEye.Views
         /// </summary>
         private void DefaultCameraComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _CameraData.DefaultSelectedCamera = this.DefaultCameraComboBox.SelectedItem.ToString();
+            _CameraData.SelectedCameraName = this.DefaultCameraComboBox.SelectedItem.ToString();
+            //Отправить выбранную камеру вызывающему объекту
+            OnCameraSelected(this.DefaultCameraComboBox.SelectedItem);
         }
         /// <summary>
         /// Обновить состояние пароля

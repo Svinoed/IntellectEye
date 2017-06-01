@@ -121,6 +121,7 @@
             // AuthTypeComboBox
             // 
             this.AuthTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.AuthTypeComboBox.Enabled = false;
             this.AuthTypeComboBox.FormattingEnabled = true;
             this.AuthTypeComboBox.Location = new System.Drawing.Point(141, 62);
             this.AuthTypeComboBox.Name = "AuthTypeComboBox";

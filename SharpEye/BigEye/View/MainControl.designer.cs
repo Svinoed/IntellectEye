@@ -111,6 +111,7 @@
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(855, 426);
             this.tabControl.TabIndex = 1;
+            this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
             // 
             // livePage
             // 
@@ -197,7 +198,6 @@
             this.cameraEditorButton.TabIndex = 1;
             this.mainToolTip.SetToolTip(this.cameraEditorButton, "Редактор камер (в разработке)");
             this.cameraEditorButton.UseVisualStyleBackColor = true;
-            this.cameraEditorButton.Click += new System.EventHandler(this.cameraEditor_Click);
             // 
             // imageList1
             // 
@@ -293,6 +293,7 @@
             this.mainToolTip.SetToolTip(this.listGroup, "Список созданных групп");
             this.listGroup.UseCompatibleStateImageBehavior = false;
             this.listGroup.View = System.Windows.Forms.View.List;
+            this.listGroup.Click += new System.EventHandler(this.listGroup_Click);
             // 
             // tableLayoutPanel4
             // 

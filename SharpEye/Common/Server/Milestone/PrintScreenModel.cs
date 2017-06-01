@@ -101,7 +101,7 @@ namespace Model
 
             if (bytes == 0)
             {
-                SendMessage(NO_CON_RESPONSE);
+                SendMessage?.Invoke(NO_CON_RESPONSE);
                 return;
             }
             Progress?.Invoke(0.42f);
@@ -138,13 +138,14 @@ namespace Model
             bs = sock.Send(bytesToSend, bytesToSend.Length, 0);
             if (bs != bytesToSend.Length)
             {
-                SendMessage(NO_CREATE_IMG_REQUEST); ;
+                SendMessage(NO_CREATE_IMG_REQUEST); 
                 return;
             }
             Progress?.Invoke(0.74f);
-            bool gotImage = false;
-            while(!gotImage)
+            int gotImage = 5;
+            while(gotImage > 0)
             {
+                gotImage--;
                 bytes = PrintScreenUtils.RecvUntilCrLfCrLf(sock, bytesReceived, 0, maxbuf);
                 if (bytes == 0)
                 {
@@ -207,6 +208,7 @@ namespace Model
                 Created?.Invoke(jpeg, "jpeg");
                 return;
             }
+            SendMessage?.Invoke("Не удалось получить изображение!");
         }
     }
 }

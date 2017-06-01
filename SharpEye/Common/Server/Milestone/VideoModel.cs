@@ -18,7 +18,7 @@ namespace Model
     [Export(typeof(IVideoModel))]
     public class VideoModel : IVideoModel
     {
-        ImageViewerControl _imageViewer;
+        private ImageViewerControl _imageViewer;
 
         public void Disconnect()
         {

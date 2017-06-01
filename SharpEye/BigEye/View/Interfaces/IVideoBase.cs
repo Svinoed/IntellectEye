@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace View.Interfaces
 {
-    public interface IContainerView : IView
+    /// <summary>
+    /// 
+    /// </summary>
+    public interface IVideoBase
     {
-        void LoadLoginView(ILoginView view);
-        void LoadMainView(IMainView view);
+        Panel VideoPanel { get; }
     }
 }

@@ -46,12 +46,12 @@ namespace Presenter
             return _view;
         }
 
-        public async void SetCamera()
+        public async void ShowVideo()
         {
           
             await Task.Run(() =>
             {
-                _view.VideoPanel.Invoke(((Action) delegate
+                _view.VideoPanel.BeginInvoke(((Action) delegate
               {
                   _videoModel.SetVideoStreamInPanel(_camera, 
                       _view.VideoPanel, ViewFullScreenHandler);
@@ -61,7 +61,10 @@ namespace Presenter
 
         public void Disconnect()
         {
-           _videoModel.Disconnect();
+            if (_camera != null)
+            {
+                _videoModel.Disconnect();
+            }
         }
     }
 }

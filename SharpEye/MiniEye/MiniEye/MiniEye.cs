@@ -12,7 +12,10 @@ using Contract;
 using System.ComponentModel;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
-
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Diagnostics;
+using VideoOS.Platform.Client;
+using VideoOS.Platform;
 
 namespace MiniEye
 {
@@ -47,7 +50,6 @@ namespace MiniEye
             inprocServer32.Close();
             // Finally close the main	key
             k.Close();
-            MessageBox.Show("Register successfull");
         }
 
         ///	<summary>
@@ -78,7 +80,6 @@ namespace MiniEye
 
             // Finally close the main key
             k.Close();
-            MessageBox.Show("UnRegister successfull");
         }
         #endregion
 
@@ -124,28 +125,31 @@ namespace MiniEye
 
         #region Properties
         private const string _Guid = "9E86F8DE-0BF3-4762-B936-33D0A8C2BC01";
-
+        //Объекты отображения
         private Views.CameraSettings _ViewSettings = null;
         private Views.Preview _ViewPreview = null;
 
 
+        //Объекты необходимые для работы с сервером видео
         [Import(typeof(ILoginModel))]
-        public ILoginModel _ModelConnection;
-
+        private ILoginModel _ModelConnection;
         [Import]
-        public IInitialModel _ModelInitialization;
+        private IInitialModel _ModelInitialization;
+        [Import(typeof(ICameraManagerModel))]
+        private ICameraManagerModel _ModelCameraManager;
+        [Import(typeof(ISerializable))]
+        private ISerializable _ModelSerializeDevice;
+        [Import(typeof(IVideoModel))]
+        private IVideoModel _ModelLiveStream;
 
-
-        private SDK.ICameras _ModelCameras = null;
-        private SDK.ILiveStream _ModelLiveStream = null;
-
+        #region Save state properties
         [Browsable(false)]
         //[Description(""), Category("Data")]
-        public bool _IsStateSaved { get; set; }
+        public bool IsStateSaved { get; set; }
 
         public string CameraName { get; set; }
 
-        public string DefaultSelectedCamera { get; set; }
+        public string SelectedCameraName { get; set; }
 
         public string ServerName { get; set; }
 
@@ -154,7 +158,10 @@ namespace MiniEye
         public string Login { get; set; }
 
         public string Password { get; set; }
-
+        //Свойства могут быть сохранены только в виде примитивных типов, поэтому камера
+        //конвертируется в строку
+        public string SelectedCamera { get; set; }
+        #endregion
 
 
         #endregion
@@ -178,7 +185,7 @@ namespace MiniEye
             this.Login = Settings.Settings.GetSettings().Login;
             this.Password = Settings.Settings.GetSettings().Password;
             this.ServerName = Settings.Settings.GetSettings().ServerName;
-            this.DefaultSelectedCamera = "";
+            this.SelectedCameraName = "";
             this.CameraName = "";
             #endregion
 
@@ -186,8 +193,6 @@ namespace MiniEye
             //Искать части проекта в директории где лежит проект
             //TODO: добавить обработку исключений в случае если части программы не найдены
             CompositionContainer container = new CompositionContainer(new DirectoryCatalog(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location.ToString())));
-            
-
             container.ComposeParts(this);
             _ModelInitialization.Init();
             #endregion
@@ -195,24 +200,36 @@ namespace MiniEye
             //Создание всех представлений
             _ViewSettings = new Views.CameraSettings(this);
             _ViewPreview = new Views.Preview(this);
-
-            //Создание всех моделей
-            _ModelCameras = new SDK.Cameras();
-            _ModelLiveStream = new SDK.LiveStream();
             
             //Подключить необходимые обработчики событий для представлений
             _ViewSettings.OnCheckConnection += _ViewSettings_OnCheckConnection;
             _ViewSettings.OnGetCameraRequest += _Settings_OnGetCameraRequest;
-            _ViewSettings.OnSettingsApplyed += _ViewSettings_OnSettingsApplyed1;
-
-            //Подключить необходимые обработчики событий для моделей
-            _ModelLiveStream.ImageIsReady += _ModelLiveStream_ImageIsReady;
-
+            _ViewSettings.OnSettingsApplyed += _ViewSettings_OnSettingsApplyed;
+            _ViewSettings.OnCameraSelected += _ViewSettings_OnCameraSelected;
+            _ViewPreview.OnSettingsChange += _ViewPreview_OnSettingsChange;
+            _ViewPreview.OnClose += _ViewPreview_OnClose;
         }
 
-        private void _ModelLiveStream_ImageIsReady(Bitmap picture)
+        private void _ViewPreview_OnClose()
         {
-            _ViewPreview.SetPicture(picture);
+            //очистить используемые ресурсы
+            _ModelLiveStream.Disconnect();
+        }
+
+        private void _ViewPreview_OnSettingsChange()
+        {
+            _ViewPreview.Hide();
+            _ViewSettings.SetSettings(this);
+            _ViewSettings.Show();
+        }
+
+        /// <summary>
+        /// Обработчик выполняющий перехват выбранной камеры и сохраняющий ее в свойствах
+        /// Камера при этом для сохранения предварительно конвертируется в строку
+        /// </summary>
+        private void _ViewSettings_OnCameraSelected(object camera)
+        {
+            this.SelectedCamera = _ModelSerializeDevice.Serialize((ICameraModel)camera);
         }
 
         /// <summary>
@@ -238,26 +255,17 @@ namespace MiniEye
         /// <summary>
         /// При нажатии на кнопку применения настроек
         /// </summary>
-        private void _ViewSettings_OnSettingsApplyed1(ICameraData data)
+        private void _ViewSettings_OnSettingsApplyed(ICameraData data)
         {
-            _IsStateSaved = true; //Сохранить состояние контрола
-
-            //TODO: реализовать проверку данных
+            IsStateSaved = true; //Сохранить состояние контрола
             this.AuthType = data.AuthType;
             this.Login = data.Login;
             this.Password = data.Password;
             this.ServerName = data.ServerName;
-            this.DefaultSelectedCamera = data.DefaultSelectedCamera;
+            this.SelectedCameraName = data.SelectedCameraName;
             this.CameraName = data.CameraName;
-
             _ViewSettings.Hide();
-            _ViewPreview.SetSettings(this);//Установить обновленные данные
-
-
-            //Настроить соединение с камерой
-            if(!_ModelLiveStream.ChangeCamera(this.DefaultSelectedCamera, _ViewPreview.Width, _ViewPreview.Height))
-                MessageBox.Show("Невозможно установить камеру");
-            _ViewPreview.Show();
+            InitializePreview();            //Привязать камеру к окну просмотра и показать пользователю
         }
 
         /// <summary>
@@ -265,7 +273,7 @@ namespace MiniEye
         /// </summary>
         private void cameraButton_Click(object sender, EventArgs e)
         {
-            if (!_IsStateSaved)
+            if (!IsStateSaved)
             {
                 //Загрузка всех параметров по-умолчанию
                 _ViewSettings.Show();
@@ -277,19 +285,54 @@ namespace MiniEye
                 _ViewSettings.SetSettings(this);
                 if (_ViewPreview.IsDisposed || _ViewPreview == null)
                     _ViewPreview = new Views.Preview(this);
-                _ViewPreview.SetSettings(this);
-                //Настроить соединение с камерой
-                if (!_ModelLiveStream.ChangeCamera(this.DefaultSelectedCamera, _ViewPreview.Width, _ViewPreview.Height))
-                    MessageBox.Show("Невозможно установить камеру");
-                _ViewPreview.Show();
+                try
+                {
+                    _ViewSettings_OnCheckConnection(this.ServerName, Authorization.Basic, this.Login, this.Password);
+                    //Без запроса камер повторное использование не работает
+                    _Settings_OnGetCameraRequest();
+                }
+                catch (Exception)
+                {
+                    _ViewSettings.Show();
+                    return;
+                }
+                InitializePreview();    //Привязать камеру к окну просмотра и показать пользователю
             }
         }
+
         /// <summary>
         /// Реализация получения списка камер
         /// </summary>
-        private List<string> _Settings_OnGetCameraRequest()
+        private List<object> _Settings_OnGetCameraRequest()
         {
-            return _ModelCameras.GetAll();
+            List<object> listCamera = new List<object>();
+            foreach (var camera in _ModelCameraManager.GetCameras())
+                listCamera.Add(camera);
+            return listCamera;
         }
+
+        /// <summary>
+        /// Инициализация окна предварительного просмотра изображения
+        /// также сопоставление окна с камерой
+        /// </summary>
+        private void InitializePreview()
+        {
+            //Установить обновленные данные
+            _ViewPreview.Text = this.CameraName;
+            //Нужно сначала показать пользователю форму, после чего вставлять в нее видео
+            _ViewPreview.Show();
+            //Привязка отображения к камере
+            try
+            {
+                ICameraModel camera = _ModelSerializeDevice.Deserialize(SelectedCamera);
+                _ModelLiveStream.SetVideoStreamInPanel(camera, _ViewPreview._VideoPanel);
+            }
+            catch (Exception)
+            {
+                IsStateSaved = false;
+                MessageBox.Show($"Ошибка при установке камеры");
+            }
+        }
+
     }
 }

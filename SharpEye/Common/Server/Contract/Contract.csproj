@@ -95,6 +95,7 @@
     <Compile Include="IPlaybackModel.cs" />
     <Compile Include="IPrintScreenModel.cs" />
     <Compile Include="IPTZModel.cs" />
+    <Compile Include="ISerializable.cs" />
     <Compile Include="IVideoModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
