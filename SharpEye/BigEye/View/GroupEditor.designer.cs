@@ -46,9 +46,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.listGroup = new System.Windows.Forms.ListView();
             this.groupEditorToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.searchGroup = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.searchGroup = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
@@ -248,6 +248,17 @@
             this.listGroup.View = System.Windows.Forms.View.List;
             this.listGroup.SelectedIndexChanged += new System.EventHandler(this.listGroup_SelectedIndexChanged);
             // 
+            // searchGroup
+            // 
+            this.searchGroup.BackColor = System.Drawing.Color.LightGray;
+            this.searchGroup.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.searchGroup.Location = new System.Drawing.Point(3, 3);
+            this.searchGroup.Name = "searchGroup";
+            this.searchGroup.Size = new System.Drawing.Size(138, 20);
+            this.searchGroup.TabIndex = 3;
+            this.groupEditorToolTip.SetToolTip(this.searchGroup, "Поиск по группам");
+            this.searchGroup.TextChanged += new System.EventHandler(this.searchGroup_TextChanged);
+            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
@@ -280,17 +291,6 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.Size = new System.Drawing.Size(144, 254);
             this.tableLayoutPanel2.TabIndex = 0;
-            // 
-            // searchGroup
-            // 
-            this.searchGroup.BackColor = System.Drawing.Color.LightGray;
-            this.searchGroup.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.searchGroup.Location = new System.Drawing.Point(3, 3);
-            this.searchGroup.Name = "searchGroup";
-            this.searchGroup.Size = new System.Drawing.Size(138, 20);
-            this.searchGroup.TabIndex = 3;
-            this.groupEditorToolTip.SetToolTip(this.searchGroup, "Поиск по группам");
-            this.searchGroup.TextChanged += new System.EventHandler(this.searchGroup_TextChanged);
             // 
             // tableLayoutPanel3
             // 

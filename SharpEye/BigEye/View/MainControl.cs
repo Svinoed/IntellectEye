@@ -244,8 +244,11 @@ namespace View
 
         private void addNewButton_Click(object sender, EventArgs e)
         {
-            SearchVideo searchVideo = new SearchVideo();
-            searchVideo.Show();
+            TEMPORARYSearchVideo tempSV = new TEMPORARYSearchVideo();
+            tempSV.Show();
+
+            //SearchVideo searchVideo = new SearchVideo();
+            //searchVideo.Show();
         }
 
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
@@ -253,6 +256,20 @@ namespace View
             if (tabControl.SelectedTab == playbackPage)
             {
                 ActivatedPlaybackTab?.Invoke();
+            }
+        }
+
+        private void searchTextBox_TextChanged(object sender, EventArgs e)
+        {
+            listGroup.Items.Clear();
+            foreach (var g in _groups)
+            {
+                if (g.Value.Name.ToString().StartsWith(searchTextBox.Text))
+                {
+                    ListViewItem item = new ListViewItem(g.Value.Name);
+                    item.Tag = g;
+                    listGroup.Items.Add(item);
+                }
             }
         }
     }

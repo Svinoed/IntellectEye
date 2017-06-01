@@ -87,7 +87,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(487, 262);
+            this.panel1.Size = new System.Drawing.Size(412, 232);
             this.panel1.TabIndex = 0;
             // 
             // videoPanel
@@ -95,16 +95,16 @@
             this.videoPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.videoPanel.Location = new System.Drawing.Point(0, 0);
             this.videoPanel.Name = "videoPanel";
-            this.videoPanel.Size = new System.Drawing.Size(367, 209);
+            this.videoPanel.Size = new System.Drawing.Size(292, 179);
             this.videoPanel.TabIndex = 27;
             // 
             // flowPanelZoom
             // 
             this.flowPanelZoom.Controls.Add(this.tableLayoutPanelZoom);
             this.flowPanelZoom.Dock = System.Windows.Forms.DockStyle.Right;
-            this.flowPanelZoom.Location = new System.Drawing.Point(367, 0);
+            this.flowPanelZoom.Location = new System.Drawing.Point(292, 0);
             this.flowPanelZoom.Name = "flowPanelZoom";
-            this.flowPanelZoom.Size = new System.Drawing.Size(120, 209);
+            this.flowPanelZoom.Size = new System.Drawing.Size(120, 179);
             this.flowPanelZoom.TabIndex = 26;
             // 
             // tableLayoutPanelZoom
@@ -121,7 +121,7 @@
             this.tableLayoutPanelZoom.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanelZoom.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanelZoom.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelZoom.Size = new System.Drawing.Size(120, 209);
+            this.tableLayoutPanelZoom.Size = new System.Drawing.Size(120, 179);
             this.tableLayoutPanelZoom.TabIndex = 28;
             // 
             // tableLayoutPanel7
@@ -405,9 +405,9 @@
             this.flowPanel.Controls.Add(this.tableLayoutPanel1);
             this.flowPanel.Controls.Add(this.progressBar1);
             this.flowPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowPanel.Location = new System.Drawing.Point(0, 209);
+            this.flowPanel.Location = new System.Drawing.Point(0, 179);
             this.flowPanel.Name = "flowPanel";
-            this.flowPanel.Size = new System.Drawing.Size(487, 53);
+            this.flowPanel.Size = new System.Drawing.Size(412, 53);
             this.flowPanel.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -446,7 +446,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(487, 30);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(412, 30);
             this.tableLayoutPanel1.TabIndex = 27;
             // 
             // settingsButton
@@ -457,9 +457,9 @@
             this.settingsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.settingsButton.ImageIndex = 1;
             this.settingsButton.ImageList = this.imageList1;
-            this.settingsButton.Location = new System.Drawing.Point(459, 3);
+            this.settingsButton.Location = new System.Drawing.Point(383, 3);
             this.settingsButton.Name = "settingsButton";
-            this.settingsButton.Size = new System.Drawing.Size(25, 24);
+            this.settingsButton.Size = new System.Drawing.Size(26, 24);
             this.settingsButton.TabIndex = 27;
             this.playBToolTip.SetToolTip(this.settingsButton, "Настройки (в разработке)");
             this.settingsButton.UseVisualStyleBackColor = true;
@@ -472,7 +472,7 @@
             this.helpButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.helpButton.ImageIndex = 0;
             this.helpButton.ImageList = this.imageList1;
-            this.helpButton.Location = new System.Drawing.Point(429, 3);
+            this.helpButton.Location = new System.Drawing.Point(353, 3);
             this.helpButton.Name = "helpButton";
             this.helpButton.Size = new System.Drawing.Size(24, 24);
             this.helpButton.TabIndex = 26;
@@ -487,7 +487,7 @@
             this.resetButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.resetButton.ImageIndex = 3;
             this.resetButton.ImageList = this.imageList1;
-            this.resetButton.Location = new System.Drawing.Point(399, 3);
+            this.resetButton.Location = new System.Drawing.Point(323, 3);
             this.resetButton.Name = "resetButton";
             this.resetButton.Size = new System.Drawing.Size(24, 24);
             this.resetButton.TabIndex = 21;
@@ -502,7 +502,7 @@
             this.redoButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.redoButton.ImageIndex = 24;
             this.redoButton.ImageList = this.imageList1;
-            this.redoButton.Location = new System.Drawing.Point(321, 3);
+            this.redoButton.Location = new System.Drawing.Point(283, 3);
             this.redoButton.Name = "redoButton";
             this.redoButton.Size = new System.Drawing.Size(24, 24);
             this.redoButton.TabIndex = 29;
@@ -517,7 +517,7 @@
             this.switchOrderButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.switchOrderButton.ImageIndex = 17;
             this.switchOrderButton.ImageList = this.imageList1;
-            this.switchOrderButton.Location = new System.Drawing.Point(201, 3);
+            this.switchOrderButton.Location = new System.Drawing.Point(163, 3);
             this.switchOrderButton.Name = "switchOrderButton";
             this.switchOrderButton.Size = new System.Drawing.Size(24, 24);
             this.switchOrderButton.TabIndex = 19;
@@ -533,7 +533,7 @@
             this.fastUpButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.fastUpButton.ImageIndex = 19;
             this.fastUpButton.ImageList = this.imageList1;
-            this.fastUpButton.Location = new System.Drawing.Point(291, 3);
+            this.fastUpButton.Location = new System.Drawing.Point(253, 3);
             this.fastUpButton.Name = "fastUpButton";
             this.fastUpButton.Size = new System.Drawing.Size(24, 24);
             this.fastUpButton.TabIndex = 18;
@@ -548,7 +548,7 @@
             this.playButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.playButton.ImageIndex = 14;
             this.playButton.ImageList = this.imageList1;
-            this.playButton.Location = new System.Drawing.Point(261, 3);
+            this.playButton.Location = new System.Drawing.Point(223, 3);
             this.playButton.Name = "playButton";
             this.playButton.Size = new System.Drawing.Size(24, 24);
             this.playButton.TabIndex = 16;
@@ -564,7 +564,7 @@
             this.slowDownButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.slowDownButton.ImageIndex = 18;
             this.slowDownButton.ImageList = this.imageList1;
-            this.slowDownButton.Location = new System.Drawing.Point(231, 3);
+            this.slowDownButton.Location = new System.Drawing.Point(193, 3);
             this.slowDownButton.Name = "slowDownButton";
             this.slowDownButton.Size = new System.Drawing.Size(24, 24);
             this.slowDownButton.TabIndex = 17;
@@ -652,7 +652,7 @@
             this.progressBar1.Dock = System.Windows.Forms.DockStyle.Top;
             this.progressBar1.Location = new System.Drawing.Point(0, 0);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(487, 15);
+            this.progressBar1.Size = new System.Drawing.Size(412, 15);
             this.progressBar1.TabIndex = 1;
             // 
             // MiniPlayBack
@@ -662,7 +662,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
             this.Controls.Add(this.panel1);
             this.Name = "MiniPlayBack";
-            this.Size = new System.Drawing.Size(487, 262);
+            this.Size = new System.Drawing.Size(412, 232);
             this.panel1.ResumeLayout(false);
             this.flowPanelZoom.ResumeLayout(false);
             this.tableLayoutPanelZoom.ResumeLayout(false);

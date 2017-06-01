@@ -157,6 +157,12 @@
     <Compile Include="SmallControl.Designer.cs">
       <DependentUpon>SmallControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="TEMPORARYSearchVideo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TEMPORARYSearchVideo.Designer.cs">
+      <DependentUpon>TEMPORARYSearchVideo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utils\Group.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -190,6 +196,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SmallControl.resx">
       <DependentUpon>SmallControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TEMPORARYSearchVideo.resx">
+      <DependentUpon>TEMPORARYSearchVideo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
