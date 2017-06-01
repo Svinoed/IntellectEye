@@ -38,7 +38,6 @@ namespace Model
             {
                 _audioPlayerControl.Disconnect();
             }
-            _audioPlayerControl.Close();
         }
 
         private void ConnectResponseEvent(object sender, ConnectResponseEventEventArgs e)

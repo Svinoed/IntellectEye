@@ -9,10 +9,8 @@ using System.Windows.Forms;
 
 namespace View.Interfaces
 {
-    public interface IVideoView
+    public interface IVideoView : IVideoBase
     {
-        Panel VideoPanel { set; get; }
-
         event Action CreatePrintScreen;
         event Action CreateBookMarker;
         event Action CreateComment;

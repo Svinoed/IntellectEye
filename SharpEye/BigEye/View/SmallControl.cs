@@ -19,13 +19,8 @@ namespace View
         public SmallControl()
         {
             InitializeComponent();
-            this.Anchor = ((AnchorStyles) ((((AnchorStyles.Top | AnchorStyles.Bottom)
-            | AnchorStyles.Left) | AnchorStyles.Right)));
-        }
-
-        private void _videoPanel_Paint(object sender, PaintEventArgs e)
-        {
-
+            this.Anchor = ((AnchorStyles.Top | AnchorStyles.Bottom)
+                           | AnchorStyles.Left) | AnchorStyles.Right;
         }
 
         public void ClearPanel()
@@ -33,33 +28,5 @@ namespace View
             videoPanel.Controls.Clear();
         }
 
-        private void videoPanel_ControlAdded(object sender, ControlEventArgs e)
-        {
-            this.videoPanel.BringToFront();
-            foreach(Control c in videoPanel.Controls)
-            {
-                c.SendToBack();
-            }
-        }
-
-        private void videoPanel_DoubleClick(object sender, EventArgs e)
-        {
-            MessageBox.Show("Panel");
-        }
-
-        private void SmallControl_Click(object sender, EventArgs e)
-        {
-            FullScreen();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            FullScreen();
-        }
-
-        private void videoPanel_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
-        {
-            MessageBox.Show("Panel");
-        }
     }
 }

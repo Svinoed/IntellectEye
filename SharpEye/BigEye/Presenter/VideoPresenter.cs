@@ -66,7 +66,10 @@ namespace Presenter
 
         private void Set()
         {
-            _videoModel.SetVideoStreamInPanel(_camera, _view.VideoPanel);
+            _view.VideoPanel.BeginInvoke((Action) delegate
+            {
+                _videoModel.SetVideoStreamInPanel(_camera, _view.VideoPanel);
+            });
             if (_camera.IsPtz)
             {
                 _ptzModel.Camera = _camera;
@@ -119,58 +122,34 @@ namespace Presenter
         #region PTZCommand handler
         private void BindMoveCommandHandler()
         {
-            _view.Down += () => {
-                Task task = new Task(() => { _ptzModel.Down(); });
-                task.Start();
+            _view.Down += () =>
+            {
+                Task.Run(() => { _ptzModel.Down(); });
             };
             _view.DownLeft += () => {
-                Task task = new Task(() => { _ptzModel.Left(); });
-                task.Start();
+                Task.Run(() => { _ptzModel.Left(); });
             };
-            _view.DownRight += () => {
-                Task task = new Task(() => { _ptzModel.DownRight(); });
-                task.Start();
-            };
-            _view.Up += () => {
-                Task task = new Task(() => { _ptzModel.Up(); });
-                task.Start();
-            };
-            _view.UpLeft += () => {
-                Task task = new Task(() => { _ptzModel.UpLeft(); });
-                task.Start();
-            };
-            _view.UpRight += () => {
-                Task task = new Task(() => { _ptzModel.UpRight(); });
-                task.Start();
-            };
-            _view.ToLeft += () => {
-                Task task = new Task(() => { _ptzModel.Left(); });
-                task.Start();
-            };
-            _view.ToRight += () => {
-                Task task = new Task(() => { _ptzModel.Right(); });
-                task.Start();
-            };
-            _view.ZoomIn += (s) => {
-                Task task = new Task(() => { _ptzModel.ZoomIn(s); });
-                task.Start();
-            };
-            _view.ZoomOut += (s) => {
-                Task task = new Task(() => { _ptzModel.ZoomOut(s); });
-                task.Start();
-            };
-            _view.Home += () => {
-                Task task = new Task(() =>
+            _view.DownRight += () => { Task.Run(() => { _ptzModel.DownRight(); }); };
+
+            _view.Up += () => { Task.Run(() => { _ptzModel.Up(); }); };
+
+            _view.UpLeft += () => { Task.Run(() => { _ptzModel.UpLeft(); }); };
+
+            _view.UpRight += () => { Task.Run(() => { _ptzModel.UpRight(); }); };
+
+            _view.ToLeft += () => { Task.Run(() => { _ptzModel.Left(); }); };
+
+            _view.ToRight += () => { Task.Run(() => { _ptzModel.Right(); }); };
+
+            _view.ZoomIn += (s) => { Task.Run(() => { _ptzModel.ZoomIn(s); }); };
+
+            _view.ZoomOut += (s) => { Task.Run(() => { _ptzModel.ZoomOut(s); }); };
+
+            _view.Home += () => { Task.Run(() =>
                 {
                     _ptzModel.Home();
-                });
-                Task taskDefaultZoom = new Task(() =>
-                {
                     _videoModel.PTZDefault();
                 });
-
-                task.Start();
-                taskDefaultZoom.Start();
             };
         }
         #endregion

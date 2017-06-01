@@ -14,7 +14,7 @@ namespace View
 {
     public partial class CameraViewer : UserControl, IVideoView
     {
-        public Panel VideoPanel { get { return videoPanel; } set { videoPanel = value; } }
+        public Panel VideoPanel { get { return videoPanel; } }
        
         #region Move fields
         public event Action ToRight;
@@ -43,7 +43,6 @@ namespace View
         public CameraViewer()
         {
             InitializeComponent();
-            //this.Anchor = (AnchorStyles.Top & AnchorStyles.Bottom & AnchorStyles.Left & AnchorStyles.Right);
             this.Dock = DockStyle.Fill;
             _saveFileDialog = new SaveFileDialog();
         }
@@ -53,6 +52,7 @@ namespace View
             this.Invoke((MethodInvoker) delegate
             {
                 _saveFileDialog.Filter = "Image files (*" + format + ")" + "|*" + format;
+                screenshotButton.Enabled = true;
                 if (_saveFileDialog.ShowDialog() == DialogResult.Cancel)
                 {
                     return;
@@ -68,29 +68,30 @@ namespace View
         {
             this.Invoke((MethodInvoker) delegate
             {
+                screenshotButton.Enabled = true;
                 MessageBox.Show(message);
             });
         }
 
         public void ShowProgressBar()
         {
-            _progressBar = new ProgressBar
-            {
-                Minimum = 0,
-                Maximum = 100,
-                Style = ProgressBarStyle.Blocks
-            };
-            _progressForm = new Form();
-            _progressForm.Controls.Add(_progressBar);
-            _progressForm.ShowDialog();
+            //_progressBar = new ProgressBar
+            //{
+            //    Minimum = 0,
+            //    Maximum = 100,
+            //    Style = ProgressBarStyle.Blocks
+            //};
+            //_progressForm = new Form();
+            //_progressForm.Controls.Add(_progressBar);
+            //_progressForm.ShowDialog();
         }
 
         public void HideProgressBar()
         {
-            _progressForm.Invoke((MethodInvoker) delegate 
-            {
-                _progressForm.Close();
-            });
+            //_progressForm.Invoke((MethodInvoker) delegate 
+            //{
+            //    _progressForm.Close();
+            //});
         }
 
         private void SetPtzControl(bool value)
@@ -121,13 +122,13 @@ namespace View
 
         public async Task SetValueProgressBar(float value)
         {
-            await Task.Run(() =>
-            {
-             _progressBar.Invoke((MethodInvoker) delegate
-              {
-                _progressBar.Value = (int) (value * 100);
-              });
-            });
+            //await Task.Run(() =>
+            //{
+            // _progressBar.Invoke((MethodInvoker) delegate
+            //  {
+            //    _progressBar.Value = (int) (value * 100);
+            //  });
+            //});
         }
 
         #region Move
@@ -194,6 +195,7 @@ namespace View
 
         private void screenshotButton_Click(object sender, EventArgs e)
         {
+            screenshotButton.Enabled = false;
             CreatePrintScreen?.Invoke();
         }
     }

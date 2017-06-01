@@ -9,7 +9,7 @@ namespace View.Interfaces
     /// <summary>
     /// С помощью данного интерфейса презентер взаимодействует с формой авторизации.
     /// </summary>
-    public interface ILoginView : IView
+    public interface ILoginView
     {
         string Server { set; get; }
         string UserName { set; get; }
