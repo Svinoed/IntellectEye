@@ -48,9 +48,9 @@ namespace Presenter
                 _view.ChangeDirectionButtonPressed += changeDirection;
                 _view.ResetSpeedButtonPressed += resetSpeed;
                 _playbackModel.SpeedChanged += updateSpeed;
-                _view.CreateComment += () => throw new NotImplementedException();
-                _view.CreateBookMarker += () => throw new NotImplementedException();
-                _view.CreatePrintScreen += () => throw new NotImplementedException();
+                _view.CreateComment += () => { throw new NotImplementedException(); };
+                _view.CreateBookMarker += () => { throw new NotImplementedException(); };
+                _view.CreatePrintScreen += () => { throw new NotImplementedException(); };
             }
             else
             {
