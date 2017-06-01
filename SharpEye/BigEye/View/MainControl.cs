@@ -31,42 +31,10 @@ namespace View
         public MainControl()
         {
             InitializeComponent();
-            this.Dock = DockStyle.Fill;
-            DrawAll();
-            listGroup.View = System.Windows.Forms.View.List;
-            _videoLiveTable = new TableLayoutPanel();
-            _playbackTable = new TableLayoutPanel();
+            
+            _videoTable = new TableLayoutPanel();
         }
 
-
-        #region DrawAll
-        private void DrawAll()
-        {
-            this.Anchor = (AnchorStyles.Top & AnchorStyles.Bottom & AnchorStyles.Left & AnchorStyles.Right);
-            this.Dock = DockStyle.Fill;
-            tabControl.Location = this.Location;
-
-            panel1.Location = new Point(tabControl.Width - panel1.Width, tabControl.Location.Y);
-            panel1.Height = tabControl.ItemSize.Height;
-
-            searchTextBox.Multiline = false;
-            searchTextBox.Anchor = AnchorStyles.Left;
-            searchTextBox.WordWrap = false;
-
-            panel2.Height = 35;
-            panel2.Width = 180;
-            //panel2.Location = new Point(livePage.Width - panel2.Width, 0);
-
-            groupPanel.Width = 180;
-            groupPanel.Location = new Point(panel2.Location.X, panel2.Location.Y + panel2.Height);
-            listGroup.Dock = DockStyle.Fill;
-
-            videoLivePanel.Anchor = (AnchorStyles.Top & AnchorStyles.Bottom & AnchorStyles.Left & AnchorStyles.Right);
-
-            playbackPanel.Location = new Point(tabControl.Width - panel1.Width, tabControl.Location.Y);
-        }
-
-        #endregion
 
         #region DrawGroupBox
         // Задем свой стиль для журнала
@@ -133,6 +101,34 @@ namespace View
 
         #region AddListVideoLiveControl by dima. Refactor shukur
 
+
+        private void groupEditor_MouseClick(object sender, MouseEventArgs e)
+        {
+
+            groupEditorButton.BackColor = SystemColors.ButtonHighlight;//.ButtonShadow;
+            //GroupEditor groupEditorWindow = new GroupEditor();
+            //groupEditorWindow.Show();
+        }
+
+        private void cameraEditor_MouseClick(object sender, MouseEventArgs e)
+        {
+            CameraEditor cameraEditorWindow = new CameraEditor();
+            cameraEditorWindow.Show();
+        }
+
+        private void sequenceScreenplayEditor_MouseClick(object sender, MouseEventArgs e)
+        {
+            //SequenceScreenplayEditor sequenceScreenplayEditorWindow = new SequenceScreenplayEditor();
+            //sequenceScreenplayEditorWindow.Show();
+        }
+
+        private void searchButton_MouseClick(object sender, MouseEventArgs e)
+        {
+
+        }
+        
+
+        #region AddListControl by dima. Refactor shukur
         /// <summary>
         /// Добавляет список контролов для отображения видео
         /// </summary>
