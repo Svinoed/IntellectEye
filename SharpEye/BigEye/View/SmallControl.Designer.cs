@@ -33,13 +33,11 @@
             // 
             // _videoPanel
             // 
-            this._videoPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
             this._videoPanel.Cursor = System.Windows.Forms.Cursors.Default;
+            this._videoPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this._videoPanel.Location = new System.Drawing.Point(0, 0);
             this._videoPanel.Name = "_videoPanel";
-            this._videoPanel.Size = new System.Drawing.Size(228, 232);
+            this._videoPanel.Size = new System.Drawing.Size(270, 244);
             this._videoPanel.TabIndex = 0;
             this._videoPanel.Paint += new System.Windows.Forms.PaintEventHandler(this._videoPanel_Paint);
             // 
@@ -49,7 +47,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this._videoPanel);
             this.Name = "SmallControl";
-            this.Size = new System.Drawing.Size(228, 232);
+            this.Size = new System.Drawing.Size(270, 244);
             this.ResumeLayout(false);
 
         }

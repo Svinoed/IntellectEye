@@ -33,7 +33,7 @@ namespace Presenter
 
         public ActiveXComponent()
         {
-            InitializeComponent();           
+            InitializeComponent();
         }
 
         private void LoadLoginView(ILoginView view)

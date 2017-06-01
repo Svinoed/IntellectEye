@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using View.Interfaces;
@@ -22,6 +23,17 @@ namespace View
         public LoginControl()
         {
             InitializeComponent();
+
+            this.Anchor = (AnchorStyles.Top & AnchorStyles.Bottom & AnchorStyles.Left & AnchorStyles.Right);
+            PasswordTextBox.PasswordChar = '*';
+            progressBar1.ForeColor = Color.Aqua;
+
+            /* //Для круглой кнопки
+            System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
+            path.AddEllipse(1, 1, button1.Width, button1.Height);
+            Region rgn = new Region(path);
+            button1.Region = rgn;
+            */
         }
 
         public string Server { get; set; } 
@@ -48,8 +60,10 @@ namespace View
             Server = ServerTextBox.Text;
             UserName = UserTextBox.Text;
             Password = PasswordTextBox.Text;
+
             Login();
         }
+
 
         public ILoginView GetView()
         {
@@ -68,6 +82,18 @@ namespace View
             AutoLogin = AutoLoginCheck.Checked;
         }
 
-
+        private void button1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (PasswordTextBox.PasswordChar == '*')
+            {
+                PasswordTextBox.PasswordChar = '\0';
+                hideShowPassword.ImageIndex = 1;
+            }
+            else
+            {
+                PasswordTextBox.PasswordChar = '*';
+                hideShowPassword.ImageIndex = 0;
+            }
+        }
     }
 }

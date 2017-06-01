@@ -11,9 +11,16 @@ using System.ComponentModel.Composition;
 namespace Model
 {
     [Export(typeof(ICameraManagerModel))]
-    class CameraManagerModel : ICameraManagerModel
+    public class CameraManagerModel : ICameraManagerModel
     {
         private List<ICameraModel> _listCam;
+
+        public ICameraModel GetCamera(dynamic id)
+        {
+            FQID fqid = id;
+            return _listCam.Find(c => c.Id == fqid);
+        }
+
         public List<ICameraModel> GetCameras()
         {
             List<Item> list = Configuration.Instance.GetItems();

@@ -83,12 +83,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BookmarkerTypes.cs" />
     <Compile Include="ConnectStatus.cs" />
     <Compile Include="IAudioModel.cs" />
+    <Compile Include="IBookMarkModel.cs" />
     <Compile Include="ICameraManagerModel.cs" />
     <Compile Include="ICameraModel.cs" />
+    <Compile Include="ICommentModel.cs" />
     <Compile Include="IInitialModel.cs" />
     <Compile Include="ILoginModel.cs" />
+    <Compile Include="IPlaybackModel.cs" />
     <Compile Include="IPrintScreenModel.cs" />
     <Compile Include="IPTZModel.cs" />
     <Compile Include="ISerializable.cs" />
