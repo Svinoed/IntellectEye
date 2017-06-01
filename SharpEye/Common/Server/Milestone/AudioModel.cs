@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Composition;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,53 +13,36 @@ using VideoOS.Platform.UI;
 
 namespace Model
 {
-    class AudioModel : IAudioModel
+    [Export(typeof(IAudioModel))]
+    public class AudioModel : IAudioModel
     {
-        //Нужно ли оно здесь?
-        private AudioPlayerControl _audioPlayerControl;
-        private Item _relatedMicrophone;
-        //
+        private readonly AudioPlayerControl _audioPlayerControl;
+        
         public AudioModel()
         {
+            _audioPlayerControl = ClientControl.Instance.GenerateAudioPlayerControl();
+            _audioPlayerControl.ConnectResponseEvent += ConnectResponseEvent;
+        }
 
-        }
-        public void SetAudioStreamInPanelDefault(ICameraModel camera, Panel panel)
+        public void SetAudioStreamInPanel(ICameraModel camera, Panel panel)
         { 
-            _relatedMicrophone = null;
-            Item CameraItem = new Item(camera.Id, camera.Name);
-            List<Item> related = CameraItem.GetRelated();
-            if (related != null)
+            panel.Controls.Add(_audioPlayerControl);
+            _audioPlayerControl.MicrophoneFQID = (FQID)camera.MicrophoneId;
+            _audioPlayerControl.Initialize();
+            _audioPlayerControl.Connect();
+        }
+
+        public void Disconnect()
+        {
+            if (_audioPlayerControl.MicrophoneFQID != null)
             {
-                foreach (Item item in related)
-                {
-                    MessageBox.Show(item.Name);
-                    if (item.FQID.Kind == Kind.Microphone)
-                    {
-                        //checkBoxAudio.Enabled = true;   //Чеки для mute checkbox
-                        //checkBoxAudio.Checked = true;
-                        _relatedMicrophone = item;
-                        _audioPlayerControl.MicrophoneFQID = item.FQID;
-                        MessageBox.Show(item.Name);
-                        _audioPlayerControl.Initialize();
-                        _audioPlayerControl.Connect();
-                        if (EnvironmentManager.Instance.Mode == Mode.ClientLive) //Не совсем понимаю, что делает эта проверка, кажется проверяет идёт ли Live или запись
-                        {
-                            _audioPlayerControl.StartLive();
-                            panel.Controls.Add(_audioPlayerControl);//Допустим, что этот контрол будет жить на той же форме
-                        }
-                        else
-                        {
-                            _audioPlayerControl.Disconnect();
-                            throw new NotImplementedException();
-                            //Вывести ошибку, не тот режим работы, куда выводить, как определять режим записи?
-                        }
-                    }
-                }
-            }
-            else
-            {
-                throw new NotImplementedException();//Вывести, что у камеры нет микрофонов, куда выводить?
+                _audioPlayerControl.Disconnect();
             }
         }
-    }
+
+        private void ConnectResponseEvent(object sender, ConnectResponseEventEventArgs e)
+        {
+          _audioPlayerControl.StartLive();
+        }
+    } 
 }

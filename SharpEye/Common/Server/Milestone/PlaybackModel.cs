@@ -21,7 +21,7 @@ using System.IO;
 namespace Model
 {
     [Export(typeof(IPlaybackModel))]
-    class PlaybackModel : IPlaybackModel
+    public class PlaybackModel : IPlaybackModel
     {
         #region private fields
 
@@ -65,7 +65,22 @@ namespace Model
                 EnvironmentManager.Instance.ExceptionDialog("Camera select", ex);
             }
         }
-        
+
+        public void SetVideoStreamInPanel(ICameraModel camera, Panel panel, EventHandler doubleClickHandler)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Disconnect()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void PTZDefault()
+        {
+            throw new NotImplementedException();
+        }
+
         public void SetVideoStreamInPanelFromFile(string filename, Panel videoPanel)
         {
             PrepareControls(videoPanel);

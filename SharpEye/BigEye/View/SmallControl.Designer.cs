@@ -28,24 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this._videoPanel = new System.Windows.Forms.Panel();
+            this.videoPanel = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
-            // _videoPanel
+            // videoPanel
             // 
-            this._videoPanel.Cursor = System.Windows.Forms.Cursors.Default;
-            this._videoPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._videoPanel.Location = new System.Drawing.Point(0, 0);
-            this._videoPanel.Name = "_videoPanel";
-            this._videoPanel.Size = new System.Drawing.Size(270, 244);
-            this._videoPanel.TabIndex = 0;
-            this._videoPanel.Paint += new System.Windows.Forms.PaintEventHandler(this._videoPanel_Paint);
+            this.videoPanel.Cursor = System.Windows.Forms.Cursors.Default;
+            this.videoPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.videoPanel.Location = new System.Drawing.Point(0, 0);
+            this.videoPanel.Name = "videoPanel";
+            this.videoPanel.Size = new System.Drawing.Size(270, 244);
+            this.videoPanel.TabIndex = 0;
             // 
             // SmallControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this._videoPanel);
+            this.Controls.Add(this.videoPanel);
+            this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Name = "SmallControl";
             this.Size = new System.Drawing.Size(270, 244);
             this.ResumeLayout(false);
@@ -54,6 +54,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel _videoPanel;
+        private System.Windows.Forms.Panel videoPanel;
     }
 }

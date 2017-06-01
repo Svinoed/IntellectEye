@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Contract;
 using View.Interfaces;
 using System.ComponentModel.Composition;
+using System.Diagnostics;
 
 namespace Presenter
 {
@@ -17,19 +18,7 @@ namespace Presenter
         [Import]
         private IVideoModel _videoModel;
 
-        public ICameraModel Camera
-        {
-            get
-            {
-                return _camera;
-            }
-
-            set
-            {
-                _camera = value;
-                _videoModel.SetVideoStreamInPanel(_camera, _view.VideoPanel);
-            }
-        }
+        public ICameraModel Camera { get { return _camera; } set { _camera = value;} }
 
         public event Action<ICameraModel> FullScreen;
 
@@ -43,9 +32,10 @@ namespace Presenter
             }
         }
 
-        private void ViewFullScreenHandler()
+        private void ViewFullScreenHandler(object sender, EventArgs e)
         {
-            if (FullScreen != null)
+            Debug.WriteLine("Sender: {0}\nArgs: {1}", sender.ToString(), e.ToString());
+            if (FullScreen != null && _camera != null)
             {
                 FullScreen(Camera);
             }
@@ -54,6 +44,27 @@ namespace Presenter
         public ISmallView GetView()
         {
             return _view;
+        }
+
+        public async void ShowVideo()
+        {
+          
+            await Task.Run(() =>
+            {
+                _view.VideoPanel.BeginInvoke(((Action) delegate
+              {
+                  _videoModel.SetVideoStreamInPanel(_camera, 
+                      _view.VideoPanel, ViewFullScreenHandler);
+              })); 
+            });
+        }
+
+        public void Disconnect()
+        {
+            if (_camera != null)
+            {
+                _videoModel.Disconnect();
+            }
         }
     }
 }

@@ -7,9 +7,9 @@ using System.Windows.Forms;
 
 namespace View.Interfaces
 {
-    public interface ISmallView
+    public interface ISmallView : IVideoBase
     {
-        Panel VideoPanel { get; }
         event Action FullScreen;
+        void ClearPanel();
     }
 }

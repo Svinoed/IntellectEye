@@ -18,32 +18,58 @@ namespace Model
     [Export(typeof(IVideoModel))]
     public class VideoModel : IVideoModel
     {
-        ImageViewerControl _imageViewer;
+        private ImageViewerControl _imageViewer;
 
-        public VideoModel()
+        public void Disconnect()
         {
+            try
+            {
+                if (_imageViewer.CameraFQID != null && _imageViewer != null) 
+                {
+                    _imageViewer.Disconnect();
+                    _imageViewer.Close();
+                }
+            }
+            catch(NullReferenceException e)
+            {
+                Debug.WriteLine(_imageViewer.CameraFQID.ToString() + " " + e.Message);
+            }
+            
+        }
+
+        public void PTZDefault()
+        {
+
+           _imageViewer.PtzCenter(0, 0, 0, 0, 0);
         }
 
         public void SetVideoStreamInPanel(ICameraModel camera, Panel panel)
         {
+            SetVideoStreamInPanel(camera, panel, null);
+        }
+        public void SetVideoStreamInPanel(ICameraModel camera, Panel panel, EventHandler handler)
+        {
+             panel.Controls.Clear();
             _imageViewer = ClientControl.Instance.GenerateImageViewerControl();
             _imageViewer.Dock = DockStyle.Fill;
-            panel.Controls.Clear();
-            panel.Controls.Add(_imageViewer);
+             panel.Controls.Add(_imageViewer);
             _imageViewer.CameraFQID = camera.Id;
-            _imageViewer.EnableVisibleHeader = true;
+            _imageViewer.EnableVisibleHeader = false;
             _imageViewer.EnableVisibleLiveIndicator = EnvironmentManager.Instance.Mode == Mode.ClientLive;
-            _imageViewer.EnableMousePtzEmbeddedHandler = true;
-            _imageViewer.MaintainImageAspectRatio = true;
+            _imageViewer.EnableMousePtzEmbeddedHandler = false;
+            _imageViewer.MaintainImageAspectRatio = false;
             _imageViewer.SetVideoQuality(0, 1);
-            //_imageViewer.ImageOrPaintInfoChanged += ImageOrPaintChangedHandler;
-            _imageViewer.EnableRecordedImageDisplayedEvent = true;
-            _imageViewer.EnableVisibleTimeStamp = true;
+          //_imageViewer.ImageOrPaintInfoChanged += ImageOrPaintChangedHandler;
+            _imageViewer.EnableRecordedImageDisplayedEvent = false;
+            _imageViewer.EnableVisibleTimeStamp = false;
             _imageViewer.Initialize();
             _imageViewer.Connect();
-            _imageViewer.Selected = true;
-            _imageViewer.EnableDigitalZoom = true;
-           
+            _imageViewer.Selected = false;
+            _imageViewer.EnableMouseControlledPtz = false;
+            if (handler != null)
+            {
+                _imageViewer.DoubleClickEvent += handler;
+            }
         }
     }
 }

@@ -33,12 +33,12 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.videoPanel = new System.Windows.Forms.Panel();
             this.flowPanelZoom = new System.Windows.Forms.Panel();
-            this.zoomPlusButton = new System.Windows.Forms.Button();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.zoomMinusButton = new System.Windows.Forms.Button();
+            this.tableLayoutPanelZoom = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.button8 = new System.Windows.Forms.Button();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.rightDownButton = new System.Windows.Forms.Button();
             this.downButton = new System.Windows.Forms.Button();
             this.leftDownButton = new System.Windows.Forms.Button();
@@ -47,19 +47,20 @@
             this.upButton = new System.Windows.Forms.Button();
             this.leftUpButton = new System.Windows.Forms.Button();
             this.leftButton = new System.Windows.Forms.Button();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.zoomMinusButton = new System.Windows.Forms.Button();
+            this.zoomPlusButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.flowPanel = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.resetButton = new System.Windows.Forms.Button();
-            this.helpButton = new System.Windows.Forms.Button();
-            this.settingsButton = new System.Windows.Forms.Button();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.switchOrderButton = new System.Windows.Forms.Button();
-            this.redoButton = new System.Windows.Forms.Button();
-            this.slowDownButton = new System.Windows.Forms.Button();
-            this.playButton = new System.Windows.Forms.Button();
-            this.fastUpButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.settingsButton = new System.Windows.Forms.Button();
+            this.helpButton = new System.Windows.Forms.Button();
+            this.resetButton = new System.Windows.Forms.Button();
+            this.redoButton = new System.Windows.Forms.Button();
+            this.switchOrderButton = new System.Windows.Forms.Button();
+            this.fastUpButton = new System.Windows.Forms.Button();
+            this.playButton = new System.Windows.Forms.Button();
+            this.slowDownButton = new System.Windows.Forms.Button();
             this.fullscreenButton = new System.Windows.Forms.Button();
             this.commentButton = new System.Windows.Forms.Button();
             this.screenshotButton = new System.Windows.Forms.Button();
@@ -69,10 +70,11 @@
             this.playbackSpeedLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.flowPanelZoom.SuspendLayout();
+            this.tableLayoutPanelZoom.SuspendLayout();
+            this.tableLayoutPanel7.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
             this.flowPanel.SuspendLayout();
-            this.tableLayoutPanel4.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -81,44 +83,110 @@
             this.panel1.Controls.Add(this.videoPanel);
             this.panel1.Controls.Add(this.flowPanelZoom);
             this.panel1.Controls.Add(this.flowPanel);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(562, 307);
+            this.panel1.Size = new System.Drawing.Size(543, 339);
             this.panel1.TabIndex = 0;
             // 
             // videoPanel
             // 
-            this.videoPanel.Location = new System.Drawing.Point(6, 6);
+            this.videoPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.videoPanel.Location = new System.Drawing.Point(0, 0);
             this.videoPanel.Name = "videoPanel";
-            this.videoPanel.Size = new System.Drawing.Size(455, 242);
+            this.videoPanel.Size = new System.Drawing.Size(423, 286);
             this.videoPanel.TabIndex = 27;
             // 
             // flowPanelZoom
             // 
-            this.flowPanelZoom.Controls.Add(this.playbackSpeedLabel);
-            this.flowPanelZoom.Controls.Add(this.zoomPlusButton);
-            this.flowPanelZoom.Controls.Add(this.zoomMinusButton);
-            this.flowPanelZoom.Controls.Add(this.label1);
-            this.flowPanelZoom.Controls.Add(this.tableLayoutPanel2);
-            this.flowPanelZoom.Controls.Add(this.label2);
-            this.flowPanelZoom.Location = new System.Drawing.Point(467, 3);
+            this.flowPanelZoom.Controls.Add(this.tableLayoutPanelZoom);
+            this.flowPanelZoom.Dock = System.Windows.Forms.DockStyle.Right;
+            this.flowPanelZoom.Location = new System.Drawing.Point(423, 0);
             this.flowPanelZoom.Name = "flowPanelZoom";
-            this.flowPanelZoom.Size = new System.Drawing.Size(92, 248);
+            this.flowPanelZoom.Size = new System.Drawing.Size(120, 286);
             this.flowPanelZoom.TabIndex = 26;
             // 
-            // zoomPlusButton
+            // tableLayoutPanelZoom
             // 
-            this.zoomPlusButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tableLayoutPanelZoom.ColumnCount = 1;
+            this.tableLayoutPanelZoom.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanelZoom.Controls.Add(this.tableLayoutPanel7, 0, 1);
+            this.tableLayoutPanelZoom.Controls.Add(this.tableLayoutPanel2, 0, 0);
+            this.tableLayoutPanelZoom.Controls.Add(this.tableLayoutPanel5, 0, 2);
+            this.tableLayoutPanelZoom.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelZoom.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanelZoom.Name = "tableLayoutPanelZoom";
+            this.tableLayoutPanelZoom.RowCount = 3;
+            this.tableLayoutPanelZoom.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanelZoom.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanelZoom.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanelZoom.Size = new System.Drawing.Size(120, 286);
+            this.tableLayoutPanelZoom.TabIndex = 28;
+            // 
+            // tableLayoutPanel7
+            // 
+            this.tableLayoutPanel7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.tableLayoutPanel7.ColumnCount = 1;
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel7.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel7.Controls.Add(this.playbackSpeedLabel, 0, 1);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(32, 99);
+            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
+            this.tableLayoutPanel7.RowCount = 2;
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(55, 40);
+            this.tableLayoutPanel7.TabIndex = 30;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(55, 13);
+            this.label1.TabIndex = 28;
+            this.label1.Text = "Скорость";
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tableLayoutPanel2.ColumnCount = 3;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel2.Controls.Add(this.button8, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.rightDownButton, 2, 2);
+            this.tableLayoutPanel2.Controls.Add(this.downButton, 1, 2);
+            this.tableLayoutPanel2.Controls.Add(this.leftDownButton, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.rightButton, 2, 1);
+            this.tableLayoutPanel2.Controls.Add(this.rightUpButton, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.upButton, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.leftUpButton, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.leftButton, 0, 1);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(15, 3);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 3;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(90, 90);
+            this.tableLayoutPanel2.TabIndex = 27;
+            // 
+            // button8
+            // 
+            this.button8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.zoomPlusButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.zoomPlusButton.ImageIndex = 13;
-            this.zoomPlusButton.ImageList = this.imageList1;
-            this.zoomPlusButton.Location = new System.Drawing.Point(62, 143);
-            this.zoomPlusButton.Name = "zoomPlusButton";
-            this.zoomPlusButton.Size = new System.Drawing.Size(30, 30);
-            this.zoomPlusButton.TabIndex = 26;
-            this.zoomPlusButton.UseVisualStyleBackColor = true;
+            this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button8.ImageIndex = 3;
+            this.button8.ImageList = this.imageList1;
+            this.button8.Location = new System.Drawing.Point(33, 33);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(24, 24);
+            this.button8.TabIndex = 26;
+            this.button8.UseVisualStyleBackColor = true;
             // 
             // imageList1
             // 
@@ -149,69 +217,6 @@
             this.imageList1.Images.SetKeyName(22, "23.get.png");
             this.imageList1.Images.SetKeyName(23, "24.comment.png");
             this.imageList1.Images.SetKeyName(24, "25.playAgain.png");
-            // 
-            // zoomMinusButton
-            // 
-            this.zoomMinusButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.zoomMinusButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.zoomMinusButton.ImageIndex = 12;
-            this.zoomMinusButton.ImageList = this.imageList1;
-            this.zoomMinusButton.Location = new System.Drawing.Point(3, 143);
-            this.zoomMinusButton.Name = "zoomMinusButton";
-            this.zoomMinusButton.Size = new System.Drawing.Size(30, 30);
-            this.zoomMinusButton.TabIndex = 27;
-            this.zoomMinusButton.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(23, 101);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 13);
-            this.label1.TabIndex = 28;
-            this.label1.Text = "Скорость";
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel2.Controls.Add(this.button8, 1, 1);
-            this.tableLayoutPanel2.Controls.Add(this.rightDownButton, 2, 2);
-            this.tableLayoutPanel2.Controls.Add(this.downButton, 1, 2);
-            this.tableLayoutPanel2.Controls.Add(this.leftDownButton, 0, 2);
-            this.tableLayoutPanel2.Controls.Add(this.rightButton, 2, 1);
-            this.tableLayoutPanel2.Controls.Add(this.rightUpButton, 2, 0);
-            this.tableLayoutPanel2.Controls.Add(this.upButton, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.leftUpButton, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.leftButton, 0, 1);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(2, 3);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 3;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(90, 90);
-            this.tableLayoutPanel2.TabIndex = 27;
-            // 
-            // button8
-            // 
-            this.button8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button8.ImageIndex = 3;
-            this.button8.ImageList = this.imageList1;
-            this.button8.Location = new System.Drawing.Point(33, 33);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(24, 24);
-            this.button8.TabIndex = 26;
-            this.button8.UseVisualStyleBackColor = true;
             // 
             // rightDownButton
             // 
@@ -325,70 +330,111 @@
             this.leftButton.TabIndex = 26;
             this.leftButton.UseVisualStyleBackColor = true;
             // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.tableLayoutPanel5.ColumnCount = 3;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel5.Controls.Add(this.zoomMinusButton, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.zoomPlusButton, 2, 0);
+            this.tableLayoutPanel5.Controls.Add(this.label2, 1, 0);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(10, 145);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 1;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(100, 30);
+            this.tableLayoutPanel5.TabIndex = 34;
+            // 
+            // zoomMinusButton
+            // 
+            this.zoomMinusButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.zoomMinusButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.zoomMinusButton.ImageIndex = 12;
+            this.zoomMinusButton.ImageList = this.imageList1;
+            this.zoomMinusButton.Location = new System.Drawing.Point(3, 3);
+            this.zoomMinusButton.Name = "zoomMinusButton";
+            this.zoomMinusButton.Size = new System.Drawing.Size(24, 24);
+            this.zoomMinusButton.TabIndex = 27;
+            this.zoomMinusButton.UseVisualStyleBackColor = true;
+            // 
+            // zoomPlusButton
+            // 
+            this.zoomPlusButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.zoomPlusButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.zoomPlusButton.ImageIndex = 13;
+            this.zoomPlusButton.ImageList = this.imageList1;
+            this.zoomPlusButton.Location = new System.Drawing.Point(73, 3);
+            this.zoomPlusButton.Name = "zoomPlusButton";
+            this.zoomPlusButton.Size = new System.Drawing.Size(24, 24);
+            this.zoomPlusButton.TabIndex = 26;
+            this.zoomPlusButton.UseVisualStyleBackColor = true;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(32, 152);
+            this.label2.Location = new System.Drawing.Point(33, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(34, 13);
+            this.label2.Size = new System.Drawing.Size(34, 30);
             this.label2.TabIndex = 33;
             this.label2.Text = "Zoom";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // flowPanel
             // 
-            this.flowPanel.Controls.Add(this.tableLayoutPanel4);
-            this.flowPanel.Controls.Add(this.tableLayoutPanel3);
             this.flowPanel.Controls.Add(this.tableLayoutPanel1);
             this.flowPanel.Controls.Add(this.progressBar1);
-            this.flowPanel.Location = new System.Drawing.Point(0, 254);
+            this.flowPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.flowPanel.Location = new System.Drawing.Point(0, 286);
             this.flowPanel.Name = "flowPanel";
-            this.flowPanel.Size = new System.Drawing.Size(562, 53);
+            this.flowPanel.Size = new System.Drawing.Size(543, 53);
             this.flowPanel.TabIndex = 0;
             // 
-            // tableLayoutPanel4
+            // tableLayoutPanel1
             // 
-            this.tableLayoutPanel4.ColumnCount = 3;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel4.Controls.Add(this.resetButton, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.helpButton, 1, 0);
-            this.tableLayoutPanel4.Controls.Add(this.settingsButton, 2, 0);
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(469, 22);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 1;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(90, 30);
-            this.tableLayoutPanel4.TabIndex = 27;
-            // 
-            // resetButton
-            // 
-            this.resetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.resetButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.resetButton.ImageIndex = 3;
-            this.resetButton.ImageList = this.imageList1;
-            this.resetButton.Location = new System.Drawing.Point(3, 3);
-            this.resetButton.Name = "resetButton";
-            this.resetButton.Size = new System.Drawing.Size(24, 24);
-            this.resetButton.TabIndex = 21;
-            this.resetButton.UseVisualStyleBackColor = true;
-            // 
-            // helpButton
-            // 
-            this.helpButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.helpButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.helpButton.ImageIndex = 0;
-            this.helpButton.ImageList = this.imageList1;
-            this.helpButton.Location = new System.Drawing.Point(33, 3);
-            this.helpButton.Name = "helpButton";
-            this.helpButton.Size = new System.Drawing.Size(24, 24);
-            this.helpButton.TabIndex = 26;
-            this.helpButton.UseVisualStyleBackColor = true;
+            this.tableLayoutPanel1.ColumnCount = 15;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.tableLayoutPanel1.Controls.Add(this.settingsButton, 14, 0);
+            this.tableLayoutPanel1.Controls.Add(this.helpButton, 13, 0);
+            this.tableLayoutPanel1.Controls.Add(this.resetButton, 12, 0);
+            this.tableLayoutPanel1.Controls.Add(this.redoButton, 10, 0);
+            this.tableLayoutPanel1.Controls.Add(this.switchOrderButton, 6, 0);
+            this.tableLayoutPanel1.Controls.Add(this.fastUpButton, 9, 0);
+            this.tableLayoutPanel1.Controls.Add(this.playButton, 8, 0);
+            this.tableLayoutPanel1.Controls.Add(this.slowDownButton, 7, 0);
+            this.tableLayoutPanel1.Controls.Add(this.fullscreenButton, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.commentButton, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.screenshotButton, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.exportButton, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.bookmarkButton, 3, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 23);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(543, 30);
+            this.tableLayoutPanel1.TabIndex = 27;
             // 
             // settingsButton
             // 
@@ -398,45 +444,39 @@
             this.settingsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.settingsButton.ImageIndex = 1;
             this.settingsButton.ImageList = this.imageList1;
-            this.settingsButton.Location = new System.Drawing.Point(63, 3);
+            this.settingsButton.Location = new System.Drawing.Point(515, 3);
             this.settingsButton.Name = "settingsButton";
-            this.settingsButton.Size = new System.Drawing.Size(24, 24);
+            this.settingsButton.Size = new System.Drawing.Size(25, 24);
             this.settingsButton.TabIndex = 27;
             this.settingsButton.UseVisualStyleBackColor = true;
             // 
-            // tableLayoutPanel3
+            // helpButton
             // 
-            this.tableLayoutPanel3.ColumnCount = 5;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel3.Controls.Add(this.switchOrderButton, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.redoButton, 4, 0);
-            this.tableLayoutPanel3.Controls.Add(this.slowDownButton, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this.playButton, 2, 0);
-            this.tableLayoutPanel3.Controls.Add(this.fastUpButton, 3, 0);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(213, 19);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(150, 30);
-            this.tableLayoutPanel3.TabIndex = 27;
-            // 
-            // switchOrderButton
-            // 
-            this.switchOrderButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.helpButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.switchOrderButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.switchOrderButton.ImageIndex = 17;
-            this.switchOrderButton.ImageList = this.imageList1;
-            this.switchOrderButton.Location = new System.Drawing.Point(3, 3);
-            this.switchOrderButton.Name = "switchOrderButton";
-            this.switchOrderButton.Size = new System.Drawing.Size(24, 24);
-            this.switchOrderButton.TabIndex = 19;
-            this.switchOrderButton.UseVisualStyleBackColor = true;
+            this.helpButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.helpButton.ImageIndex = 0;
+            this.helpButton.ImageList = this.imageList1;
+            this.helpButton.Location = new System.Drawing.Point(485, 3);
+            this.helpButton.Name = "helpButton";
+            this.helpButton.Size = new System.Drawing.Size(24, 24);
+            this.helpButton.TabIndex = 26;
+            this.helpButton.UseVisualStyleBackColor = true;
+            // 
+            // resetButton
+            // 
+            this.resetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.resetButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.resetButton.ImageIndex = 3;
+            this.resetButton.ImageList = this.imageList1;
+            this.resetButton.Location = new System.Drawing.Point(455, 3);
+            this.resetButton.Name = "resetButton";
+            this.resetButton.Size = new System.Drawing.Size(24, 24);
+            this.resetButton.TabIndex = 21;
+            this.resetButton.UseVisualStyleBackColor = true;
             // 
             // redoButton
             // 
@@ -446,39 +486,26 @@
             this.redoButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.redoButton.ImageIndex = 24;
             this.redoButton.ImageList = this.imageList1;
-            this.redoButton.Location = new System.Drawing.Point(123, 3);
+            this.redoButton.Location = new System.Drawing.Point(349, 3);
             this.redoButton.Name = "redoButton";
             this.redoButton.Size = new System.Drawing.Size(24, 24);
             this.redoButton.TabIndex = 29;
             this.redoButton.UseVisualStyleBackColor = true;
             // 
-            // slowDownButton
+            // switchOrderButton
             // 
-            this.slowDownButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.switchOrderButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.slowDownButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.slowDownButton.ImageIndex = 18;
-            this.slowDownButton.ImageList = this.imageList1;
-            this.slowDownButton.Location = new System.Drawing.Point(33, 3);
-            this.slowDownButton.Name = "slowDownButton";
-            this.slowDownButton.Size = new System.Drawing.Size(24, 24);
-            this.slowDownButton.TabIndex = 17;
-            this.slowDownButton.UseVisualStyleBackColor = true;
-            // 
-            // playButton
-            // 
-            this.playButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.playButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.playButton.ImageIndex = 14;
-            this.playButton.ImageList = this.imageList1;
-            this.playButton.Location = new System.Drawing.Point(63, 3);
-            this.playButton.Name = "playButton";
-            this.playButton.Size = new System.Drawing.Size(24, 24);
-            this.playButton.TabIndex = 16;
-            this.playButton.UseVisualStyleBackColor = true;
+            this.switchOrderButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.switchOrderButton.ImageIndex = 17;
+            this.switchOrderButton.ImageList = this.imageList1;
+            this.switchOrderButton.Location = new System.Drawing.Point(229, 3);
+            this.switchOrderButton.Name = "switchOrderButton";
+            this.switchOrderButton.Size = new System.Drawing.Size(24, 24);
+            this.switchOrderButton.TabIndex = 19;
+            this.switchOrderButton.UseVisualStyleBackColor = true;
+            this.switchOrderButton.Click += new System.EventHandler(this.switchOrderButton_Click);
             // 
             // fastUpButton
             // 
@@ -488,31 +515,40 @@
             this.fastUpButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.fastUpButton.ImageIndex = 19;
             this.fastUpButton.ImageList = this.imageList1;
-            this.fastUpButton.Location = new System.Drawing.Point(93, 3);
+            this.fastUpButton.Location = new System.Drawing.Point(319, 3);
             this.fastUpButton.Name = "fastUpButton";
             this.fastUpButton.Size = new System.Drawing.Size(24, 24);
             this.fastUpButton.TabIndex = 18;
             this.fastUpButton.UseVisualStyleBackColor = true;
             // 
-            // tableLayoutPanel1
+            // playButton
             // 
-            this.tableLayoutPanel1.ColumnCount = 5;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.Controls.Add(this.fullscreenButton, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.commentButton, 4, 0);
-            this.tableLayoutPanel1.Controls.Add(this.screenshotButton, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.exportButton, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.bookmarkButton, 3, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 22);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(150, 30);
-            this.tableLayoutPanel1.TabIndex = 27;
+            this.playButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.playButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.playButton.ImageIndex = 14;
+            this.playButton.ImageList = this.imageList1;
+            this.playButton.Location = new System.Drawing.Point(289, 3);
+            this.playButton.Name = "playButton";
+            this.playButton.Size = new System.Drawing.Size(24, 24);
+            this.playButton.TabIndex = 16;
+            this.playButton.UseVisualStyleBackColor = true;
+            this.playButton.Click += new System.EventHandler(this.playButton_Click);
+            // 
+            // slowDownButton
+            // 
+            this.slowDownButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.slowDownButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.slowDownButton.ImageIndex = 18;
+            this.slowDownButton.ImageList = this.imageList1;
+            this.slowDownButton.Location = new System.Drawing.Point(259, 3);
+            this.slowDownButton.Name = "slowDownButton";
+            this.slowDownButton.Size = new System.Drawing.Size(24, 24);
+            this.slowDownButton.TabIndex = 17;
+            this.slowDownButton.UseVisualStyleBackColor = true;
             // 
             // fullscreenButton
             // 
@@ -586,36 +622,38 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(0, 3);
+            this.progressBar1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.progressBar1.Location = new System.Drawing.Point(0, 0);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(559, 15);
+            this.progressBar1.Size = new System.Drawing.Size(543, 15);
             this.progressBar1.TabIndex = 1;
             // 
             // playbackSpeedLabel
             // 
             this.playbackSpeedLabel.AutoSize = true;
-            this.playbackSpeedLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.playbackSpeedLabel.Location = new System.Drawing.Point(16, 117);
+            this.playbackSpeedLabel.Location = new System.Drawing.Point(3, 13);
             this.playbackSpeedLabel.Name = "playbackSpeedLabel";
-            this.playbackSpeedLabel.Size = new System.Drawing.Size(10, 13);
-            this.playbackSpeedLabel.TabIndex = 34;
-            this.playbackSpeedLabel.Text = " ";
+            this.playbackSpeedLabel.Size = new System.Drawing.Size(35, 13);
+            this.playbackSpeedLabel.TabIndex = 29;
+            this.playbackSpeedLabel.Text = "label3";
             // 
             // MiniPlayBack
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
             this.Controls.Add(this.panel1);
             this.Name = "MiniPlayBack";
-            this.Size = new System.Drawing.Size(565, 310);
+            this.Size = new System.Drawing.Size(543, 339);
             this.panel1.ResumeLayout(false);
             this.flowPanelZoom.ResumeLayout(false);
-            this.flowPanelZoom.PerformLayout();
+            this.tableLayoutPanelZoom.ResumeLayout(false);
+            this.tableLayoutPanel7.ResumeLayout(false);
+            this.tableLayoutPanel7.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel5.PerformLayout();
             this.flowPanel.ResumeLayout(false);
-            this.tableLayoutPanel4.ResumeLayout(false);
-            this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -655,10 +693,11 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button commentButton;
         private System.Windows.Forms.Button redoButton;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel videoPanel;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelZoom;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Label playbackSpeedLabel;
     }
 }

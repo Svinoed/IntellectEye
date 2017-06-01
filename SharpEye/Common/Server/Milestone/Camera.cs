@@ -15,6 +15,14 @@ namespace Model
         public object Id { get; set; }
         public string Name { get; set; }
         public dynamic MicrophoneId { get; set; }
+        public bool IsPtz { set; get; }
+
+        public bool EqualsId(dynamic id)
+        {
+            FQID thisId = (FQID) this.Id;
+            FQID comFqid = (FQID) id;
+            return thisId.Equals(comFqid);
+        }
 
         public Camera(FQID id, string name)
         {

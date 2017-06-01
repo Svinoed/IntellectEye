@@ -34,6 +34,77 @@ namespace View
         public event Action CreateBookMarker;
         public event Action CreateComment;
         public event Action Back;
+        public event Action Up;
+        public event Action UpLeft;
+        public event Action UpRight;
+        public event Action Down;
+        public event Action DownLeft;
+        public event Action DownRight;
+        public event Action ToRight;
+        public event Action ToLeft;
+        public event Action Home;
+        public event Action<float> ZoomIn;
+        public event Action<float> ZoomOut;
+        public void SaveImage(byte[] img, string format)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ShowMessage(string message)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ShowProgressBar()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void HideProgressBar()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void HidePtzControl()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ShowPtzControl()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task SetValueProgressBar(float value)
+        {
+            throw new NotImplementedException();
+        }
+
         public event Action VolumeChanged;
+
+        private void switchOrderButton_Click(object sender, EventArgs e)
+        {
+            ChangeDirectionButtonPressed();
+        }
+
+        private void slowDownButton_Click(object sender, EventArgs e)
+        {
+            SlowDownButtonPressed();
+        }
+
+        private void playButton_Click(object sender, EventArgs e)
+        {
+            PlayButtonPressed();
+        }
+
+        private void fastUpButton_Click(object sender, EventArgs e)
+        {
+            SpeedUpButtonPressed();
+        }
+
+        private void redoButton_Click(object sender, EventArgs e)
+        {
+            ResetSpeedButtonPressed();
+        }
     }
 }

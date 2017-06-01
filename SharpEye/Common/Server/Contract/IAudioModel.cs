@@ -9,6 +9,7 @@ namespace Contract
 {
     public interface IAudioModel
     {
-        void SetAudioStreamInPanelDefault(ICameraModel camera, Panel panel);//Нужно добавлять в панель или прикреплять к камере?
+        void SetAudioStreamInPanel(ICameraModel camera, Panel panel);
+        void Disconnect();
     }
 }

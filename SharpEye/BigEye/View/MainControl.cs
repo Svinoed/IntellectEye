@@ -9,57 +9,33 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using View.Interfaces;
 using View.Utils;
+using System.Threading;
 
 namespace View
 {
     public partial class MainControl : UserControl, IMainView, ILogView
     {
 
-        public bool ViewVisible { get { throw new NotImplementedException(); } set { throw new NotImplementedException(); } }
+        public bool ViewVisible { get { return this.Visible; } set { this.Visible = value; } }
 
 
         public event Action<Group> CamEditClick;
         public event Action GroupsEditClick;
+        public event Action<Group> GroupSelected;
+        public event Action ActivatedPlaybackTab;
 
-        private TableLayoutPanel _videoTable;
+        private TableLayoutPanel _videoLiveTable;
+        private TableLayoutPanel _playbackTable;
         private Dictionary<Guid, Group> _groups;
+
         public MainControl()
         {
             InitializeComponent();
-            DrawAll();
-            _videoTable = new TableLayoutPanel();
-            listGroup.View = System.Windows.Forms.View.List;
+            
+            _videoLiveTable = new TableLayoutPanel();
+            _playbackTable = new TableLayoutPanel();
         }
 
-
-        #region DrawAll
-        private void DrawAll()
-        {
-            this.Anchor = (AnchorStyles.Top & AnchorStyles.Bottom & AnchorStyles.Left & AnchorStyles.Right);
-            this.Dock = DockStyle.Fill;
-            tabControl.Location = this.Location;
-
-            panel1.Location = new Point(tabControl.Width - panel1.Width, tabControl.Location.Y);
-            panel1.Height = tabControl.ItemSize.Height;
-
-            searchTextBox.Multiline = false;
-            searchTextBox.Anchor = AnchorStyles.Left;
-            searchTextBox.WordWrap = false;
-
-            panel2.Height = 35;
-            panel2.Width = 180;
-            //panel2.Location = new Point(livePage.Width - panel2.Width, 0);
-
-            groupPanel.Width = 180;
-            groupPanel.Location = new Point(panel2.Location.X, panel2.Location.Y + panel2.Height);
-            listGroup.Dock = DockStyle.Fill;
-
-            videoLivePanel.Anchor = (AnchorStyles.Top & AnchorStyles.Bottom & AnchorStyles.Left & AnchorStyles.Right);
-
-            panel3.Location = new Point(tabControl.Width - panel1.Width, tabControl.Location.Y);
-        }
-
-        #endregion
 
         #region DrawGroupBox
         // Задем свой стиль для журнала
@@ -103,62 +79,32 @@ namespace View
             throw new NotImplementedException();
         }
 
-        #region InterfacesImplementation
-        public void AddVideoControl(IVideoView view)
+ 
+        public void AddVideoControl(IVideoBase view)
         {
-            // для одной камеры
-            Panel panel = view.VideoPanel;
-            panel.Dock = DockStyle.Fill;
-            livePage.Controls.Add(panel);
+            UserControl c = (UserControl) view;
+            _videoLiveTable.Controls.Add(c);
         }
 
-        public void AddList(List<ISmallView> viewList)
+        public void ClearCellsLiveTable(int startIndex)
         {
+            for (int i = startIndex; i < _videoLiveTable.Controls.Count; i++)
+            {
+                _videoLiveTable.Controls.RemoveAt(i);
+            }
         }
-
-        public void SetCameraList(string[] cameras)
-        {
-            //string[] temp = { "K1", "K2" }; 
-            //cameraComboBox.Items.AddRange(cameras);
-        }
-#endregion
-
-
-
-        private void groupEditor_MouseClick(object sender, MouseEventArgs e)
-        {
-
-            groupEditor.BackColor = SystemColors.ButtonHighlight;//.ButtonShadow;
-            //GroupEditor groupEditorWindow = new GroupEditor();
-            //groupEditorWindow.Show();
-        }
-
-        private void cameraEditor_MouseClick(object sender, MouseEventArgs e)
-        {
-            CameraEditor cameraEditorWindow = new CameraEditor();
-            cameraEditorWindow.Show();
-        }
-
-        private void sequenceScreenplayEditor_MouseClick(object sender, MouseEventArgs e)
-        {
-            //SequenceScreenplayEditor sequenceScreenplayEditorWindow = new SequenceScreenplayEditor();
-            //sequenceScreenplayEditorWindow.Show();
-        }
-
-        private void searchButton_MouseClick(object sender, MouseEventArgs e)
-        {
-
-        }
-
-
-
 
         #region AddListControl by dima. Refactor shukur
         /// <summary>
         /// Добавляет список контролов для отображения видео
         /// </summary>
         /// <param name="list"></param>
-        public void AddListControl(List<ISmallView> list)
+        public void AddListVideoLiveControl(List<IVideoBase> list)
+        {
+           AddListControl(list, _videoLiveTable, videoLivePanel);
+        }
+
+        private void AddListControl(List<IVideoBase> list, TableLayoutPanel table, Panel tabPanel)
         {
             int size = list.Count;
             //валидация
@@ -166,7 +112,7 @@ namespace View
             {
                 return;
             }
-            
+
             int sqrt = (int)Math.Sqrt(size);
             //число столбцов и колонок рассчитывается на основе квадратного корня из размера входящего списка
             int columns;
@@ -190,92 +136,110 @@ namespace View
             }
 
             //строится и настраивается таблица
-            _videoTable.Dock = DockStyle.Fill;
-            _videoTable.Controls.Clear();
-            _videoTable.RowCount = rows;
-            _videoTable.ColumnCount = columns;
+            table.Dock = DockStyle.Fill;
+            table.Controls.Clear();
+            table.RowCount = rows;
+            table.ColumnCount = columns;
             float height = 100 / rows;
             float width = 100 / columns;
 
-            for(int i = 0; i < rows; i++)
+            for (int i = 0; i < rows; i++)
             {
-                _videoTable.RowStyles.Add(new RowStyle(SizeType.Percent, height));
+                table.RowStyles.Add(new RowStyle(SizeType.Percent, height));
             }
-            
-            for (int i = 0; i < columns; i++ )
+
+            for (int i = 0; i < columns; i++)
             {
-                _videoTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, width));
+                table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, width));
             }
-            
+
             foreach (var c in list)
             {
-                UserControl smallControl = (UserControl) c;
-                smallControl.Dock = DockStyle.Fill;
-                _videoTable.Controls.Add(smallControl);
-            }     
+                UserControl control = (UserControl) c;
+                control.Dock = DockStyle.Fill;
+                table.Controls.Add(control);
 
-            videoLivePanel.Controls.Clear();
-            videoLivePanel.Controls.Add(_videoTable);
+            }
+
+            tabPanel.Controls.Clear();
+            tabPanel.Controls.Add(table);
+        }
+
+        #endregion
+
+
+        #region this co by shukur
+
+        #region EditGroups
+        /// <summary>
+        /// Вызвает окно редактирования групп и
+        /// передает ей актуальный список камер и групп
+        /// </summary>
+        /// <param name="groups"></param>
+        /// <param name="cameras"></param>
+        /// <returns></returns>
+        public Dictionary<Guid, Group> EditGroups(Dictionary<Guid, Group> groups, Dictionary<dynamic, string> cameras)
+        {
+            GroupEditor groupEditor = new GroupEditor(groups, cameras);
+            groupEditor.ShowDialog();
+            return groupEditor.EditedGrops;
+        }
+
+        private void groupEditor_Click(object sender, EventArgs e)
+        {
+            GroupsEditClick?.Invoke();
         }
         #endregion
 
-        public Group EditGroup(Group group, Dictionary<dynamic, string> cameras)
+        #region Set list group
+        public void SetGroups(Dictionary<Guid, Group> groups, Guid activeGroup)
+        {
+            _groups = groups;
+            listGroup.Items.Clear();
+            foreach(var g in groups)
+            {
+                ListViewItem item = new ListViewItem(g.Value.Name);
+                item.Tag = g.Value;
+                listGroup.Items.Add(item);
+            }
+        }
+        #endregion
+
+        #region Playback
+
+        public void AddPlaybackControl(IVideoBase view)
         {
             throw new NotImplementedException();
         }
 
-        #region this co by shukur
-
-            #region EditGroups
-            /// <summary>
-            /// Вызвает окно редактирования групп и
-            /// передает ей актуальный список камер и групп
-            /// </summary>
-            /// <param name="groups"></param>
-            /// <param name="cameras"></param>
-            /// <returns></returns>
-            public Dictionary<Guid, Group> EditGroups(Dictionary<Guid, Group> groups, Dictionary<dynamic, string> cameras)
-            {
-                GroupEditor groupEditor = new GroupEditor(groups, cameras);
-                groupEditor.ShowDialog();
-                return groupEditor.EditedGrops;
-            }
-
-            private void groupEditor_Click(object sender, EventArgs e)
-            {
-                if (GroupsEditClick != null)
-                {
-                    GroupsEditClick();
-                }
-            }
-        #endregion
-
-            #region Set list group
-            public void SetGroup(Dictionary<Guid, Group> groups, Guid activeGroup)
-            {
-                _groups = groups;
-                listGroup.Items.Clear();
-
-                foreach (var i in groups)
-                {
-                    listGroup.Items.Add(i.Value.Name);
-                }
-            }
-            #endregion
-
-        #endregion
-
-        private void cameraEditor_Click(object sender, EventArgs e)
+        public void AddListPlayBack(List<IVideoBase> list)
         {
-
+            AddListControl(list, _playbackTable, videoPlayBackPanel);
         }
+
+        #endregion
+
+        #endregion
         
 
-        private void button4_MouseClick(object sender, MouseEventArgs e)
+        private void listGroup_Click(object sender, EventArgs e)
         {
-            SearchVideo searchVideo = new SearchVideo();
-            searchVideo.Show();
+            if (GroupSelected != null)
+            {
+                if (listGroup.SelectedItems.Count > 0)
+                {
+                    Group g = (Group)listGroup.SelectedItems[0].Tag;
+                    GroupSelected(g);
+                }
+            }
         }
 
+        private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl.SelectedTab == playbackPage)
+            {
+                ActivatedPlaybackTab?.Invoke();
+            }
+        }
     }
 }

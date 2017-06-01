@@ -13,22 +13,20 @@ namespace View
 {
     public partial class SmallControl : UserControl, ISmallView
     {
-        public Panel VideoPanel { get { return _videoPanel; } }
+        public Panel VideoPanel { get { return videoPanel; } }
         public event Action FullScreen;
 
         public SmallControl()
         {
             InitializeComponent();
-            this.Anchor = ((AnchorStyles) ((((AnchorStyles.Top | AnchorStyles.Bottom)
-            | AnchorStyles.Left) | AnchorStyles.Right)));
+            this.Anchor = ((AnchorStyles.Top | AnchorStyles.Bottom)
+                           | AnchorStyles.Left) | AnchorStyles.Right;
         }
 
-        private void _videoPanel_Paint(object sender, PaintEventArgs e)
+        public void ClearPanel()
         {
-            if (FullScreen != null)
-            {
-                FullScreen();
-            }
+            videoPanel.Controls.Clear();
         }
+
     }
 }
