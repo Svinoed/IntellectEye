@@ -206,6 +206,20 @@ namespace MiniEye
             _ViewSettings.OnGetCameraRequest += _Settings_OnGetCameraRequest;
             _ViewSettings.OnSettingsApplyed += _ViewSettings_OnSettingsApplyed;
             _ViewSettings.OnCameraSelected += _ViewSettings_OnCameraSelected;
+            _ViewPreview.OnSettingsChange += _ViewPreview_OnSettingsChange;
+            _ViewPreview.OnClose += _ViewPreview_OnClose;
+        }
+
+        private void _ViewPreview_OnClose()
+        {
+            //TODO: очистить используемые ресурсы
+            throw new NotImplementedException();
+        }
+
+        private void _ViewPreview_OnSettingsChange()
+        {
+            //TODO: показать настройки
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -250,7 +264,7 @@ namespace MiniEye
             this.SelectedCameraName = data.SelectedCameraName;
             this.CameraName = data.CameraName;
             _ViewSettings.Hide();
-            InitializePreview();    //Привязать камеру к окну просмотра и показать пользователю
+            InitializePreview();            //Привязать камеру к окну просмотра и показать пользователю
         }
 
         /// <summary>
@@ -285,6 +299,7 @@ namespace MiniEye
                 InitializePreview();    //Привязать камеру к окну просмотра и показать пользователю
             }
         }
+
         /// <summary>
         /// Реализация получения списка камер
         /// </summary>
@@ -295,6 +310,7 @@ namespace MiniEye
                 listCamera.Add(camera);
             return listCamera;
         }
+
         /// <summary>
         /// Инициализация окна предварительного просмотра изображения
         /// также сопоставление окна с камерой
