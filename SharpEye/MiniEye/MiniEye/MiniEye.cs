@@ -213,13 +213,13 @@ namespace MiniEye
         private void _ViewPreview_OnClose()
         {
             //TODO: очистить используемые ресурсы
-            throw new NotImplementedException();
         }
 
         private void _ViewPreview_OnSettingsChange()
         {
-            //TODO: показать настройки
-            throw new NotImplementedException();
+            _ViewPreview.Hide();
+            _ViewSettings.SetSettings(this);
+            _ViewSettings.Show();
         }
 
         /// <summary>
@@ -279,7 +279,6 @@ namespace MiniEye
             }
             else
             {
-                MessageBox.Show(SelectedCamera);
                 //Настройки автоматически восстанавливаются при использовании IPersistStorage
                 //методы которого вызываются контейнером
                 _ViewSettings.SetSettings(this);
