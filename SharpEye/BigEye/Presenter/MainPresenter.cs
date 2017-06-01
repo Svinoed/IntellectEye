@@ -94,14 +94,9 @@ namespace Presenter
                 return; // изменений не было
             }
             _groups = groups;
-
             if (!_groups.ContainsKey(_activeGroup.Id))
             {
                 _activeGroup = _groups.ElementAt(0).Value;
-            }
-            else if (!IsChangedActiveGroupe())
-            {
-                return;
             }
 
             _activeGroup = _groups[_activeGroup.Id];
@@ -233,6 +228,7 @@ namespace Presenter
 
         private void RefreshVideo()
         {
+            /*
             int prevControlNumber = FreePlace(_smallPresenters.Count);
             int diff = _activeGroup.Cameras.Count - _smallPresenters.Count;
             int currentControlNumber = FreePlace(_activeGroup.Cameras.Count);
@@ -264,10 +260,12 @@ namespace Presenter
             // Нет возможности воспользоваться созданной сеткой
             else if (diff > prevControlNumber || (diff < 0 && currentControlNumber != prevControlNumber))
             {
-                DisconnectAll();
-                List<IVideoBase> listVideo = GetListView();
-                _view.AddListVideoLiveControl(listVideo);
+                
             }
+            */
+            DisconnectAll();
+            List<IVideoBase> listVideo = GetListView();
+            _view.AddListVideoLiveControl(listVideo);
             SetCameraToSmallView();
             _view.SetGroups(_groups, _activeGroup.Id);
         }

@@ -287,6 +287,7 @@
             this.listGroup.TabIndex = 0;
             this.listGroup.UseCompatibleStateImageBehavior = false;
             this.listGroup.View = System.Windows.Forms.View.List;
+            this.listGroup.Click += new System.EventHandler(this.listGroup_Click);
             // 
             // tableLayoutPanel4
             // 
