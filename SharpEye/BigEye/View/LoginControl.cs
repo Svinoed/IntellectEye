@@ -28,34 +28,54 @@ namespace View
         public bool AutoLogin { get; set; }
 
         public event Action Login;
+        public event Action Cancel;
 
         public LoginControl()
         {
             InitializeComponent();
-
-            this.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom) | AnchorStyles.Left)| AnchorStyles.Right)));
             PasswordTextBox.PasswordChar = '*';
-            progressBar1.ForeColor = Color.Aqua;
-
-            /* //Для круглой кнопки
-            System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
-            path.AddEllipse(1, 1, button1.Width, button1.Height);
-            Region rgn = new Region(path);
-            button1.Region = rgn;
-            */
+            logProgressBar.ForeColor = Color.Aqua;
+            logInButton.Enabled = true;
+            notificationLabel.ForeColor = Color.Red;
+            notificationLabel.Text = "";
         }
 
         public void ShowConError(string message)
         {
-            this.NotificationLabel.Text = message;
+            this.BeginInvoke((Action) delegate
+            {
+                logInButton.Enabled = true;
+                this.notificationLabel.Text = message;
+            });
+        }
+
+        public void StartProgress()
+        {
+            this.BeginInvoke((Action) delegate
+            {
+                logInButton.Enabled = false;
+                logProgressBar.Style = ProgressBarStyle.Marquee;
+                logProgressBar.MarqueeAnimationSpeed = 30;
+            });
+        }
+
+        public void StopProgress()
+        {
+
+          this.BeginInvoke((Action) delegate
+            {
+                logInButton.Enabled = true;
+                logProgressBar.Style = ProgressBarStyle.Continuous;
+                logProgressBar.MarqueeAnimationSpeed = 0;
+            });
         }
 
         private void LogInButton_Click(object sender, EventArgs e)
         {
+            notificationLabel.Text = "";
             Server = ServerTextBox.Text;
             UserName = UserTextBox.Text;
             Password = PasswordTextBox.Text;
-
             Login?.Invoke();
         }
 
@@ -67,13 +87,11 @@ namespace View
 
         private void RememberPassCheck_CheckedChanged(object sender, EventArgs e)
         {
-            //Properties.Settings.Default.RememberPassword = RememberPassCheck.Checked;
             RememberPassword = RememberPassCheck.Checked;
         }
 
         private void AutoLoginCheck_CheckedChanged(object sender, EventArgs e)
-        {
-            //Properties.Settings.Default.AutoLaunch = AutoLoginCheck.Checked;
+        { 
             AutoLogin = AutoLoginCheck.Checked;
         }
 
@@ -90,5 +108,6 @@ namespace View
                 hideShowPassword.ImageIndex = 0;
             }
         }
+
     }
 }
