@@ -19,9 +19,9 @@ namespace View
 
         }
 
-        public ProgressBar TimeLine { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public ProgressBar TimeLine { get { throw new NotImplementedException(); } set { throw new NotImplementedException(); } }
         public Label CurrentPlaybackSpeedLabel { get { return this.playbackSpeedLabel; } set { this.playbackSpeedLabel = value; } }
-        public string CameraName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string CameraName { get { throw new NotImplementedException(); } set { throw new NotImplementedException(); }  }
         public Panel VideoPanel { get { return this.videoPanel; } set { this.videoPanel = value; }  }
 
         public event Action PlayButtonPressed;

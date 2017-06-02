@@ -8,6 +8,7 @@ using VideoOS.Platform;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using Contract;
 
 
 namespace MiniEye.SDK
@@ -17,8 +18,8 @@ namespace MiniEye.SDK
 
     interface ILiveStream
     {
-        void Resize(int width, int height);
-        bool ChangeCamera(string cameraName, int width, int height);
+        void Resize(int newWidth, int newHeight);
+        bool Initialize(ICameraModel camera, int imageWidth, int imageHeight);
         //Подключитесь к данному событию чтобы получать изображения с камеры
         event ImageReseived ImageIsReady;
     }
@@ -27,7 +28,6 @@ namespace MiniEye.SDK
     {
         #region Properties
         private JPEGLiveSource _JpegLiveSource;
-        private Item _Camera;
         private int _Width = 320;
         private int _Height = 240;
 
@@ -37,44 +37,6 @@ namespace MiniEye.SDK
 
 
         public LiveStream() { }
-        /// <summary>
-        /// Устанавливает камеру
-        /// </summary>
-        /// <param name="camera">Камера для подключения</param>
-        /// <param name="width">Длина по горизонтали для изображения</param>
-        /// <param name="height">Длина по вертикали для изображения</param>
-        public bool ChangeCamera(string camera, int width, int height)
-        {
-            //VideoOS.Platform.SDK.Environment.Initialize();              // Initialize the standalone Environment
-            VideoOS.Platform.SDK.Media.Environment.Initialize();		// Initialize the standalone Environment
-            Cameras list = new Cameras();
-            this._Width = width;
-            this._Height = height;
-            try
-            {
-                //Найти нужную камеру в списке
-                foreach (var item in list.GetItems())
-                    if (camera.Equals(item.Name.ToString()))
-                        _Camera = item;
-                _JpegLiveSource = new JPEGLiveSource(_Camera); //Исключение если камера не найдена
-                //SetResolution();
-                _JpegLiveSource.LiveModeStart = true;
-                _JpegLiveSource.SetKeepAspectRatio(true, true);
-                _JpegLiveSource.Width = width;
-                _JpegLiveSource.Height = height;
-                _JpegLiveSource.KeyFramesOnly = false;
-                _JpegLiveSource.Init();
-                _JpegLiveSource.LiveContentEvent += _JpegLiveSource_LiveContentEvent;
-                _JpegLiveSource.LiveStatusEvent += _JpegLiveSource_LiveStatusEvent;
-                return true;
-            }
-            catch (Exception)
-            {
-                _JpegLiveSource = null;
-                _Camera = null;
-                return false;
-            }
-        }
 
         private void _JpegLiveSource_LiveStatusEvent(object sender, EventArgs e)
         {
@@ -93,20 +55,10 @@ namespace MiniEye.SDK
 
                     MemoryStream ms = new MemoryStream(args.LiveContent.Content);
                     Bitmap newBitmap = new Bitmap(ms);
-                    ImageIsReady(newBitmap);
-
-                    /*Изменение размеров
-                     * if (pictureBox1.Size.Width != 0 && pictureBox1.Size.Height != 0)
-                    {
-                        if (!checkBoxAspect.Checked && (newBitmap.Width != pictureBox1.Width || newBitmap.Height != pictureBox1.Height))
-                        {
-                            pictureBox1.Image = new Bitmap(newBitmap, pictureBox1.Size);
-                        }
-                        else
-                        {
-                            pictureBox1.Image = newBitmap;
-                        }
-                    }*/
+                    if(ImageIsReady != null)
+                        ImageIsReady(newBitmap);
+                    else
+                        _JpegLiveSource.LiveContentEvent -= _JpegLiveSource_LiveContentEvent;
 
                     ms.Close();
                     ms.Dispose();
@@ -114,9 +66,9 @@ namespace MiniEye.SDK
                 }
                 else if (args.Exception != null)
                 {
-                    // Handle any exceptions occurred inside toolkit or on the communication to the VMS
+                    // Обработать любые исключения
 
-                    Bitmap bitmap = new Bitmap(320, 240);
+                    Bitmap bitmap = new Bitmap(_Width, _Height);
                     Graphics g = Graphics.FromImage(bitmap);
                     g.FillRectangle(Brushes.Black, 0, 0, bitmap.Width, bitmap.Height);
                     g.DrawString("Нет соединения ...", new Font(FontFamily.GenericMonospace, 12), Brushes.White, new PointF(20, _Height / 2 - 20));
@@ -140,6 +92,35 @@ namespace MiniEye.SDK
                 _JpegLiveSource.Width = width;
                 _JpegLiveSource.Height = height;
                 _JpegLiveSource.SetWidthHeight();
+            }
+        }
+
+        public bool Initialize(ICameraModel camera, int imageWidth, int imageHeight)
+        {
+            this._Width = imageWidth;
+            this._Height = imageHeight;
+            Item cameraItem = null;
+            try
+            {   
+                //Инициализировать камеру
+                cameraItem = Configuration.Instance.GetItem(camera.Id);
+                _JpegLiveSource = new JPEGLiveSource(cameraItem); //Исключение если камера не найдена
+                //SetResolution();
+                _JpegLiveSource.LiveModeStart = true;
+                _JpegLiveSource.SetKeepAspectRatio(true, false);
+                _JpegLiveSource.Width = imageWidth;
+                _JpegLiveSource.Height = imageHeight;
+                _JpegLiveSource.KeyFramesOnly = false;
+                _JpegLiveSource.Init();
+                _JpegLiveSource.LiveContentEvent += _JpegLiveSource_LiveContentEvent;
+                //_JpegLiveSource.LiveStatusEvent += _JpegLiveSource_LiveStatusEvent;
+                return true;
+            }
+            catch (Exception)
+            {
+                _JpegLiveSource = null;
+                cameraItem = null;
+                return false;
             }
         }
     }
