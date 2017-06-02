@@ -92,7 +92,7 @@ namespace Presenter
             _loginPresenter.Connected += () => ConnectionCompleted();
 
             LoadLoginView(_loginPresenter.GetView());
-            _loginPresenter.Connect();
+            //_loginPresenter.Connect();
 
             _videoPresenter = new VideoPresenter(new CameraViewer(), CloseVideoControl);
         }

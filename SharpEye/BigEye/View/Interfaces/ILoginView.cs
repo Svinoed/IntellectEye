@@ -17,9 +17,11 @@ namespace View.Interfaces
         bool RememberPassword { set; get; }
         bool AutoLogin { set; get; }
         event Action Login;
+        event Action Cancel;
 
         void ShowConError(string message);
-
+        void StartProgress();
+        void StopProgress();
         ILoginView GetView();
     }
 }

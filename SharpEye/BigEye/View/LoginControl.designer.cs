@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginControl));
-            this.LogInButton = new System.Windows.Forms.Button();
+            this.logInButton = new System.Windows.Forms.Button();
             this.RememberPassCheck = new System.Windows.Forms.CheckBox();
             this.AutoLoginCheck = new System.Windows.Forms.CheckBox();
             this.ServerTextBox = new System.Windows.Forms.TextBox();
@@ -39,10 +39,10 @@
             this.AdressLabel = new System.Windows.Forms.Label();
             this.UserLabel = new System.Windows.Forms.Label();
             this.PasswordLabel = new System.Windows.Forms.Label();
-            this.NotificationLabel = new System.Windows.Forms.Label();
+            this.notificationLabel = new System.Windows.Forms.Label();
             this.hideShowPassword = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.logProgressBar = new System.Windows.Forms.ProgressBar();
             this.cancelbutton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
@@ -54,15 +54,15 @@
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // LogInButton
+            // logInButton
             // 
-            this.LogInButton.Location = new System.Drawing.Point(3, 3);
-            this.LogInButton.Name = "LogInButton";
-            this.LogInButton.Size = new System.Drawing.Size(69, 23);
-            this.LogInButton.TabIndex = 0;
-            this.LogInButton.Text = "Войти";
-            this.LogInButton.UseVisualStyleBackColor = true;
-            this.LogInButton.Click += new System.EventHandler(this.LogInButton_Click);
+            this.logInButton.Location = new System.Drawing.Point(3, 3);
+            this.logInButton.Name = "logInButton";
+            this.logInButton.Size = new System.Drawing.Size(69, 23);
+            this.logInButton.TabIndex = 0;
+            this.logInButton.Text = "Войти";
+            this.logInButton.UseVisualStyleBackColor = true;
+            this.logInButton.Click += new System.EventHandler(this.LogInButton_Click);
             // 
             // RememberPassCheck
             // 
@@ -155,14 +155,14 @@
             this.PasswordLabel.TabIndex = 8;
             this.PasswordLabel.Text = "Пароль:";
             // 
-            // NotificationLabel
+            // notificationLabel
             // 
-            this.NotificationLabel.AutoSize = true;
-            this.NotificationLabel.ForeColor = System.Drawing.Color.White;
-            this.NotificationLabel.Location = new System.Drawing.Point(3, 233);
-            this.NotificationLabel.Name = "NotificationLabel";
-            this.NotificationLabel.Size = new System.Drawing.Size(0, 13);
-            this.NotificationLabel.TabIndex = 9;
+            this.notificationLabel.AutoSize = true;
+            this.notificationLabel.ForeColor = System.Drawing.Color.White;
+            this.notificationLabel.Location = new System.Drawing.Point(3, 232);
+            this.notificationLabel.Name = "notificationLabel";
+            this.notificationLabel.Size = new System.Drawing.Size(0, 13);
+            this.notificationLabel.TabIndex = 9;
             // 
             // hideShowPassword
             // 
@@ -186,14 +186,13 @@
             this.imageList1.Images.SetKeyName(2, "ic_visibility_white_24dp_2x.png");
             this.imageList1.Images.SetKeyName(3, "ic_visibility_off_white_24dp_2x.png");
             // 
-            // progressBar1
+            // logProgressBar
             // 
-            this.progressBar1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.progressBar1.Location = new System.Drawing.Point(3, 178);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(298, 16);
-            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.progressBar1.TabIndex = 11;
+            this.logProgressBar.Location = new System.Drawing.Point(3, 178);
+            this.logProgressBar.Name = "logProgressBar";
+            this.logProgressBar.Size = new System.Drawing.Size(298, 15);
+            this.logProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.logProgressBar.TabIndex = 11;
             // 
             // cancelbutton
             // 
@@ -209,8 +208,8 @@
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.NotificationLabel, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.progressBar1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.notificationLabel, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.logProgressBar, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -271,8 +270,8 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
             this.tableLayoutPanel2.Controls.Add(this.cancelbutton, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.LogInButton, 0, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(77, 200);
+            this.tableLayoutPanel2.Controls.Add(this.logInButton, 0, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(77, 199);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
@@ -301,7 +300,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button LogInButton;
+        private System.Windows.Forms.Button logInButton;
         private System.Windows.Forms.CheckBox RememberPassCheck;
         private System.Windows.Forms.CheckBox AutoLoginCheck;
         private System.Windows.Forms.TextBox ServerTextBox;
@@ -310,9 +309,9 @@
         private System.Windows.Forms.Label AdressLabel;
         private System.Windows.Forms.Label UserLabel;
         private System.Windows.Forms.Label PasswordLabel;
-        private System.Windows.Forms.Label NotificationLabel;
+        private System.Windows.Forms.Label notificationLabel;
         private System.Windows.Forms.Button hideShowPassword;
-        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.ProgressBar logProgressBar;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.Button cancelbutton;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
