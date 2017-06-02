@@ -12,7 +12,7 @@ namespace Model
 {
     [Export(typeof(IBookMarkModel))]
     [Export(typeof(ICommentModel))]
-    class BookMarkerModel : IBookMarkModel, ICommentModel
+    public class BookMarkerModel : IBookMarkModel, ICommentModel
     {
         BookMarkerModel() { }
 

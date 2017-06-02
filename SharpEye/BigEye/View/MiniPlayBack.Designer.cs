@@ -427,7 +427,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             this.tableLayoutPanel1.Controls.Add(this.settingsButton, 14, 0);
             this.tableLayoutPanel1.Controls.Add(this.helpButton, 13, 0);
             this.tableLayoutPanel1.Controls.Add(this.resetButton, 12, 0);
@@ -508,6 +508,7 @@
             this.redoButton.TabIndex = 29;
             this.playBToolTip.SetToolTip(this.redoButton, "Повторять воспроизведение");
             this.redoButton.UseVisualStyleBackColor = true;
+            this.redoButton.Click += new System.EventHandler(this.redoButton_Click);
             // 
             // switchOrderButton
             // 
@@ -539,6 +540,7 @@
             this.fastUpButton.TabIndex = 18;
             this.playBToolTip.SetToolTip(this.fastUpButton, "Ускорить");
             this.fastUpButton.UseVisualStyleBackColor = true;
+            this.fastUpButton.Click += new System.EventHandler(this.fastUpButton_Click);
             // 
             // playButton
             // 
@@ -570,6 +572,7 @@
             this.slowDownButton.TabIndex = 17;
             this.playBToolTip.SetToolTip(this.slowDownButton, "Замедлить");
             this.slowDownButton.UseVisualStyleBackColor = true;
+            this.slowDownButton.Click += new System.EventHandler(this.slowDownButton_Click);
             // 
             // fullscreenButton
             // 

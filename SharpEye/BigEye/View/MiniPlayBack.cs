@@ -86,10 +86,6 @@ namespace View
             ChangeDirectionButtonPressed();
         }
 
-        private void slowDownButton_Click(object sender, EventArgs e)
-        {
-            SlowDownButtonPressed();
-        }
 
         private void playButton_Click(object sender, EventArgs e)
         {
@@ -99,15 +95,6 @@ namespace View
             PlayButtonPressed();
         }
 
-        private void fastUpButton_Click(object sender, EventArgs e)
-        {
-            SpeedUpButtonPressed();
-        }
-
-        private void redoButton_Click(object sender, EventArgs e)
-        {
-            ResetSpeedButtonPressed();
-        }
 
         private void fullscreenButton_Click(object sender, EventArgs e)
         {
@@ -121,6 +108,21 @@ namespace View
                 fullscreenButton.ImageIndex = 21;
                 playBToolTip.SetToolTip(fullscreenButton, "Перейти в полноэкранный режим");
             }
+        }
+
+        private void slowDownButton_Click(object sender, EventArgs e)
+        {
+            SlowDownButtonPressed();
+        }
+
+        private void fastUpButton_Click(object sender, EventArgs e)
+        {
+            SpeedUpButtonPressed();
+        }
+
+        private void redoButton_Click(object sender, EventArgs e)
+        {
+            ResetSpeedButtonPressed();
         }
 
     }

@@ -63,7 +63,6 @@ namespace Model
                 _newlySelectedItem = Configuration.Instance.GetItem(camera.Id);
                 _bitmapSource.Item = _newlySelectedItem;
                 InitBitmap();
-                SetCurrentTime();
             }
             catch (Exception ex)
             {
@@ -100,16 +99,7 @@ namespace Model
             _playbackController.PlaybackSpeed = 1.0F;
             _playbackController.PlaybackMode = PlaybackController.PlaybackModeType.Forward;
         }
-        private void SetCurrentTime()
-        {
-            _playbackController.PlaybackMode = PlaybackController.PlaybackModeType.Stop;
-            _playbackController.PlaybackSpeed = 0.0F;
-            TimeSpan check = _playbackController.PlaybackTime - DateTime.Now.ToUniversalTime();//На всякий случай ищем разницу во времени плеера и системы
-            _playbackController.PlaybackTime = _playbackController.PlaybackTime.Add(-check);//Синхронизируем
-            _playbackController.PlaybackTime = _playbackController.PlaybackTime.AddHours(-7).ToUniversalTime();//Задержка из-за часового пояса, пока хз, как фиксить
-            _playbackController.PlaybackSpeed = 1.0F;
-            _playbackController.PlaybackMode = PlaybackController.PlaybackModeType.Forward;
-        }
+
 
         public void SetVideoStreamInPanel(ICameraModel camera, Panel panel, EventHandler doubleClickHandler)
         {
@@ -193,7 +183,7 @@ namespace Model
 
         public void SetVideoFragmentForPlayback(DateTime startTime)
         {
-            _currentSequnceStartTime = startTime.AddHours(-6.5);//Везде проставил магические числа, разница с UTC получается как раз 6,5 часов, пока не придумал как пофиксить
+            _currentSequnceStartTime = startTime.ToUniversalTime();
             _playbackController.SetSequence(_currentSequnceStartTime.AddMinutes(-30), _currentSequnceStartTime.AddMinutes(30));
             _currentProgressBar.Minimum = Convert.ToInt32(0);
             _currentProgressBar.Maximum = Convert.ToInt32(_currentSequnceStartTime.AddMinutes(30).Subtract(_currentSequnceStartTime.AddMinutes(-30)).TotalSeconds);
