@@ -45,10 +45,10 @@
             this.groupNameTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.listGroup = new System.Windows.Forms.ListView();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.groupEditorToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.searchGroup = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.searchGroup = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
@@ -79,6 +79,7 @@
             this.searchTextBox.Name = "searchTextBox";
             this.searchTextBox.Size = new System.Drawing.Size(130, 20);
             this.searchTextBox.TabIndex = 6;
+            this.groupEditorToolTip.SetToolTip(this.searchTextBox, "Поиск по камерам");
             this.searchTextBox.TextChanged += new System.EventHandler(this.searchTextBox_TextChanged);
             // 
             // moveDownBtn
@@ -90,6 +91,7 @@
             this.moveDownBtn.Name = "moveDownBtn";
             this.moveDownBtn.Size = new System.Drawing.Size(24, 24);
             this.moveDownBtn.TabIndex = 5;
+            this.groupEditorToolTip.SetToolTip(this.moveDownBtn, "Переместить камеру в группе вниз");
             this.moveDownBtn.UseVisualStyleBackColor = true;
             this.moveDownBtn.Click += new System.EventHandler(this.MoveDown);
             // 
@@ -113,6 +115,7 @@
             this.moveUpBtn.Name = "moveUpBtn";
             this.moveUpBtn.Size = new System.Drawing.Size(24, 24);
             this.moveUpBtn.TabIndex = 4;
+            this.groupEditorToolTip.SetToolTip(this.moveUpBtn, "Переместить камеру в группе вверх");
             this.moveUpBtn.UseVisualStyleBackColor = true;
             this.moveUpBtn.Click += new System.EventHandler(this.MoveUp);
             // 
@@ -125,6 +128,7 @@
             this.moveLeftBtn.Name = "moveLeftBtn";
             this.moveLeftBtn.Size = new System.Drawing.Size(24, 24);
             this.moveLeftBtn.TabIndex = 3;
+            this.groupEditorToolTip.SetToolTip(this.moveLeftBtn, "Удалить камеру из группы");
             this.moveLeftBtn.UseVisualStyleBackColor = true;
             this.moveLeftBtn.Click += new System.EventHandler(this.MoveLeft);
             // 
@@ -136,6 +140,7 @@
             this.moveRightBtn.Name = "moveRightBtn";
             this.moveRightBtn.Size = new System.Drawing.Size(24, 24);
             this.moveRightBtn.TabIndex = 2;
+            this.groupEditorToolTip.SetToolTip(this.moveRightBtn, "Поместить камеру в группу");
             this.moveRightBtn.UseVisualStyleBackColor = true;
             this.moveRightBtn.Click += new System.EventHandler(this.MoveRight);
             // 
@@ -170,6 +175,7 @@
             this.delButton.Name = "delButton";
             this.delButton.Size = new System.Drawing.Size(30, 30);
             this.delButton.TabIndex = 1;
+            this.groupEditorToolTip.SetToolTip(this.delButton, "Удалить группу");
             this.delButton.UseVisualStyleBackColor = true;
             this.delButton.Click += new System.EventHandler(this.delButton_Click);
             // 
@@ -182,6 +188,7 @@
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(30, 30);
             this.addButton.TabIndex = 0;
+            this.groupEditorToolTip.SetToolTip(this.addButton, "Создать группу");
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
@@ -192,6 +199,7 @@
             this.button6.Size = new System.Drawing.Size(70, 25);
             this.button6.TabIndex = 5;
             this.button6.Text = "Отменить";
+            this.groupEditorToolTip.SetToolTip(this.button6, "Отменить все изменения");
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.CancelClick);
             // 
@@ -202,6 +210,7 @@
             this.button5.Size = new System.Drawing.Size(70, 25);
             this.button5.TabIndex = 4;
             this.button5.Text = "Сохранить";
+            this.groupEditorToolTip.SetToolTip(this.button5, "Сохранить изменения");
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.SaveBtnClick);
             // 
@@ -239,6 +248,17 @@
             this.listGroup.View = System.Windows.Forms.View.List;
             this.listGroup.SelectedIndexChanged += new System.EventHandler(this.listGroup_SelectedIndexChanged);
             // 
+            // searchGroup
+            // 
+            this.searchGroup.BackColor = System.Drawing.Color.LightGray;
+            this.searchGroup.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.searchGroup.Location = new System.Drawing.Point(3, 3);
+            this.searchGroup.Name = "searchGroup";
+            this.searchGroup.Size = new System.Drawing.Size(138, 20);
+            this.searchGroup.TabIndex = 3;
+            this.groupEditorToolTip.SetToolTip(this.searchGroup, "Поиск по группам");
+            this.searchGroup.TextChanged += new System.EventHandler(this.searchGroup_TextChanged);
+            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
@@ -271,15 +291,6 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.Size = new System.Drawing.Size(144, 254);
             this.tableLayoutPanel2.TabIndex = 0;
-            // 
-            // searchGroup
-            // 
-            this.searchGroup.BackColor = System.Drawing.Color.LightGray;
-            this.searchGroup.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.searchGroup.Location = new System.Drawing.Point(3, 3);
-            this.searchGroup.Name = "searchGroup";
-            this.searchGroup.Size = new System.Drawing.Size(138, 20);
-            this.searchGroup.TabIndex = 3;
             // 
             // tableLayoutPanel3
             // 
@@ -473,7 +484,7 @@
         private System.Windows.Forms.Button moveUpBtn;
         private System.Windows.Forms.Button moveLeftBtn;
         private System.Windows.Forms.Button moveRightBtn;
-        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ToolTip groupEditorToolTip;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.TextBox searchTextBox;

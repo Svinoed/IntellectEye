@@ -23,8 +23,6 @@ namespace View
         private bool _isChangedName;
         public Dictionary<Guid, Group>  EditedGrops { get; set; }
 
-        int controlButtonGroupBoxHeight = 41;
-
         public GroupEditor(Dictionary<Guid, Group> groups, Dictionary<dynamic, string> cameras)
         {
             InitializeComponent();
@@ -129,22 +127,47 @@ namespace View
 
         private void searchTextBox_TextChanged(object sender, EventArgs e)
         {
-            Filter(listCamera, searchTextBox.Text);
+            Filter(listCamera, searchTextBox.Text, 0);
         }
 
-        private void Filter(ListView list, string filter)
+        private void searchGroup_TextChanged(object sender, EventArgs e)
+        {
+            Filter(listGroup, searchGroup.Text, 1);           
+        }
+        public void Filter(ListView list, string filter, int switchSearchField)
         {
             list.Items.Clear();
-            foreach (var c in _cameras)
+            switch (switchSearchField)
             {
-                if (c.Value.ToString().StartsWith(filter))
-                {
-                    ListViewItem item = new ListViewItem(c.Value);
-                    item.Tag = c;
-                    list.Items.Add(item);
-                }
+                case 0:
+                    foreach (var c in _cameras)
+                    {
+                        if (c.Value.ToString().StartsWith(filter))
+                        {
+                            ListViewItem item = new ListViewItem(c.Value);
+                            item.Tag = c;
+                            list.Items.Add(item);
+                        }
+                    }
+                    break;
+                case 1:
+                    foreach (var c in _groups)
+                    {
+                        if (c.Value.Name.ToString().StartsWith(searchGroup.Text))
+                        {
+                            ListViewItem item = new ListViewItem(c.Value.Name);
+                            item.Tag = c;
+                            listGroup.Items.Add(item);
+                        }
+                    }
+                    break;
             }
         }
+    
+
+
+
+
         #endregion
 
         /// <summary>
@@ -345,5 +368,7 @@ namespace View
             }
             this.Close();
         }
+
+   
     }
 }

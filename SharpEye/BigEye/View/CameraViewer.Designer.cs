@@ -39,6 +39,7 @@
             this.leftDownButton = new System.Windows.Forms.Button();
             this.rightButton = new System.Windows.Forms.Button();
             this.rightUpButton = new System.Windows.Forms.Button();
+            this.resetButton = new System.Windows.Forms.Button();
             this.upButton = new System.Windows.Forms.Button();
             this.leftUpButton = new System.Windows.Forms.Button();
             this.leftButton = new System.Windows.Forms.Button();
@@ -59,6 +60,7 @@
             this.resetButton = new System.Windows.Forms.Button();
             this.mainPanel = new System.Windows.Forms.Panel();
             this.videoPanel = new System.Windows.Forms.Panel();
+            this.cameraViewerToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.panel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -223,6 +225,21 @@
             this.rightUpButton.TabIndex = 30;
             this.rightUpButton.UseVisualStyleBackColor = true;
             this.rightUpButton.Click += new System.EventHandler(this.rightUpButton_Click);
+            // 
+            // resetButton
+            // 
+            this.resetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.resetButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.resetButton.ImageIndex = 3;
+            this.resetButton.ImageList = this.imageList1;
+            this.resetButton.Location = new System.Drawing.Point(33, 33);
+            this.resetButton.Name = "resetButton";
+            this.resetButton.Size = new System.Drawing.Size(24, 24);
+            this.resetButton.TabIndex = 36;
+            this.resetButton.UseVisualStyleBackColor = true;
+            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
             // 
             // upButton
             // 
@@ -404,6 +421,7 @@
             this.settingsButton.Name = "settingsButton";
             this.settingsButton.Size = new System.Drawing.Size(24, 24);
             this.settingsButton.TabIndex = 32;
+            this.cameraViewerToolTip.SetToolTip(this.settingsButton, "Настройки (в разработке)");
             this.settingsButton.UseVisualStyleBackColor = true;
             // 
             // exitFullscreenButton
@@ -433,6 +451,7 @@
             this.helpButton.Name = "helpButton";
             this.helpButton.Size = new System.Drawing.Size(24, 24);
             this.helpButton.TabIndex = 33;
+            this.cameraViewerToolTip.SetToolTip(this.helpButton, "Справка (в разработке)");
             this.helpButton.UseVisualStyleBackColor = true;
             // 
             // bookmarkButton
@@ -447,6 +466,7 @@
             this.bookmarkButton.Name = "bookmarkButton";
             this.bookmarkButton.Size = new System.Drawing.Size(24, 24);
             this.bookmarkButton.TabIndex = 35;
+            this.cameraViewerToolTip.SetToolTip(this.bookmarkButton, "Сделать метку");
             this.bookmarkButton.UseVisualStyleBackColor = true;
             // 
             // screenshotButton
@@ -502,7 +522,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
             this.Controls.Add(this.mainPanel);
             this.Name = "CameraViewer";
             this.Size = new System.Drawing.Size(685, 332);
@@ -550,5 +570,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Panel mainPanel;
         private System.Windows.Forms.Panel videoPanel;
+        private System.Windows.Forms.ToolTip cameraViewerToolTip;
     }
 }

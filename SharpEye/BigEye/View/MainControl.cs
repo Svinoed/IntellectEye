@@ -36,6 +36,7 @@ namespace View
             _playbackTable = new TableLayoutPanel();
         }
 
+       
 
         #region DrawGroupBox
         // Задем свой стиль для журнала
@@ -234,11 +235,41 @@ namespace View
             }
         }
 
+        private void playForAllButton_Click(object sender, EventArgs e)
+        {
+            if (playForAllButton.ImageIndex == 14)
+                playForAllButton.ImageIndex = 15;
+            else playForAllButton.ImageIndex = 14;
+        }
+
+        private void addNewButton_Click(object sender, EventArgs e)
+        {
+            TEMPORARYSearchVideo tempSV = new TEMPORARYSearchVideo();
+            tempSV.Show();
+
+            //SearchVideo searchVideo = new SearchVideo();
+            //searchVideo.Show();
+        }
+
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (tabControl.SelectedTab == playbackPage)
             {
                 ActivatedPlaybackTab?.Invoke();
+            }
+        }
+
+        private void searchTextBox_TextChanged(object sender, EventArgs e)
+        {
+            listGroup.Items.Clear();
+            foreach (var g in _groups)
+            {
+                if (g.Value.Name.ToString().StartsWith(searchTextBox.Text))
+                {
+                    ListViewItem item = new ListViewItem(g.Value.Name);
+                    item.Tag = g;
+                    listGroup.Items.Add(item);
+                }
             }
         }
     }
