@@ -89,7 +89,7 @@ namespace Presenter
         private void CreateScreen ()
         {
             // из конфига 
-            _printScreenModel.HostName = "5.136.125.97";
+            _printScreenModel.HostName = "5.136.105.0";
             Task task = new Task(() =>
             {
                 _printScreenModel.CreateLiveScreen(_camera);

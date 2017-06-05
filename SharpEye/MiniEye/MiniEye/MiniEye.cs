@@ -213,7 +213,7 @@ namespace MiniEye
         private void _ViewPreview_OnClose()
         {
             //очистить используемые ресурсы
-            _ModelLiveStream.Disconnect();
+            //TODO: 
         }
 
         private void _ViewPreview_OnSettingsChange()

@@ -57,6 +57,7 @@
             this.helpButton = new System.Windows.Forms.Button();
             this.bookmarkButton = new System.Windows.Forms.Button();
             this.screenshotButton = new System.Windows.Forms.Button();
+            this.resetButton = new System.Windows.Forms.Button();
             this.mainPanel = new System.Windows.Forms.Panel();
             this.videoPanel = new System.Windows.Forms.Panel();
             this.cameraViewerToolTip = new System.Windows.Forms.ToolTip(this.components);
@@ -435,7 +436,6 @@
             this.exitFullscreenButton.Name = "exitFullscreenButton";
             this.exitFullscreenButton.Size = new System.Drawing.Size(24, 24);
             this.exitFullscreenButton.TabIndex = 32;
-            this.cameraViewerToolTip.SetToolTip(this.exitFullscreenButton, "Выход из полноэкранного режима");
             this.exitFullscreenButton.UseVisualStyleBackColor = true;
             this.exitFullscreenButton.Click += new System.EventHandler(this.exitFullscreenButton_Click);
             // 
@@ -481,9 +481,23 @@
             this.screenshotButton.Name = "screenshotButton";
             this.screenshotButton.Size = new System.Drawing.Size(24, 24);
             this.screenshotButton.TabIndex = 34;
-            this.cameraViewerToolTip.SetToolTip(this.screenshotButton, "Сделать скриншот");
             this.screenshotButton.UseVisualStyleBackColor = true;
             this.screenshotButton.Click += new System.EventHandler(this.screenshotButton_Click);
+            // 
+            // resetButton
+            // 
+            this.resetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.resetButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.resetButton.ImageIndex = 3;
+            this.resetButton.ImageList = this.imageList1;
+            this.resetButton.Location = new System.Drawing.Point(33, 33);
+            this.resetButton.Name = "resetButton";
+            this.resetButton.Size = new System.Drawing.Size(24, 24);
+            this.resetButton.TabIndex = 36;
+            this.resetButton.UseVisualStyleBackColor = true;
+            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
             // 
             // mainPanel
             // 
