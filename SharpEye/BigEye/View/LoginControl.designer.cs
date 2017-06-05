@@ -159,7 +159,7 @@
             // 
             this.notificationLabel.AutoSize = true;
             this.notificationLabel.ForeColor = System.Drawing.Color.White;
-            this.notificationLabel.Location = new System.Drawing.Point(3, 232);
+            this.notificationLabel.Location = new System.Drawing.Point(3, 241);
             this.notificationLabel.Name = "notificationLabel";
             this.notificationLabel.Size = new System.Drawing.Size(0, 13);
             this.notificationLabel.TabIndex = 9;
@@ -188,9 +188,9 @@
             // 
             // logProgressBar
             // 
-            this.logProgressBar.Location = new System.Drawing.Point(3, 178);
+            this.logProgressBar.Location = new System.Drawing.Point(3, 187);
             this.logProgressBar.Name = "logProgressBar";
-            this.logProgressBar.Size = new System.Drawing.Size(298, 15);
+            this.logProgressBar.Size = new System.Drawing.Size(358, 15);
             this.logProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.logProgressBar.TabIndex = 11;
             // 
@@ -207,7 +207,6 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.notificationLabel, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.logProgressBar, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 2);
@@ -272,7 +271,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
             this.tableLayoutPanel2.Controls.Add(this.cancelbutton, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.logInButton, 0, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(77, 199);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(107, 208);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
