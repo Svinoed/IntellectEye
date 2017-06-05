@@ -109,5 +109,22 @@ namespace View
             }
         }
 
+        private void ServerTextBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Return || e.KeyCode == Keys.Enter)
+                UserTextBox.Select();
+        }
+
+        private void UserTextBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Return || e.KeyCode == Keys.Enter)
+                PasswordTextBox.Select();
+        }
+
+        private void PasswordTextBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Return || e.KeyCode == Keys.Enter)
+                logInButton.PerformClick();
+        }
     }
 }

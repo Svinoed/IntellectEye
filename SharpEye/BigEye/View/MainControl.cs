@@ -23,6 +23,7 @@ namespace View
         public event Action GroupsEditClick;
         public event Action<Group> GroupSelected;
         public event Action ActivatedPlaybackTab;
+        public event Action InitiateSearch;
 
         private TableLayoutPanel _videoLiveTable;
         private TableLayoutPanel _playbackTable;
@@ -244,11 +245,7 @@ namespace View
 
         private void addNewButton_Click(object sender, EventArgs e)
         {
-            TEMPORARYSearchVideo tempSV = new TEMPORARYSearchVideo();
-            tempSV.Show();
-
-            //SearchVideo searchVideo = new SearchVideo();
-            //searchVideo.Show();
+            InitiateSearch?.Invoke();
         }
 
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)

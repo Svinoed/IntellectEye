@@ -45,13 +45,13 @@
             this.logProgressBar = new System.Windows.Forms.ProgressBar();
             this.cancelbutton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // logInButton
@@ -101,6 +101,7 @@
             this.ServerTextBox.Name = "ServerTextBox";
             this.ServerTextBox.Size = new System.Drawing.Size(200, 20);
             this.ServerTextBox.TabIndex = 3;
+            this.ServerTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ServerTextBox_KeyUp);
             // 
             // UserTextBox
             // 
@@ -111,6 +112,7 @@
             this.UserTextBox.Name = "UserTextBox";
             this.UserTextBox.Size = new System.Drawing.Size(200, 20);
             this.UserTextBox.TabIndex = 4;
+            this.UserTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.UserTextBox_KeyUp);
             // 
             // PasswordTextBox
             // 
@@ -121,6 +123,7 @@
             this.PasswordTextBox.Name = "PasswordTextBox";
             this.PasswordTextBox.Size = new System.Drawing.Size(171, 20);
             this.PasswordTextBox.TabIndex = 5;
+            this.PasswordTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.PasswordTextBox_KeyUp);
             // 
             // AdressLabel
             // 
@@ -222,6 +225,21 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(364, 303);
             this.tableLayoutPanel1.TabIndex = 13;
             // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
+            this.tableLayoutPanel2.Controls.Add(this.cancelbutton, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.logInButton, 0, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(107, 208);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(150, 30);
+            this.tableLayoutPanel2.TabIndex = 12;
+            // 
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
@@ -263,21 +281,6 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(203, 30);
             this.tableLayoutPanel3.TabIndex = 14;
             // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
-            this.tableLayoutPanel2.Controls.Add(this.cancelbutton, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.logInButton, 0, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(107, 208);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(150, 30);
-            this.tableLayoutPanel2.TabIndex = 12;
-            // 
             // LoginControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -290,11 +293,11 @@
             this.Size = new System.Drawing.Size(364, 303);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
