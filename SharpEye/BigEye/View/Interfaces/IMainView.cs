@@ -20,6 +20,7 @@ namespace View.Interfaces
         event Action GroupsEditClick;
         event Action<Group> GroupSelected;
         event Action ActivatedPlaybackTab;
+        event Action InitiateSearch;
 
         Dictionary<Guid, Group> EditGroups(Dictionary<Guid,Group> groups, Dictionary<dynamic, string> cameras);
 
