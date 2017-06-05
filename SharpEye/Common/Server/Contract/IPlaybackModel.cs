@@ -9,13 +9,15 @@ namespace Contract
 {
     public interface IPlaybackModel : IVideoModel
     {
-        void SetVideoFragmentForPlayback(DateTime startTime);
+        void SetVideoFragmentForPlayback(DateTime startTime, DateTime endTime);
 
-        void SetVideoStreamInPanelAtTime(ICameraModel camera, Panel videoPanel, DateTime initialTime);
+        void SetVideoStreamInPanel(ICameraModel camera, Panel videoPanel, DateTime initialTime);
 
-        void SetVideoStreamInPanelFromFileAtTime(string filename, Panel panel, DateTime initialTime);
+        void SetVideoStreamInPanelAtTime(ICameraModel camera, Panel videoPanel, DateTime initialTime,DateTime endTime);
 
-        void SetVideoStreamInPanelFromFolderAtTime(string pathToFolder, Panel panel, DateTime initialTime);
+        void SetVideoStreamInPanelFromFileAtTime(string filename, Panel panel, DateTime initialTime,DateTime endTime);
+
+        void SetVideoStreamInPanelFromFolderAtTime(string pathToFolder, Panel panel, DateTime initialTime, DateTime endTime);
 
         event Action SpeedChanged;
 

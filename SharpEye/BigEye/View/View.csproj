@@ -112,6 +112,7 @@
     <Compile Include="Interfaces\ILogView.cs" />
     <Compile Include="Interfaces\IMainView.cs" />
     <Compile Include="Interfaces\IPlaybackView.cs" />
+    <Compile Include="Interfaces\ISmallSearchView.cs" />
     <Compile Include="Interfaces\ISmallView.cs" />
     <Compile Include="Interfaces\IVideoBase.cs" />
     <Compile Include="Interfaces\IVideoView.cs" />

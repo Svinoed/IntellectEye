@@ -30,10 +30,10 @@
         {
             this.mainTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.stopT = new System.Windows.Forms.DateTimePicker();
+            this.startTimePicker = new System.Windows.Forms.DateTimePicker();
             this.startTlabel = new System.Windows.Forms.Label();
             this.stopTlabel = new System.Windows.Forms.Label();
-            this.startT = new System.Windows.Forms.DateTimePicker();
+            this.endTimePicker = new System.Windows.Forms.DateTimePicker();
             this.addVideoButton = new System.Windows.Forms.Button();
             this.camTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.camSearchTextBox = new System.Windows.Forms.TextBox();
@@ -62,10 +62,10 @@
             // 
             this.tableLayoutPanel3.ColumnCount = 1;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel3.Controls.Add(this.stopT, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.startTimePicker, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.startTlabel, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.stopTlabel, 0, 2);
-            this.tableLayoutPanel3.Controls.Add(this.startT, 0, 3);
+            this.tableLayoutPanel3.Controls.Add(this.endTimePicker, 0, 3);
             this.tableLayoutPanel3.Controls.Add(this.addVideoButton, 0, 4);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(175, 3);
@@ -79,13 +79,13 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(106, 155);
             this.tableLayoutPanel3.TabIndex = 2;
             // 
-            // stopT
+            // startTimePicker
             // 
-            this.stopT.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.stopT.Location = new System.Drawing.Point(3, 16);
-            this.stopT.Name = "stopT";
-            this.stopT.Size = new System.Drawing.Size(100, 20);
-            this.stopT.TabIndex = 6;
+            this.startTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.startTimePicker.Location = new System.Drawing.Point(3, 16);
+            this.startTimePicker.Name = "startTimePicker";
+            this.startTimePicker.Size = new System.Drawing.Size(100, 20);
+            this.startTimePicker.TabIndex = 6;
             // 
             // startTlabel
             // 
@@ -107,13 +107,13 @@
             this.stopTlabel.TabIndex = 3;
             this.stopTlabel.Text = "Дата конца";
             // 
-            // startT
+            // endTimePicker
             // 
-            this.startT.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.startT.Location = new System.Drawing.Point(3, 55);
-            this.startT.Name = "startT";
-            this.startT.Size = new System.Drawing.Size(100, 20);
-            this.startT.TabIndex = 7;
+            this.endTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.endTimePicker.Location = new System.Drawing.Point(3, 55);
+            this.endTimePicker.Name = "endTimePicker";
+            this.endTimePicker.Size = new System.Drawing.Size(100, 20);
+            this.endTimePicker.TabIndex = 7;
             // 
             // addVideoButton
             // 
@@ -149,6 +149,7 @@
             this.camSearchTextBox.Name = "camSearchTextBox";
             this.camSearchTextBox.Size = new System.Drawing.Size(160, 20);
             this.camSearchTextBox.TabIndex = 0;
+            this.camSearchTextBox.TextChanged += new System.EventHandler(this.camSearchTextBox_TextChanged);
             // 
             // camListView
             // 
@@ -188,8 +189,8 @@
         private System.Windows.Forms.TextBox camSearchTextBox;
         private System.Windows.Forms.ListView camListView;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.DateTimePicker startT;
-        private System.Windows.Forms.DateTimePicker stopT;
+        private System.Windows.Forms.DateTimePicker endTimePicker;
+        private System.Windows.Forms.DateTimePicker startTimePicker;
         private System.Windows.Forms.Label stopTlabel;
         private System.Windows.Forms.Label startTlabel;
         private System.Windows.Forms.Button addVideoButton;
