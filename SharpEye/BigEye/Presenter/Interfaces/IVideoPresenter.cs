@@ -8,7 +8,7 @@ using Contract;
 
 namespace Presenter.Interfaces
 {
-    interface IVideoPresenter
+    public interface IVideoPresenter
     {
         ICameraModel Camera { set; get; } 
         IVideoView GetView();

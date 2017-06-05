@@ -22,6 +22,7 @@ namespace Presenter
         //private IAudioModel _audioModel;//Она тут нужна или отдельно выносим? Ответ: Да, нужна. Все правильно делаешь.
 
         private DateTime _initialTime = DateTime.MinValue;
+        private DateTime _endTime = DateTime.MaxValue;
 
         public ICameraModel Camera
         {
@@ -29,9 +30,13 @@ namespace Presenter
             set
             {
                 this._camera = value;
-                if (InitialTime != DateTime.MinValue)
+                if (InitialTime != DateTime.MinValue && EndTime != DateTime.MaxValue)
                 {
-                    _playbackModel.SetVideoStreamInPanelAtTime(_camera, _view.VideoPanel, _initialTime);
+                    _playbackModel.SetVideoStreamInPanelAtTime(_camera, _view.VideoPanel, _initialTime,_endTime);
+                }
+                else if(InitialTime != DateTime.MinValue && EndTime == DateTime.MaxValue)
+                {
+                    _playbackModel.SetVideoStreamInPanel(_camera, _view.VideoPanel, _initialTime);
                 }
                 else
                 {
@@ -45,6 +50,12 @@ namespace Presenter
         {
             get { return _initialTime; }
             set { _initialTime = value; }
+        }
+
+        public DateTime EndTime
+        {
+            get { return _endTime; }
+            set { this._endTime = value; }
         }
 
         public PlaybackPresenter(IPlaybackView view/*,IAudioModel audioModel*/) 
@@ -73,12 +84,12 @@ namespace Presenter
 
         public void PickCameraFromFile(string filename)
         {
-            _playbackModel.SetVideoStreamInPanelFromFileAtTime(filename, _view.VideoPanel,_initialTime);
+            _playbackModel.SetVideoStreamInPanelFromFileAtTime(filename, _view.VideoPanel,_initialTime,_endTime);
         }
 
         public void PickCameraFromFolder(string folderPath)
         {
-            _playbackModel.SetVideoStreamInPanelFromFolderAtTime(folderPath, _view.VideoPanel,_initialTime);
+            _playbackModel.SetVideoStreamInPanelFromFolderAtTime(folderPath, _view.VideoPanel,_initialTime,_endTime);
         }
         public void Play()
         {

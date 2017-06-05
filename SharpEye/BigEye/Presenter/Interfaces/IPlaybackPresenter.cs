@@ -7,7 +7,7 @@ using Contract;
 
 namespace Presenter.Interfaces
 {
-    interface IPlaybackPresenter : IVideoPresenter
+    public interface IPlaybackPresenter : IVideoPresenter
     {
         void PickCameraFromFile(string filename);
 
