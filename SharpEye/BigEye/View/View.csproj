@@ -112,6 +112,7 @@
     <Compile Include="Interfaces\ILogView.cs" />
     <Compile Include="Interfaces\IMainView.cs" />
     <Compile Include="Interfaces\IPlaybackView.cs" />
+    <Compile Include="Interfaces\ISmallSearchView.cs" />
     <Compile Include="Interfaces\ISmallView.cs" />
     <Compile Include="Interfaces\IVideoBase.cs" />
     <Compile Include="Interfaces\IVideoView.cs" />
@@ -157,6 +158,12 @@
     <Compile Include="SmallControl.Designer.cs">
       <DependentUpon>SmallControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="TEMPORARYSearchVideo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TEMPORARYSearchVideo.Designer.cs">
+      <DependentUpon>TEMPORARYSearchVideo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utils\Group.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -190,6 +197,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SmallControl.resx">
       <DependentUpon>SmallControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TEMPORARYSearchVideo.resx">
+      <DependentUpon>TEMPORARYSearchVideo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

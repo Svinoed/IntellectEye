@@ -9,11 +9,15 @@ namespace Contract
 {
     public interface IPlaybackModel : IVideoModel
     {
-        void SetAndEnableTimeline(Panel timeLinePanel);
+        void SetVideoFragmentForPlayback(DateTime startTime, DateTime endTime);
 
-        void SetVideoStreamInPanelFromFile(string filename, Panel panel);
+        void SetVideoStreamInPanel(ICameraModel camera, Panel videoPanel, DateTime initialTime);
 
-        void SetVideoStreamInPanelFromFolder(string pathToFolder, Panel panel);
+        void SetVideoStreamInPanelAtTime(ICameraModel camera, Panel videoPanel, DateTime initialTime,DateTime endTime);
+
+        void SetVideoStreamInPanelFromFileAtTime(string filename, Panel panel, DateTime initialTime,DateTime endTime);
+
+        void SetVideoStreamInPanelFromFolderAtTime(string pathToFolder, Panel panel, DateTime initialTime, DateTime endTime);
 
         event Action SpeedChanged;
 
@@ -21,8 +25,10 @@ namespace Contract
 
         ICameraModel chooseCameraManually();
         double PlaybackSpeed { get; set; }
+        ProgressBar TimeLine { get; set; }
 
         bool SkipGaps { get; set; }
+
 
         void Play();
         void SlowDown();

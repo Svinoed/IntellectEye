@@ -16,10 +16,9 @@ namespace View
         public MiniPlayBack()
         {
             InitializeComponent();
-
         }
 
-        public ProgressBar TimeLine { get { throw new NotImplementedException(); } set { throw new NotImplementedException(); } }
+        public ProgressBar TimeLine { get { return this.progressBar1; } set { this.progressBar1 = value; } }
         public Label CurrentPlaybackSpeedLabel { get { return this.playbackSpeedLabel; } set { this.playbackSpeedLabel = value; } }
         public string CameraName { get { throw new NotImplementedException(); } set { throw new NotImplementedException(); }  }
         public Panel VideoPanel { get { return this.videoPanel; } set { this.videoPanel = value; }  }
@@ -87,14 +86,33 @@ namespace View
             ChangeDirectionButtonPressed();
         }
 
-        private void slowDownButton_Click(object sender, EventArgs e)
-        {
-            SlowDownButtonPressed();
-        }
 
         private void playButton_Click(object sender, EventArgs e)
         {
+            if (playButton.ImageIndex == 14)
+            playButton.ImageIndex = 15;
+            else playButton.ImageIndex = 14;
             PlayButtonPressed();
+        }
+
+
+        private void fullscreenButton_Click(object sender, EventArgs e)
+        {
+            if (fullscreenButton.ImageIndex == 21)
+            {
+                fullscreenButton.ImageIndex = 20;
+                playBToolTip.SetToolTip(fullscreenButton, "Выйти из полноэкранного режима");
+            }
+            else
+            {
+                fullscreenButton.ImageIndex = 21;
+                playBToolTip.SetToolTip(fullscreenButton, "Перейти в полноэкранный режим");
+            }
+        }
+
+        private void slowDownButton_Click(object sender, EventArgs e)
+        {
+            SlowDownButtonPressed();
         }
 
         private void fastUpButton_Click(object sender, EventArgs e)
@@ -106,5 +124,6 @@ namespace View
         {
             ResetSpeedButtonPressed();
         }
+
     }
 }

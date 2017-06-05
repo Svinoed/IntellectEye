@@ -42,6 +42,7 @@ namespace Presenter
                 _view.GroupsEditClick += EditGroups;
                 _view.GroupSelected += SetActiveGroup;
                 _view.ActivatedPlaybackTab += ActivatedPlayBackTab;
+                _view.InitiateSearch += () => InitiateSearch();
            
                 _groups = new Dictionary<Guid, Group>();
                 _smallPresenters = new List<ISmallVideoPresenter>();
@@ -78,6 +79,14 @@ namespace Presenter
                 _view.ViewVisible = visible;
             }
         }
+
+        #region Playback search
+        private void InitiateSearch()
+        {
+            SmallSearchPresenter searchPres = new SmallSearchPresenter(new TEMPORARYSearchVideo(), this);
+        }
+#endregion
+
 
         #region  Video live
 
@@ -144,6 +153,7 @@ namespace Presenter
                 RefreshVideo();
             }
         }
+
 
         #region ListVideo
         /// <summary>
@@ -279,10 +289,17 @@ namespace Presenter
         {
             if (_playbackPresenters.Count == 0)
             {
-                GreatePlaybacks();
+                //GreatePlaybacks();
             }
-            List<IVideoBase> list = GetPlaybackView();
-            _view.AddListPlayBack(list);
+            try
+            {
+                List<IVideoBase> list = GetPlaybackView();
+                _view.AddListPlayBack(list);
+            }
+            catch
+            {
+
+            }
         }
 
         private void AddPlayback()
@@ -299,6 +316,26 @@ namespace Presenter
                 List<IVideoBase> list = GetPlaybackView();
                 _view.AddListPlayBack(list);
             }
+        }
+
+
+        public void AddPlayback(IPlaybackPresenter presenter)
+        {
+            _playbackPresenters.Add(presenter);
+            _view.AddListPlayBack(GetPlaybackListView());
+        }
+
+        private List<IVideoBase> GetPlaybackListView()
+        {
+            List<IVideoBase> list = new List<IVideoBase>();
+            int count = _playbackPresenters.Count;
+            for (int i = 0; i < count; i++)
+            {
+                IVideoView view = _playbackPresenters[i].GetView();
+                //view.ClearPanel();
+                list.Add(view);
+            }
+            return list;
         }
 
         private void RemovePlayback()

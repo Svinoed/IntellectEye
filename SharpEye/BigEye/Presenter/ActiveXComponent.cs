@@ -34,13 +34,14 @@ namespace Presenter
         public ActiveXComponent()
         {
             InitializeComponent();
-            //this.Dock = DockStyle.Fill;
+            this.Dock = DockStyle.Fill;
         }
 
         private void LoadLoginView(ILoginView view)
         {
             UserControl loginView = (UserControl)view;
             // Устанавливаем контрол по центру
+            //loginView.Anchor = ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right) | System.Windows.Forms.AnchorStyles.Left); 
             loginView.Left = (this.ClientSize.Width - loginView.Width) / 2;
             loginView.Top = (this.ClientSize.Height - loginView.Height) / 2;
             this.Controls.Clear();
@@ -55,6 +56,29 @@ namespace Presenter
             mainView.Height = this.ClientSize.Height;
             this.Controls.Clear();
             this.Controls.Add(mainView);
+        }
+
+        private void ReSize()
+        {
+            if(Controls.Contains((UserControl)_loginPresenter.GetView()))
+            {
+                UserControl loginView = (UserControl) _loginPresenter.GetView();
+                loginView.Left = (this.ClientSize.Width - loginView.Width) / 2;
+                loginView.Top = (this.ClientSize.Height - loginView.Height) / 2;
+            }
+            if ( _mainPresenter != null && Controls.Contains((UserControl)_mainPresenter.GetView()))
+            {
+                UserControl mainView = (UserControl) _mainPresenter.GetView();
+                mainView.Width = this.ClientSize.Width;
+                mainView.Height = this.ClientSize.Height;
+            }
+
+            if (_videoPresenter != null && Controls.Contains((UserControl) _videoPresenter.GetView()))
+            {
+                UserControl mainView = (UserControl)_videoPresenter.GetView();
+                mainView.Width = this.ClientSize.Width;
+                mainView.Height = this.ClientSize.Height;
+            }
         }
 
         private void ConnectionCompleted()
@@ -89,10 +113,10 @@ namespace Presenter
             _initModel.Init();
 
             _loginPresenter = new LoginPresenter(new LoginControl());
-            _loginPresenter.Connected += () => ConnectionCompleted();
+            _loginPresenter.Connected += ConnectionCompleted;
 
             LoadLoginView(_loginPresenter.GetView());
-            _loginPresenter.Connect();
+            //_loginPresenter.Connect();
 
             _videoPresenter = new VideoPresenter(new CameraViewer(), CloseVideoControl);
         }
@@ -188,5 +212,9 @@ namespace Presenter
 
         #endregion
 
+        private void ActiveXComponent_Paint(object sender, PaintEventArgs e)
+        {
+            ReSize();
+        }
     }
 }

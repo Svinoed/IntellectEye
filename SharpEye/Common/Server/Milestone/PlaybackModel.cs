@@ -27,18 +27,23 @@ namespace Model
 
         public double PlaybackSpeed { get {return _playbackSpeed; } set { this._playbackSpeed = value; } }
 
+        public ProgressBar TimeLine { get { return _currentProgressBar; } set { _currentProgressBar = value; } }
         public bool SkipGaps { get { return _playbackController.SkipGaps; } set{ _playbackController.SkipGaps = value; } }
 
         private Bitmap _currentOriginalBitmap = null;
 
-        private Panel currentVideoPanel;
-        private PictureBox videoPictureBox;
+        private Panel _currentVideoPanel;
+        private PictureBox _videoPictureBox;
+        private ProgressBar _currentProgressBar;
 
         private FQID _playbackFQID;
         private Item _newlySelectedItem;
 
         private PlaybackController _playbackController;
         private PlaybackUserControl _playbackUserControl;
+
+        private DateTime _currentSequenceStartTime;
+        private DateTime _currentSequenceEndTime;
 
         //private PlaybackTimeInformationData _currentTimeInformation;
         private BitmapSource _bitmapSource;
@@ -59,12 +64,61 @@ namespace Model
                 _newlySelectedItem = Configuration.Instance.GetItem(camera.Id);
                 _bitmapSource.Item = _newlySelectedItem;
                 InitBitmap();
+                _playbackController.PlaybackTime = DateTime.UtcNow.AddMinutes(-1);
             }
             catch (Exception ex)
             {
                 EnvironmentManager.Instance.ExceptionDialog("Camera select", ex);
             }
         }
+
+        public void SetVideoStreamInPanel(ICameraModel camera, Panel videoPanel, DateTime initialTime)
+        {
+            PrepareControls(videoPanel);
+            try
+            {
+                CloseCurrent();
+                _newlySelectedItem = Configuration.Instance.GetItem(camera.Id);
+                _bitmapSource.Item = _newlySelectedItem;
+                InitBitmap();
+                _playbackController.PlaybackTime = initialTime.ToUniversalTime();
+            }
+            catch (Exception ex)
+            {
+                EnvironmentManager.Instance.ExceptionDialog("Camera select", ex);
+            }
+        }
+
+        public void SetVideoStreamInPanelAtTime(ICameraModel camera, Panel videoPanel, DateTime initialTime,DateTime endTime)
+        {
+            PrepareControls(videoPanel);
+            try
+            {
+                CloseCurrent();
+                _newlySelectedItem = Configuration.Instance.GetItem(camera.Id);
+                _bitmapSource.Item = _newlySelectedItem;
+                InitBitmap();
+                SetLoopedTime(initialTime,endTime);
+            }
+            catch (Exception ex)
+            {
+                EnvironmentManager.Instance.ExceptionDialog("Camera select", ex);
+            }
+        }
+
+
+
+        private void SetLoopedTime(DateTime initialTime, DateTime endTime)
+        {
+            SetVideoFragmentForPlayback(initialTime, endTime );
+            _playbackController.PlaybackMode = PlaybackController.PlaybackModeType.Stop;
+            _playbackController.PlaybackSpeed = 0.0F;
+            TimeSpan check = _playbackController.PlaybackTime.ToUniversalTime() - initialTime.ToUniversalTime();
+            _playbackController.PlaybackTime = _playbackController.PlaybackTime.Add(-check);
+            _playbackController.PlaybackSpeed = 1.0F;
+            _playbackController.PlaybackMode = PlaybackController.PlaybackModeType.Forward;
+        }
+
 
         public void SetVideoStreamInPanel(ICameraModel camera, Panel panel, EventHandler doubleClickHandler)
         {
@@ -81,7 +135,7 @@ namespace Model
             throw new NotImplementedException();
         }
 
-        public void SetVideoStreamInPanelFromFile(string filename, Panel videoPanel)
+        public void SetVideoStreamInPanelFromFileAtTime(string filename, Panel videoPanel, DateTime initialTime,DateTime endTime)
         {
             PrepareControls(videoPanel);
             try
@@ -96,6 +150,7 @@ namespace Model
                         VideoOS.Platform.SDK.Environment.LoadConfiguration(uri);
                         _playbackController.PlaybackMode = PlaybackController.PlaybackModeType.Stop;
                         ChooseCameraSource();
+                        SetLoopedTime(initialTime, endTime);
                     }
                     else
                     {
@@ -118,7 +173,7 @@ namespace Model
             }
         }
 
-        public void SetVideoStreamInPanelFromFolder(string pathToFolder, Panel videoPanel)
+        public void SetVideoStreamInPanelFromFolderAtTime(string pathToFolder, Panel videoPanel, DateTime initialTime, DateTime endTime)
         {
             PrepareControls(videoPanel);
             try
@@ -132,6 +187,7 @@ namespace Model
                     VideoOS.Platform.SDK.Environment.LoadConfiguration(uri);
 
                     ChooseCameraSource();
+                    SetLoopedTime(initialTime,endTime);
                 }
                 else
                 {
@@ -144,45 +200,64 @@ namespace Model
             }
         }
 
-        public void SetAndEnableTimeline(Panel timeLinePanel)
+        public void SetVideoFragmentForPlayback(DateTime startTime, DateTime endTime)
         {
-            //Milestone variant
-            _playbackUserControl = ClientControl.Instance.GeneratePlaybackUserControl();
-            _playbackUserControl.Visible = true;
-            _playbackUserControl.Dock = DockStyle.Fill;
-            timeLinePanel.Controls.Add(_playbackUserControl);
-            _playbackUserControl.BringToFront();
-            _playbackUserControl.Init(_playbackFQID);
-            _playbackUserControl.SetCameras(new List<FQID>() { _newlySelectedItem.FQID });
-            _playbackUserControl.SetEnabled(true);  // Refresh the TimeLine 
-            //Milestone varian
+            _currentSequenceStartTime = startTime.ToUniversalTime();
+            _currentSequenceEndTime = endTime.ToUniversalTime();
+            _playbackController.SetSequence(_currentSequenceStartTime.ToUniversalTime(), _currentSequenceEndTime.ToUniversalTime());
+            /*_currentProgressBar.Minimum = Convert.ToInt32(0);
+            _currentProgressBar.Maximum = Convert.ToInt32((_currentSequenceEndTime.Subtract(_currentSequenceStartTime).TotalSeconds));
+            _currentProgressBar.Value = 0;
+            _playbackController.SequenceProgressChanged += (g, s) => moveProgressBar();*/
         }
 
+        /*private void moveProgressBar()
+        {
+            _currentProgressBar.Invoke((MethodInvoker )delegate {
+                int curValue = Convert.ToInt32(_playbackController.PlaybackTime.Subtract(_currentSequenceStartTime).TotalSeconds);
+                _currentProgressBar.Value = curValue;
+            });
+        }*/
 
-        
         private void _bitmapSource_NewBitmapEvent(Bitmap bitmap)
         {
-            Control hostElement = currentVideoPanel.Parent;
+            Control hostElement = _currentVideoPanel.Parent;
             if (hostElement.InvokeRequired)
             {
-                if (_currentOriginalBitmap != null)
-                    _currentOriginalBitmap.Dispose();
-                _currentOriginalBitmap = new Bitmap(bitmap);
-                bitmap.Dispose();
+                try
+                {
+                    if (_currentOriginalBitmap != null)
+                        _currentOriginalBitmap.Dispose();
+                    _currentOriginalBitmap = new Bitmap(bitmap);
+                    bitmap.Dispose();
 
-                hostElement.BeginInvoke(new MethodInvoker(() => _bitmapSource_NewBitmapEvent(_currentOriginalBitmap)));
-            }
+                    hostElement.BeginInvoke(new MethodInvoker(() => _bitmapSource_NewBitmapEvent(_currentOriginalBitmap)));
+                }
+                catch
+                {
+
+                }
+                }
             else
             {
                 lock (hostElement)
                 {
-                    videoPictureBox.Image = new Bitmap(bitmap, videoPictureBox.Width, videoPictureBox.Height);
-                    hostElement.Refresh();
+                    try
+                    {
+                        _videoPictureBox.Image = new Bitmap(bitmap, _videoPictureBox.Width, _videoPictureBox.Height);
+                        //hostElement.Refresh();
+                        _videoPictureBox.Refresh();
+                    }
+                    catch
+                    {
+
+                    }
+                    
                 }
             }
         }
 
-        
+
         private void InitBitmap()
         {
             if (_bitmapSource != null)
@@ -305,11 +380,11 @@ namespace Model
 
         private void PrepareControls(Panel videoPanel)
         {
-            currentVideoPanel = videoPanel;
-            videoPictureBox = new PictureBox();
+            _currentVideoPanel = videoPanel;
+            _videoPictureBox = new PictureBox();
             videoPanel.Controls.Clear();
-            videoPanel.Controls.Add(videoPictureBox);
-            videoPictureBox.Dock = DockStyle.Fill;
+            videoPanel.Controls.Add(_videoPictureBox);
+            _videoPictureBox.Dock = DockStyle.Fill;
 
             _playbackFQID = null;//Null в данном случае - использование стандартного способа управления контролом
             _playbackUserControl = ClientControl.Instance.GeneratePlaybackUserControl();

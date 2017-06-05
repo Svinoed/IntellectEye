@@ -13,44 +13,68 @@ namespace Presenter
 {
     class PlaybackPresenter : IPlaybackPresenter
     {
+
     
-    private IPlaybackView _view;
-    private ICameraModel _camera;
-    [Import(typeof(IPlaybackModel))]
-    private IPlaybackModel _playbackModel;
-    //private IAudioModel _audioModel;//Она тут нужна или отдельно выносим? Ответ: Да, нужна. Все правильно делаешь.
+        private IPlaybackView _view;
+        private ICameraModel _camera;
+        [Import(typeof(IPlaybackModel))]
+        private IPlaybackModel _playbackModel;
+        //private IAudioModel _audioModel;//Она тут нужна или отдельно выносим? Ответ: Да, нужна. Все правильно делаешь.
 
-    public ICameraModel Camera
-    {
-        get { return this._camera; }
-        set
+        private DateTime _initialTime = DateTime.MinValue;
+        private DateTime _endTime = DateTime.MaxValue;
+
+        public ICameraModel Camera
         {
-                MessageBox.Show("Step1");
-            this._camera = value;
-            MessageBox.Show("Set");
-            _playbackModel.SetVideoStreamInPanel(_camera, _view.VideoPanel);
-             
-            //_playbackModel.SetAndEnableTimeline(_view.TimeLinePanel);
-            //_playbackModel.SetAudioStreamInPanelDefault(_camera, _view.VideoPanel);
+            get { return this._camera; }
+            set
+            {
+                this._camera = value;
+                if (InitialTime != DateTime.MinValue && EndTime != DateTime.MaxValue)
+                {
+                    _playbackModel.SetVideoStreamInPanelAtTime(_camera, _view.VideoPanel, _initialTime,_endTime);
+                }
+                else if(InitialTime != DateTime.MinValue && EndTime == DateTime.MaxValue)
+                {
+                    _playbackModel.SetVideoStreamInPanel(_camera, _view.VideoPanel, _initialTime);
+                }
+                else
+                {
+                    _playbackModel.SetVideoStreamInPanel(_camera, _view.VideoPanel);
+                }
+                //_playbackModel.SetAudioStreamInPanelDefault(_camera, _view.VideoPanel);
+            }
         }
-    }
 
-        public PlaybackPresenter(IPlaybackView view/*,IAudioModel audioModel*/)
+        public DateTime InitialTime
+        {
+            get { return _initialTime; }
+            set { _initialTime = value; }
+        }
+
+        public DateTime EndTime
+        {
+            get { return _endTime; }
+            set { this._endTime = value; }
+        }
+
+        public PlaybackPresenter(IPlaybackView view/*,IAudioModel audioModel*/) 
         {
             ComposContainer.Instance().Compose(this);
             if (view != null)
             {
                 _view = view;
                 //_audioModel = audioModel;
-                _view.PlayButtonPressed += play;
-                _view.SlowDownButtonPressed += slowDown;
-                _view.SpeedUpButtonPressed += speedUp;
-                _view.ChangeDirectionButtonPressed += changeDirection;
-                _view.ResetSpeedButtonPressed += resetSpeed;
-                _playbackModel.SpeedChanged += updateSpeed;
-                _view.CreateComment += () => { throw new NotImplementedException(); };
-                _view.CreateBookMarker += () => { throw new NotImplementedException(); };
-                _view.CreatePrintScreen += () => { throw new NotImplementedException(); };
+                _playbackModel.TimeLine = view.TimeLine;
+                _view.PlayButtonPressed += () => Play();
+                _view.SlowDownButtonPressed += () => SlowDown();
+                _view.SpeedUpButtonPressed += () => SpeedUp();
+                _view.ChangeDirectionButtonPressed += () => ChangeDirection();
+                _view.ResetSpeedButtonPressed += () => ResetSpeed();
+                _playbackModel.SpeedChanged += () => UpdateSpeed();
+                _view.CreateComment += () => throw new NotImplementedException();
+                _view.CreateBookMarker += () => throw new NotImplementedException();
+                _view.CreatePrintScreen += () => throw new NotImplementedException();
             }
             else
             {
@@ -58,36 +82,45 @@ namespace Presenter
             }
         }
 
-    public void play()
-    {
-        _playbackModel.Play();
-    }
+        public void PickCameraFromFile(string filename)
+        {
+            _playbackModel.SetVideoStreamInPanelFromFileAtTime(filename, _view.VideoPanel,_initialTime,_endTime);
+        }
 
-    public void speedUp()
-    {
-        _playbackModel.SpeedUp();
-    }
+        public void PickCameraFromFolder(string folderPath)
+        {
+            _playbackModel.SetVideoStreamInPanelFromFolderAtTime(folderPath, _view.VideoPanel,_initialTime,_endTime);
+        }
+        public void Play()
+        {
+            _playbackModel.Play();
+        }
 
-    public void slowDown()
-    {
-        _playbackModel.SlowDown();
-    }
+        public void SpeedUp()
+        {
+            _playbackModel.SpeedUp();
+        }
+
+        public void SlowDown()
+        {
+            _playbackModel.SlowDown();
+        }
 
 
-        public void changeDirection()
-    {
-        _playbackModel.ChangeDirection();
-    }
+        public void ChangeDirection()
+        {
+            _playbackModel.ChangeDirection();
+        }
 
-        public void resetSpeed()
-    {
-        _playbackModel.ResetSpeed();
-    }
+        public void ResetSpeed()
+        {
+            _playbackModel.ResetSpeed();
+        }
 
-        public void updateSpeed()
-    {
-        _view.CurrentPlaybackSpeedLabel.Text = _playbackModel.PlaybackSpeed.ToString();
-    }
+        public void UpdateSpeed()
+        {
+            _view.CurrentPlaybackSpeedLabel.Text = _playbackModel.PlaybackSpeed.ToString();
+        }
 
 
     public IVideoView GetView()
@@ -106,6 +139,5 @@ namespace Presenter
             id = _playbackModel.chooseCameraManually();
             return id;
         }
-
-    }
+}
 }

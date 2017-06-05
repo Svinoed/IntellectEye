@@ -60,11 +60,12 @@
             this.camEditorMainPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.camEditorMainPanel.Controls.Add(this.camPanel, 0, 0);
             this.camEditorMainPanel.Controls.Add(this.camEditPanel, 1, 0);
-            this.camEditorMainPanel.Location = new System.Drawing.Point(12, 12);
+            this.camEditorMainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.camEditorMainPanel.Location = new System.Drawing.Point(0, 0);
             this.camEditorMainPanel.Name = "camEditorMainPanel";
             this.camEditorMainPanel.RowCount = 1;
             this.camEditorMainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.camEditorMainPanel.Size = new System.Drawing.Size(460, 237);
+            this.camEditorMainPanel.Size = new System.Drawing.Size(484, 261);
             this.camEditorMainPanel.TabIndex = 0;
             // 
             // camPanel
@@ -73,29 +74,32 @@
             this.camPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.camPanel.Controls.Add(this.camList, 0, 1);
             this.camPanel.Controls.Add(this.searchCamTextBox, 0, 0);
+            this.camPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.camPanel.Location = new System.Drawing.Point(5, 5);
             this.camPanel.Name = "camPanel";
             this.camPanel.RowCount = 2;
-            this.camPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.camPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.camPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.camPanel.Size = new System.Drawing.Size(194, 100);
+            this.camPanel.Size = new System.Drawing.Size(194, 251);
             this.camPanel.TabIndex = 0;
             // 
             // camList
             // 
             this.camList.BackColor = System.Drawing.Color.LightGray;
-            this.camList.Location = new System.Drawing.Point(3, 23);
+            this.camList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.camList.Location = new System.Drawing.Point(3, 29);
             this.camList.Name = "camList";
-            this.camList.Size = new System.Drawing.Size(121, 74);
+            this.camList.Size = new System.Drawing.Size(188, 219);
             this.camList.TabIndex = 0;
             this.camList.UseCompatibleStateImageBehavior = false;
             // 
             // searchCamTextBox
             // 
             this.searchCamTextBox.BackColor = System.Drawing.Color.LightGray;
+            this.searchCamTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.searchCamTextBox.Location = new System.Drawing.Point(3, 3);
             this.searchCamTextBox.Name = "searchCamTextBox";
-            this.searchCamTextBox.Size = new System.Drawing.Size(100, 20);
+            this.searchCamTextBox.Size = new System.Drawing.Size(188, 20);
             this.searchCamTextBox.TabIndex = 1;
             // 
             // camEditPanel
@@ -104,26 +108,28 @@
             this.camEditPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.camEditPanel.Controls.Add(this.buttonPanel, 0, 1);
             this.camEditPanel.Controls.Add(this.tableLayoutPanel, 0, 0);
+            this.camEditPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.camEditPanel.Location = new System.Drawing.Point(207, 5);
             this.camEditPanel.Name = "camEditPanel";
             this.camEditPanel.RowCount = 2;
-            this.camEditPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 73.85321F));
-            this.camEditPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 26.14679F));
-            this.camEditPanel.Size = new System.Drawing.Size(240, 218);
+            this.camEditPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85.25896F));
+            this.camEditPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.74104F));
+            this.camEditPanel.Size = new System.Drawing.Size(272, 251);
             this.camEditPanel.TabIndex = 1;
             // 
             // buttonPanel
             // 
+            this.buttonPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.buttonPanel.ColumnCount = 2;
             this.buttonPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.buttonPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.buttonPanel.Controls.Add(this.saveButton, 0, 0);
             this.buttonPanel.Controls.Add(this.cancelButton, 1, 0);
-            this.buttonPanel.Location = new System.Drawing.Point(3, 163);
+            this.buttonPanel.Location = new System.Drawing.Point(51, 216);
             this.buttonPanel.Name = "buttonPanel";
             this.buttonPanel.RowCount = 1;
             this.buttonPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.buttonPanel.Size = new System.Drawing.Size(200, 52);
+            this.buttonPanel.Size = new System.Drawing.Size(169, 32);
             this.buttonPanel.TabIndex = 0;
             // 
             // saveButton
@@ -137,7 +143,7 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(103, 3);
+            this.cancelButton.Location = new System.Drawing.Point(87, 3);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 1;
@@ -157,6 +163,7 @@
             this.tableLayoutPanel.Controls.Add(this.camNameTextBox, 1, 1);
             this.tableLayoutPanel.Controls.Add(this.camScreenplayCompoBox, 1, 2);
             this.tableLayoutPanel.Controls.Add(this.camDescriptTextBox, 1, 3);
+            this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel.Name = "tableLayoutPanel";
             this.tableLayoutPanel.RowCount = 4;
@@ -164,7 +171,7 @@
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel.Size = new System.Drawing.Size(234, 138);
+            this.tableLayoutPanel.Size = new System.Drawing.Size(266, 207);
             this.tableLayoutPanel.TabIndex = 1;
             // 
             // label1
@@ -210,34 +217,39 @@
             // camIDTextBox
             // 
             this.camIDTextBox.BackColor = System.Drawing.Color.LightGray;
+            this.camIDTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.camIDTextBox.Location = new System.Drawing.Point(70, 3);
             this.camIDTextBox.Name = "camIDTextBox";
-            this.camIDTextBox.Size = new System.Drawing.Size(160, 20);
+            this.camIDTextBox.Size = new System.Drawing.Size(193, 20);
             this.camIDTextBox.TabIndex = 4;
             // 
             // camNameTextBox
             // 
             this.camNameTextBox.BackColor = System.Drawing.Color.LightGray;
+            this.camNameTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.camNameTextBox.Location = new System.Drawing.Point(70, 33);
             this.camNameTextBox.Name = "camNameTextBox";
-            this.camNameTextBox.Size = new System.Drawing.Size(160, 20);
+            this.camNameTextBox.Size = new System.Drawing.Size(193, 20);
             this.camNameTextBox.TabIndex = 5;
             // 
             // camScreenplayCompoBox
             // 
             this.camScreenplayCompoBox.BackColor = System.Drawing.Color.LightGray;
+            this.camScreenplayCompoBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.camScreenplayCompoBox.FormattingEnabled = true;
             this.camScreenplayCompoBox.Location = new System.Drawing.Point(70, 63);
             this.camScreenplayCompoBox.Name = "camScreenplayCompoBox";
-            this.camScreenplayCompoBox.Size = new System.Drawing.Size(160, 21);
+            this.camScreenplayCompoBox.Size = new System.Drawing.Size(193, 21);
             this.camScreenplayCompoBox.TabIndex = 6;
             // 
             // camDescriptTextBox
             // 
             this.camDescriptTextBox.BackColor = System.Drawing.Color.LightGray;
+            this.camDescriptTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.camDescriptTextBox.Location = new System.Drawing.Point(70, 93);
+            this.camDescriptTextBox.Multiline = true;
             this.camDescriptTextBox.Name = "camDescriptTextBox";
-            this.camDescriptTextBox.Size = new System.Drawing.Size(160, 20);
+            this.camDescriptTextBox.Size = new System.Drawing.Size(193, 111);
             this.camDescriptTextBox.TabIndex = 7;
             // 
             // CameraEditor

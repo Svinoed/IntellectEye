@@ -12,7 +12,7 @@ namespace Model
 {
     [Serializable]
     [Export(typeof(Contract.ISerializable))]
-    class SerializeDevice : Contract.ISerializable
+    public class SerializeDevice : Contract.ISerializable
     {
         string _CameraId;
         string _CameraName;

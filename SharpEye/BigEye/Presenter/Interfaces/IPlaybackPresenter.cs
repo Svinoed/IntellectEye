@@ -7,19 +7,23 @@ using Contract;
 
 namespace Presenter.Interfaces
 {
-    interface IPlaybackPresenter : IVideoPresenter
+    public interface IPlaybackPresenter : IVideoPresenter
     {
-        void play();
+        void PickCameraFromFile(string filename);
 
-        void speedUp();
+        void PickCameraFromFolder(string folderPath);
+        void Play();
 
-        void slowDown();
+        void SpeedUp();
 
-        void changeDirection();
+        void SlowDown();
 
-        void resetSpeed();
+        void ChangeDirection();
 
-        void updateSpeed();
+        void ResetSpeed();
 
+        void UpdateSpeed();
+
+        DateTime InitialTime { get; set; }
     }
 }

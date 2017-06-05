@@ -36,6 +36,7 @@
             this.tableLayoutPanelZoom = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
+            this.playbackSpeedLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.button8 = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
@@ -67,7 +68,7 @@
             this.exportButton = new System.Windows.Forms.Button();
             this.bookmarkButton = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.playbackSpeedLabel = new System.Windows.Forms.Label();
+            this.playBToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             this.flowPanelZoom.SuspendLayout();
             this.tableLayoutPanelZoom.SuspendLayout();
@@ -86,7 +87,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(543, 339);
+            this.panel1.Size = new System.Drawing.Size(412, 232);
             this.panel1.TabIndex = 0;
             // 
             // videoPanel
@@ -94,16 +95,16 @@
             this.videoPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.videoPanel.Location = new System.Drawing.Point(0, 0);
             this.videoPanel.Name = "videoPanel";
-            this.videoPanel.Size = new System.Drawing.Size(423, 286);
+            this.videoPanel.Size = new System.Drawing.Size(292, 185);
             this.videoPanel.TabIndex = 27;
             // 
             // flowPanelZoom
             // 
             this.flowPanelZoom.Controls.Add(this.tableLayoutPanelZoom);
             this.flowPanelZoom.Dock = System.Windows.Forms.DockStyle.Right;
-            this.flowPanelZoom.Location = new System.Drawing.Point(423, 0);
+            this.flowPanelZoom.Location = new System.Drawing.Point(292, 0);
             this.flowPanelZoom.Name = "flowPanelZoom";
-            this.flowPanelZoom.Size = new System.Drawing.Size(120, 286);
+            this.flowPanelZoom.Size = new System.Drawing.Size(120, 185);
             this.flowPanelZoom.TabIndex = 26;
             // 
             // tableLayoutPanelZoom
@@ -120,7 +121,7 @@
             this.tableLayoutPanelZoom.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanelZoom.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanelZoom.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelZoom.Size = new System.Drawing.Size(120, 286);
+            this.tableLayoutPanelZoom.Size = new System.Drawing.Size(120, 185);
             this.tableLayoutPanelZoom.TabIndex = 28;
             // 
             // tableLayoutPanel7
@@ -147,6 +148,18 @@
             this.label1.Size = new System.Drawing.Size(55, 13);
             this.label1.TabIndex = 28;
             this.label1.Text = "Скорость";
+            // 
+            // playbackSpeedLabel
+            // 
+            this.playbackSpeedLabel.AutoSize = true;
+            this.playbackSpeedLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.playbackSpeedLabel.ForeColor = System.Drawing.Color.White;
+            this.playbackSpeedLabel.Location = new System.Drawing.Point(3, 13);
+            this.playbackSpeedLabel.Name = "playbackSpeedLabel";
+            this.playbackSpeedLabel.Size = new System.Drawing.Size(55, 27);
+            this.playbackSpeedLabel.TabIndex = 29;
+            this.playbackSpeedLabel.Text = "label3";
+            this.playbackSpeedLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel2
             // 
@@ -392,9 +405,9 @@
             this.flowPanel.Controls.Add(this.tableLayoutPanel1);
             this.flowPanel.Controls.Add(this.progressBar1);
             this.flowPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowPanel.Location = new System.Drawing.Point(0, 286);
+            this.flowPanel.Location = new System.Drawing.Point(0, 185);
             this.flowPanel.Name = "flowPanel";
-            this.flowPanel.Size = new System.Drawing.Size(543, 53);
+            this.flowPanel.Size = new System.Drawing.Size(412, 47);
             this.flowPanel.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -414,26 +427,26 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 31F));
-            this.tableLayoutPanel1.Controls.Add(this.settingsButton, 14, 0);
-            this.tableLayoutPanel1.Controls.Add(this.helpButton, 13, 0);
-            this.tableLayoutPanel1.Controls.Add(this.resetButton, 12, 0);
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.tableLayoutPanel1.Controls.Add(this.commentButton, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.bookmarkButton, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.helpButton, 12, 0);
             this.tableLayoutPanel1.Controls.Add(this.redoButton, 10, 0);
+            this.tableLayoutPanel1.Controls.Add(this.settingsButton, 13, 0);
             this.tableLayoutPanel1.Controls.Add(this.switchOrderButton, 6, 0);
             this.tableLayoutPanel1.Controls.Add(this.fastUpButton, 9, 0);
             this.tableLayoutPanel1.Controls.Add(this.playButton, 8, 0);
             this.tableLayoutPanel1.Controls.Add(this.slowDownButton, 7, 0);
             this.tableLayoutPanel1.Controls.Add(this.fullscreenButton, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.commentButton, 4, 0);
             this.tableLayoutPanel1.Controls.Add(this.screenshotButton, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.exportButton, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.bookmarkButton, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.resetButton, 14, 0);
+            this.tableLayoutPanel1.Controls.Add(this.exportButton, 4, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 23);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 17);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(543, 30);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(412, 30);
             this.tableLayoutPanel1.TabIndex = 27;
             // 
             // settingsButton
@@ -444,11 +457,13 @@
             this.settingsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.settingsButton.ImageIndex = 1;
             this.settingsButton.ImageList = this.imageList1;
-            this.settingsButton.Location = new System.Drawing.Point(515, 3);
+            this.settingsButton.Location = new System.Drawing.Point(353, 3);
             this.settingsButton.Name = "settingsButton";
-            this.settingsButton.Size = new System.Drawing.Size(25, 24);
+            this.settingsButton.Size = new System.Drawing.Size(24, 24);
             this.settingsButton.TabIndex = 27;
+            this.playBToolTip.SetToolTip(this.settingsButton, "Настройки (в разработке)");
             this.settingsButton.UseVisualStyleBackColor = true;
+            this.settingsButton.Visible = false;
             // 
             // helpButton
             // 
@@ -458,11 +473,13 @@
             this.helpButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.helpButton.ImageIndex = 0;
             this.helpButton.ImageList = this.imageList1;
-            this.helpButton.Location = new System.Drawing.Point(485, 3);
+            this.helpButton.Location = new System.Drawing.Point(323, 3);
             this.helpButton.Name = "helpButton";
             this.helpButton.Size = new System.Drawing.Size(24, 24);
             this.helpButton.TabIndex = 26;
+            this.playBToolTip.SetToolTip(this.helpButton, "Справка (в разработке)");
             this.helpButton.UseVisualStyleBackColor = true;
+            this.helpButton.Visible = false;
             // 
             // resetButton
             // 
@@ -472,10 +489,11 @@
             this.resetButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.resetButton.ImageIndex = 3;
             this.resetButton.ImageList = this.imageList1;
-            this.resetButton.Location = new System.Drawing.Point(455, 3);
+            this.resetButton.Location = new System.Drawing.Point(383, 3);
             this.resetButton.Name = "resetButton";
-            this.resetButton.Size = new System.Drawing.Size(24, 24);
+            this.resetButton.Size = new System.Drawing.Size(26, 24);
             this.resetButton.TabIndex = 21;
+            this.playBToolTip.SetToolTip(this.resetButton, "Сбросить настройки");
             this.resetButton.UseVisualStyleBackColor = true;
             // 
             // redoButton
@@ -486,11 +504,13 @@
             this.redoButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.redoButton.ImageIndex = 24;
             this.redoButton.ImageList = this.imageList1;
-            this.redoButton.Location = new System.Drawing.Point(349, 3);
+            this.redoButton.Location = new System.Drawing.Point(283, 3);
             this.redoButton.Name = "redoButton";
             this.redoButton.Size = new System.Drawing.Size(24, 24);
             this.redoButton.TabIndex = 29;
+            this.playBToolTip.SetToolTip(this.redoButton, "Повторять воспроизведение");
             this.redoButton.UseVisualStyleBackColor = true;
+            this.redoButton.Click += new System.EventHandler(this.redoButton_Click);
             // 
             // switchOrderButton
             // 
@@ -500,10 +520,11 @@
             this.switchOrderButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.switchOrderButton.ImageIndex = 17;
             this.switchOrderButton.ImageList = this.imageList1;
-            this.switchOrderButton.Location = new System.Drawing.Point(229, 3);
+            this.switchOrderButton.Location = new System.Drawing.Point(163, 3);
             this.switchOrderButton.Name = "switchOrderButton";
             this.switchOrderButton.Size = new System.Drawing.Size(24, 24);
             this.switchOrderButton.TabIndex = 19;
+            this.playBToolTip.SetToolTip(this.switchOrderButton, "Сменить порядок воспроизведения");
             this.switchOrderButton.UseVisualStyleBackColor = true;
             this.switchOrderButton.Click += new System.EventHandler(this.switchOrderButton_Click);
             // 
@@ -515,11 +536,13 @@
             this.fastUpButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.fastUpButton.ImageIndex = 19;
             this.fastUpButton.ImageList = this.imageList1;
-            this.fastUpButton.Location = new System.Drawing.Point(319, 3);
+            this.fastUpButton.Location = new System.Drawing.Point(253, 3);
             this.fastUpButton.Name = "fastUpButton";
             this.fastUpButton.Size = new System.Drawing.Size(24, 24);
             this.fastUpButton.TabIndex = 18;
+            this.playBToolTip.SetToolTip(this.fastUpButton, "Ускорить");
             this.fastUpButton.UseVisualStyleBackColor = true;
+            this.fastUpButton.Click += new System.EventHandler(this.fastUpButton_Click);
             // 
             // playButton
             // 
@@ -529,10 +552,11 @@
             this.playButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.playButton.ImageIndex = 14;
             this.playButton.ImageList = this.imageList1;
-            this.playButton.Location = new System.Drawing.Point(289, 3);
+            this.playButton.Location = new System.Drawing.Point(223, 3);
             this.playButton.Name = "playButton";
             this.playButton.Size = new System.Drawing.Size(24, 24);
             this.playButton.TabIndex = 16;
+            this.playBToolTip.SetToolTip(this.playButton, "Воспроизвести/приостаносить");
             this.playButton.UseVisualStyleBackColor = true;
             this.playButton.Click += new System.EventHandler(this.playButton_Click);
             // 
@@ -544,11 +568,13 @@
             this.slowDownButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.slowDownButton.ImageIndex = 18;
             this.slowDownButton.ImageList = this.imageList1;
-            this.slowDownButton.Location = new System.Drawing.Point(259, 3);
+            this.slowDownButton.Location = new System.Drawing.Point(193, 3);
             this.slowDownButton.Name = "slowDownButton";
             this.slowDownButton.Size = new System.Drawing.Size(24, 24);
             this.slowDownButton.TabIndex = 17;
+            this.playBToolTip.SetToolTip(this.slowDownButton, "Замедлить");
             this.slowDownButton.UseVisualStyleBackColor = true;
+            this.slowDownButton.Click += new System.EventHandler(this.slowDownButton_Click);
             // 
             // fullscreenButton
             // 
@@ -562,7 +588,9 @@
             this.fullscreenButton.Name = "fullscreenButton";
             this.fullscreenButton.Size = new System.Drawing.Size(24, 24);
             this.fullscreenButton.TabIndex = 20;
+            this.playBToolTip.SetToolTip(this.fullscreenButton, "Перейти в полноэкранный режим");
             this.fullscreenButton.UseVisualStyleBackColor = true;
+            this.fullscreenButton.Click += new System.EventHandler(this.fullscreenButton_Click);
             // 
             // commentButton
             // 
@@ -572,10 +600,11 @@
             this.commentButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.commentButton.ImageIndex = 23;
             this.commentButton.ImageList = this.imageList1;
-            this.commentButton.Location = new System.Drawing.Point(123, 3);
+            this.commentButton.Location = new System.Drawing.Point(93, 3);
             this.commentButton.Name = "commentButton";
             this.commentButton.Size = new System.Drawing.Size(24, 24);
             this.commentButton.TabIndex = 28;
+            this.playBToolTip.SetToolTip(this.commentButton, "Добавить комментарий");
             this.commentButton.UseVisualStyleBackColor = true;
             // 
             // screenshotButton
@@ -590,6 +619,7 @@
             this.screenshotButton.Name = "screenshotButton";
             this.screenshotButton.Size = new System.Drawing.Size(24, 24);
             this.screenshotButton.TabIndex = 23;
+            this.playBToolTip.SetToolTip(this.screenshotButton, "Сделать скриншот");
             this.screenshotButton.UseVisualStyleBackColor = true;
             // 
             // exportButton
@@ -600,11 +630,13 @@
             this.exportButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.exportButton.ImageIndex = 22;
             this.exportButton.ImageList = this.imageList1;
-            this.exportButton.Location = new System.Drawing.Point(63, 3);
+            this.exportButton.Location = new System.Drawing.Point(123, 3);
             this.exportButton.Name = "exportButton";
             this.exportButton.Size = new System.Drawing.Size(24, 24);
             this.exportButton.TabIndex = 25;
+            this.playBToolTip.SetToolTip(this.exportButton, "Экспорт видеофрагмента (в разработке)");
             this.exportButton.UseVisualStyleBackColor = true;
+            this.exportButton.Visible = false;
             // 
             // bookmarkButton
             // 
@@ -614,10 +646,11 @@
             this.bookmarkButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bookmarkButton.ImageIndex = 16;
             this.bookmarkButton.ImageList = this.imageList1;
-            this.bookmarkButton.Location = new System.Drawing.Point(93, 3);
+            this.bookmarkButton.Location = new System.Drawing.Point(63, 3);
             this.bookmarkButton.Name = "bookmarkButton";
             this.bookmarkButton.Size = new System.Drawing.Size(24, 24);
             this.bookmarkButton.TabIndex = 22;
+            this.playBToolTip.SetToolTip(this.bookmarkButton, "Добавить метку");
             this.bookmarkButton.UseVisualStyleBackColor = true;
             // 
             // progressBar1
@@ -625,26 +658,17 @@
             this.progressBar1.Dock = System.Windows.Forms.DockStyle.Top;
             this.progressBar1.Location = new System.Drawing.Point(0, 0);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(543, 15);
+            this.progressBar1.Size = new System.Drawing.Size(412, 15);
             this.progressBar1.TabIndex = 1;
-            // 
-            // playbackSpeedLabel
-            // 
-            this.playbackSpeedLabel.AutoSize = true;
-            this.playbackSpeedLabel.Location = new System.Drawing.Point(3, 13);
-            this.playbackSpeedLabel.Name = "playbackSpeedLabel";
-            this.playbackSpeedLabel.Size = new System.Drawing.Size(35, 13);
-            this.playbackSpeedLabel.TabIndex = 29;
-            this.playbackSpeedLabel.Text = "label3";
             // 
             // MiniPlayBack
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
             this.Controls.Add(this.panel1);
             this.Name = "MiniPlayBack";
-            this.Size = new System.Drawing.Size(543, 339);
+            this.Size = new System.Drawing.Size(412, 232);
             this.panel1.ResumeLayout(false);
             this.flowPanelZoom.ResumeLayout(false);
             this.tableLayoutPanelZoom.ResumeLayout(false);
@@ -699,5 +723,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Label playbackSpeedLabel;
+        private System.Windows.Forms.ToolTip playBToolTip;
     }
 }
