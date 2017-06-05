@@ -34,7 +34,7 @@ namespace Presenter
         public ActiveXComponent()
         {
             InitializeComponent();
-            this.Dock = DockStyle.Fill;
+            //this.Dock = DockStyle.Fill;
         }
 
         private void LoadLoginView(ILoginView view)
@@ -214,7 +214,7 @@ namespace Presenter
 
         private void ActiveXComponent_Paint(object sender, PaintEventArgs e)
         {
-            ReSize();
+            //ReSize();
         }
     }
 }

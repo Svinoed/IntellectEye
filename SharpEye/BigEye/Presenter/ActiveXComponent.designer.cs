@@ -37,6 +37,7 @@
             this.Name = "ActiveXComponent";
             this.Size = new System.Drawing.Size(865, 542);
             this.Load += new System.EventHandler(this.ActiveXComponent_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.ActiveXComponent_Paint);
             this.ResumeLayout(false);
 
         }
