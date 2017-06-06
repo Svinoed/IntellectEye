@@ -374,7 +374,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 0F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(630, 374);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -383,7 +383,7 @@
             this.videoPlayBackPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.videoPlayBackPanel.Location = new System.Drawing.Point(3, 3);
             this.videoPlayBackPanel.Name = "videoPlayBackPanel";
-            this.videoPlayBackPanel.Size = new System.Drawing.Size(624, 306);
+            this.videoPlayBackPanel.Size = new System.Drawing.Size(624, 368);
             this.videoPlayBackPanel.TabIndex = 0;
             // 
             // panel5
@@ -391,9 +391,9 @@
             this.panel5.Controls.Add(this.tableLayoutPanel6);
             this.panel5.Controls.Add(this.progressBar1);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(3, 315);
+            this.panel5.Location = new System.Drawing.Point(3, 377);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(624, 56);
+            this.panel5.Size = new System.Drawing.Size(624, 1);
             this.panel5.TabIndex = 0;
             // 
             // tableLayoutPanel6
@@ -416,7 +416,7 @@
             this.tableLayoutPanel6.Controls.Add(this.redoAllBbutton, 6, 0);
             this.tableLayoutPanel6.Controls.Add(this.slowDownAllButton, 3, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 20);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(0, -35);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
