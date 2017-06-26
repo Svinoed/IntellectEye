@@ -126,5 +126,7 @@ namespace View
             if (e.KeyCode == Keys.Return || e.KeyCode == Keys.Enter)
                 logInButton.PerformClick();
         }
+
+        // Комментарий для тестового коммита
     }
 }
